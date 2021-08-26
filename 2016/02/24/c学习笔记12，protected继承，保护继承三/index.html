@@ -262,7 +262,7 @@
 <p>protected:<br>string str;<br>void showStr(){<br>cout&lt;&lt;”str=”&lt;&lt;str&lt;&lt;endl;<br>}<br>void showProtected(){<br>cout&lt;&lt;”this is protected!”&lt;&lt;endl;<br>}<br>};<br>//保护继承<br>class B:protected A<br>{<br>public:<br>B(int i,int j,string s):A(i,j,s){</p>
 <p>}<br>/*<br>void showMethod(){<br>A::showPublic();<br>A::showPrivate();<br>A::showProtected();<br>}<br>void showAttr()<br>{<br>cout&lt;&lt;A::k&lt;&lt;endl;<br>cout&lt;&lt;A::i&lt;&lt;endl;<br>cout&lt;&lt;A::str&lt;&lt;endl;<br>}<br>*/<br>};<br>int main()<br>{<br>B b(1,2,”hello”);<br>/*<br>b.showMethod();<br>b.showAttr();<br>*/<br>b.showPublic();<br>b.showProtected();<br>b.showPrivate();</p>
 <p>}</p>
-<p>编译结果为： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015941_28350698044542.jpg">  可以看到，基类的public成员也不能直接访问了！而在public继承中，时可以在类外直接访问基类的public成员的！ 这是为什么？原因是使用保护继承时，基类的公有成员和保护成员都会变成派生类的保护成员。这就是保护继承和公有继承的最主要区别。貌似其他的木有区别0.0。  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#97;&#x6c;&#x63;&#x68;&#101;&#x6e;&#64;&#114;&#x6f;&#121;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#46;&#x63;&#111;&#109;">&#114;&#111;&#x79;&#97;&#x6c;&#x63;&#x68;&#101;&#x6e;&#64;&#114;&#x6f;&#121;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#46;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>编译结果为： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015941_28350698044542.jpg">  可以看到，基类的public成员也不能直接访问了！而在public继承中，时可以在类外直接访问基类的public成员的！ 这是为什么？原因是使用保护继承时，基类的公有成员和保护成员都会变成派生类的保护成员。这就是保护继承和公有继承的最主要区别。貌似其他的木有区别0.0。  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#x61;&#x6c;&#x63;&#104;&#x65;&#110;&#64;&#114;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#x68;&#x65;&#110;&#46;&#99;&#111;&#109;">&#x72;&#111;&#121;&#x61;&#x6c;&#x63;&#104;&#x65;&#110;&#64;&#114;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#x68;&#x65;&#110;&#46;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -472,7 +472,7 @@
       repo: 'coderguang.github.io',
       oauth: {
         client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
+        client_secret: '690b76838a3a0123d7568d0e2c5baaeed536a07e',
       },
     })
     gitment.render('gitment-ctn')

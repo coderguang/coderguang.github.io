@@ -259,7 +259,7 @@
 <p>}</p>
 <p>void set(stringy &amp;beany,const char t[])<br>{<br>//delete beany.str;<br>int size=sizeof(t);//这里出了问题，长度测试错误,当长度超过八个字符是，直接出错！<br>cout&lt;&lt;”size=”&lt;&lt;size&lt;&lt;endl;<br>beany.str=new char[size+1];<br>strcpy(beany.str,t);<br>int sizeofStr=sizeof(beany.str);<br>cout&lt;&lt;”Sizeofstr=”&lt;&lt;sizeofStr&lt;&lt;endl;<br>beany.ct=size;<br>}<br>void show(const stringy &amp;beany,int count)<br>{<br>cout&lt;&lt;”Stringy show”&lt;&lt;endl;<br>if(count!=0)<br>{<br>for(int j=0;j&lt;count;j++)<br>{<br>//cout&lt;&lt;”in stringy here!”&lt;&lt;j&lt;&lt;endl;<br>//cout&lt;&lt;”Stringy show”&lt;&lt;j&lt;&lt;endl;<br>cout&lt;&lt;”str=”&lt;&lt;beany.str&lt;&lt;endl;<br>};<br>}<br>else<br>cout&lt;&lt;”str=”&lt;&lt;beany.str&lt;&lt;endl;</p>
 <p>}</p>
-<p>  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#x40;&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#x65;&#110;&#46;&#x63;&#x6f;&#x6d;">&#x72;&#x6f;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#x40;&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#x65;&#110;&#46;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#97;&#x6c;&#99;&#104;&#x65;&#110;&#x40;&#114;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#99;&#111;&#109;">&#x72;&#111;&#x79;&#97;&#x6c;&#99;&#104;&#x65;&#110;&#x40;&#114;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -469,7 +469,7 @@
       repo: 'coderguang.github.io',
       oauth: {
         client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
+        client_secret: '690b76838a3a0123d7568d0e2c5baaeed536a07e',
       },
     })
     gitment.render('gitment-ctn')
