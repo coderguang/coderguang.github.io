@@ -109,6 +109,11 @@
 												title="CSDN" target="_blank"><i class="icon-csdn"></i></a>
 					
 				
+					
+						<a class="mail" href="mailto:royalchen@royalchen.com" 
+												title="邮件联系" target="_blank"><i class="icon-mail"></i></a>
+					
+				
 			</div>
 		
 		</nav>
@@ -160,6 +165,11 @@
 						
 						<a class="csdn" target="_blank" 
 							href="https://blog.csdn.net/qq844352155" title="CSDN"><i class="icon-csdn"></i></a>
+						
+					
+						
+						<a class="mail" target="_blank" 
+							href="mailto:royalchen@royalchen.com" title="邮件联系"><i class="icon-mail"></i></a>
 						
 					
 				</div>
@@ -646,6 +656,116 @@
 
 
   
+    <article id="post-单链队列，队列的链式存储结构c实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/%E5%8D%95%E9%93%BE%E9%98%9F%E5%88%97%EF%BC%8C%E9%98%9F%E5%88%97%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84c%E5%AE%9E%E7%8E%B0/" target="_blank">单链队列，队列的链式存储结构C++实现</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/%E5%8D%95%E9%93%BE%E9%98%9F%E5%88%97%EF%BC%8C%E9%98%9F%E5%88%97%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84c%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>单链队列，队列的链式存储结构C++实现</p>
+<p>//mList.cpp<br>/*<br>使用链式结构实现队列操作<br>@author:天下无双<br>@date:2014-5-28<br>@version:2.0<br>*/<br>#include <iostream><br>using namespace std;<br>template<class T><br>class Queue<br>{<br>private:<br>static const int MAX=100 ;//队列的最大长度<br>//队列节点<br>struct QNode{<br>T data;//节点值<br>QNode *next;<br>};<br>QNode *front;//队列头指针<br>QNode *rear;//队列尾指针<br>int count;//队列长度<br>public:<br>//创建空队列<br>Queue(){<br>front=rear=nullptr;<br>count=0;<br>}<br>~Queue(){<br>QNode *temp=front;<br>QNode *p=temp;<br>cout&lt;&lt;endl;<br>while(temp!=nullptr){<br>temp=temp-&gt;next;<br>cout&lt;&lt;”delete “&lt;<p->data&lt;&lt;endl;<br>delete p;<br>p=temp;<br>}<br>}<br>//插入元素<br>bool EnQueue(T &amp;t){<br>QNode *p=new QNode;<br>p-&gt;data=t;<br>p-&gt;next=nullptr;<br>if(nullptr==front){//如果是一个空队列<br>front=rear=p;<br>count++;<br>front-&gt;next=nullptr;<br>return true;<br>}else if(!isFull()){//判断队列是否已满<br>rear-&gt;next=p;<br>rear=p;//重新指定尾指针，rear=p<br>//rear-&gt;next=nullptr;//重新指定尾指针，rear=p-&gt;next=nullptr;<br>count++;<br>return true;<br>}else<br>return false;</p>
+<p>}<br>//删除队列头<br>bool DeleteQueue(){<br>if(isEmpty()){//判断是否为空队列<br>cout&lt;&lt;”Queue is Empty!Can’t delte it!”&lt;&lt;endl;<br>return false;<br>}<br>QNode *temp=front;<br>front=front-&gt;next;<br>delete temp;<br>count–;<br>return true;</p>
+<p>}<br>int Length()const{<br>return count;<br>}<br>void show()const{<br>QNode *temp=front;<br>while(temp!=nullptr){<br>cout&lt;<temp->data&lt;&lt;” “;<br>temp=temp-&gt;next;<br>}<br>}<br>protected:<br>bool isEmpty()const{<br>return count==0;<br>}<br>bool isFull()const{<br>if(count==MAX){<br>cout&lt;&lt;”Queue full!”&lt;&lt;endl;<br>return true;<br>}<br>return false;<br>}</p>
+<p>};</p>
+<p>测试代码：</p>
+<pre name="code" class="cpp">int main()
+{
+{
+Queue<int> q;
+for(int i=1;i<103;i++)
+q.EnQueue(i);
+cout<<endl;
+q.show();
+cout<<endl;
+for(int j=0;j<102;j++)
+  q.DeleteQueue();
+}
+system("pause");
+return 0;
+}
+
+  
+  
+
+[原文链接](http://blog.csdn.net/qq844352155/article/details/27326877)
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/%E5%8D%95%E9%93%BE%E9%98%9F%E5%88%97%EF%BC%8C%E9%98%9F%E5%88%97%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84c%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-即将实现了儿时的梦想与游戏的不解之缘" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -746,116 +866,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2016/02/24/%E5%8D%B3%E5%B0%86%E5%AE%9E%E7%8E%B0%E4%BA%86%E5%84%BF%E6%97%B6%E7%9A%84%E6%A2%A6%E6%83%B3%E4%B8%8E%E6%B8%B8%E6%88%8F%E7%9A%84%E4%B8%8D%E8%A7%A3%E4%B9%8B%E7%BC%98/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-单链队列，队列的链式存储结构c实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/%E5%8D%95%E9%93%BE%E9%98%9F%E5%88%97%EF%BC%8C%E9%98%9F%E5%88%97%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84c%E5%AE%9E%E7%8E%B0/" target="_blank">单链队列，队列的链式存储结构C++实现</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/%E5%8D%95%E9%93%BE%E9%98%9F%E5%88%97%EF%BC%8C%E9%98%9F%E5%88%97%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84c%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>单链队列，队列的链式存储结构C++实现</p>
-<p>//mList.cpp<br>/*<br>使用链式结构实现队列操作<br>@author:天下无双<br>@date:2014-5-28<br>@version:2.0<br>*/<br>#include <iostream><br>using namespace std;<br>template<class T><br>class Queue<br>{<br>private:<br>static const int MAX=100 ;//队列的最大长度<br>//队列节点<br>struct QNode{<br>T data;//节点值<br>QNode *next;<br>};<br>QNode *front;//队列头指针<br>QNode *rear;//队列尾指针<br>int count;//队列长度<br>public:<br>//创建空队列<br>Queue(){<br>front=rear=nullptr;<br>count=0;<br>}<br>~Queue(){<br>QNode *temp=front;<br>QNode *p=temp;<br>cout&lt;&lt;endl;<br>while(temp!=nullptr){<br>temp=temp-&gt;next;<br>cout&lt;&lt;”delete “&lt;<p->data&lt;&lt;endl;<br>delete p;<br>p=temp;<br>}<br>}<br>//插入元素<br>bool EnQueue(T &amp;t){<br>QNode *p=new QNode;<br>p-&gt;data=t;<br>p-&gt;next=nullptr;<br>if(nullptr==front){//如果是一个空队列<br>front=rear=p;<br>count++;<br>front-&gt;next=nullptr;<br>return true;<br>}else if(!isFull()){//判断队列是否已满<br>rear-&gt;next=p;<br>rear=p;//重新指定尾指针，rear=p<br>//rear-&gt;next=nullptr;//重新指定尾指针，rear=p-&gt;next=nullptr;<br>count++;<br>return true;<br>}else<br>return false;</p>
-<p>}<br>//删除队列头<br>bool DeleteQueue(){<br>if(isEmpty()){//判断是否为空队列<br>cout&lt;&lt;”Queue is Empty!Can’t delte it!”&lt;&lt;endl;<br>return false;<br>}<br>QNode *temp=front;<br>front=front-&gt;next;<br>delete temp;<br>count–;<br>return true;</p>
-<p>}<br>int Length()const{<br>return count;<br>}<br>void show()const{<br>QNode *temp=front;<br>while(temp!=nullptr){<br>cout&lt;<temp->data&lt;&lt;” “;<br>temp=temp-&gt;next;<br>}<br>}<br>protected:<br>bool isEmpty()const{<br>return count==0;<br>}<br>bool isFull()const{<br>if(count==MAX){<br>cout&lt;&lt;”Queue full!”&lt;&lt;endl;<br>return true;<br>}<br>return false;<br>}</p>
-<p>};</p>
-<p>测试代码：</p>
-<pre name="code" class="cpp">int main()
-{
-{
-Queue<int> q;
-for(int i=1;i<103;i++)
-q.EnQueue(i);
-cout<<endl;
-q.show();
-cout<<endl;
-for(int j=0;j<102;j++)
-  q.DeleteQueue();
-}
-system("pause");
-return 0;
-}
-
-  
-  
-
-[原文链接](http://blog.csdn.net/qq844352155/article/details/27326877)
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/%E5%8D%95%E9%93%BE%E9%98%9F%E5%88%97%EF%BC%8C%E9%98%9F%E5%88%97%E7%9A%84%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84c%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
     </p>
     
 
@@ -1277,33 +1287,37 @@ return 0;
         </div>
       </div>
       <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2018-2021 <a href="http://www.royalchen.com/" target="_blank">royalchen</a>
-    	</div>
-      	<div class="footer-right">
-			
-			
-      		GitHub:<a href="https://github.com/JoeyBling/hexo-theme-yilia-plus" target="_blank">hexo-theme-yilia-plus</a> by Litten
-      	</div>
-    </div>
-  </div>
-  
-  
-	<script src="/lib/busuanzi.pure.js"></script>
+	<div class="outer">
+		<div id="footer-info">
+			<div class="footer-left">
+				&copy; 
+					2015-
+							2021 <a href="http://www.royalchen.com/" target="_blank">
+									royalchen
+								</a>
+			</div>
+			<div class="footer-right">
+				
+					
+						GitHub:<a href="https://github.com/JoeyBling/hexo-theme-yilia-plus" target="_blank">hexo-theme-yilia-plus</a> by Litten
+			</div>
+		</div>
+	</div>
+
 	
-  
-  
-	
-	<span id="busuanzi_container_site_pv" style="display:none">
-		本站总访问量<span id="busuanzi_value_site_pv"></span>次	
-	        <span class="post-meta-divider" >|</span>
-	</span>
-  	<span id="busuanzi_container_site_uv" style='display:none'>
-  		本站访客数<span id="busuanzi_value_site_uv"></span>人
-  	</span>
-  
+		<script src="/lib/busuanzi.pure.js"></script>
+		
+			
+				
+					
+						<span id="busuanzi_container_site_pv" style="display:none">
+							本站总访问量<span id="busuanzi_value_site_pv"></span>次
+							<span class="post-meta-divider">|</span>
+						</span>
+						<span id="busuanzi_container_site_uv" style='display:none'>
+							本站访客数<span id="busuanzi_value_site_uv"></span>人
+						</span>
+						
 </footer>
 
     </div>
@@ -1328,23 +1342,6 @@ return 0;
 
 
 <!--  -->
-
-<script>
-  /* 标签页标题切换 */
-  var originTitle = document.title;
-  var titleTime;
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) {
-      document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
-      clearTimeout(titleTime);
-    } else {
-      document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
-      titleTime = setTimeout(function () {
-        document.title = originTitle;
-      }, 2000);
-    }
-  });
-</script>
 
 
     
