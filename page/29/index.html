@@ -709,155 +709,6 @@
 
 
   
-    <article id="post-stlvector中的emplace-back方法（24）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84emplace-back%E6%96%B9%E6%B3%95%EF%BC%8824%EF%BC%89/" target="_blank">STLvector中的emplace_back方法（24）</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84emplace-back%E6%96%B9%E6%B3%95%EF%BC%8824%EF%BC%89/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>STLvector中的emplace_back方法（24）</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/emplace_back/">http://www.cplusplus.com/reference/vector/vector/emplace_back/</a></p>
-<p>public member function</p>
-<vector>
-
-<h1 id="std-vector-emplace-back"><a href="#std-vector-emplace-back" class="headerlink" title="std::vector::emplace_back"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::emplace_back</h1><p>template &lt;class… Args&gt;<br>  void emplace_back (Args&amp;&amp;… args);</p>
-<p>Construct and insert element at the end</p>
-<p>Inserts a new element at the end of the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>, right after its current last element. This new element is constructed in place using <em>args</em> as the arguments for its constructor.  </p>
-<p>在vector的结尾插入一个新的元素，位置为当前最后一个元素的右边，元素的值使用args作为参数传递给其构造函数构造。</p>
-<p>This effectively increases the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> by one, which causes an automatic reallocation of the allocated storage space if -and only if- the new vector <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> surpasses the current vector <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::capacity">capacity</a>.</p>
-<p>该方法可以快速有效率地在数组size范围内增长元素，除非当增长的元素个数大小超出了vector的ccapacity的时候才会发生重分配。  </p>
-<p>The element is constructed in-place by calling <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> with <em>args</em> forwarded.</p>
-<p>元素由调用<a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> 以及参数args构造。</p>
-<p>A similar member function exists, <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::push_back">push_back</a>, which either copies or moves an existing object into the container.</p>
-<p>一个相似的方法是push_back，一样是通过拷贝或者移动一个已经存在（这也是两者最大的区别，push_back的参数对象必须是已经存在的对象）的对象到容器.</p>
-<p>例子:</p>
-<p>#include <iostream><br>#include <vector><br>using namespace std;<br>class text{<br>private:<br>string str;<br>public:<br>text(string s):str(s){<br>}<br>void show()const{<br>cout&lt;&lt;str&lt;&lt;endl;<br>}</p>
-<p>};<br>int main()<br>{</p>
-<p>vector<text> vi;<br>vi.emplace_back(“haha”);<br>vi.front().show();</p>
-<p>//vi.push_back(“hehe”);<br>//vi.back().show();</p>
-<p>}</p>
-<p>结果:</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014907_36651788445228.jpg"><br>尝试用push_back(“hehe”)；</p>
-<p>编译不通过:</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014908_33522026534640.jpg">  </p>
-<p>Parameters</p>
-<p>args</p>
-<p>Arguments forwarded to construct the new element.</p>
-<p>用于构造新元素的参数。  </p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none.  </p>
-<p>If a reallocation happens, the storage is allocated using the container’s <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).</p>
-<p>如果发生了重分配，将使用容器的分配器进行内存分配，这可能会抛出异常。（例如allocator这个默认的分配器在请求失败时会抛出bad_alloc异常）</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// vector::emplace_back</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector = &#123;10,20,30&#125;;</span><br><span class="line"></span><br><span class="line">  myvector.emplace_back (100);</span><br><span class="line">  myvector.emplace_back (200);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (auto&amp; x: myvector)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; x;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/emplace_back/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
-<p>Output:  </p>
-<p>myvector contains: 10 20 30 100 200 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant (amortized time, reallocation may happen).  </p>
-<p>If a reallocation happens, the reallocation is itself up to linear in the entire <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a>.<br>如果发生重分配，将额外增加与整个数组大小线性相关的时间复杂度。  </p>
-<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>If a reallocation happens, all iterators, pointers and references related to this container are invalidated.</p>
-<p>如果发生重分配，之前所获得的所有迭代器，指针以及引用都将失效。  </p>
-<p>Otherwise, only the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">end</a> iterator is invalidated, and all other iterators, pointers and references to elements are guaranteed to keep referring to the same elements they were referring to before the call.</p>
-<p>否则，只有end得到的迭代器将失效，其他的迭代器，指针以及引用依然有效。</p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is modified.  </p>
-<p>容器将被访问。</p>
-<p>If a reallocation happens, all contained elements are modified.</p>
-<p>如果发生重分配，所有容器元素都将被修改。</p>
-<p>Otherwise, no existing element is accessed, and concurrently accessing or modifying them is safe (although see <em>iterator validity</em> above).</p>
-<p>否则，元素不会被访问，同时修改和访问他们都是安全的。</p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If no reallocations happen, there are no changes in the container in case of exception (strong guarantee).</p>
-<p>如果不发生重分配，容器抛出异常的规则不变。</p>
-<p>If a reallocation happens, the strong guarantee is also given if the type of the elements is either <em>copyable</em> or <em>no-throw moveable</em>.</p>
-<p>如果发生重分配，并且元素的拷贝或者移动构造不会抛出异常，发生异常的规则也是一样的。  </p>
-<p>Otherwise, the container is guaranteed to end in a valid state (basic guarantee).</p>
-<p>否则，容器保证最后依旧有效  </p>
-<p>If <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments, it causes <em>undefined behavior</em>.</p>
-<p>如果<a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a>不支持该元素，将导致未知的行为。</p>
-<p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
-<p>2014-8-17</p>
-<p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38636715">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL容器//" class="article-tag-list-link color1">STL容器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84emplace-back%E6%96%B9%E6%B3%95%EF%BC%8824%EF%BC%89/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-stlvector中的emplace方法23" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1014,7 +865,7 @@
 
 
   
-    <article id="post-stlvector中的empty方法25" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-stlvector中的emplace-back方法（24）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -1022,7 +873,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84empty%E6%96%B9%E6%B3%9525/" target="_blank">STLvector中的empty方法(25)</a>
+	  <a class="article-title" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84emplace-back%E6%96%B9%E6%B3%95%EF%BC%8824%EF%BC%89/" target="_blank">STLvector中的emplace_back方法（24）</a>
   
     </h1>
   
@@ -1030,7 +881,7 @@
 
   
   
-<a href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84empty%E6%96%B9%E6%B3%9525/" class="archive-article-date">
+<a href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84emplace-back%E6%96%B9%E6%B3%95%EF%BC%8824%EF%BC%89/" class="archive-article-date">
         <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
 </a>
 
@@ -1043,46 +894,70 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>STLvector中的empty方法(25)</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/empty/">http://www.cplusplus.com/reference/vector/vector/empty/</a></p>
+    <p>STLvector中的emplace_back方法（24）</p>
+<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/emplace_back/">http://www.cplusplus.com/reference/vector/vector/emplace_back/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-empty"><a href="#std-vector-empty" class="headerlink" title="std::vector::empty"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::empty</h1><ul>
-<li>  C++98</li>
-<li>  C++11</li>
-</ul>
-<p>bool empty() const; </p>
-<p>Test whether vector is empty</p>
-<p>Returns whether the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> is empty (i.e. whether its <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> is 0).  </p>
-<p>测试vector的是否为空(size为0)</p>
-<p>This function does not modify the container in any way. To clear the content of a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>, see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::clear">vector::clear</a>.</p>
-<p>该函数不会以任何的方式修改容器，如果要清空vector的内容，可以使用clear.</p>
-<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
-<h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>true if the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> is 0, false otherwise.  </p>
-<p>返回值为true或者false</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td></tr></table></figure>
+<h1 id="std-vector-emplace-back"><a href="#std-vector-emplace-back" class="headerlink" title="std::vector::emplace_back"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::emplace_back</h1><p>template &lt;class… Args&gt;<br>  void emplace_back (Args&amp;&amp;… args);</p>
+<p>Construct and insert element at the end</p>
+<p>Inserts a new element at the end of the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>, right after its current last element. This new element is constructed in place using <em>args</em> as the arguments for its constructor.  </p>
+<p>在vector的结尾插入一个新的元素，位置为当前最后一个元素的右边，元素的值使用args作为参数传递给其构造函数构造。</p>
+<p>This effectively increases the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> by one, which causes an automatic reallocation of the allocated storage space if -and only if- the new vector <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> surpasses the current vector <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::capacity">capacity</a>.</p>
+<p>该方法可以快速有效率地在数组size范围内增长元素，除非当增长的元素个数大小超出了vector的ccapacity的时候才会发生重分配。  </p>
+<p>The element is constructed in-place by calling <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> with <em>args</em> forwarded.</p>
+<p>元素由调用<a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> 以及参数args构造。</p>
+<p>A similar member function exists, <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::push_back">push_back</a>, which either copies or moves an existing object into the container.</p>
+<p>一个相似的方法是push_back，一样是通过拷贝或者移动一个已经存在（这也是两者最大的区别，push_back的参数对象必须是已经存在的对象）的对象到容器.</p>
+<p>例子:</p>
+<p>#include <iostream><br>#include <vector><br>using namespace std;<br>class text{<br>private:<br>string str;<br>public:<br>text(string s):str(s){<br>}<br>void show()const{<br>cout&lt;&lt;str&lt;&lt;endl;<br>}</p>
+<p>};<br>int main()<br>{</p>
+<p>vector<text> vi;<br>vi.emplace_back(“haha”);<br>vi.front().show();</p>
+<p>//vi.push_back(“hehe”);<br>//vi.back().show();</p>
+<p>}</p>
+<p>结果:</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014907_36651788445228.jpg"><br>尝试用push_back(“hehe”)；</p>
+<p>编译不通过:</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014908_33522026534640.jpg">  </p>
+<p>Parameters</p>
+<p>args</p>
+<p>Arguments forwarded to construct the new element.</p>
+<p>用于构造新元素的参数。  </p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none.  </p>
+<p>If a reallocation happens, the storage is allocated using the container’s <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).</p>
+<p>如果发生了重分配，将使用容器的分配器进行内存分配，这可能会抛出异常。（例如allocator这个默认的分配器在请求失败时会抛出bad_alloc异常）</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// vector::empty</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line">  int sum (0);</span><br><span class="line"></span><br><span class="line">  for (int i=1;i&lt;=10;i++) myvector.push_back(i);</span><br><span class="line"></span><br><span class="line">  while (!myvector.empty())</span><br><span class="line">  &#123;</span><br><span class="line">     sum += myvector.back();</span><br><span class="line">     myvector.pop_back();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;total: &quot; &lt;&lt; sum &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// vector::emplace_back</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector = &#123;10,20,30&#125;;</span><br><span class="line"></span><br><span class="line">  myvector.emplace_back (100);</span><br><span class="line">  myvector.emplace_back (200);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (auto&amp; x: myvector)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; x;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/empty/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
-<p>The example initializes the content of the vector to a sequence of numbers (form 1 to 10). It then pops the elements one by one until it is empty and calculates their sum.  </p>
-<p>这个例子先将vector初始化为1–10，然后每次删除最后一个元素并将其加到sum中直到数组为空。</p>
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/emplace_back/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
-<p>total: 55 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
-<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>No changes.  </p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is accessed.</p>
+<p>myvector contains: 10 20 30 100 200 </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant (amortized time, reallocation may happen).  </p>
+<p>If a reallocation happens, the reallocation is itself up to linear in the entire <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a>.<br>如果发生重分配，将额外增加与整个数组大小线性相关的时间复杂度。  </p>
+<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>If a reallocation happens, all iterators, pointers and references related to this container are invalidated.</p>
+<p>如果发生重分配，之前所获得的所有迭代器，指针以及引用都将失效。  </p>
+<p>Otherwise, only the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">end</a> iterator is invalidated, and all other iterators, pointers and references to elements are guaranteed to keep referring to the same elements they were referring to before the call.</p>
+<p>否则，只有end得到的迭代器将失效，其他的迭代器，指针以及引用依然有效。</p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is modified.  </p>
 <p>容器将被访问。</p>
-<p>No contained elements are accessed: concurrently accessing or modifying them is safe.</p>
-<p>容器内的元素不会被访问，同时修改以及访问他们都是安全的。</p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> this member function never throws exceptions.</p>
-<p>该成员方法不会抛出异常。</p>
+<p>If a reallocation happens, all contained elements are modified.</p>
+<p>如果发生重分配，所有容器元素都将被修改。</p>
+<p>Otherwise, no existing element is accessed, and concurrently accessing or modifying them is safe (although see <em>iterator validity</em> above).</p>
+<p>否则，元素不会被访问，同时修改和访问他们都是安全的。</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If no reallocations happen, there are no changes in the container in case of exception (strong guarantee).</p>
+<p>如果不发生重分配，容器抛出异常的规则不变。</p>
+<p>If a reallocation happens, the strong guarantee is also given if the type of the elements is either <em>copyable</em> or <em>no-throw moveable</em>.</p>
+<p>如果发生重分配，并且元素的拷贝或者移动构造不会抛出异常，发生异常的规则也是一样的。  </p>
+<p>Otherwise, the container is guaranteed to end in a valid state (basic guarantee).</p>
+<p>否则，容器保证最后依旧有效  </p>
+<p>If <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments, it causes <em>undefined behavior</em>.</p>
+<p>如果<a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a>不支持该元素，将导致未知的行为。</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-17</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38637327">原文链接</a></p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38636715">原文链接</a></p>
 
     
 
@@ -1109,7 +984,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84empty%E6%96%B9%E6%B3%9525/">展开全文 >></a>
+      <a class="article-more-a" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84emplace-back%E6%96%B9%E6%B3%95%EF%BC%8824%EF%BC%89/">展开全文 >></a>
     </p>
     
 
@@ -1240,6 +1115,131 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84end%E6%96%B9%E6%B3%958/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-stlvector中的empty方法25" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84empty%E6%96%B9%E6%B3%9525/" target="_blank">STLvector中的empty方法(25)</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84empty%E6%96%B9%E6%B3%9525/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>STLvector中的empty方法(25)</p>
+<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/empty/">http://www.cplusplus.com/reference/vector/vector/empty/</a></p>
+<p>public member function</p>
+<vector>
+
+<h1 id="std-vector-empty"><a href="#std-vector-empty" class="headerlink" title="std::vector::empty"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::empty</h1><ul>
+<li>  C++98</li>
+<li>  C++11</li>
+</ul>
+<p>bool empty() const; </p>
+<p>Test whether vector is empty</p>
+<p>Returns whether the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> is empty (i.e. whether its <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> is 0).  </p>
+<p>测试vector的是否为空(size为0)</p>
+<p>This function does not modify the container in any way. To clear the content of a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>, see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::clear">vector::clear</a>.</p>
+<p>该函数不会以任何的方式修改容器，如果要清空vector的内容，可以使用clear.</p>
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
+<h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>true if the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> is 0, false otherwise.  </p>
+<p>返回值为true或者false</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// vector::empty</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line">  int sum (0);</span><br><span class="line"></span><br><span class="line">  for (int i=1;i&lt;=10;i++) myvector.push_back(i);</span><br><span class="line"></span><br><span class="line">  while (!myvector.empty())</span><br><span class="line">  &#123;</span><br><span class="line">     sum += myvector.back();</span><br><span class="line">     myvector.pop_back();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;total: &quot; &lt;&lt; sum &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/empty/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p>The example initializes the content of the vector to a sequence of numbers (form 1 to 10). It then pops the elements one by one until it is empty and calculates their sum.  </p>
+<p>这个例子先将vector初始化为1–10，然后每次删除最后一个元素并将其加到sum中直到数组为空。</p>
+<p>Output:  </p>
+<p>total: 55 </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
+<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>No changes.  </p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is accessed.</p>
+<p>容器将被访问。</p>
+<p>No contained elements are accessed: concurrently accessing or modifying them is safe.</p>
+<p>容器内的元素不会被访问，同时修改以及访问他们都是安全的。</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> this member function never throws exceptions.</p>
+<p>该成员方法不会抛出异常。</p>
+<p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
+<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>2014-8-17</p>
+<p>于GDUT</p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38637327">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL容器//" class="article-tag-list-link color1">STL容器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84empty%E6%96%B9%E6%B3%9525/">展开全文 >></a>
     </p>
     
 
