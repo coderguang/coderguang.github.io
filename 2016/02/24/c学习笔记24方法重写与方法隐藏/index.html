@@ -281,7 +281,7 @@
 <p>#include <iostream><br>#include <string><br>using namespace std;<br>class base{<br>public:<br>virtualvoid show(int i,string s){<br>cout&lt;&lt;i&lt;&lt;”+”&lt;&lt;s&lt;&lt;endl;<br>cout&lt;&lt;”This is base show!”&lt;&lt;endl;<br>}<br>virtual void show(){<br>cout&lt;&lt;”this is a void show”&lt;&lt;endl;<br>}<br>};<br>class dirved:public base{<br>public:<br>//using<br>using base::show;<br>virtual void show(int i,string s)override{<br>cout&lt;&lt;i&lt;&lt;”&amp;”&lt;&lt;s&lt;&lt;endl;<br>cout&lt;&lt;”This is dirved show!”&lt;&lt;endl;<br>}<br>};</p>
 <p>int main(){</p>
 <p>dirved d;<br>d.show(10,”show()”);<br>base &amp;ref=d;<br>ref.show(95.9,”ref show()”);<br>d.show();<br>}</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015615_45524108050840.jpg"> 这样就两全其美啦! —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#x61;&#108;&#x63;&#104;&#101;&#x6e;&#64;&#x72;&#111;&#x79;&#x61;&#x6c;&#x63;&#104;&#x65;&#110;&#46;&#x63;&#x6f;&#109;">&#x72;&#111;&#121;&#x61;&#108;&#x63;&#104;&#101;&#x6e;&#64;&#x72;&#111;&#x79;&#x61;&#x6c;&#x63;&#104;&#x65;&#110;&#46;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015615_45524108050840.jpg"> 这样就两全其美啦! —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#x40;&#114;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#109;">&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#x40;&#114;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -432,18 +432,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B023%E7%B1%BB%E5%86%85%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B022%EF%BC%8C%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%EF%BC%881%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          C++学习笔记23,类内函数重载
+          C++学习笔记22，普通函数重载（1）
         
       </div>
     </a>
   
   
-    <a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B025%E6%B0%B8%E8%BF%9C%E5%B0%86%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E4%B8%BAvirtual/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C++学习笔记25,永远将析构函数声明为virtual</div>
+    <a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B023%E7%B1%BB%E5%86%85%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++学习笔记23,类内函数重载</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -479,9 +479,8 @@
   
   <div id="gitment-ctn"></div>
   
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+    <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
   
   <script>
     <!-- id: "C++学习笔记24,方法重写与方法隐藏" -->
