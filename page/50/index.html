@@ -239,7 +239,7 @@
 <p>protected:<br>string str;<br>void showStr(){<br>cout&lt;&lt;”str=”&lt;&lt;str&lt;&lt;endl;<br>}<br>void showProtected(){<br>cout&lt;&lt;”this is protected!”&lt;&lt;endl;<br>}<br>};<br>//公有继承<br>class B:public A<br>{<br>public:<br>B(int i,int j,string s):A(i,j,s){</p>
 <p>}<br>/*<br>void showMethod(){<br>A::showPublic();<br>A::showPrivate();<br>A::showProtected();<br>}<br>void showAttr()<br>{<br>cout&lt;&lt;A::k&lt;&lt;endl;<br>cout&lt;&lt;A::i&lt;&lt;endl;<br>cout&lt;&lt;A::str&lt;&lt;endl;<br>}<br>*/<br>};<br>int main()<br>{<br>B b(1,2,”hello”);<br>b.showPublic();<br>b.showProtected();<br>b.showPrivate();</p>
 <p>}</p>
-<p>编译结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015931_44894846682212.jpg">  结果正如预测的那样！  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#97;&#108;&#x63;&#x68;&#101;&#110;&#x40;&#x72;&#111;&#121;&#97;&#108;&#99;&#104;&#x65;&#110;&#x2e;&#99;&#111;&#109;">&#x72;&#x6f;&#x79;&#97;&#108;&#x63;&#x68;&#101;&#110;&#x40;&#x72;&#111;&#121;&#97;&#108;&#99;&#104;&#x65;&#110;&#x2e;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>编译结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015931_44894846682212.jpg">  结果正如预测的那样！  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#97;&#x6c;&#99;&#x68;&#101;&#x6e;&#x40;&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#110;&#46;&#x63;&#x6f;&#109;">&#x72;&#x6f;&#121;&#97;&#x6c;&#99;&#x68;&#101;&#x6e;&#x40;&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#110;&#46;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -348,7 +348,7 @@
 <p>protected:<br>string str;<br>void showStr(){<br>cout&lt;&lt;”str=”&lt;&lt;str&lt;&lt;endl;<br>}<br>void showProtected(){<br>cout&lt;&lt;”this is protected!”&lt;&lt;endl;<br>}<br>};<br>//保护继承<br>class B:protected A<br>{<br>public:<br>B(int i,int j,string s):A(i,j,s){</p>
 <p>}<br>/*<br>void showMethod(){<br>A::showPublic();<br>A::showPrivate();<br>A::showProtected();<br>}<br>void showAttr()<br>{<br>cout&lt;&lt;A::k&lt;&lt;endl;<br>cout&lt;&lt;A::i&lt;&lt;endl;<br>cout&lt;&lt;A::str&lt;&lt;endl;<br>}<br>*/<br>};<br>int main()<br>{<br>B b(1,2,”hello”);<br>/*<br>b.showMethod();<br>b.showAttr();<br>*/<br>b.showPublic();<br>b.showProtected();<br>b.showPrivate();</p>
 <p>}</p>
-<p>编译结果为： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015941_28350698044542.jpg">  可以看到，基类的public成员也不能直接访问了！而在public继承中，时可以在类外直接访问基类的public成员的！ 这是为什么？原因是使用保护继承时，基类的公有成员和保护成员都会变成派生类的保护成员。这就是保护继承和公有继承的最主要区别。貌似其他的木有区别0.0。  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#97;&#108;&#99;&#104;&#101;&#x6e;&#64;&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#111;&#109;">&#114;&#x6f;&#121;&#97;&#108;&#99;&#104;&#101;&#x6e;&#64;&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>编译结果为： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015941_28350698044542.jpg">  可以看到，基类的public成员也不能直接访问了！而在public继承中，时可以在类外直接访问基类的public成员的！ 这是为什么？原因是使用保护继承时，基类的公有成员和保护成员都会变成派生类的保护成员。这就是保护继承和公有继承的最主要区别。貌似其他的木有区别0.0。  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#97;&#108;&#99;&#104;&#101;&#110;&#64;&#x72;&#x6f;&#121;&#97;&#x6c;&#99;&#104;&#101;&#x6e;&#46;&#99;&#x6f;&#x6d;">&#114;&#111;&#x79;&#97;&#108;&#99;&#104;&#101;&#110;&#64;&#x72;&#x6f;&#121;&#97;&#x6c;&#99;&#104;&#101;&#x6e;&#46;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -463,7 +463,7 @@
 <p>}<br>};<br>class C:public B<br>{<br>public:<br>C(){}<br>};<br>int main()<br>{<br>C c;<br>c.showPublic();</p>
 <p>}</p>
 <p>编译结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015951_8700386241063.jpg">  结果正好印证了上面的结论。 </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#97;&#108;&#99;&#x68;&#101;&#x6e;&#64;&#x72;&#x6f;&#121;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#x2e;&#x63;&#x6f;&#109;">&#114;&#111;&#x79;&#97;&#108;&#99;&#x68;&#101;&#x6e;&#64;&#x72;&#x6f;&#121;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#x2e;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#x40;&#114;&#111;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#x6d;">&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#x40;&#114;&#111;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -582,7 +582,7 @@
 <p>能（但只能在派生类中）</p>
 <p>不能</p>
 <p>要点： 对于公有继承：基类的protected和public成员都是可见的。并且，使用公有继承，基类的公有成员将变为派生类的公有成语，基类的保护成员将变成派生类的保护成员，基类的私有成员将变为派生类的私有成员。 对于保护继承：使用保护继承时，基类的公有成员和保护成员都会变成派生类的保护成员。这就是保护继承和公有继承的最主要区别。 对于私有继承：私有继承时，基类的公有成员和保护成员都将成为派生类的私有成员！也就是说，使用私有继承时，第三代继承类将不能使用基类的接口(即public类成员),私有继承和保护继承的区别正是在此！</p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#104;&#101;&#110;&#64;&#114;&#111;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#110;&#46;&#x63;&#111;&#x6d;">&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#104;&#101;&#110;&#64;&#114;&#111;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#110;&#46;&#x63;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#x40;&#114;&#111;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#46;&#x63;&#x6f;&#x6d;">&#x72;&#111;&#121;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#x40;&#114;&#111;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#46;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -687,7 +687,7 @@
 <p>执行结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015959_27608797213069.jpg"> 区别在于：结构体中的成员的默认访问属性都是public，而在类中则是private: 也可以利用默认初始化器的方式初始化，例如：</p>
 <p>Point(int ii):<span style="color:#ff0000;">i(ii)</span>{<br>//i=ii;<br>str=”Point(int)”;<br>}</p>
 <p>这样也是可以的。  </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#x40;&#114;&#111;&#x79;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;">&#114;&#x6f;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#x40;&#114;&#111;&#x79;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#64;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#x6d;">&#114;&#x6f;&#x79;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#64;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -799,7 +799,7 @@
 <p>//tc.cpp<br>#include <iostream><br>#include “tc.h”<br>using namespace std;<br>/*<br>A::A(){//必须给出其实现<br>};</p>
 <p>A::A(int ii){<br>i=ii;<br>}*/<br>void A::show()const{<br>std::cout&lt;&lt;”this is A object!”&lt;&lt;std::endl;<br>};<br>int main()<br>{<br>A a;<br>a.show();<br>}</p>
 <p>编译结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020008_41800825628307.jpg">  可以看到，默认构造函数被删除了，那么，能不能删除一些其他的带参数构造函数呢？ 其实这个问题有点多余，因为如果你不想要这个构造函数，你不定义这个带参的构造函数就OK了！        </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#x68;&#x65;&#x6e;&#x40;&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;">&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#x68;&#x65;&#x6e;&#x40;&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#x40;&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#x68;&#101;&#x6e;&#46;&#99;&#x6f;&#x6d;">&#x72;&#111;&#121;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#x40;&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#x68;&#101;&#x6e;&#46;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -914,7 +914,7 @@
 <p>#include <iostream><br>using namespace std;<br>class A<br>{<br>private:<br>int i;<br>string s;<br>public:</p>
 <p>A(int ii,string ss){<br>cout&lt;&lt;”before ctor:i=”&lt;&lt;i&lt;&lt;”,s=”&lt;&lt;s&lt;&lt;endl;//使用构造函数初始化数据成员之前<br>i=ii;<br>s=ss;<br>cout&lt;&lt;”after ctor:i=”&lt;&lt;i&lt;&lt;”,s=”&lt;&lt;s&lt;&lt;endl;//<span style="font-family: Arial, Helvetica, sans-serif;">使用构造函数初始化数据成员之后</span></p>
 <p>}<br>void show()const{<br>cout&lt;&lt;”i=”&lt;&lt;i&lt;&lt;”,s=”&lt;&lt;s&lt;&lt;endl;<br>}<br>};<br>int main()<br>{<br>A a(7,”构造函数初始化器”);<br>a.show();<br>}</p>
-<p>结果为： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020020_51604838889589.jpg"> 有些人喜欢在构造函数体内初始化数据成员，但是有些数据类型必须在构造函数初始化器中初始化。 1：const数据成员     原因是const成员创建之后无法对其赋值！必须在创建的时候提供初始值。 2.引用数据对象    如果不指向一个量，引用将无法存在 3.没有默认构造函数的对象数据成员   当调用该对象数据成员的默认构造函数初始化成员对象时，无法找到默认构造函数。 4.没有默认构造函数的超类。   类似于3。   —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#97;&#x6c;&#x63;&#x68;&#x65;&#x6e;&#64;&#114;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#x65;&#110;&#x2e;&#x63;&#x6f;&#109;">&#x72;&#x6f;&#x79;&#97;&#x6c;&#x63;&#x68;&#x65;&#x6e;&#64;&#114;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#x65;&#110;&#x2e;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>结果为： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020020_51604838889589.jpg"> 有些人喜欢在构造函数体内初始化数据成员，但是有些数据类型必须在构造函数初始化器中初始化。 1：const数据成员     原因是const成员创建之后无法对其赋值！必须在创建的时候提供初始值。 2.引用数据对象    如果不指向一个量，引用将无法存在 3.没有默认构造函数的对象数据成员   当调用该对象数据成员的默认构造函数初始化成员对象时，无法找到默认构造函数。 4.没有默认构造函数的超类。   类似于3。   —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#x40;&#x72;&#111;&#x79;&#x61;&#108;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#x6f;&#x6d;">&#x72;&#111;&#121;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#x40;&#x72;&#111;&#x79;&#x61;&#108;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1162,7 +1162,7 @@ a.showVector();
 <p>运行结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020042_363973310106305.jpg"> 但是要注意不要递归委托：例如</p>
 <p>#include <iostream><br>using namespace std;<br>class A<br>{<br>private:<br>int i=5;<br>string str=”初始值”;<br>public:<br>A(string ss):A(555){<br>str=ss;<br>}<br>A(int ii):A(“OK”){<br>//不能写成AA(int ii):A(),i(ii)<br>//委托构造函数不能再利用初始化器初始化其他数据成员<br>i=ii;<br>}<br>void show(){<br>cout&lt;&lt;”i=”&lt;&lt;i&lt;&lt;”,str=”&lt;&lt;str&lt;&lt;endl;<br>}<br>};<br>int main()<br>{<br>A a(10);<br>a.show();<br>}</p>
 <p>编译结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020044_38663007794942.jpg"> 可以看出，编译并不会报错，但是运行的时候就出错了！  </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#97;&#x6c;&#x63;&#x68;&#101;&#110;&#x40;&#x72;&#x6f;&#121;&#x61;&#108;&#99;&#x68;&#101;&#110;&#46;&#99;&#111;&#109;">&#x72;&#111;&#x79;&#97;&#x6c;&#x63;&#x68;&#101;&#110;&#x40;&#x72;&#x6f;&#121;&#x61;&#108;&#99;&#x68;&#101;&#110;&#46;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#121;&#97;&#108;&#x63;&#x68;&#101;&#110;&#x40;&#x72;&#111;&#121;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#46;&#x63;&#111;&#109;">&#114;&#111;&#121;&#97;&#108;&#x63;&#x68;&#101;&#110;&#x40;&#x72;&#111;&#121;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#46;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1234,7 +1234,7 @@ a.showVector();
 
 
   
-    <article id="post-c学习笔记20，复制构造函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-c学习笔记21，对象赋值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -1242,7 +1242,7 @@ a.showVector();
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B020%EF%BC%8C%E5%A4%8D%E5%88%B6%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" target="_blank">C++学习笔记20，复制构造函数</a>
+	  <a class="article-title" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B021%EF%BC%8C%E5%AF%B9%E8%B1%A1%E8%B5%8B%E5%80%BC/" target="_blank">C++学习笔记21，对象赋值</a>
   
     </h1>
   
@@ -1250,7 +1250,7 @@ a.showVector();
 
   
   
-<a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B020%EF%BC%8C%E5%A4%8D%E5%88%B6%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" class="archive-article-date">
+<a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B021%EF%BC%8C%E5%AF%B9%E8%B1%A1%E8%B5%8B%E5%80%BC/" class="archive-article-date">
         <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
 </a>
 
@@ -1263,18 +1263,20 @@ a.showVector();
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>C++有一种特殊的构造函数叫做复制构造函数，允许所创建的对象是另一个对象的精确副本。如果没有编写，编译器将自动生成一个。利用源对象相应数据成员的值初始化新对象的每个数据成员。</p>
-<p>#include <iostream><br>using namespace std;<br>class A<br>{<br>private:<br>int i;<br>string str;<br>public:<br>A(int ii,string s):i(ii),str(s){</p>
-<p>}<br>/*<br>A(const A &amp;a){//为了提高效率，一般参数使用引用，并且使用const保证不改变原来的值<br>cout&lt;&lt;”before copy ,i=”&lt;&lt;i&lt;&lt;”,str=”&lt;&lt;str&lt;&lt;endl;<br>//这一句间接说明了int类型如果不赋初始值时其值时不确定的，取决于当时内存中的值<br>i=a.i;<br>str=a.str;<br>cout&lt;&lt;”复制函数已经调用”&lt;&lt;endl;<br>}<br>*/<br>A(const A &amp;a):i(a.i),str(a.str){<br>//最好使用初始化器的方式初始化<br>cout&lt;&lt;”复制函数已经调用”&lt;&lt;endl;<br>}<br>void show()const{<br>cout&lt;&lt;”i=”&lt;&lt;i&lt;&lt;”,str=”&lt;&lt;str&lt;&lt;endl;<br>cout&lt;&lt;”address:&amp;i=”&lt;&lt;&amp;i&lt;&lt;”,&amp;str=”&lt;&lt;&amp;str&lt;&lt;endl&lt;&lt;endl;<br>}<br>};<br>int main()<br>{<br>A a(10,”hello”);<br>cout&lt;&lt;”this is a:”&lt;&lt;endl;<br>a.show();</p>
-<p>cout&lt;&lt;”this is b:”&lt;&lt;endl;<br>A b(a);<br>b.show();</p>
-<p>cout&lt;&lt;”this is c:”&lt;&lt;endl;<br>A c=b;//注意，这一个调用的也是复制构造函数，而不是赋值构造函数<br>//类似于声明的语句会调用复制构造函数，原因时A c=b;c当时还没创建，是不会调用operator=方法的。<br>c.show();<br>}</p>
-<p>运行结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015817_16699905443354.jpg">   但有一点要注意的就是，如果构造函数体内有数据成员是使用new来分配空间的话，如果不手动编写复制构造函数，就会出错！  </p>
-<p>#include <iostream><br>#include <cstring><br>using namespace std;<br>class A<br>{<br>private:<br>char *str;<br>public:<br>A(const char *s){<br>int len=sizeof(s);</p>
-<p>//因为是赋值构造函数，所以在this对象中还没有str,因此不用delete []str;<br>str=new char[len+1];<br>strcpy(str,s);<br>}<br>//不定义复制构造函数<br>//让编译器自动生成一个<br>~A(){<br>cout&lt;&lt;”start delete!”&lt;&lt;endl;<br>delete []str;<br>cout&lt;&lt;”delete complete!”&lt;&lt;endl;<br>}<br>void show()const{<br>cout&lt;&lt;”str=”&lt;&lt;str&lt;&lt;endl;<br>cout&lt;&lt;”address:&amp;str=”&lt;&lt;&amp;str&lt;&lt;endl&lt;&lt;endl;<br>}<br>};<br>int main()<br>{<br>{<br>A a(“hello”);<br>cout&lt;&lt;”this is a:”&lt;&lt;endl;<br>a.show();</p>
-<p>cout&lt;&lt;”this is b:”&lt;&lt;endl;<br>A b(a);<br>b.show();</p>
-<p>cout&lt;&lt;”this is c:”&lt;&lt;endl;<br>A c=b;//注意，这一个调用的也是复制构造函数，而不是赋值构造函数<br>//类似于声明的语句会调用复制构造函数，原因时A c=b;c当时还没创建，是不会调用operator=方法的。<br>c.show();<br>}<br>}</p>
-<p>运行结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015819_26934787913893.jpg"> 看似似乎a,b,c的地址都不一样，一开始我也很疑惑。但是在gdb下面调试发现其实并不是这样。 而且运行的时候也提示了两次free了同一内存。看析构中的输出也可以分析出是在free中出现了问题。 用GDB调试查看： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015820_11862249042882.jpg"> 可以看出，实际上str地址都是一样的。都是指向同一个内存单元0X603010，而&amp;a.str的地址都不相同。难道是说&amp;a.str是指存放这个变量地址的地址？似乎只有这样才能说的通。使用p a.str查看，果然如此。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015822_35597119671391.jpg">  C++11同样提供了显式默认或者删除复制构造函数。方法和默认构造函数一致。 显式默认复制构造函数。 A(const A &amp;a)=default; 显式删除复制构造函数 A(const A &amp;a)=delete; 这样，编译器就将禁止使用复制构造函数。编译结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015823_26363917040551.jpg"><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015824_1111278111103.jpg"> 还有一种方法就是利用移动语义以及右值引用，这里由于我也不是和熟练，就先不写了。    </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#104;&#x65;&#x6e;&#64;&#114;&#111;&#121;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#x6d;">&#114;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#104;&#x65;&#x6e;&#64;&#114;&#111;&#121;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+    <p>   </p>
+<p>C++允许将一个对象的值赋给另一个对象。 或许你认为这就是复制，然而，“复制”只在初始化对象的时候发生。 如果一个已经具有值的对象被改写了，那么更准确的来说就是“赋值”。 注意，C++提供的复制工具是复制构造函数，因为这是一个构构造函数，因此只能在对象创建的时候使用，而不能用在对象的赋值。 C++为所有的类提供了赋值工具，这个方法叫做赋值运算符，名称为operator=,实际上其实就是重载了=运算符。 例子：  </p>
+<p>#include <iostream><br>#include <cstring><br>using namespace std;<br>class A<br>{<br>private:<br>char *str;<br>public:<br>A(const char *s){<br>int len=sizeof(s);<br>str=new char[len+1];<br>strcpy(str,s);<br>}<br>//删除复制构造函数<br>A(const A &amp;a)=delete;<br>~A(){<br>cout&lt;&lt;”start delete!”&lt;&lt;endl;<br>delete []str;<br>cout&lt;&lt;”delete complete!”&lt;&lt;endl;<br>}<br>A &amp;operator=(const A &amp;a){//赋值运算符<br>if(this==&amp;a)//注意检测是否是自赋值<br>return *this;<br> int len=sizeof(a.str);<br>delete []str;//重新分配str的内存<br>str=new char[len+1];<br>strcpy(str,a.str);<br>cout&lt;&lt;”完成对象赋值”&lt;&lt;endl;<br>}<br>void show()const{<br>cout&lt;&lt;”str=”&lt;&lt;str&lt;&lt;endl;<br>cout&lt;&lt;”address:&amp;str=”&lt;&lt;&amp;str&lt;&lt;endl&lt;&lt;endl;<br>}<br>};<br>int main()<br>{<br>{<br>A a(“hello”);<br>cout&lt;&lt;”this is a:”&lt;&lt;endl;<br>a.show();</p>
+<p>cout&lt;&lt;”this is b:”&lt;&lt;endl;<br>A b(“world”);<br>b.show();</p>
+<p>b=a;//对象赋值<br>b.show();<br>/*<br>cout&lt;&lt;”this is c:”&lt;&lt;endl;<br>A c=b;//注意，这一个调用的也是复制构造函数，而不是赋值构造函数<br>//类似于声明的语句会调用复制构造函数，原因时A c=b;c当时还没创建，是不会调用operator=方法的。<br>c.show();<br>*/<br>}<br>}</p>
+<p>结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015830_40517078735201.jpg">  可以看到，执行</p>
+<p>b=a;//对象赋值</p>
+<p>这一句的时候用到了赋值运算符。 如果没有定义赋值运算符，C++编译器会自动生成一个类似于默认复制构造函数行为的赋值运算符。 需要注意的是要注意检测自赋值的这种情况。 还有一种情况就是：  </p>
+<p>#include <iostream><br>#include <cstring><br>using namespace std;<br>class A<br>{<br>private:<br>char *str;<br>public:<br>A(const char *s){<br>int len=sizeof(s);<br>str=new char[len+1];<br>strcpy(str,s);<br>}<br>//删除复制构造函数<br>A(const A &amp;a)=delete;<br>~A(){<br>cout&lt;&lt;”start delete!”&lt;&lt;endl;<br>delete []str;<br>cout&lt;&lt;”delete complete!”&lt;&lt;endl;<br>}<br>A &amp;operator=(const A &amp;a){//赋值运算符<br>if(this==&amp;a)//注意检测是否是自赋值<br>return *this;<br> int len=sizeof(a.str);<br>delete []str;//重新分配str的内存<br>str=new char[len+1];<br>strcpy(str,a.str);<br>cout&lt;&lt;”完成对象赋值”&lt;&lt;endl;<br>}<br>void show()const{<br>cout&lt;&lt;”str=”&lt;&lt;str&lt;&lt;endl;<br>cout&lt;&lt;”address:&amp;str=”&lt;&lt;&amp;str&lt;&lt;endl&lt;&lt;endl;<br>}<br>};<br>int main()<br>{<br>{</p>
+<p>A a(“hello”);<br>cout&lt;&lt;”this is a:”&lt;&lt;endl;<br>a.show();<br>/*<br>cout&lt;&lt;”this is b:”&lt;&lt;endl;<br>A b(“world”);<br>b.show();</p>
+<p>b=a;//对象赋值<br>b.show();<br>*/<br>cout&lt;&lt;”this is c:”&lt;&lt;endl;<br>A c=a;//注意，这一个调用的也是复制构造函数，而不是赋值构造函数<br>//类似于声明的语句会调用复制构造函数，原因时A c=b;c当时还没创建，是不会调用operator=方法的。<br>c.show();</p>
+<p>}<br>}</p>
+<p>编译结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015832_19125377378188.jpg">   这说明了 A c=a;调用的不是赋值运算符而是复制构造函数。如何区分呢？ 一般来说，类似于声明的使用的是复制构造函数，类似于赋值的使用的是赋值运算符。 当然，C++11也允许显式默认和删除赋值运算符，规则和复制构造和默认构造一样。</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#x65;&#110;&#64;&#114;&#111;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#111;&#x6d;">&#114;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#x65;&#110;&#64;&#114;&#111;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1312,7 +1314,7 @@ a.showVector();
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B020%EF%BC%8C%E5%A4%8D%E5%88%B6%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/">展开全文 >></a>
+      <a class="article-more-a" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B021%EF%BC%8C%E5%AF%B9%E8%B1%A1%E8%B5%8B%E5%80%BC/">展开全文 >></a>
     </p>
     
 
