@@ -265,7 +265,7 @@
 <p>#include <iostream><br>using namespace std;<br>class A<br>{<br>private:<br>int i;<br>string s;<br>public:</p>
 <p>A(int ii,string ss){<br>cout&lt;&lt;”before ctor:i=”&lt;&lt;i&lt;&lt;”,s=”&lt;&lt;s&lt;&lt;endl;//使用构造函数初始化数据成员之前<br>i=ii;<br>s=ss;<br>cout&lt;&lt;”after ctor:i=”&lt;&lt;i&lt;&lt;”,s=”&lt;&lt;s&lt;&lt;endl;//<span style="font-family: Arial, Helvetica, sans-serif;">使用构造函数初始化数据成员之后</span></p>
 <p>}<br>void show()const{<br>cout&lt;&lt;”i=”&lt;&lt;i&lt;&lt;”,s=”&lt;&lt;s&lt;&lt;endl;<br>}<br>};<br>int main()<br>{<br>A a(7,”构造函数初始化器”);<br>a.show();<br>}</p>
-<p>结果为： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020020_51604838889589.jpg"> 有些人喜欢在构造函数体内初始化数据成员，但是有些数据类型必须在构造函数初始化器中初始化。 1：const数据成员     原因是const成员创建之后无法对其赋值！必须在创建的时候提供初始值。 2.引用数据对象    如果不指向一个量，引用将无法存在 3.没有默认构造函数的对象数据成员   当调用该对象数据成员的默认构造函数初始化成员对象时，无法找到默认构造函数。 4.没有默认构造函数的超类。   类似于3。   —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#101;&#110;&#64;&#114;&#x6f;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#46;&#x63;&#111;&#x6d;">&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#101;&#110;&#64;&#114;&#x6f;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#46;&#x63;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>结果为： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020020_51604838889589.jpg"> 有些人喜欢在构造函数体内初始化数据成员，但是有些数据类型必须在构造函数初始化器中初始化。 1：const数据成员     原因是const成员创建之后无法对其赋值！必须在创建的时候提供初始值。 2.引用数据对象    如果不指向一个量，引用将无法存在 3.没有默认构造函数的对象数据成员   当调用该对象数据成员的默认构造函数初始化成员对象时，无法找到默认构造函数。 4.没有默认构造函数的超类。   类似于3。   —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#x68;&#x65;&#x6e;&#64;&#x72;&#x6f;&#x79;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#x2e;&#99;&#111;&#x6d;">&#x72;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#x68;&#x65;&#x6e;&#64;&#x72;&#x6f;&#x79;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#x2e;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -476,7 +476,7 @@
     var gitment = new Gitment({
       id: "20160224000000",
       owner: 'coderguang',
-      repo: 'royalchen_gitment',
+      repo: 'coderguang.github.io',
       oauth: {
         client_id: '790bdfb522524451b7e7',
         client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',

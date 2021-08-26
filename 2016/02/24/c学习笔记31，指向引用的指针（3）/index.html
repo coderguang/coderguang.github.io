@@ -259,7 +259,7 @@
 <p>#include <iostream><br>using namespace std;<br>int main(){<br>    int x=10;<br>    int y=20;<br>    int &amp;rtx=x;<br>    //不要写成了int&amp; *ptrx=&rtx;<br>    //因为rtx的本质是一个int<br>    int *ptrx=&rtx;<br>    *ptrx=15;<br>    ptrx=&y;<br>    rtx=y;<br>    cin.get();</p>
 <p>}</p>
 <p>依次单步执行：（注意rtx值的变化和ptrx的变化） <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015438_41729076349764.jpg"> 初始化引用rtx之后,rtx指向了x,其地址和&amp;x一致。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015441_36890786282637.jpg"> 执行int *ptrx=&rtx;之后，初始化了ptrx,也是指向x; <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015443_12042625653561.jpg"> *ptrx=15;这一句执行后的结果 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015444_31961085693424.jpg"> 可以看到，改变的依旧是其值，其指向依旧没有改变，同时x的值也会随之改变。 执行ptrx=&amp;y之后 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015446_43117919445617.jpg"> 可以看到ptrx的指向改变了，这是肯定的，但是rtx的指向并没有改变。 执行 rtx=y之后，是否指向会改变呢？答案是肯定的，不会！ <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015447_38390558724605.jpg"> 改变的依旧是rtx所指向的值！这就是指向引用的指针。  </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#110;&#64;&#x72;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#x65;&#110;&#46;&#x63;&#x6f;&#x6d;">&#114;&#111;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#110;&#64;&#x72;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#x65;&#110;&#46;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#x6e;&#x40;&#114;&#x6f;&#x79;&#97;&#108;&#99;&#104;&#x65;&#110;&#46;&#99;&#111;&#x6d;">&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#x6e;&#x40;&#114;&#x6f;&#x79;&#97;&#108;&#99;&#104;&#x65;&#110;&#46;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -470,7 +470,7 @@
     var gitment = new Gitment({
       id: "20160224000000",
       owner: 'coderguang',
-      repo: 'royalchen_gitment',
+      repo: 'coderguang.github.io',
       oauth: {
         client_id: '790bdfb522524451b7e7',
         client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',

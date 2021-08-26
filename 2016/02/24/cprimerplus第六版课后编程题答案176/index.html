@@ -276,7 +276,7 @@
 <p>//先读取，再写入<br>fout.open(“data.txt”,ios_base::app);//原来是二进制文件无法追加<br>//ios_base::binary);<br>if(!fout.is_open())<br>{<br>cout&lt;&lt;”Open fail!”&lt;&lt;endl;<br>eatLine();<br>return 1;<br>}<br>char ch=’0’;<br>int i=0;<br>while(ch!=’q’&amp;&amp;i&lt;MAX)<br>{<br>cout&lt;&lt;”Please enter the choice (q to quit):”&lt;&lt;endl<br>&lt;&lt;”1.employee        2.manager”&lt;&lt;endl<br>&lt;&lt;”3.fink            4.highfink”&lt;&lt;endl;<br>cin&gt;&gt;ch;<br>switch(ch)<br>{<br>case ‘1’:pc[i]=new employee;<br>break;<br>case ‘2’:pc[i]=new manager;<br>break;<br>case ‘3’:pc[i]=new fink;<br>break;<br>case ‘4’:pc[i]=new highfink;<br>break;<br>default:;break;<br>}<br>//eatLine();<br>cin.get();<br>pc[i]-&gt;setAll();<br>pc[i]-&gt;showAll();<br>pc[i]-&gt;save(fout);<br>fout.flush();<br>i++;<br>}</p>
 <p>fout.close();</p>
 <p>cin.get();<br>return 0;<br>}</p>
-<p>  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#110;&#64;&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#x6d;">&#x72;&#111;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#110;&#64;&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#x40;&#x72;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#101;&#110;&#46;&#x63;&#111;&#109;">&#114;&#x6f;&#121;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#x40;&#x72;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#101;&#110;&#46;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -483,7 +483,7 @@
     var gitment = new Gitment({
       id: "20160224000000",
       owner: 'coderguang',
-      repo: 'royalchen_gitment',
+      repo: 'coderguang.github.io',
       oauth: {
         client_id: '790bdfb522524451b7e7',
         client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
