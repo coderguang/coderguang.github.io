@@ -294,7 +294,7 @@
 <p>};<br>int main()<br>{</p>
 <p>D d;</p>
 <p>}</p>
-<p>这里只有A是虚继承base,B,C都不是虚继承，但是在D里面，刚好相反，看看结果如何 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020140_9413408682675.jpg"> 说实在的，输出是这样我是没有想到的。 base created!   //这个base是哪一个调用的呢？ base created! B created! base created! C created!  后来我再这样测试一下我就知道是为什么了。 令A，B，C均不虚继承与base，但是D继承与A,并且虚继承B，C,看结果  <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020141_29638708233114.jpg">   因此可以看出，上一次的第一个base是因为A而调用的base，也就是说，编译器是先检测上一层继承关系(A,B,C)中，哪一个是虚继承于再上一层的类(base)，如果有，则优先调用该虚继承与base的类(也就是A)的基类的（也就是base）构造函数,然后再调用D中虚继承的类的构造函数(B,C)，最后才调用A自己的构造函数，这里有点复杂，还是上一次测试的例子： base created!   //这个base是因为A是虚继承与base时调用的，但是调用完之后并不直接调用A (A created!)<br>base created!   //这个是调用B时调用的base<br>B created!<br>base created!   //这个是调用C时i调用的base<br>C created! A created!    //最后才调用A created!  因此，可以发现，如果你不想该类(例如A)在被继承的时候防止派生类（D）多次创建该类(A)的基类（base）的多个对象，那么，就应该将该类声明为virtual 继承基类(base),vitual的作用是对下一层次的派生类起作用，对该类(A)并不起特别作用(但是该类（D）会优先调用虚继承类（B,C）的构造函数)。  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#x40;&#114;&#111;&#121;&#97;&#108;&#x63;&#x68;&#x65;&#110;&#46;&#99;&#x6f;&#x6d;">&#114;&#111;&#x79;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#x40;&#114;&#111;&#121;&#97;&#108;&#x63;&#x68;&#x65;&#110;&#46;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>这里只有A是虚继承base,B,C都不是虚继承，但是在D里面，刚好相反，看看结果如何 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020140_9413408682675.jpg"> 说实在的，输出是这样我是没有想到的。 base created!   //这个base是哪一个调用的呢？ base created! B created! base created! C created!  后来我再这样测试一下我就知道是为什么了。 令A，B，C均不虚继承与base，但是D继承与A,并且虚继承B，C,看结果  <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020141_29638708233114.jpg">   因此可以看出，上一次的第一个base是因为A而调用的base，也就是说，编译器是先检测上一层继承关系(A,B,C)中，哪一个是虚继承于再上一层的类(base)，如果有，则优先调用该虚继承与base的类(也就是A)的基类的（也就是base）构造函数,然后再调用D中虚继承的类的构造函数(B,C)，最后才调用A自己的构造函数，这里有点复杂，还是上一次测试的例子： base created!   //这个base是因为A是虚继承与base时调用的，但是调用完之后并不直接调用A (A created!)<br>base created!   //这个是调用B时调用的base<br>B created!<br>base created!   //这个是调用C时i调用的base<br>C created! A created!    //最后才调用A created!  因此，可以发现，如果你不想该类(例如A)在被继承的时候防止派生类（D）多次创建该类(A)的基类（base）的多个对象，那么，就应该将该类声明为virtual 继承基类(base),vitual的作用是对下一层次的派生类起作用，对该类(A)并不起特别作用(但是该类（D）会优先调用虚继承类（B,C）的构造函数)。  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#x61;&#108;&#99;&#x68;&#x65;&#110;&#64;&#114;&#111;&#x79;&#97;&#x6c;&#99;&#104;&#101;&#110;&#x2e;&#99;&#111;&#109;">&#x72;&#111;&#121;&#x61;&#108;&#99;&#x68;&#x65;&#110;&#64;&#114;&#111;&#x79;&#97;&#x6c;&#99;&#104;&#101;&#110;&#x2e;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -492,9 +492,8 @@
   
   <div id="gitment-ctn"></div>
   
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+    <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
   
   <script>
     <!-- id: "c++学习笔记5，多重继承中派生类的构造函数与析构函数的调用顺序（二）" -->

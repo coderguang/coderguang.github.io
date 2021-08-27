@@ -266,7 +266,7 @@
 <p>//tc.cpp<br>#include <iostream><br>#include “tc.h”<br>using namespace std;<br>/*<br>A::A(){//必须给出其实现<br>};</p>
 <p>A::A(int ii){<br>i=ii;<br>}*/<br>void A::show()const{<br>std::cout&lt;&lt;”this is A object!”&lt;&lt;std::endl;<br>};<br>int main()<br>{<br>A a;<br>a.show();<br>}</p>
 <p>编译结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020008_41800825628307.jpg">  可以看到，默认构造函数被删除了，那么，能不能删除一些其他的带参数构造函数呢？ 其实这个问题有点多余，因为如果你不想要这个构造函数，你不定义这个带参的构造函数就OK了！        </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#x61;&#108;&#99;&#104;&#101;&#x6e;&#x40;&#114;&#x6f;&#121;&#97;&#108;&#99;&#104;&#x65;&#x6e;&#x2e;&#99;&#111;&#109;">&#x72;&#111;&#121;&#x61;&#108;&#99;&#104;&#101;&#x6e;&#x40;&#114;&#x6f;&#121;&#97;&#108;&#99;&#104;&#x65;&#x6e;&#x2e;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#x65;&#110;&#x40;&#114;&#x6f;&#x79;&#x61;&#108;&#x63;&#104;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;">&#114;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#x65;&#110;&#x40;&#114;&#x6f;&#x79;&#x61;&#108;&#x63;&#104;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -468,9 +468,8 @@
   
   <div id="gitment-ctn"></div>
   
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+    <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
   
   <script>
     <!-- id: "C++学习笔记16，C++11中的显式的默认构造函数以及显示删除默认构造函数" -->

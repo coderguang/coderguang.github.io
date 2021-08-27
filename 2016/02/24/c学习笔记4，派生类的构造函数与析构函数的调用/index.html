@@ -274,7 +274,7 @@
 <p>class A:public base<br>{<br>public:<br>int i;<br>A()<br>{<br>cout&lt;&lt;”A created!”&lt;&lt;endl;<br>}<br>~A()<br>{<br>cout&lt;&lt;”A destroyed!”&lt;&lt;endl;<br>}<br>void fun()<br>{<br>cout&lt;&lt;”A fun run”&lt;&lt;endl;<br>}<br>};</p>
 <p>测试代码：  </p>
 <p>int main()<br>{<br> A *a[2];<br>a[0]-&gt;fun();<br>cout&lt;&lt;endl&lt;&lt;a[0]-&gt;i&lt;&lt;endl;<br>}</p>
-<p>结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020203_11906585741427.jpg"> 可以看到，a[0]-&gt;i指向一个不确定的值！如果指定static const int i=1;那么，指向的必然就是1了。 今天就先测试这些最简单的吧，有点累了，多继承，虚基层明天再测试。 突然发现好像上次UC笔试做这道题的时候，析构的顺序似乎弄错了，郁闷。 还没收到面试信息，也还没有受到笔试挂了的通知，也不知道是个什么情况啊。 继续努力吧。 有时候，细节真的很重要！   —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#110;&#64;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;">&#114;&#x6f;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#110;&#64;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020203_11906585741427.jpg"> 可以看到，a[0]-&gt;i指向一个不确定的值！如果指定static const int i=1;那么，指向的必然就是1了。 今天就先测试这些最简单的吧，有点累了，多继承，虚基层明天再测试。 突然发现好像上次UC笔试做这道题的时候，析构的顺序似乎弄错了，郁闷。 还没收到面试信息，也还没有受到笔试挂了的通知，也不知道是个什么情况啊。 继续努力吧。 有时候，细节真的很重要！   —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#x65;&#110;&#x40;&#114;&#x6f;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#110;&#x2e;&#99;&#111;&#109;">&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#x65;&#110;&#x40;&#114;&#x6f;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#110;&#x2e;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -472,9 +472,8 @@
   
   <div id="gitment-ctn"></div>
   
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+    <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
   
   <script>
     <!-- id: "c++学习笔记4，派生类的构造函数与析构函数的调用顺序（一）" -->
