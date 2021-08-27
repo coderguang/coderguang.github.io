@@ -3806,7 +3806,8 @@ var Gitment =
           // https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js
           //_utils.http.post('https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token', {
           // https://www.wenjunjiang.win/js/gitment.js
-          _utils.http.post('https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token', {
+          // _utils.http.post('https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token', {
+          _utils.http.post('https://xcx.royalchen.com/ghoauth', {
             code: code,
             client_id: client_id,
             client_secret: client_secret
