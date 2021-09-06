@@ -265,7 +265,7 @@
 <p>#include <iostream><br>using namespace std;<br>class A<br>{<br>private:<br>int i;<br>string s;<br>public:</p>
 <p>A(int ii,string ss){<br>cout&lt;&lt;”before ctor:i=”&lt;&lt;i&lt;&lt;”,s=”&lt;&lt;s&lt;&lt;endl;//使用构造函数初始化数据成员之前<br>i=ii;<br>s=ss;<br>cout&lt;&lt;”after ctor:i=”&lt;&lt;i&lt;&lt;”,s=”&lt;&lt;s&lt;&lt;endl;//<span style="font-family: Arial, Helvetica, sans-serif;">使用构造函数初始化数据成员之后</span></p>
 <p>}<br>void show()const{<br>cout&lt;&lt;”i=”&lt;&lt;i&lt;&lt;”,s=”&lt;&lt;s&lt;&lt;endl;<br>}<br>};<br>int main()<br>{<br>A a(7,”构造函数初始化器”);<br>a.show();<br>}</p>
-<p>结果为： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020020_51604838889589.jpg"> 有些人喜欢在构造函数体内初始化数据成员，但是有些数据类型必须在构造函数初始化器中初始化。 1：const数据成员     原因是const成员创建之后无法对其赋值！必须在创建的时候提供初始值。 2.引用数据对象    如果不指向一个量，引用将无法存在 3.没有默认构造函数的对象数据成员   当调用该对象数据成员的默认构造函数初始化成员对象时，无法找到默认构造函数。 4.没有默认构造函数的超类。   类似于3。   —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#x61;&#x6c;&#x63;&#104;&#x65;&#110;&#64;&#114;&#x6f;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#x2e;&#99;&#x6f;&#x6d;">&#x72;&#111;&#x79;&#x61;&#x6c;&#x63;&#104;&#x65;&#110;&#64;&#114;&#x6f;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#x2e;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>结果为： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020020_51604838889589.jpg"> 有些人喜欢在构造函数体内初始化数据成员，但是有些数据类型必须在构造函数初始化器中初始化。 1：const数据成员     原因是const成员创建之后无法对其赋值！必须在创建的时候提供初始值。 2.引用数据对象    如果不指向一个量，引用将无法存在 3.没有默认构造函数的对象数据成员   当调用该对象数据成员的默认构造函数初始化成员对象时，无法找到默认构造函数。 4.没有默认构造函数的超类。   类似于3。   —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#x6e;&#64;&#114;&#x6f;&#x79;&#97;&#108;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#x6f;&#109;">&#114;&#111;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#x6e;&#64;&#114;&#x6f;&#x79;&#97;&#108;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -463,29 +463,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-    <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "C++学习笔记17，构造函数体内初始化数据成员与构造函数初始化器的区别(一)" -->
-    var gitment = new Gitment({
-      id: "20160224000000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: '690b76838a3a0123d7568d0e2c5baaeed536a07e',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "C++学习笔记17，构造函数体内初始化数据成员与构造函数初始化器的区别(一)" -->
+  var giteement = new Giteement({
+    id: '20160224000000',
+    owner: '0cpp',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

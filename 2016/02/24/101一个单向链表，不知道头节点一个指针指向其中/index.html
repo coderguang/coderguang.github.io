@@ -453,29 +453,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-    <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "101一个单向链表，不知道头节点,一个指针指向其中的一个节点，问如何删除这个指针指向的节点？" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: '690b76838a3a0123d7568d0e2c5baaeed536a07e',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "101一个单向链表，不知道头节点,一个指针指向其中的一个节点，问如何删除这个指针指向的节点？" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: '0cpp',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 
