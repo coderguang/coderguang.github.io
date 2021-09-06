@@ -265,7 +265,7 @@ cin.get();
 <p>运行结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015508_26942637555391.jpg">  注意：对引用取地址的结果和对被引用的变量取地址的结果是相同的！  可以看出，改变的只是引用变量x的值，并没有改变引用的指向. 或许你试图想通过在给引用赋值的时候取y的地址，绕过这一限制，r1=&y; 但是这样编译会报错 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015509_40709447709653.jpg">  r1的实质是一个int型的引用，而&amp;y则是一个int的指针，两者不能转换。  无法创建未命名值（例如一个整型值11，实质上这就是一个右值）的引用，除非这是一个const值。  </p>
 <p>#include <iostream><br>using namespace std;<br>int main()<br>{<br>    int &amp;r1=11;<br>}</p>
 <p>编译结果：(rvalue是右值的意思，lvalue是左值，rightvalue,leftvalue) <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015511_26687608011251.jpg"> 这句语句意味着可以改变11的值，而这样做是没有意义的。 但是如果是const的引用，则可以运行。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015512_488426010009466.jpg">  </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#x61;&#x6c;&#99;&#104;&#x65;&#x6e;&#64;&#114;&#x6f;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#x63;&#x6f;&#x6d;">&#114;&#x6f;&#121;&#x61;&#x6c;&#99;&#104;&#x65;&#x6e;&#64;&#114;&#x6f;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#97;&#x6c;&#99;&#104;&#101;&#110;&#x40;&#x72;&#111;&#121;&#97;&#108;&#99;&#x68;&#x65;&#x6e;&#46;&#99;&#111;&#109;">&#114;&#x6f;&#x79;&#97;&#x6c;&#99;&#104;&#101;&#110;&#x40;&#x72;&#111;&#121;&#97;&#108;&#99;&#x68;&#x65;&#x6e;&#46;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -468,7 +468,7 @@ cin.get();
   <!-- id: "C++学习笔记29，引用变量（1）" -->
   var giteement = new Giteement({
     id: '20160224000000',
-    owner: '0cpp',
+    owner: 'cpp000',
     repo: 'royalchen_giteement',
     backcall_uri: 'https://www.royalchen.com',
     oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',

@@ -277,7 +277,7 @@
 <p>没有显式地删除add(char c)之前,运行结果为: <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015554_47001385708229.jpg">  可以看到char被转换为了int类型,这或许不是我们想要的. 因此我们可以手动删除这个重载方法.  </p>
 <p>#include <iostream><br>#include <string><br>using namespace std;<br>class base{<br>private:<br>int i;<br>string s;<br>protected:<br>int getI()const{return i;};<br>string getS()const{return s;};<br>public:<br>base(int ii,string ss):i(ii),s(ss){<br>}<br>virtual ~base(){<br>}<br>void add(int ii){<br>cout&lt;&lt;i&lt;&lt;”+”&lt;&lt;ii&lt;&lt;”=”&lt;&lt;i+ii&lt;&lt;endl;<br>}<br>void add(string ss){<br>cout&lt;&lt;s&lt;&lt;”+”&lt;&lt;ss&lt;&lt;”=”&lt;&lt;s+ss&lt;&lt;endl;<br>}<br>void add(char c)=delete<br>};</p>
 <p>这样,编译的时候就会报错了.类外的函数重载同样支持delete操作,这里就不演示了. <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015555_93388262913.jpg">  这个就是类里面的函数重载了. 需要注意的是继承的时候继承类中的重载有比较大的区别.请看下一篇博文. </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#x61;&#x6c;&#99;&#x68;&#101;&#110;&#x40;&#x72;&#x6f;&#121;&#97;&#108;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;">&#x72;&#x6f;&#121;&#x61;&#x6c;&#99;&#x68;&#101;&#110;&#x40;&#x72;&#x6f;&#121;&#97;&#108;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#104;&#x65;&#x6e;&#64;&#x72;&#x6f;&#x79;&#97;&#108;&#x63;&#x68;&#101;&#110;&#46;&#99;&#x6f;&#x6d;">&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#104;&#x65;&#x6e;&#64;&#x72;&#x6f;&#x79;&#97;&#108;&#x63;&#x68;&#101;&#110;&#46;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -432,11 +432,11 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B022%EF%BC%8C%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%EF%BC%881%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B021%EF%BC%8C%E5%AF%B9%E8%B1%A1%E8%B5%8B%E5%80%BC/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          C++学习笔记22，普通函数重载（1）
+          C++学习笔记21，对象赋值
         
       </div>
     </a>
@@ -484,7 +484,7 @@
   <!-- id: "C++学习笔记23,类内函数重载" -->
   var giteement = new Giteement({
     id: '20160224000000',
-    owner: '0cpp',
+    owner: 'cpp000',
     repo: 'royalchen_giteement',
     backcall_uri: 'https://www.royalchen.com',
     oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',

@@ -326,7 +326,7 @@ cout&lt;&lt;&quot;the return it2 is :\*it2=&quot;&lt;&lt;\*it2&lt;&lt;endl;
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#x65;&#x72;&#103;&#117;&#x61;&#x6e;&#x67;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;">&#x63;&#111;&#x64;&#x65;&#x72;&#103;&#117;&#x61;&#x6e;&#x67;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#x63;&#111;&#100;&#101;&#114;&#x67;&#x75;&#x61;&#110;&#x67;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#111;&#100;&#101;&#114;&#x67;&#x75;&#x61;&#110;&#x67;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></p>
 <p>2014-9-8</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -358,6 +358,763 @@ cout&lt;&lt;&quot;the return it2 is :\*it2=&quot;&lt;&lt;\*it2&lt;&lt;endl;
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy-backward7/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-stlalgorithm算法copy-if8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy-if8/" target="_blank">STLalgorithm算法copy_if(8)</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy-if8/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>STLalgorithm算法copy_if(8)</p>
+<p>原文地址：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39136169">http://blog.csdn.net/qq844352155/article/details/39136169</a></p>
+<p>function template</p>
+<algorithm>
+
+<h1 id="std-copy-if"><a href="#std-copy-if" class="headerlink" title="std::copy_if"></a>std::copy_if</h1><p>template &lt;class InputIterator, class OutputIterator, class UnaryPredicate&gt;<br>  OutputIterator copy_if (InputIterator first, InputIterator last,<br>                          OutputIterator result, UnaryPredicate pred); </p>
+<p>Copy certain elements of range</p>
+<p>Copies the elements in the range <code>[first,last)</code> for which pred returns <code>true</code> to the range beginning at result.</p>
+<p>将符合要求的元素（对元素调用pred返回true的元素）复制到目标数组中。</p>
+<p>The behavior of this function template is equivalent to:  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class InputIterator, class OutputIterator, class UnaryPredicate&gt;</span><br><span class="line">  OutputIterator copy_if (InputIterator first, InputIterator last,</span><br><span class="line">                          OutputIterator result, UnaryPredicate pred)</span><br><span class="line">&#123;</span><br><span class="line">  while (first!=last) &#123;</span><br><span class="line">    if (pred(*first)) &#123;</span><br><span class="line">      *result = *first;</span><br><span class="line">      ++result;</span><br><span class="line">    &#125;</span><br><span class="line">    ++first;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first, last</p>
+<p>Input iterators to the initial and final positions in a sequence. The range copied is <code>[first,last)</code>, which contains all the elements between first and last, including the element pointed by first but not the element pointed by last.<br>InputIterator shall point to a type <a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_assignable">assignable</a> to the elements pointed by OutputIterator.<br>要复制的序列范围。</p>
+<p>result</p>
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/OutputIterator">Output iterator</a> to the initial position of the range where the resulting sequence is stored. The range includes as many elements as <code>[first,last)</code>.<br>开始覆盖的位置。</p>
+<p>pred</p>
+<p>Unary function that accepts an element in the range as argument, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element is to be copied (if <code>true</code>, it is copied).<br>The function shall not modify any of its arguments.<br>This can either be a function pointer or a function object.<br>接受一个参数并且返回一个bool值的一元函数。</p>
+<p>The ranges shall not overlap.  </p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator pointing to the element that follows the last element written in the result sequence.  </p>
+<p>返回一个指向最后一个覆盖的元素再后面的一个元素的迭代器。</p>
+<p>例子：</p>
+<p>#include <iostream><br>#include <algorithm><br>#include <vector><br>#include <array><br>using namespace std;<br>void copyif(){<br>    vector<int> v1{1,5,7,8,9,10,14,15};<br>    vector<int> v2{99,88};<br>    cout&lt;&lt;”at first,v2=”;<br>    for(int &amp;i:v2)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;</p>
+<pre><code>v2.resize(10);//resize(10)!!
+auto it=copy\_if(v1.begin(),v1.end(),v2.end()-5,\[\](int i)&#123;
+                    return i%2==0;&#125;);//如果是偶数，则返回true
+cout&lt;&lt;&quot;after copy\_if(v1.begin(),v1.end(),v2.end()-5,\[\](int i)&#123;return i%2==0;&#125;)&quot;&lt;&lt;endl;
+cout&lt;&lt;&quot;v2=&quot;;
+for(int &amp;i:v2)
+    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+cout&lt;&lt;endl;
+cout&lt;&lt;&quot;the return it is :\*it=&quot;&lt;&lt;\*it&lt;&lt;endl;
+</code></pre>
+<p>}</p>
+<p>运行截图：(v2在copy_if之前resize(10))</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224021832_24439057382061.jpg">  </p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// copy_if example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::copy_if, std::distance</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  std::vector&lt;int&gt; foo = &#123;25,15,5,-5,-15&#125;;</span><br><span class="line">  std::vector&lt;int&gt; bar (foo.size());</span><br><span class="line"></span><br><span class="line">  // copy only positive numbers:</span><br><span class="line">  auto it = std::copy_if (foo.begin(), foo.end(), bar.begin(), [](int i)&#123;return !(i&lt;0);&#125; );</span><br><span class="line">  bar.resize(std::distance(bar.begin(),it));  // shrink container to new size</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;bar contains:&quot;;</span><br><span class="line">  for (int&amp; x: bar) std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; x;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy_if/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p>Output:  </p>
+<p>bar contains: 25 15 5 </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between first and last: Applies pred to each element in the range and performs at most that many assignments.  </p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The objects in the range <code>[first,last)</code> are accessed.<br>The objects in the range between result and the returned value are modified.  </p>
+<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if any of pred, the element assignments or the operations on iterators throws.  </p>
+<p>Note that invalid arguments cause <em>undefined behavior</em>.</p>
+<p>——————————————————————————————————————————————————————————————————</p>
+<p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
+<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>author:天下无双  </p>
+<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#101;&#114;&#103;&#x75;&#x61;&#110;&#103;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#99;&#x6f;&#100;&#101;&#114;&#103;&#x75;&#x61;&#110;&#103;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>2014-9-8</p>
+<p>于GDUT</p>
+<p>——————————————————————————————————————————————————————————————————</p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39136491">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL算法//" class="article-tag-list-link color1">STL算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy-if8/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-stlalgorithm算法copy-n9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy-n9/" target="_blank">STLalgorithm算法copy_n(9)</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy-n9/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>STLalgorithm算法copy_n(9)</p>
+<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy/_n/">http://www.cplusplus.com/reference/algorithm/copy\_n/</a></p>
+<p>function template</p>
+<algorithm>
+
+<h1 id="std-copy-n"><a href="#std-copy-n" class="headerlink" title="std::copy_n"></a>std::copy_n</h1><p>template &lt;class InputIterator, class Size, class OutputIterator&gt;<br>  OutputIterator copy_n (InputIterator first, Size n, OutputIterator result);</p>
+<p>Copy elements</p>
+<p>Copies the first n elements from the range beginning at first into the range beginning at result.<br>从first开始复制n哥元素到result的位置。  </p>
+<p>例子:</p>
+<p>#include <iostream><br>#include <vector><br>#include <array><br>#include <algorithm><br>using namespace std;<br>void copyn(){<br>    vector<int> vi{1,2,3,4,5,6};<br>    array&lt;double,3&gt; ai{7.7,8.8,9.9};<br>    cout&lt;&lt;”at first:vi=”;<br>    for(int &amp;i:vi)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;</p>
+<pre><code>vi.resize(12);
+auto it=copy\_n(ai.begin(),3,vi.end()-4);
+cout&lt;&lt;&quot;after     copy\_n(ai.begin(),3,vi.end()-3) \\nvi=&quot;;
+//for(double &amp;i:vi)  //error: invalid initialization of reference of type &#39;double&amp;&#39; from expression of type &#39;int&#39;
+for(int &amp;i:vi)
+    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+cout&lt;&lt;endl;
+cout&lt;&lt;&quot;the return values is it=&quot;&lt;&lt;\*it&lt;&lt;endl;
+</code></pre>
+<p>}</p>
+<p>运行截图：</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013453_30292286730154.jpg">  </p>
+<p>The function returns an iterator to the end of the destination range (which points to one past the last element copied).</p>
+<p>该函数返回一个指向目标序列最后一个被复制元素的下一个元素的迭代器。</p>
+<p>If n is negative, the function does nothing.  </p>
+<p>如果n是负数，函数不会做任何事情。</p>
+<p>If the ranges overlap, some of the elements in the range pointed by <em>result</em> may have undefined but valid values.  </p>
+<p>如果范围越界，即result后面不够存放时会导致未定义但状态依旧有效。</p>
+<p>例子:</p>
+<p>#include <iostream><br>#include <vector><br>#include <array><br>#include <algorithm><br>using namespace std;<br>void copyn2(){<br>    vector<int> vi{1,2,3,4,5,6};<br>    array&lt;double,3&gt; ai{7.7,8.8,9.9};<br>    cout&lt;&lt;”at first:vi=”;<br>    for(int &amp;i:vi)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;</p>
+<pre><code>vi.resize(12);
+auto it=copy\_n(ai.begin(),3,vi.end());
+cout&lt;&lt;&quot;after     copy\_n(ai.begin(),3,vi.end()) \\nvi=&quot;;
+//for(double &amp;i:vi)  //error: invalid initialization of reference of type &#39;double&amp;&#39; from expression of type &#39;int&#39;
+for(int &amp;i:vi)
+    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+cout&lt;&lt;endl;
+cout&lt;&lt;&quot;the return values is it=&quot;&lt;&lt;\*it&lt;&lt;endl;
+</code></pre>
+<p>}</p>
+<p>运行截图：</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013454_34459527704799.jpg">  </p>
+<p>The behavior of this function template is equivalent to:  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class InputIterator, class Size, class OutputIterator&gt;</span><br><span class="line">  OutputIterator copy_n (InputIterator first, Size n, OutputIterator result)</span><br><span class="line">&#123;</span><br><span class="line">  while (n&gt;0) &#123;</span><br><span class="line">    *result = *first;</span><br><span class="line">    ++result; ++first;</span><br><span class="line">    --n;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first</p>
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial position in a sequence of at least n elements to be copied.<br>InputIterator shall point to a type <a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_assignable">assignable</a> to the elements pointed by OutputIterator.<br>序列开始复制的位置。</p>
+<p>n</p>
+<p>Number of elements to copy.<br>If this value is negative, the function does nothing.<br>Size shall be (convertible to) an integral type.<br>要被复制的元素个数。<br>如果是负数，不会做任何事情。  </p>
+<p>result</p>
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/OutputIterator">Output iterator</a> to the initial position in the destination sequence of at least n elements.<br>This shall not point to any element in the range <code>[first,last)</code>.  </p>
+<p>序列开始被覆盖的位置。  </p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator to the end of the destination range where elements have been copied.  </p>
+<p>该函数返回一个指向目标序列最后一个被覆盖元素的下一个元素的迭代器。</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// copy_n algorithm example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::copy</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  int myints[]=&#123;10,20,30,40,50,60,70&#125;;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line"></span><br><span class="line">  myvector.resize(7);   // allocate space for 7 elements</span><br><span class="line"></span><br><span class="line">  std::copy_n ( myints, 7, myvector.begin() );</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (std::vector&lt;int&gt;::iterator it = myvector.begin(); it!=myvector.end(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy_n/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p>Output:  </p>
+<p>myvector contains: 10 20 30 40 50 60 70</p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between first and last: Performs an assignment operation for each element in the range.  </p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The objects in the range of n elements pointed by first are accessed (each object is accessed exactly once).<br>The objects in the range between result and the returned value are modified (each object is modified exactly once).  </p>
+<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if either an element assignment or an operation on iterators throws.<br>Note that invalid arguments cause <em>undefined behavior</em>.  </p>
+<p>——————————————————————————————————————————————————————————————————</p>
+<p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
+<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>author:天下无双  </p>
+<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#x65;&#114;&#103;&#117;&#97;&#x6e;&#x67;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#x63;&#111;&#x64;&#x65;&#114;&#103;&#117;&#97;&#x6e;&#x67;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;</a></p>
+<p>2014-9-11</p>
+<p>于GDUT</p>
+<p>——————————————————————————————————————————————————————————————————</p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39187145">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL算法//" class="article-tag-list-link color1">STL算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy-n9/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-stlalgorithm算法copy6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy6/" target="_blank">STLalgorithm算法copy(6)</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy6/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>STLalgorithm算法copy(6)</p>
+<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy/">http://www.cplusplus.com/reference/algorithm/copy/</a></p>
+<p>function template</p>
+<algorithm>
+
+<h1 id="std-copy"><a href="#std-copy" class="headerlink" title="std::copy"></a>std::copy</h1><p>template &lt;class InputIterator, class OutputIterator&gt;<br>  OutputIterator copy (InputIterator first, InputIterator last, OutputIterator result);</p>
+<p>Copy range of elements</p>
+<p>Copies the elements in the range <code>[first,last)</code> into the range beginning at result.  </p>
+<p>复制范围[first,last）里面的元素到result的位置。（将会覆盖原来的数据）</p>
+<p>例子：</p>
+<p>#include <iostream><br>#include <algorithm><br>#include <vector><br>#include <array><br>using namespace std;<br>void copy1(){<br>    vector<int> v1{1,5,7,8,9};<br>    vector<int> v2{100,200,300};<br>    array&lt;int,7&gt; ai{888,666.555,222,111,555,777};<br>    vector<double> vd{9.9,8.8,7.7,};</p>
+<pre><code>cout&lt;&lt;&quot;at first,v1=&quot;;
+for(int &amp;i:v1)
+    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+cout&lt;&lt;endl;
+
+cout&lt;&lt;&quot;at first,v2=&quot;;
+for(int &amp;i:v2)
+    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+cout&lt;&lt;endl;
+
+auto it=copy(v2.begin(),v2.end(),v1.begin());
+cout&lt;&lt;&quot;after copy(v2.begin(),v2.end(),v1.begin())&quot;&lt;&lt;endl;
+cout&lt;&lt;&quot;v1=&quot;;
+for(int &amp;i:v1)
+    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+cout&lt;&lt;endl;
+
+ cout&lt;&lt;&quot;v2=&quot;;
+for(int &amp;i:v2)
+    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+cout&lt;&lt;endl;
+cout&lt;&lt;&quot;the return it is :\*it=&quot;&lt;&lt;\*it&lt;&lt;endl;
+</code></pre>
+<p>}</p>
+<p>运行截图：</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013540_14837935310308.jpg">  </p>
+<p>The function returns an iterator to the end of the destination range (which points to the element following the last element copied).</p>
+<p>该函数返回一个迭代器，指向目标范围的最后（即last的下一个元素）（上面例子的8）</p>
+<p>The ranges shall not overlap in such a way that result points to an element in the range [first,last). For such cases, see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/copy_backward">copy_backward</a>.</p>
+<p>result不应该指向[first,last)中的任一元素，如果需要，应该使用copy_backward.（这句话很有问题，因为copy_backward也有一句几乎一样的话，具体需求请具体分析）</p>
+<p>例子：</p>
+<p>#include <iostream><br>#include <algorithm><br>#include <vector><br>#include <array><br>using namespace std;<br>void copy2(){<br>    vector<int> v1{1,5,7,8,9};</p>
+<pre><code>cout&lt;&lt;&quot;at first,v1=&quot;;
+for(int &amp;i:v1)
+    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+cout&lt;&lt;endl;
+
+
+auto it=copy(v1.begin(),v1.end(),v1.begin()+3);
+cout&lt;&lt;&quot;after copy(v1.begin(),v1.end(),v1.begin()+3)&quot;&lt;&lt;endl;
+cout&lt;&lt;&quot;v1=&quot;;
+for(int &amp;i:v1)
+    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+cout&lt;&lt;endl;
+cout&lt;&lt;&quot;the return it is :\*it=&quot;&lt;&lt;\*it&lt;&lt;endl;
+</code></pre>
+<p>}</p>
+<p>运行截图：</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013540_28719397779714.jpg">  </p>
+<p>The behavior of this function template is equivalent to:  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class InputIterator, class OutputIterator&gt;</span><br><span class="line">  OutputIterator copy (InputIterator first, InputIterator last, OutputIterator result)</span><br><span class="line">&#123;</span><br><span class="line">  while (first!=last) &#123;</span><br><span class="line">    *result = *first;</span><br><span class="line">    ++result; ++first;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first, last</p>
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial and final positions in a sequence to be copied. The range used is <code>[first,last)</code>, which contains all the elements between first and last, including the element pointed by first but not the element pointed by last.<br>要复制的范围。</p>
+<p>result</p>
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/OutputIterator">Output iterator</a> to the initial position in the destination sequence.<br>This shall not point to any element in the range <code>[first,last)</code>.<br>要覆盖数据的开头。<br>不应该是[first,last)里的任一元素。</p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator to the end of the destination range where elements have been copied.  </p>
+<p>返回一个指向目标范围最后一个元素的迭代器。</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// copy algorithm example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::copy</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  int myints[]=&#123;10,20,30,40,50,60,70&#125;;</span><br><span class="line">  std::vector&lt;int&gt; myvector (7);</span><br><span class="line"></span><br><span class="line">  std::copy ( myints, myints+7, myvector.begin() );</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (std::vector&lt;int&gt;::iterator it = myvector.begin(); it!=myvector.end(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p>Output:  </p>
+<p>myvector contains: 10 20 30 40 50 60 70</p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between first and last: Performs an assignment operation for each element in the range.  </p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The objects in the range <code>[first,last)</code> are accessed (each object is accessed exactly once).<br>The objects in the range between result and the returned value are modified (each object is modified exactly once).  </p>
+<p>result以及返回值之间的所有元素都将会被修改。</p>
+<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if either an element assignment or an operation on iterators throws.  </p>
+<p>Note that invalid arguments cause <em>undefined behavior</em>.</p>
+<p>——————————————————————————————————————————————————————————————————</p>
+<p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
+<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>author:天下无双  </p>
+<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#101;&#x72;&#103;&#x75;&#x61;&#110;&#103;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#99;&#x6f;&#100;&#101;&#x72;&#103;&#x75;&#x61;&#110;&#103;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;</a></p>
+<p>2014-9-8</p>
+<p>于GDUT</p>
+<p>——————————————————————————————————————————————————————————————————</p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39135747">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL算法//" class="article-tag-list-link color1">STL算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy6/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-stlalgorithm算法count-if11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95count-if11/" target="_blank">STLalgorithm算法count_if(11)</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95count-if11/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>STLalgorithm算法count_if(11)</p>
+<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/count/_if/">http://www.cplusplus.com/reference/algorithm/count\_if/</a></p>
+<p>function template</p>
+<algorithm>
+
+<h1 id="std-count-if"><a href="#std-count-if" class="headerlink" title="std::count_if"></a>std::count_if</h1><p>template &lt;class InputIterator, class Predicate&gt;<br>  typename iterator_traits<InputIterator>::difference_type<br>    count_if (InputIterator first, InputIterator last, UnaryPredicate pred);</p>
+<p>Return number of elements in range satisfying condition</p>
+<p>Returns the number of elements in the range <code>[first,last)</code> for which pred is true.<br>返回范围内对每个元素调用pred返回true的次数。例子：</p>
+<p>#include <iostream><br>#include <algorithm><br>#include <vector><br>#include <array><br>using namespace std;<br>bool ismod2(int i){<br>    return i%2==0;<br>}<br>void countif(){<br>    vector<int> vi{1,5,7,8,9,9,8,5,9};<br>    array&lt;int,7&gt; ai{888,666,555,222,111,555,777};<br>    cout&lt;&lt;”vi=”;<br>    for(int &amp;i:vi)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;</p>
+<pre><code>int cv=count\_if(vi.begin(),vi.end(),ismod2);
+cout&lt;&lt;&quot;能被2整除的一共有&quot;&lt;&lt;cv&lt;&lt;&quot;个&quot;&lt;&lt;endl;
+
+cout&lt;&lt;&quot;ai=&quot;;
+for(int &amp;i:ai)
+    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+cout&lt;&lt;endl;
+int ca=count\_if(ai.begin(),ai.end(),\[\](int i)&#123;return i&gt;500;&#125;);
+cout&lt;&lt;&quot;大于500的一共有&quot;&lt;&lt;ca&lt;&lt;&quot;个&quot;&lt;&lt;endl;
+</code></pre>
+<p>}</p>
+<p>运行截图：<img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013503_5803417439837.jpg">  </p>
+<p>The behavior of this function template is equivalent to:  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class InputIterator, class UnaryPredicate&gt;</span><br><span class="line">  typename iterator_traits&lt;InputIterator&gt;::difference_type</span><br><span class="line">    count_if (InputIterator first, InputIterator last, UnaryPredicate pred)</span><br><span class="line">&#123;</span><br><span class="line">  typename iterator_traits&lt;InputIterator&gt;::difference_type ret = 0;</span><br><span class="line">  while (first!=last) &#123;</span><br><span class="line">    if (pred(*first)) ++ret;</span><br><span class="line">    ++first;</span><br><span class="line">  &#125;</span><br><span class="line">  return ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first, last</p>
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial and final positions of the sequence of elements. The range used is <code>[first,last)</code>, which contains all the elements between first and last, including the element pointed by first but not the element pointed by last.<br>元素的范围。</p>
+<p>pred</p>
+<p>Unary function that accepts an element in the range as argument, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element is counted by this function.<br>The function shall not modify its argument.<br>This can either be a function pointer or a function object.<br>接受一个元素作为参数兵返回一个bool值的一元函数。</p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>The number of elements in the range <code>[first,last)</code> for which pred does not return <code>false</code>.<br>The return type (<a target="_blank" rel="noopener" href="http://www.cplusplus.com/iterator_traits">iterator_traits</a><InputIterator>::difference_type) is a signed integral type.<br>返回范围内对每个元素调用pred返回true的次数。  </p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// count_if example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::count_if</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">bool IsOdd (int i) &#123; return ((i%2)==1); &#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line">  for (int i=1; i&lt;10; i++) myvector.push_back(i); // myvector: 1 2 3 4 5 6 7 8 9</span><br><span class="line"></span><br><span class="line">  int mycount = count_if (myvector.begin(), myvector.end(), IsOdd);</span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains &quot; &lt;&lt; mycount  &lt;&lt; &quot; odd values.\n&quot;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/count_if/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p>Output:  </p>
+<p>myvector contains 5 odd values. </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between first and last: Calls pred once for each element.  </p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The objects in the range <code>[first,last)</code> are accessed (each object is accessed exactly once).  </p>
+<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if pred trhows or if any of the operations on iterators throws.<br>Note that invalid arguments cause <em>undefined behavior</em>.  </p>
+<p>——————————————————————————————————————————————————————————————————</p>
+<p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
+<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>author:天下无双  </p>
+<p>Email:<a href="mailto:&#99;&#111;&#100;&#101;&#114;&#x67;&#x75;&#x61;&#x6e;&#103;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#111;&#109;">&#99;&#111;&#100;&#101;&#114;&#x67;&#x75;&#x61;&#x6e;&#103;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#111;&#109;</a></p>
+<p>2014-9-11</p>
+<p>于GDUT</p>
+<p>——————————————————————————————————————————————————————————————————</p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39203247">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL算法//" class="article-tag-list-link color1">STL算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95count-if11/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-stlalgorithm算法count10" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95count10/" target="_blank">STLalgorithm算法count(10)</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95count10/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>STLalgorithm算法count(10)</p>
+<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/count/">http://www.cplusplus.com/reference/algorithm/count/</a></p>
+<p>function template</p>
+<algorithm>
+
+<h1 id="std-count"><a href="#std-count" class="headerlink" title="std::count"></a>std::count</h1><p>template &lt;class InputIterator, class T&gt;<br>  typename iterator_traits<InputIterator>::difference_type<br>    count (InputIterator first, InputIterator last, const T&amp; val);</p>
+<p>Count appearances of value in range</p>
+<p>Returns the number of elements in the range <code>[first,last)</code> that compare equal to val.  </p>
+<p>返回first,last之间和元素val相等的元素的个数。</p>
+<p>例子：</p>
+<p>#include <iostream><br>#include <algorithm><br>#include <vector><br>#include <array><br>using namespace std;<br>void count1(){<br>    vector<int> vi{1,5,7,8,9,9,8,5,9};<br>    array&lt;int,7&gt; ai{888,666,555,222,111,555,777};<br>    cout&lt;&lt;”vi=”;<br>    for(int &amp;i:vi)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;</p>
+<pre><code>int cv=count(vi.begin(),vi.end(),9);
+cout&lt;&lt;&quot;9 在vi中出现了&quot;&lt;&lt;cv&lt;&lt;&quot;次&quot;&lt;&lt;endl;
+
+cout&lt;&lt;&quot;ai=&quot;;
+for(int &amp;i:ai)
+    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+cout&lt;&lt;endl;
+int ca=count(ai.begin(),ai.end(),555);
+cout&lt;&lt;&quot;555 在ai中出现了&quot;&lt;&lt;ca&lt;&lt;&quot;次&quot;&lt;&lt;endl;
+</code></pre>
+<p>}</p>
+<p>运行结果：</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013458_20769288879335.jpg">  </p>
+<p>The function uses <code>operator==</code> to compare the individual elements to val.  </p>
+<p>该函数使用operator==来比较各个元素和val是否相等。</p>
+<p>The behavior of this function template is equivalent to:  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class InputIterator, class T&gt;</span><br><span class="line">  typename iterator_traits&lt;InputIterator&gt;::difference_type</span><br><span class="line">    count (InputIterator first, InputIterator last, const T&amp; val)</span><br><span class="line">&#123;</span><br><span class="line">  typename iterator_traits&lt;InputIterator&gt;::difference_type ret = 0;</span><br><span class="line">  while (first!=last) &#123;</span><br><span class="line">    if (*first == val) ++ret;</span><br><span class="line">    ++first;</span><br><span class="line">  &#125;</span><br><span class="line">  return ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first, last</p>
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial and final positions of the sequence of elements. The range used is <code>[first,last)</code>, which contains all the elements between first and last, including the element pointed by first but not the element pointed by last.<br>比较的范围。</p>
+<p>val</p>
+<p>Value to match.<br>T shall be a type supporting comparisons with the elements pointed by InputIterator using <code>operator==</code> (with the elements as left-hand side operands, and val as right-hand side).<br>要比较的值。</p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>The number of elements in the range <code>[first,last)</code> that compare equal to val.<br>The return type (<a target="_blank" rel="noopener" href="http://www.cplusplus.com/iterator_traits">iterator_traits</a><InputIterator>::difference_type) is a signed integral type.  </p>
+<p>匹配的元素的个数。</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// count algorithm example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::count</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  // counting elements in array:</span><br><span class="line">  int myints[] = &#123;10,20,30,30,20,10,10,20&#125;;   // 8 elements</span><br><span class="line">  int mycount = std::count (myints, myints+8, 10);</span><br><span class="line">  std::cout &lt;&lt; &quot;10 appears &quot; &lt;&lt; mycount &lt;&lt; &quot; times.\n&quot;;</span><br><span class="line"></span><br><span class="line">  // counting elements in container:</span><br><span class="line">  std::vector&lt;int&gt; myvector (myints, myints+8);</span><br><span class="line">  mycount = std::count (myvector.begin(), myvector.end(), 20);</span><br><span class="line">  std::cout &lt;&lt; &quot;20 appears &quot; &lt;&lt; mycount  &lt;&lt; &quot; times.\n&quot;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/count/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p>Output:  </p>
+<p>10 appears 3 times.<br>20 appears 3 times. </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between first and last: Compares once each element.  </p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The objects in the range <code>[first,last)</code> are accessed (each object is accessed exactly once).  </p>
+<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if either an element comparison or an operation on an iterator throws.  </p>
+<p>Note that invalid arguments cause <em>undefined behavior</em>.</p>
+<p>——————————————————————————————————————————————————————————————————</p>
+<p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
+<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>author:天下无双  </p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#x64;&#x65;&#114;&#x67;&#x75;&#97;&#x6e;&#x67;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#x63;&#x6f;&#x64;&#x65;&#114;&#x67;&#x75;&#97;&#x6e;&#x67;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;</a></p>
+<p>2014-9-11</p>
+<p>于GDUT</p>
+<p>——————————————————————————————————————————————————————————————————</p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39203027">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL算法//" class="article-tag-list-link color1">STL算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95count10/">展开全文 >></a>
     </p>
     
 
@@ -1548,763 +2305,6 @@ cout&lt;&lt;&quot;the return it2 is :\*it2=&quot;&lt;&lt;\*it2&lt;&lt;endl;
 
 
   
-    <article id="post-stlalgorithm算法copy-if8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy-if8/" target="_blank">STLalgorithm算法copy_if(8)</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy-if8/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>STLalgorithm算法copy_if(8)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39136169">http://blog.csdn.net/qq844352155/article/details/39136169</a></p>
-<p>function template</p>
-<algorithm>
-
-<h1 id="std-copy-if"><a href="#std-copy-if" class="headerlink" title="std::copy_if"></a>std::copy_if</h1><p>template &lt;class InputIterator, class OutputIterator, class UnaryPredicate&gt;<br>  OutputIterator copy_if (InputIterator first, InputIterator last,<br>                          OutputIterator result, UnaryPredicate pred); </p>
-<p>Copy certain elements of range</p>
-<p>Copies the elements in the range <code>[first,last)</code> for which pred returns <code>true</code> to the range beginning at result.</p>
-<p>将符合要求的元素（对元素调用pred返回true的元素）复制到目标数组中。</p>
-<p>The behavior of this function template is equivalent to:  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class InputIterator, class OutputIterator, class UnaryPredicate&gt;</span><br><span class="line">  OutputIterator copy_if (InputIterator first, InputIterator last,</span><br><span class="line">                          OutputIterator result, UnaryPredicate pred)</span><br><span class="line">&#123;</span><br><span class="line">  while (first!=last) &#123;</span><br><span class="line">    if (pred(*first)) &#123;</span><br><span class="line">      *result = *first;</span><br><span class="line">      ++result;</span><br><span class="line">    &#125;</span><br><span class="line">    ++first;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first, last</p>
-<p>Input iterators to the initial and final positions in a sequence. The range copied is <code>[first,last)</code>, which contains all the elements between first and last, including the element pointed by first but not the element pointed by last.<br>InputIterator shall point to a type <a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_assignable">assignable</a> to the elements pointed by OutputIterator.<br>要复制的序列范围。</p>
-<p>result</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/OutputIterator">Output iterator</a> to the initial position of the range where the resulting sequence is stored. The range includes as many elements as <code>[first,last)</code>.<br>开始覆盖的位置。</p>
-<p>pred</p>
-<p>Unary function that accepts an element in the range as argument, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element is to be copied (if <code>true</code>, it is copied).<br>The function shall not modify any of its arguments.<br>This can either be a function pointer or a function object.<br>接受一个参数并且返回一个bool值的一元函数。</p>
-<p>The ranges shall not overlap.  </p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator pointing to the element that follows the last element written in the result sequence.  </p>
-<p>返回一个指向最后一个覆盖的元素再后面的一个元素的迭代器。</p>
-<p>例子：</p>
-<p>#include <iostream><br>#include <algorithm><br>#include <vector><br>#include <array><br>using namespace std;<br>void copyif(){<br>    vector<int> v1{1,5,7,8,9,10,14,15};<br>    vector<int> v2{99,88};<br>    cout&lt;&lt;”at first,v2=”;<br>    for(int &amp;i:v2)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;</p>
-<pre><code>v2.resize(10);//resize(10)!!
-auto it=copy\_if(v1.begin(),v1.end(),v2.end()-5,\[\](int i)&#123;
-                    return i%2==0;&#125;);//如果是偶数，则返回true
-cout&lt;&lt;&quot;after copy\_if(v1.begin(),v1.end(),v2.end()-5,\[\](int i)&#123;return i%2==0;&#125;)&quot;&lt;&lt;endl;
-cout&lt;&lt;&quot;v2=&quot;;
-for(int &amp;i:v2)
-    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-cout&lt;&lt;endl;
-cout&lt;&lt;&quot;the return it is :\*it=&quot;&lt;&lt;\*it&lt;&lt;endl;
-</code></pre>
-<p>}</p>
-<p>运行截图：(v2在copy_if之前resize(10))</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224021832_24439057382061.jpg">  </p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// copy_if example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::copy_if, std::distance</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  std::vector&lt;int&gt; foo = &#123;25,15,5,-5,-15&#125;;</span><br><span class="line">  std::vector&lt;int&gt; bar (foo.size());</span><br><span class="line"></span><br><span class="line">  // copy only positive numbers:</span><br><span class="line">  auto it = std::copy_if (foo.begin(), foo.end(), bar.begin(), [](int i)&#123;return !(i&lt;0);&#125; );</span><br><span class="line">  bar.resize(std::distance(bar.begin(),it));  // shrink container to new size</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;bar contains:&quot;;</span><br><span class="line">  for (int&amp; x: bar) std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; x;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy_if/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
-<p>Output:  </p>
-<p>bar contains: 25 15 5 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between first and last: Applies pred to each element in the range and performs at most that many assignments.  </p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The objects in the range <code>[first,last)</code> are accessed.<br>The objects in the range between result and the returned value are modified.  </p>
-<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if any of pred, the element assignments or the operations on iterators throws.  </p>
-<p>Note that invalid arguments cause <em>undefined behavior</em>.</p>
-<p>——————————————————————————————————————————————————————————————————</p>
-<p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
-<p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#x65;&#x72;&#x67;&#117;&#97;&#110;&#103;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#99;&#x6f;&#100;&#x65;&#x72;&#x67;&#117;&#97;&#110;&#103;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></p>
-<p>2014-9-8</p>
-<p>于GDUT</p>
-<p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39136491">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL算法//" class="article-tag-list-link color1">STL算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy-if8/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-stlalgorithm算法copy-n9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy-n9/" target="_blank">STLalgorithm算法copy_n(9)</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy-n9/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>STLalgorithm算法copy_n(9)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy/_n/">http://www.cplusplus.com/reference/algorithm/copy\_n/</a></p>
-<p>function template</p>
-<algorithm>
-
-<h1 id="std-copy-n"><a href="#std-copy-n" class="headerlink" title="std::copy_n"></a>std::copy_n</h1><p>template &lt;class InputIterator, class Size, class OutputIterator&gt;<br>  OutputIterator copy_n (InputIterator first, Size n, OutputIterator result);</p>
-<p>Copy elements</p>
-<p>Copies the first n elements from the range beginning at first into the range beginning at result.<br>从first开始复制n哥元素到result的位置。  </p>
-<p>例子:</p>
-<p>#include <iostream><br>#include <vector><br>#include <array><br>#include <algorithm><br>using namespace std;<br>void copyn(){<br>    vector<int> vi{1,2,3,4,5,6};<br>    array&lt;double,3&gt; ai{7.7,8.8,9.9};<br>    cout&lt;&lt;”at first:vi=”;<br>    for(int &amp;i:vi)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;</p>
-<pre><code>vi.resize(12);
-auto it=copy\_n(ai.begin(),3,vi.end()-4);
-cout&lt;&lt;&quot;after     copy\_n(ai.begin(),3,vi.end()-3) \\nvi=&quot;;
-//for(double &amp;i:vi)  //error: invalid initialization of reference of type &#39;double&amp;&#39; from expression of type &#39;int&#39;
-for(int &amp;i:vi)
-    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-cout&lt;&lt;endl;
-cout&lt;&lt;&quot;the return values is it=&quot;&lt;&lt;\*it&lt;&lt;endl;
-</code></pre>
-<p>}</p>
-<p>运行截图：</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013453_30292286730154.jpg">  </p>
-<p>The function returns an iterator to the end of the destination range (which points to one past the last element copied).</p>
-<p>该函数返回一个指向目标序列最后一个被复制元素的下一个元素的迭代器。</p>
-<p>If n is negative, the function does nothing.  </p>
-<p>如果n是负数，函数不会做任何事情。</p>
-<p>If the ranges overlap, some of the elements in the range pointed by <em>result</em> may have undefined but valid values.  </p>
-<p>如果范围越界，即result后面不够存放时会导致未定义但状态依旧有效。</p>
-<p>例子:</p>
-<p>#include <iostream><br>#include <vector><br>#include <array><br>#include <algorithm><br>using namespace std;<br>void copyn2(){<br>    vector<int> vi{1,2,3,4,5,6};<br>    array&lt;double,3&gt; ai{7.7,8.8,9.9};<br>    cout&lt;&lt;”at first:vi=”;<br>    for(int &amp;i:vi)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;</p>
-<pre><code>vi.resize(12);
-auto it=copy\_n(ai.begin(),3,vi.end());
-cout&lt;&lt;&quot;after     copy\_n(ai.begin(),3,vi.end()) \\nvi=&quot;;
-//for(double &amp;i:vi)  //error: invalid initialization of reference of type &#39;double&amp;&#39; from expression of type &#39;int&#39;
-for(int &amp;i:vi)
-    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-cout&lt;&lt;endl;
-cout&lt;&lt;&quot;the return values is it=&quot;&lt;&lt;\*it&lt;&lt;endl;
-</code></pre>
-<p>}</p>
-<p>运行截图：</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013454_34459527704799.jpg">  </p>
-<p>The behavior of this function template is equivalent to:  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class InputIterator, class Size, class OutputIterator&gt;</span><br><span class="line">  OutputIterator copy_n (InputIterator first, Size n, OutputIterator result)</span><br><span class="line">&#123;</span><br><span class="line">  while (n&gt;0) &#123;</span><br><span class="line">    *result = *first;</span><br><span class="line">    ++result; ++first;</span><br><span class="line">    --n;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial position in a sequence of at least n elements to be copied.<br>InputIterator shall point to a type <a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_assignable">assignable</a> to the elements pointed by OutputIterator.<br>序列开始复制的位置。</p>
-<p>n</p>
-<p>Number of elements to copy.<br>If this value is negative, the function does nothing.<br>Size shall be (convertible to) an integral type.<br>要被复制的元素个数。<br>如果是负数，不会做任何事情。  </p>
-<p>result</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/OutputIterator">Output iterator</a> to the initial position in the destination sequence of at least n elements.<br>This shall not point to any element in the range <code>[first,last)</code>.  </p>
-<p>序列开始被覆盖的位置。  </p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator to the end of the destination range where elements have been copied.  </p>
-<p>该函数返回一个指向目标序列最后一个被覆盖元素的下一个元素的迭代器。</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// copy_n algorithm example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::copy</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  int myints[]=&#123;10,20,30,40,50,60,70&#125;;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line"></span><br><span class="line">  myvector.resize(7);   // allocate space for 7 elements</span><br><span class="line"></span><br><span class="line">  std::copy_n ( myints, 7, myvector.begin() );</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (std::vector&lt;int&gt;::iterator it = myvector.begin(); it!=myvector.end(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy_n/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
-<p>Output:  </p>
-<p>myvector contains: 10 20 30 40 50 60 70</p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between first and last: Performs an assignment operation for each element in the range.  </p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The objects in the range of n elements pointed by first are accessed (each object is accessed exactly once).<br>The objects in the range between result and the returned value are modified (each object is modified exactly once).  </p>
-<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if either an element assignment or an operation on iterators throws.<br>Note that invalid arguments cause <em>undefined behavior</em>.  </p>
-<p>——————————————————————————————————————————————————————————————————</p>
-<p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
-<p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#x64;&#x65;&#114;&#x67;&#117;&#x61;&#110;&#103;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;">&#x63;&#x6f;&#x64;&#x65;&#114;&#x67;&#117;&#x61;&#110;&#103;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;</a></p>
-<p>2014-9-11</p>
-<p>于GDUT</p>
-<p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39187145">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL算法//" class="article-tag-list-link color1">STL算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy-n9/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-stlalgorithm算法copy6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy6/" target="_blank">STLalgorithm算法copy(6)</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy6/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>STLalgorithm算法copy(6)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy/">http://www.cplusplus.com/reference/algorithm/copy/</a></p>
-<p>function template</p>
-<algorithm>
-
-<h1 id="std-copy"><a href="#std-copy" class="headerlink" title="std::copy"></a>std::copy</h1><p>template &lt;class InputIterator, class OutputIterator&gt;<br>  OutputIterator copy (InputIterator first, InputIterator last, OutputIterator result);</p>
-<p>Copy range of elements</p>
-<p>Copies the elements in the range <code>[first,last)</code> into the range beginning at result.  </p>
-<p>复制范围[first,last）里面的元素到result的位置。（将会覆盖原来的数据）</p>
-<p>例子：</p>
-<p>#include <iostream><br>#include <algorithm><br>#include <vector><br>#include <array><br>using namespace std;<br>void copy1(){<br>    vector<int> v1{1,5,7,8,9};<br>    vector<int> v2{100,200,300};<br>    array&lt;int,7&gt; ai{888,666.555,222,111,555,777};<br>    vector<double> vd{9.9,8.8,7.7,};</p>
-<pre><code>cout&lt;&lt;&quot;at first,v1=&quot;;
-for(int &amp;i:v1)
-    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-cout&lt;&lt;endl;
-
-cout&lt;&lt;&quot;at first,v2=&quot;;
-for(int &amp;i:v2)
-    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-cout&lt;&lt;endl;
-
-auto it=copy(v2.begin(),v2.end(),v1.begin());
-cout&lt;&lt;&quot;after copy(v2.begin(),v2.end(),v1.begin())&quot;&lt;&lt;endl;
-cout&lt;&lt;&quot;v1=&quot;;
-for(int &amp;i:v1)
-    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-cout&lt;&lt;endl;
-
- cout&lt;&lt;&quot;v2=&quot;;
-for(int &amp;i:v2)
-    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-cout&lt;&lt;endl;
-cout&lt;&lt;&quot;the return it is :\*it=&quot;&lt;&lt;\*it&lt;&lt;endl;
-</code></pre>
-<p>}</p>
-<p>运行截图：</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013540_14837935310308.jpg">  </p>
-<p>The function returns an iterator to the end of the destination range (which points to the element following the last element copied).</p>
-<p>该函数返回一个迭代器，指向目标范围的最后（即last的下一个元素）（上面例子的8）</p>
-<p>The ranges shall not overlap in such a way that result points to an element in the range [first,last). For such cases, see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/copy_backward">copy_backward</a>.</p>
-<p>result不应该指向[first,last)中的任一元素，如果需要，应该使用copy_backward.（这句话很有问题，因为copy_backward也有一句几乎一样的话，具体需求请具体分析）</p>
-<p>例子：</p>
-<p>#include <iostream><br>#include <algorithm><br>#include <vector><br>#include <array><br>using namespace std;<br>void copy2(){<br>    vector<int> v1{1,5,7,8,9};</p>
-<pre><code>cout&lt;&lt;&quot;at first,v1=&quot;;
-for(int &amp;i:v1)
-    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-cout&lt;&lt;endl;
-
-
-auto it=copy(v1.begin(),v1.end(),v1.begin()+3);
-cout&lt;&lt;&quot;after copy(v1.begin(),v1.end(),v1.begin()+3)&quot;&lt;&lt;endl;
-cout&lt;&lt;&quot;v1=&quot;;
-for(int &amp;i:v1)
-    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-cout&lt;&lt;endl;
-cout&lt;&lt;&quot;the return it is :\*it=&quot;&lt;&lt;\*it&lt;&lt;endl;
-</code></pre>
-<p>}</p>
-<p>运行截图：</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013540_28719397779714.jpg">  </p>
-<p>The behavior of this function template is equivalent to:  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class InputIterator, class OutputIterator&gt;</span><br><span class="line">  OutputIterator copy (InputIterator first, InputIterator last, OutputIterator result)</span><br><span class="line">&#123;</span><br><span class="line">  while (first!=last) &#123;</span><br><span class="line">    *result = *first;</span><br><span class="line">    ++result; ++first;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first, last</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial and final positions in a sequence to be copied. The range used is <code>[first,last)</code>, which contains all the elements between first and last, including the element pointed by first but not the element pointed by last.<br>要复制的范围。</p>
-<p>result</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/OutputIterator">Output iterator</a> to the initial position in the destination sequence.<br>This shall not point to any element in the range <code>[first,last)</code>.<br>要覆盖数据的开头。<br>不应该是[first,last)里的任一元素。</p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator to the end of the destination range where elements have been copied.  </p>
-<p>返回一个指向目标范围最后一个元素的迭代器。</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// copy algorithm example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::copy</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  int myints[]=&#123;10,20,30,40,50,60,70&#125;;</span><br><span class="line">  std::vector&lt;int&gt; myvector (7);</span><br><span class="line"></span><br><span class="line">  std::copy ( myints, myints+7, myvector.begin() );</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (std::vector&lt;int&gt;::iterator it = myvector.begin(); it!=myvector.end(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
-<p>Output:  </p>
-<p>myvector contains: 10 20 30 40 50 60 70</p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between first and last: Performs an assignment operation for each element in the range.  </p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The objects in the range <code>[first,last)</code> are accessed (each object is accessed exactly once).<br>The objects in the range between result and the returned value are modified (each object is modified exactly once).  </p>
-<p>result以及返回值之间的所有元素都将会被修改。</p>
-<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if either an element assignment or an operation on iterators throws.  </p>
-<p>Note that invalid arguments cause <em>undefined behavior</em>.</p>
-<p>——————————————————————————————————————————————————————————————————</p>
-<p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
-<p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#100;&#x65;&#x72;&#103;&#117;&#x61;&#110;&#103;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#109;">&#99;&#111;&#100;&#x65;&#x72;&#103;&#117;&#x61;&#110;&#103;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#109;</a></p>
-<p>2014-9-8</p>
-<p>于GDUT</p>
-<p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39135747">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL算法//" class="article-tag-list-link color1">STL算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95copy6/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-stlalgorithm算法count-if11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95count-if11/" target="_blank">STLalgorithm算法count_if(11)</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95count-if11/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>STLalgorithm算法count_if(11)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/count/_if/">http://www.cplusplus.com/reference/algorithm/count\_if/</a></p>
-<p>function template</p>
-<algorithm>
-
-<h1 id="std-count-if"><a href="#std-count-if" class="headerlink" title="std::count_if"></a>std::count_if</h1><p>template &lt;class InputIterator, class Predicate&gt;<br>  typename iterator_traits<InputIterator>::difference_type<br>    count_if (InputIterator first, InputIterator last, UnaryPredicate pred);</p>
-<p>Return number of elements in range satisfying condition</p>
-<p>Returns the number of elements in the range <code>[first,last)</code> for which pred is true.<br>返回范围内对每个元素调用pred返回true的次数。例子：</p>
-<p>#include <iostream><br>#include <algorithm><br>#include <vector><br>#include <array><br>using namespace std;<br>bool ismod2(int i){<br>    return i%2==0;<br>}<br>void countif(){<br>    vector<int> vi{1,5,7,8,9,9,8,5,9};<br>    array&lt;int,7&gt; ai{888,666,555,222,111,555,777};<br>    cout&lt;&lt;”vi=”;<br>    for(int &amp;i:vi)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;</p>
-<pre><code>int cv=count\_if(vi.begin(),vi.end(),ismod2);
-cout&lt;&lt;&quot;能被2整除的一共有&quot;&lt;&lt;cv&lt;&lt;&quot;个&quot;&lt;&lt;endl;
-
-cout&lt;&lt;&quot;ai=&quot;;
-for(int &amp;i:ai)
-    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-cout&lt;&lt;endl;
-int ca=count\_if(ai.begin(),ai.end(),\[\](int i)&#123;return i&gt;500;&#125;);
-cout&lt;&lt;&quot;大于500的一共有&quot;&lt;&lt;ca&lt;&lt;&quot;个&quot;&lt;&lt;endl;
-</code></pre>
-<p>}</p>
-<p>运行截图：<img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013503_5803417439837.jpg">  </p>
-<p>The behavior of this function template is equivalent to:  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class InputIterator, class UnaryPredicate&gt;</span><br><span class="line">  typename iterator_traits&lt;InputIterator&gt;::difference_type</span><br><span class="line">    count_if (InputIterator first, InputIterator last, UnaryPredicate pred)</span><br><span class="line">&#123;</span><br><span class="line">  typename iterator_traits&lt;InputIterator&gt;::difference_type ret = 0;</span><br><span class="line">  while (first!=last) &#123;</span><br><span class="line">    if (pred(*first)) ++ret;</span><br><span class="line">    ++first;</span><br><span class="line">  &#125;</span><br><span class="line">  return ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first, last</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial and final positions of the sequence of elements. The range used is <code>[first,last)</code>, which contains all the elements between first and last, including the element pointed by first but not the element pointed by last.<br>元素的范围。</p>
-<p>pred</p>
-<p>Unary function that accepts an element in the range as argument, and returns a value convertible to <code>bool</code>. The value returned indicates whether the element is counted by this function.<br>The function shall not modify its argument.<br>This can either be a function pointer or a function object.<br>接受一个元素作为参数兵返回一个bool值的一元函数。</p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>The number of elements in the range <code>[first,last)</code> for which pred does not return <code>false</code>.<br>The return type (<a target="_blank" rel="noopener" href="http://www.cplusplus.com/iterator_traits">iterator_traits</a><InputIterator>::difference_type) is a signed integral type.<br>返回范围内对每个元素调用pred返回true的次数。  </p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// count_if example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::count_if</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">bool IsOdd (int i) &#123; return ((i%2)==1); &#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line">  for (int i=1; i&lt;10; i++) myvector.push_back(i); // myvector: 1 2 3 4 5 6 7 8 9</span><br><span class="line"></span><br><span class="line">  int mycount = count_if (myvector.begin(), myvector.end(), IsOdd);</span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains &quot; &lt;&lt; mycount  &lt;&lt; &quot; odd values.\n&quot;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/count_if/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
-<p>Output:  </p>
-<p>myvector contains 5 odd values. </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between first and last: Calls pred once for each element.  </p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The objects in the range <code>[first,last)</code> are accessed (each object is accessed exactly once).  </p>
-<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if pred trhows or if any of the operations on iterators throws.<br>Note that invalid arguments cause <em>undefined behavior</em>.  </p>
-<p>——————————————————————————————————————————————————————————————————</p>
-<p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
-<p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#x64;&#101;&#114;&#103;&#117;&#97;&#x6e;&#103;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#x6d;">&#x63;&#x6f;&#x64;&#101;&#114;&#103;&#117;&#97;&#x6e;&#103;&#x40;&#103;&#109;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#x6d;</a></p>
-<p>2014-9-11</p>
-<p>于GDUT</p>
-<p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39203247">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL算法//" class="article-tag-list-link color1">STL算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95count-if11/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-stlalgorithm算法count10" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95count10/" target="_blank">STLalgorithm算法count(10)</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95count10/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>STLalgorithm算法count(10)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/count/">http://www.cplusplus.com/reference/algorithm/count/</a></p>
-<p>function template</p>
-<algorithm>
-
-<h1 id="std-count"><a href="#std-count" class="headerlink" title="std::count"></a>std::count</h1><p>template &lt;class InputIterator, class T&gt;<br>  typename iterator_traits<InputIterator>::difference_type<br>    count (InputIterator first, InputIterator last, const T&amp; val);</p>
-<p>Count appearances of value in range</p>
-<p>Returns the number of elements in the range <code>[first,last)</code> that compare equal to val.  </p>
-<p>返回first,last之间和元素val相等的元素的个数。</p>
-<p>例子：</p>
-<p>#include <iostream><br>#include <algorithm><br>#include <vector><br>#include <array><br>using namespace std;<br>void count1(){<br>    vector<int> vi{1,5,7,8,9,9,8,5,9};<br>    array&lt;int,7&gt; ai{888,666,555,222,111,555,777};<br>    cout&lt;&lt;”vi=”;<br>    for(int &amp;i:vi)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;</p>
-<pre><code>int cv=count(vi.begin(),vi.end(),9);
-cout&lt;&lt;&quot;9 在vi中出现了&quot;&lt;&lt;cv&lt;&lt;&quot;次&quot;&lt;&lt;endl;
-
-cout&lt;&lt;&quot;ai=&quot;;
-for(int &amp;i:ai)
-    cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-cout&lt;&lt;endl;
-int ca=count(ai.begin(),ai.end(),555);
-cout&lt;&lt;&quot;555 在ai中出现了&quot;&lt;&lt;ca&lt;&lt;&quot;次&quot;&lt;&lt;endl;
-</code></pre>
-<p>}</p>
-<p>运行结果：</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013458_20769288879335.jpg">  </p>
-<p>The function uses <code>operator==</code> to compare the individual elements to val.  </p>
-<p>该函数使用operator==来比较各个元素和val是否相等。</p>
-<p>The behavior of this function template is equivalent to:  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class InputIterator, class T&gt;</span><br><span class="line">  typename iterator_traits&lt;InputIterator&gt;::difference_type</span><br><span class="line">    count (InputIterator first, InputIterator last, const T&amp; val)</span><br><span class="line">&#123;</span><br><span class="line">  typename iterator_traits&lt;InputIterator&gt;::difference_type ret = 0;</span><br><span class="line">  while (first!=last) &#123;</span><br><span class="line">    if (*first == val) ++ret;</span><br><span class="line">    ++first;</span><br><span class="line">  &#125;</span><br><span class="line">  return ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first, last</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial and final positions of the sequence of elements. The range used is <code>[first,last)</code>, which contains all the elements between first and last, including the element pointed by first but not the element pointed by last.<br>比较的范围。</p>
-<p>val</p>
-<p>Value to match.<br>T shall be a type supporting comparisons with the elements pointed by InputIterator using <code>operator==</code> (with the elements as left-hand side operands, and val as right-hand side).<br>要比较的值。</p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>The number of elements in the range <code>[first,last)</code> that compare equal to val.<br>The return type (<a target="_blank" rel="noopener" href="http://www.cplusplus.com/iterator_traits">iterator_traits</a><InputIterator>::difference_type) is a signed integral type.  </p>
-<p>匹配的元素的个数。</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// count algorithm example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::count</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  // counting elements in array:</span><br><span class="line">  int myints[] = &#123;10,20,30,30,20,10,10,20&#125;;   // 8 elements</span><br><span class="line">  int mycount = std::count (myints, myints+8, 10);</span><br><span class="line">  std::cout &lt;&lt; &quot;10 appears &quot; &lt;&lt; mycount &lt;&lt; &quot; times.\n&quot;;</span><br><span class="line"></span><br><span class="line">  // counting elements in container:</span><br><span class="line">  std::vector&lt;int&gt; myvector (myints, myints+8);</span><br><span class="line">  mycount = std::count (myvector.begin(), myvector.end(), 20);</span><br><span class="line">  std::cout &lt;&lt; &quot;20 appears &quot; &lt;&lt; mycount  &lt;&lt; &quot; times.\n&quot;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/count/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
-<p>Output:  </p>
-<p>10 appears 3 times.<br>20 appears 3 times. </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between first and last: Compares once each element.  </p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The objects in the range <code>[first,last)</code> are accessed (each object is accessed exactly once).  </p>
-<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if either an element comparison or an operation on an iterator throws.  </p>
-<p>Note that invalid arguments cause <em>undefined behavior</em>.</p>
-<p>——————————————————————————————————————————————————————————————————</p>
-<p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
-<p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#101;&#114;&#103;&#x75;&#97;&#110;&#x67;&#x40;&#x67;&#109;&#97;&#105;&#108;&#46;&#x63;&#111;&#x6d;">&#x63;&#x6f;&#100;&#101;&#114;&#103;&#x75;&#97;&#110;&#x67;&#x40;&#x67;&#109;&#97;&#105;&#108;&#46;&#x63;&#111;&#x6d;</a></p>
-<p>2014-9-11</p>
-<p>于GDUT</p>
-<p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39203027">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL算法//" class="article-tag-list-link color1">STL算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95count10/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-stlalgorithm算法equal-range13" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2401,7 +2401,7 @@ cout&lt;&lt;endl;
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#x65;&#114;&#x67;&#x75;&#97;&#110;&#x67;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;">&#x63;&#111;&#x64;&#x65;&#114;&#x67;&#x75;&#97;&#110;&#x67;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#x65;&#x72;&#x67;&#117;&#x61;&#x6e;&#x67;&#64;&#x67;&#109;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;">&#99;&#x6f;&#100;&#x65;&#x72;&#x67;&#117;&#x61;&#x6e;&#x67;&#64;&#x67;&#109;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;</a></p>
 <p>2014-9-11</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -2552,7 +2552,7 @@ else
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#x64;&#x65;&#x72;&#x67;&#x75;&#97;&#110;&#x67;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#99;&#111;&#x64;&#x65;&#x72;&#x67;&#x75;&#97;&#110;&#x67;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#x64;&#x65;&#114;&#x67;&#x75;&#97;&#x6e;&#x67;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;">&#x63;&#x6f;&#x64;&#x65;&#114;&#x67;&#x75;&#97;&#x6e;&#x67;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;</a></p>
 <p>2014-9-11</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -2613,7 +2613,7 @@ else
 
 
   
-    <article id="post-stlalgorithm算法fill-n（15）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-stlalgorithm算法fill14" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -2621,7 +2621,7 @@ else
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95fill-n%EF%BC%8815%EF%BC%89/" target="_blank">STLalgorithm算法fill_n（15）</a>
+	  <a class="article-title" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95fill14/" target="_blank">STLalgorithm算法fill(14)</a>
   
     </h1>
   
@@ -2629,7 +2629,7 @@ else
 
   
   
-<a href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95fill-n%EF%BC%8815%EF%BC%89/" class="archive-article-date">
+<a href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95fill14/" class="archive-article-date">
         <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
 </a>
 
@@ -2642,71 +2642,54 @@ else
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>STLalgorithm算法fill_n（15）</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/fill/_n/">http://www.cplusplus.com/reference/algorithm/fill\_n/</a></p>
+    <p>STLalgorithm算法fill(14)</p>
+<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/fill/">http://www.cplusplus.com/reference/algorithm/fill/</a></p>
 <p>function template</p>
 <algorithm>
 
-<h1 id="std-fill-n"><a href="#std-fill-n" class="headerlink" title="std::fill_n"></a>std::fill_n</h1><ul>
-<li>  C++98</li>
-<li>  C++11</li>
-</ul>
-<p>template &lt;class OutputIterator, class Size, class T&gt;<br>  OutputIterator fill_n (OutputIterator first, Size n, const T&amp; val); </p>
-<p>Fill sequence with value</p>
-<p>Assigns val to the first n elements of the sequence pointed by first.<br>从first开始，将之后n个元素的值变为val.<br>例子：</p>
+<h1 id="std-fill"><a href="#std-fill" class="headerlink" title="std::fill"></a>std::fill</h1><p>template &lt;class ForwardIterator, class T&gt;<br>  void fill (ForwardIterator first, ForwardIterator last, const T&amp; val);</p>
+<p>Fill range with value</p>
+<p>Assigns val to all the elements in the range <code>[first,last)</code>.使用val填满范围内的元素。  </p>
+<p>例子：</p>
 <p>#include <iostream><br>#include <algorithm><br>#include <vector><br>#include <array><br>using namespace std;</p>
-<p>void filln(){<br>    vector<int> vi{1,5,7,8,9,9,8,5,9};<br>    cout&lt;&lt;”at first,vi=”;<br>    for(int &amp;i:vi)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;</p>
-<pre><code>auto it=fill\_n(vi.begin()+3,4,1000);
-cout&lt;&lt;&quot;after     fill\_n(vi.begin()+3,4,1000),\\nvi=&quot;;
+<p>void fill2(){<br>    vector<int> vi{1,5,7,8,9,9,8,5,9};<br>    cout&lt;&lt;”at first,vi=”;<br>    for(int &amp;i:vi)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;</p>
+<pre><code>fill(vi.begin(),vi.end()-3,1000);
+ cout&lt;&lt;&quot;after     fill(vi.begin(),vi.end()-3,1000),\\nvi=&quot;;
 for(int &amp;i:vi)
     cout&lt;&lt;i&lt;&lt;&quot; &quot;;
 cout&lt;&lt;endl;
-cout&lt;&lt;&quot;it=&quot;&lt;&lt;\*it&lt;&lt;endl;
 </code></pre>
 <p>}</p>
-<p>运行截图：<img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013524_10537096248620.jpg">  </p>
+<p>运行截图：<img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013519_9316109749544.jpg">  </p>
 <p>The behavior of this function template is equivalent to:  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class OutputIterator, class Size, class T&gt;</span><br><span class="line">  OutputIterator fill_n (OutputIterator first, Size n, const T&amp; val)</span><br><span class="line">&#123;</span><br><span class="line">  while (n&gt;0) &#123;</span><br><span class="line">    *first = val;</span><br><span class="line">    ++first; --n;</span><br><span class="line">  &#125;</span><br><span class="line">  return first;     // since C++11</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">template &lt;class ForwardIterator, class T&gt;</span><br><span class="line">  void fill (ForwardIterator first, ForwardIterator last, const T&amp; val)</span><br><span class="line">&#123;</span><br><span class="line">  while (first != last) &#123;</span><br><span class="line">    *first = val;</span><br><span class="line">    ++first;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/OutputIterator">Output iterators</a> to the initial position in a sequence of at least n elements that support being assigned a value of type T.<br>开始的位置。</p>
-<p>n</p>
-<p>Number of elements to fill.  </p>
-<ul>
-<li>  C++98</li>
-<li>  C++11</li>
-</ul>
-<p>If negative, the function does nothing.  </p>
-<p>Size shall be (convertible to) an integral type.<br>要被调整的元素个数。（如果是负数，不会做任何事情）</p>
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first, last</p>
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/ForwardIterator">Forward iterators</a> to the initial and final positions in a sequence of elements that support being assigned a value of type T. The range filled is <code>[first,last)</code>, which contains all the elements between first and last, including the element pointed by first but not the element pointed by last.<br>要填充的范围。</p>
 <p>val</p>
-<p>Value to be used to fill the range.<br>要填充的值。</p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><ul>
-<li>  C++98</li>
-<li>  C++11</li>
-</ul>
-<p>An iterator pointing to the element that follows the last element filled.  </p>
-<p>返回值为一个指向最后一个被填充的元素的下一个元素的位置。</p>
+<p>Value to assign to the elements in the filled range.<br>填充的值。</p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// fill_n example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::fill_n</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector (8,10);        // myvector: 10 10 10 10 10 10 10 10</span><br><span class="line"></span><br><span class="line">  std::fill_n (myvector.begin(),4,20);     // myvector: 20 20 20 20 10 10 10 10</span><br><span class="line">  std::fill_n (myvector.begin()+3,3,33);   // myvector: 20 20 20 33 33 33 10 10</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (std::vector&lt;int&gt;::iterator it=myvector.begin(); it!=myvector.end(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// fill algorithm example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::fill</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector (8);                       // myvector: 0 0 0 0 0 0 0 0</span><br><span class="line"></span><br><span class="line">  std::fill (myvector.begin(),myvector.begin()+4,5);   // myvector: 5 5 5 5 0 0 0 0</span><br><span class="line">  std::fill (myvector.begin()+3,myvector.end()-2,8);   // myvector: 5 5 5 8 8 8 0 0</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (std::vector&lt;int&gt;::iterator it=myvector.begin(); it!=myvector.end(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/fill_n/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/fill/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
-<p>myvector contains: 20 20 20 33 33 33 10 10 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in n: Assigns a value to each element.  </p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The n first objects at the range pointed by first are modified (each object is modified exactly once).  </p>
+<p>myvector contains: 5 5 5 8 8 8 0 0 </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between first and last: Assigns a value to each element.  </p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The objects in the range <code>[first,last)</code> are modified (each object is accessed exactly once).  </p>
 <h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if either an element assignment or an operation on an iterator throws.<br>Note that invalid arguments cause <em>undefined behavior</em>.  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#x65;&#114;&#103;&#x75;&#x61;&#110;&#x67;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#x63;&#111;&#x64;&#x65;&#114;&#103;&#x75;&#x61;&#110;&#x67;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#x64;&#101;&#114;&#x67;&#x75;&#x61;&#110;&#x67;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#99;&#111;&#x64;&#101;&#114;&#x67;&#x75;&#x61;&#110;&#x67;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a></p>
 <p>2014-9-11</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39204903">原文链接</a></p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39204861">原文链接</a></p>
 
     
 
@@ -2733,7 +2716,7 @@ cout&lt;&lt;&quot;it=&quot;&lt;&lt;\*it&lt;&lt;endl;
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95fill-n%EF%BC%8815%EF%BC%89/">展开全文 >></a>
+      <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95fill14/">展开全文 >></a>
     </p>
     
 
