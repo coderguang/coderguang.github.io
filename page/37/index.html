@@ -861,115 +861,6 @@ return 0;
 
 
   
-    <article id="post-笔试面试1用c实现c库函数itoaatoi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%951%E7%94%A8c%E5%AE%9E%E7%8E%B0c%E5%BA%93%E5%87%BD%E6%95%B0itoaatoi/" target="_blank">笔试面试1用C实现C库函数itoa,atoi</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%951%E7%94%A8c%E5%AE%9E%E7%8E%B0c%E5%BA%93%E5%87%BD%E6%95%B0itoaatoi/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>笔试面试1用C实现C库函数itoa,atoi</p>
-<p>要求用C实现C库函数itoa或者是atoi.也就是字符串和数字的相互转换。</p>
-<p>其实这是一个非常简单的问题。</p>
-<p>但是有次笔试我没有理解好题意，也没有想到其实这就是一个如何将数字以字符串的方式存放。</p>
-<p>这就是从来不刷笔试题面试题的后果啊，有时候都不知道题目究竟是想考察什么东西！</p>
-<p>说实话，C的一些特性我不是特别熟悉，不同于C++，C++的特性我可以说是非常熟悉了，所以要用C来写对我来说也会多少有一点影响。</p>
-<p>itoa 的实现</p>
-<p>#include &lt;stdio.h&gt;<br>#include &lt;conio.h&gt;//for getch()<br>#include &lt;memory.h&gt;//for memset<br>void  itoa(long int value,char *string){//value为一个int值，string是用来存放转换后的字符串的<br>      int pos=0;//存放string的下标<br>      if(value==0)<br>  string[pos]=’0’;<br>      else{<br>        while(value&gt;0){<br>     int temp=value%10;<br>     string[pos++]=temp+’0’;//以字符串的形式存放，将数字temp对应的字符存到string中<br>     value=value/10;<br>      };//这时候，数字以逆序的方式放在了string中，需在逆序一次将顺序转回来<br>        for(int i=0;i&lt;pos-1-i;i++){<br>    string[i]=string[i]^string[pos-1-i];<br>       string[pos-1-i]=string[i]^string[pos-1-i];<br>       string[i]=string[i]^string[pos-1-i];<br>}<br>      }<br>      }<br>int main(){<br>    long int num;//范围为 -2147438648～+2141438647.超过该范围会出错<br>    int counts=0;<br>char str[100];<br>    while(counts++&lt;100){<br>    memset(str,’\0’,strlen(str));//清空上次的结果，否则的话会影响下次结果，因为上次结果的字符串会余留在str里面<br>printf(“please enter the value(int):”);<br>scanf(“%d”,&amp;num);<br>itoa(num,str);<br>printf(“  the  string  is :(string):%s\n\n”,str);<br>    }<br>    getch();</p>
-<pre><code>&#125;
-</code></pre>
-<p>运行截图：</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224012818_41541997983198.jpg">  </p>
-<p>可以看到,最后两个结果和和一开始的不一样，最后一个是因为范围溢出了，倒数第二个是因为多了一个0在开始的地方，而我的代码没有考虑这种非法输入。</p>
-<p>atoi的实现就更简单了</p>
-<p>#include &lt;stdio.h&gt;<br>#include &lt;conio.h&gt;//for getch()<br>#include &lt;memory.h&gt;//for memset<br>long int  atoi(const char *string){<br>      long int sum=0;<br>      int len=strlen(string);<br>      int i;<br>      long int multi=1;<br>      for(i=len-1;i&gt;=0;i–){<br>    sum=sum+(string[i]-‘0’)*multi;<br>    multi=multi*10;<br>  }<br>      return sum;<br>      }<br>int main(){<br>    long int num;//范围为 -2147438648～+2141438647.超过该范围会出错<br>    int counts=0;<br>char str[100];<br>    while(counts++&lt;100){<br>    memset(str,’\0’,strlen(str));//清空上次的结果，否则的话会影响下次结果，因为上次结果的字符串会余留在str里面<br>printf(“please enter the string:”);<br>scanf(“%s”,&amp;str);<br>num=atoi(str);<br>printf(“ the value is :(int):   %d\n\n”,num);<br>    }<br>    getch();</p>
-<pre><code>&#125;
-</code></pre>
-<p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
-<p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#x64;&#101;&#x72;&#103;&#x75;&#97;&#x6e;&#103;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#109;">&#99;&#x6f;&#x64;&#101;&#x72;&#103;&#x75;&#97;&#x6e;&#103;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#109;</a></p>
-<p>2014-10-31</p>
-<p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/40649941">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔试算法//" class="article-tag-list-link color5">笔试算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%951%E7%94%A8c%E5%AE%9E%E7%8E%B0c%E5%BA%93%E5%87%BD%E6%95%B0itoaatoi/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-笔试面试2用c实现c库的strcpy函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1063,7 +954,7 @@ return 0;
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#111;&#100;&#x65;&#x72;&#x67;&#x75;&#x61;&#x6e;&#x67;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;">&#x63;&#111;&#100;&#x65;&#x72;&#x67;&#x75;&#x61;&#x6e;&#x67;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#x64;&#101;&#x72;&#103;&#x75;&#x61;&#x6e;&#x67;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#111;&#109;">&#99;&#111;&#x64;&#101;&#x72;&#103;&#x75;&#x61;&#x6e;&#x67;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#111;&#109;</a></p>
 <p>2014-10-31</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -1178,7 +1069,7 @@ return 0;
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#100;&#101;&#x72;&#x67;&#x75;&#97;&#110;&#x67;&#x40;&#103;&#109;&#97;&#105;&#108;&#46;&#x63;&#111;&#x6d;">&#99;&#111;&#100;&#101;&#x72;&#x67;&#x75;&#97;&#110;&#x67;&#x40;&#103;&#109;&#97;&#105;&#108;&#46;&#x63;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#x63;&#111;&#100;&#x65;&#x72;&#x67;&#x75;&#x61;&#x6e;&#x67;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x63;&#111;&#100;&#x65;&#x72;&#x67;&#x75;&#x61;&#x6e;&#x67;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;</a></p>
 <p>2014-11-5</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -1301,7 +1192,7 @@ return 0;
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#100;&#101;&#x72;&#x67;&#117;&#97;&#110;&#x67;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#111;&#109;">&#99;&#111;&#100;&#101;&#x72;&#x67;&#117;&#97;&#110;&#x67;&#x40;&#103;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#111;&#109;</a></p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#x65;&#x72;&#103;&#x75;&#x61;&#x6e;&#103;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x63;&#x6f;&#100;&#x65;&#x72;&#103;&#x75;&#x61;&#x6e;&#103;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a></p>
 <p>2014-11-5</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -1333,6 +1224,114 @@ return 0;
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2016/02/24/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%954%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%BE%AA%E7%8E%AF%E7%A7%BB%E4%BD%8D%E7%AE%97%E6%B3%95/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-笔试面试5实现c库函数strlen" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%955%E5%AE%9E%E7%8E%B0c%E5%BA%93%E5%87%BD%E6%95%B0strlen/" target="_blank">笔试面试5实现C库函数strlen</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%955%E5%AE%9E%E7%8E%B0c%E5%BA%93%E5%87%BD%E6%95%B0strlen/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>笔试面试5实现C库函数strlen</p>
+<p>这是个非常简单的问题。</p>
+<p>strlen（str）就是计算str一共有多少个字符。</p>
+<p>而字符串存放的时候，会在最后一个字符的后面加一个’\0’。</p>
+<p>利用这个即可编写自己的strlen函数。</p>
+<p>源码：</p>
+<p>#include&lt;stdio.h&gt;<br>#include &lt;conio.h&gt;<br>int MyStrlen(char str[]){<br>if(str==NULL)//判断str是否有效<br> return 0;<br>int counts=0;//直接以counts作为计数器<br>while(str[counts++]!=’\0’)<br>           ;<br>return counts-1;</p>
+<p>}<br>int main()<br>{<br> char str1[]=”hello”;//5<br>char *str2=”OK”;//2<br>char *str3=””;//0<br>char *str4;//0<br>printf(“str1=%s\n”,str1);<br>printf(“strlen(str1)=%d\n”,MyStrlen(str1));</p>
+<p>printf(“str2=%s\n”,str2);<br>printf(“strlen(str2)=%d\n”,MyStrlen(str2));</p>
+<p>printf(“str3=%s\n”,str3);<br>printf(“strlen(str3)=%d\n”,MyStrlen(str3));</p>
+<p>printf(“str4=%s\n”,str4);<br>printf(“strlen(str4)=%d\n”,MyStrlen(str4));<br> getch();</p>
+<p>}</p>
+<p>测试结果：</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224012552_296128410102904.jpg">  </p>
+<p>——————————————————————————————————————————————————————————————————</p>
+<p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
+<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>author:天下无双  </p>
+<p>Email:<a href="mailto:&#99;&#x6f;&#x64;&#x65;&#114;&#x67;&#x75;&#97;&#110;&#x67;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109;">&#99;&#x6f;&#x64;&#x65;&#114;&#x67;&#x75;&#97;&#110;&#x67;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109;</a></p>
+<p>2014-11-5</p>
+<p>于GDUT</p>
+<p>——————————————————————————————————————————————————————————————————</p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/40833219">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/笔试算法//" class="article-tag-list-link color5">笔试算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%955%E5%AE%9E%E7%8E%B0c%E5%BA%93%E5%87%BD%E6%95%B0strlen/">展开全文 >></a>
     </p>
     
 

@@ -205,6 +205,138 @@
 
 
   
+    <article id="post-stl中的back方法（12）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/stl%E4%B8%AD%E7%9A%84back%E6%96%B9%E6%B3%95%EF%BC%8812%EF%BC%89/" target="_blank">STL中的back()方法（12）</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/stl%E4%B8%AD%E7%9A%84back%E6%96%B9%E6%B3%95%EF%BC%8812%EF%BC%89/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>STL中的back()方法（12）</p>
+<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/back/">http://www.cplusplus.com/reference/vector/vector/back/</a></p>
+<p>front和back我觉得是一对，一个头，一个尾，属性都差不多，详见：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38458047">http://blog.csdn.net/qq844352155/article/details/38458047</a></p>
+<p>public member function</p>
+<vector>
+
+<h1 id="std-vector-back"><a href="#std-vector-back" class="headerlink" title="std::vector::back"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::back</h1><p> reference back();<br>const_reference back() const;</p>
+<p>Access last element</p>
+<p>Returns a reference to the last element in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>.  </p>
+<p>返回最后一个元素的引用。</p>
+<p>Unlike member <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">vector::end</a>, which returns an iterator just past this element, this function returns a direct reference.  </p>
+<p>和end不一样的是，end是返回一个指向超尾元素的迭代器，而这个函数是直接返回一个引用。</p>
+<p>Calling this function on an <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::empty">empty</a> container causes undefined behavior.  </p>
+<p>对一个空的容器调用该方法会导致未知的行为。</p>
+<p>例子：</p>
+<p>#include <iostream><br>#include <vector><br>#include <iterator><br>using namespace std;<br>int main()<br>{<br>vector<int> vi;<br>cout&lt;&lt;vi.back()&lt;&lt;endl;  </p>
+<p>}  </p>
+<p>在linux下g++编译运行的结果</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015048_51391406590587.jpg">  </p>
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>A reference to the last element in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>.<br>返回值是一个指向vector中最后一个元素的引用。  </p>
+<p>If the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> object is const-qualified, the function returns a const_reference. Otherwise, it returns a reference.</p>
+<p>如果vector对象本身具有const属性，那么返回的将是const引用，否则是一般的引用。</p>
+<p>Member types reference and const_reference are the reference types to the elements of the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> (see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector#types">member types</a>).</p>
+<p>返回值都是属于引用类型。</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// vector::back</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line"></span><br><span class="line">  myvector.push_back(10);</span><br><span class="line"></span><br><span class="line">  while (myvector.back() != 0)</span><br><span class="line">  &#123;</span><br><span class="line">    myvector.push_back ( myvector.back() -1 );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (unsigned i=0; i&lt;myvector.size() ; i++)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; myvector[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/back/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p>Output:  </p>
+<p>myvector contains: 10 9 8 7 6 5 4 3 2 1 0 </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
+<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>No changes.  </p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is accessed (neither the const nor the non-const versions modify the container).</p>
+<p>容器将被访问。</p>
+<p>The reference returned can be used to access or modify elements. Concurrently accessing or modifying different elements is safe.  </p>
+<p>返回的引用可以用来访问或者是修改元素，并且这些操作都是安全的。</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the container is not <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::empty">empty</a>, the function never throws exceptions (no-throw guarantee).</p>
+<p>如果容器非空，该方法不会抛出异常。</p>
+<p>Otherwise, it causes <em>undefined behavior</em>.</p>
+<p>如果容器为空，该方法会导致未定义的行为。</p>
+<p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
+<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>2014-8-12</p>
+<p>于GDUT</p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38516647">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL容器//" class="article-tag-list-link color1">STL容器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/stl%E4%B8%AD%E7%9A%84back%E6%96%B9%E6%B3%95%EF%BC%8812%EF%BC%89/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-stl中的assign方法（19）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -348,138 +480,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2016/02/24/stl%E4%B8%AD%E7%9A%84assign%E6%96%B9%E6%B3%95%EF%BC%8819%EF%BC%89/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-stl中的back方法（12）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/stl%E4%B8%AD%E7%9A%84back%E6%96%B9%E6%B3%95%EF%BC%8812%EF%BC%89/" target="_blank">STL中的back()方法（12）</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/stl%E4%B8%AD%E7%9A%84back%E6%96%B9%E6%B3%95%EF%BC%8812%EF%BC%89/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>STL中的back()方法（12）</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/back/">http://www.cplusplus.com/reference/vector/vector/back/</a></p>
-<p>front和back我觉得是一对，一个头，一个尾，属性都差不多，详见：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38458047">http://blog.csdn.net/qq844352155/article/details/38458047</a></p>
-<p>public member function</p>
-<vector>
-
-<h1 id="std-vector-back"><a href="#std-vector-back" class="headerlink" title="std::vector::back"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::back</h1><p> reference back();<br>const_reference back() const;</p>
-<p>Access last element</p>
-<p>Returns a reference to the last element in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>.  </p>
-<p>返回最后一个元素的引用。</p>
-<p>Unlike member <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">vector::end</a>, which returns an iterator just past this element, this function returns a direct reference.  </p>
-<p>和end不一样的是，end是返回一个指向超尾元素的迭代器，而这个函数是直接返回一个引用。</p>
-<p>Calling this function on an <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::empty">empty</a> container causes undefined behavior.  </p>
-<p>对一个空的容器调用该方法会导致未知的行为。</p>
-<p>例子：</p>
-<p>#include <iostream><br>#include <vector><br>#include <iterator><br>using namespace std;<br>int main()<br>{<br>vector<int> vi;<br>cout&lt;&lt;vi.back()&lt;&lt;endl;  </p>
-<p>}  </p>
-<p>在linux下g++编译运行的结果</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015048_51391406590587.jpg">  </p>
-<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>A reference to the last element in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>.<br>返回值是一个指向vector中最后一个元素的引用。  </p>
-<p>If the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> object is const-qualified, the function returns a const_reference. Otherwise, it returns a reference.</p>
-<p>如果vector对象本身具有const属性，那么返回的将是const引用，否则是一般的引用。</p>
-<p>Member types reference and const_reference are the reference types to the elements of the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> (see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector#types">member types</a>).</p>
-<p>返回值都是属于引用类型。</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// vector::back</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line"></span><br><span class="line">  myvector.push_back(10);</span><br><span class="line"></span><br><span class="line">  while (myvector.back() != 0)</span><br><span class="line">  &#123;</span><br><span class="line">    myvector.push_back ( myvector.back() -1 );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (unsigned i=0; i&lt;myvector.size() ; i++)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; myvector[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/back/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
-<p>Output:  </p>
-<p>myvector contains: 10 9 8 7 6 5 4 3 2 1 0 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
-<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>No changes.  </p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is accessed (neither the const nor the non-const versions modify the container).</p>
-<p>容器将被访问。</p>
-<p>The reference returned can be used to access or modify elements. Concurrently accessing or modifying different elements is safe.  </p>
-<p>返回的引用可以用来访问或者是修改元素，并且这些操作都是安全的。</p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the container is not <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::empty">empty</a>, the function never throws exceptions (no-throw guarantee).</p>
-<p>如果容器非空，该方法不会抛出异常。</p>
-<p>Otherwise, it causes <em>undefined behavior</em>.</p>
-<p>如果容器为空，该方法会导致未定义的行为。</p>
-<p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
-<p>2014-8-12</p>
-<p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38516647">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL容器//" class="article-tag-list-link color1">STL容器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stl%E4%B8%AD%E7%9A%84back%E6%96%B9%E6%B3%95%EF%BC%8812%EF%BC%89/">展开全文 >></a>
     </p>
     
 

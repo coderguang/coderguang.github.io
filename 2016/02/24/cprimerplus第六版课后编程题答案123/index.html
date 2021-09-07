@@ -255,7 +255,7 @@
 <p>main123.cpp</p>
 <p>#include <iostream><br>#include “Stock.cpp”<br>using namespace std;<br>const int STKS=4;<br>void main123()<br>{<br>Stock stocks[STKS]={<br>Stock(“NanoSmart”,12,20.0),<br>Stock(“Boffo Object”,200,2.0),<br>Stock(“Monolithic obelisk”,130,3.25),<br>Stock(“Fleep Enterprises”,60,6.5),<br>};<br>cout&lt;&lt;”Stock holdings”&lt;&lt;endl;<br>int st;<br>for(st=0;st&lt;STKS;st++)<br>cout&lt;&lt;stocks[st];<br>const Stock *top=&amp;stocks[0];<br>for(st=1;st&lt;STKS;st++)<br>//top=&amp;(top-&gt;topval(stocks[st]));//为何只能用&amp;而不能用*<br>top=&amp;top-&gt;topval(stocks[st]);//top是一个指向对象的指针，<br>//哦，我知道了，top的确是一个指针，因此才要&amp;，你仔细想想，为什么呢？看我上一条语句的括号<br>cout&lt;&lt;*top;       //cout&lt;&lt;top;top是一个指针，应该使用*top<br>//&amp;top-&gt;update(3.0);//怎么这一句就不行了呢？<br>//return 0;<br>}</p>
 <p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#110;&#64;&#114;&#111;&#121;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#46;&#99;&#111;&#x6d;">&#114;&#x6f;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#110;&#64;&#114;&#111;&#121;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#46;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#97;&#x6c;&#99;&#x68;&#101;&#x6e;&#64;&#x72;&#x6f;&#x79;&#97;&#108;&#99;&#104;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;">&#114;&#x6f;&#121;&#97;&#x6c;&#99;&#x68;&#101;&#x6e;&#64;&#x72;&#x6f;&#x79;&#97;&#108;&#99;&#104;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -461,7 +461,7 @@
     owner: 'cpp000',
     repo: 'royalchen_giteement',
     backcall_uri: 'https://www.royalchen.com',
-    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
+    oauth_uri: 'https://xcx.royalchen.com/corsauth/https://gitee.com/oauth/token',
     oauth: {
       client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
       client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
