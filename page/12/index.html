@@ -764,108 +764,6 @@
 
 
   
-    <article id="post-2014月金山wps实习生c笔试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/2014%E6%9C%88%E9%87%91%E5%B1%B1wps%E5%AE%9E%E4%B9%A0%E7%94%9Fc%E7%AC%94%E8%AF%95/" target="_blank">2014月金山WPS实习生C++笔试</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/2014%E6%9C%88%E9%87%91%E5%B1%B1wps%E5%AE%9E%E4%B9%A0%E7%94%9Fc%E7%AC%94%E8%AF%95/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>2014月金山WPS实习生C++笔试</p>
-<p>哈哈，早上花了半个小时把最后一道大题做出来了</p>
-<p>哈哈哈，真希望能拿到面试的机会啊。</p>
-<p>readFile.cpp</p>
-<p>/*<br>一个源txt<br>一个字典txt  hello,世界 前一个为字典，后一个为要替换的词<br>读取源txt,例如，读到的内容为”hello,world”输出为”世界，world”<br>写到另一个文件中<br>*/</p>
-<p>#include <iostream><br>#include <fstream><br>#include <vector><br>#include <string><br>using namespace std;<br>const int LIMIT=30;<br>string find(string ar[][2],int size,const string findstr);<br>void readFile()<br>{<br>ofstream fout;//操作target.txt，写入<br>ifstream finL;//操作lib.txt<br>ifstream finS;//操作source.txt<br>int sizeLib=0;<br>//vector&lt;vector<string>ar(2)&gt; lib(LIMIT);//存储字库内容，避免重复读取文件<br>string lib[LIMIT][2];//发现vector不能满足，用string数组吧</p>
-<p>finL.open(“lib.txt”);<br>finS.open(“source.txt”);<br>fout.open(“target.txt”);<br>if(finL.fail())<br>cout&lt;&lt;”Lib.txt open failure!”&lt;&lt;endl;<br>else<br>cout&lt;&lt;”Lib.txt open success”&lt;&lt;endl;<br>if(finS.fail())<br>cout&lt;&lt;”source.txt open failure!”&lt;&lt;endl;<br>else<br>cout&lt;&lt;”source.txt open success”&lt;&lt;endl;<br>if(fout.fail())<br>cout&lt;&lt;”target.txt open failure!”&lt;&lt;endl;<br>else<br>cout&lt;&lt;”target.txt open success”&lt;&lt;endl;</p>
-<p>//string libS;//source<br>//string libT;//target</p>
-<p>int i=0;<br>while(finL.good()&amp;&amp;i&lt;LIMIT)//流正常时<br>{<br>char libS[100]={0};//不能写成char *buff形式，否则会出现无法正常初始化错误<br>char libT[100]={0};//要每次都初始化，否则char数组里面会留有不确定的值<br>finL.getline(libS,100,’,’);//getline会自动丢弃换行符,长度要设好<br>lib[i][0]=libS;<br>//cout&lt;&lt;”libS is”&lt;&lt;libS&lt;&lt;”  libS=”&lt;&lt;lib[i][0]&lt;&lt;endl;<br>finL.getline(libT,100,’\n’);//这里的终止应为’\n’<br>lib[i][1]=libT;<br>//cout&lt;&lt;”libT is”&lt;&lt;libT&lt;&lt;”  libT=”&lt;&lt;lib[i][1]&lt;&lt;endl;<br>i++;<br>sizeLib++;<br>}<br>if(finL.eof())<br>cout&lt;&lt;”Lib.txt read success!”&lt;&lt;endl;<br>else if(finL.fail())<br>cout&lt;&lt;”Lib.txt read failure!”&lt;&lt;endl;<br>finL.close();<br>/*<br>cout&lt;&lt;sizeof(lib[0][0])&lt;&lt;endl;<br>cout&lt;&lt;sizeof(lib[0][1])&lt;&lt;endl;</p>
-<p>for(int j=0;j&lt;sizeLib;j++)<br>cout&lt;&lt;lib[j][0]&lt;&lt;”  “&lt;&lt;lib[j][1]&lt;&lt;endl;<br>*/<br>//cout&lt;&lt;find(lib,LIMIT,”my”)&lt;&lt;endl; //find测试成功<br>while(!finS.fail()&amp;&amp;fout.good())<br>{<br>string tstr;//<br>char fstr[100]={0};//从source中读到的字符串<br>finS.getline(fstr,100,’,’);//源文件的英文要注意”,”<br>tstr=find(lib,LIMIT,fstr);<br>cout&lt;&lt;tstr&lt;&lt;endl;<br>fout&lt;&lt;tstr&lt;&lt;endl;//写入<br>}<br>if(finS.eof())<br>cout&lt;&lt;”source.txt read success!”&lt;&lt;endl;<br>else if(finS.fail())<br>cout&lt;&lt;”source.txt read failure!”&lt;&lt;endl;<br>finL.close();<br>if(fout.fail())<br>cout&lt;&lt;”target.txt failure!”&lt;&lt;endl;<br>fout.close();</p>
-<p>cin.get();<br>}<br>//找匹配的字符串<br>//成功则返回替换字符串，否则返回原字符串<br>string find(string ar[][2],int size,const string findstr)<br>{<br>int i=size;<br>while(i–)<br>{<br>if(ar[i][0]==findstr)<br>return ar[i][1];<br>}<br>return findstr;</p>
-<p>}</p>
-<p>source.txt</p>
-<p>hello,哈哈,wawa,ohmygodess,真的</p>
-<p>lib.txt</p>
-<p>hello,你好1346578<br>wawa,哦哦哦<br>world,世界<br>you,你<br>my,我的C++棒棒棒<br>真的,really?</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/24092925">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/笔试算法//" class="article-tag-list-link color5">笔试算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/2014%E6%9C%88%E9%87%91%E5%B1%B1wps%E5%AE%9E%E4%B9%A0%E7%94%9Fc%E7%AC%94%E8%AF%95/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-20144月金山wps实习生c笔试题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1071,6 +969,108 @@
 
 
   
+    <article id="post-2014月金山wps实习生c笔试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/2014%E6%9C%88%E9%87%91%E5%B1%B1wps%E5%AE%9E%E4%B9%A0%E7%94%9Fc%E7%AC%94%E8%AF%95/" target="_blank">2014月金山WPS实习生C++笔试</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/2014%E6%9C%88%E9%87%91%E5%B1%B1wps%E5%AE%9E%E4%B9%A0%E7%94%9Fc%E7%AC%94%E8%AF%95/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>2014月金山WPS实习生C++笔试</p>
+<p>哈哈，早上花了半个小时把最后一道大题做出来了</p>
+<p>哈哈哈，真希望能拿到面试的机会啊。</p>
+<p>readFile.cpp</p>
+<p>/*<br>一个源txt<br>一个字典txt  hello,世界 前一个为字典，后一个为要替换的词<br>读取源txt,例如，读到的内容为”hello,world”输出为”世界，world”<br>写到另一个文件中<br>*/</p>
+<p>#include <iostream><br>#include <fstream><br>#include <vector><br>#include <string><br>using namespace std;<br>const int LIMIT=30;<br>string find(string ar[][2],int size,const string findstr);<br>void readFile()<br>{<br>ofstream fout;//操作target.txt，写入<br>ifstream finL;//操作lib.txt<br>ifstream finS;//操作source.txt<br>int sizeLib=0;<br>//vector&lt;vector<string>ar(2)&gt; lib(LIMIT);//存储字库内容，避免重复读取文件<br>string lib[LIMIT][2];//发现vector不能满足，用string数组吧</p>
+<p>finL.open(“lib.txt”);<br>finS.open(“source.txt”);<br>fout.open(“target.txt”);<br>if(finL.fail())<br>cout&lt;&lt;”Lib.txt open failure!”&lt;&lt;endl;<br>else<br>cout&lt;&lt;”Lib.txt open success”&lt;&lt;endl;<br>if(finS.fail())<br>cout&lt;&lt;”source.txt open failure!”&lt;&lt;endl;<br>else<br>cout&lt;&lt;”source.txt open success”&lt;&lt;endl;<br>if(fout.fail())<br>cout&lt;&lt;”target.txt open failure!”&lt;&lt;endl;<br>else<br>cout&lt;&lt;”target.txt open success”&lt;&lt;endl;</p>
+<p>//string libS;//source<br>//string libT;//target</p>
+<p>int i=0;<br>while(finL.good()&amp;&amp;i&lt;LIMIT)//流正常时<br>{<br>char libS[100]={0};//不能写成char *buff形式，否则会出现无法正常初始化错误<br>char libT[100]={0};//要每次都初始化，否则char数组里面会留有不确定的值<br>finL.getline(libS,100,’,’);//getline会自动丢弃换行符,长度要设好<br>lib[i][0]=libS;<br>//cout&lt;&lt;”libS is”&lt;&lt;libS&lt;&lt;”  libS=”&lt;&lt;lib[i][0]&lt;&lt;endl;<br>finL.getline(libT,100,’\n’);//这里的终止应为’\n’<br>lib[i][1]=libT;<br>//cout&lt;&lt;”libT is”&lt;&lt;libT&lt;&lt;”  libT=”&lt;&lt;lib[i][1]&lt;&lt;endl;<br>i++;<br>sizeLib++;<br>}<br>if(finL.eof())<br>cout&lt;&lt;”Lib.txt read success!”&lt;&lt;endl;<br>else if(finL.fail())<br>cout&lt;&lt;”Lib.txt read failure!”&lt;&lt;endl;<br>finL.close();<br>/*<br>cout&lt;&lt;sizeof(lib[0][0])&lt;&lt;endl;<br>cout&lt;&lt;sizeof(lib[0][1])&lt;&lt;endl;</p>
+<p>for(int j=0;j&lt;sizeLib;j++)<br>cout&lt;&lt;lib[j][0]&lt;&lt;”  “&lt;&lt;lib[j][1]&lt;&lt;endl;<br>*/<br>//cout&lt;&lt;find(lib,LIMIT,”my”)&lt;&lt;endl; //find测试成功<br>while(!finS.fail()&amp;&amp;fout.good())<br>{<br>string tstr;//<br>char fstr[100]={0};//从source中读到的字符串<br>finS.getline(fstr,100,’,’);//源文件的英文要注意”,”<br>tstr=find(lib,LIMIT,fstr);<br>cout&lt;&lt;tstr&lt;&lt;endl;<br>fout&lt;&lt;tstr&lt;&lt;endl;//写入<br>}<br>if(finS.eof())<br>cout&lt;&lt;”source.txt read success!”&lt;&lt;endl;<br>else if(finS.fail())<br>cout&lt;&lt;”source.txt read failure!”&lt;&lt;endl;<br>finL.close();<br>if(fout.fail())<br>cout&lt;&lt;”target.txt failure!”&lt;&lt;endl;<br>fout.close();</p>
+<p>cin.get();<br>}<br>//找匹配的字符串<br>//成功则返回替换字符串，否则返回原字符串<br>string find(string ar[][2],int size,const string findstr)<br>{<br>int i=size;<br>while(i–)<br>{<br>if(ar[i][0]==findstr)<br>return ar[i][1];<br>}<br>return findstr;</p>
+<p>}</p>
+<p>source.txt</p>
+<p>hello,哈哈,wawa,ohmygodess,真的</p>
+<p>lib.txt</p>
+<p>hello,你好1346578<br>wawa,哦哦哦<br>world,世界<br>you,你<br>my,我的C++棒棒棒<br>真的,really?</p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/24092925">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/笔试算法//" class="article-tag-list-link color5">笔试算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/2014%E6%9C%88%E9%87%91%E5%B1%B1wps%E5%AE%9E%E4%B9%A0%E7%94%9Fc%E7%AC%94%E8%AF%95/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-c11this-threadget-id9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1125,7 +1125,7 @@
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#x65;&#x72;&#103;&#117;&#97;&#x6e;&#103;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x63;&#x6f;&#100;&#x65;&#x72;&#103;&#117;&#97;&#x6e;&#103;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#x65;&#x72;&#103;&#117;&#x61;&#110;&#103;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#111;&#x64;&#x65;&#x72;&#103;&#117;&#x61;&#110;&#103;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></p>
 <p>2014-9-4</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>

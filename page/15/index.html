@@ -354,7 +354,7 @@
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#114;&#x6f;&#x79;&#97;&#108;&#x63;&#x68;&#101;&#110;&#x40;&#114;&#111;&#121;&#x61;&#108;&#99;&#104;&#101;&#110;&#46;&#x63;&#111;&#109;">&#114;&#x6f;&#x79;&#97;&#108;&#x63;&#x68;&#101;&#110;&#x40;&#114;&#111;&#121;&#x61;&#108;&#99;&#104;&#101;&#110;&#46;&#x63;&#111;&#109;</a></p>
+<p>Email:<a href="mailto:&#x72;&#111;&#x79;&#97;&#108;&#x63;&#x68;&#101;&#x6e;&#64;&#114;&#111;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#110;&#46;&#x63;&#x6f;&#x6d;">&#x72;&#111;&#x79;&#97;&#108;&#x63;&#x68;&#101;&#x6e;&#64;&#114;&#111;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#110;&#46;&#x63;&#x6f;&#x6d;</a></p>
 <p>2015-6-30</p>
 <p>于广州天河荷光路</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -386,6 +386,114 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2016/02/24/c%E4%B8%AD%E4%B8%80%E9%81%93%E5%85%B3%E4%BA%8E%E5%86%85%E5%AD%98%E7%9A%84%E6%80%9D%E8%80%83%E9%A2%98/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-c井字棋游戏，dos界面版" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/c%E4%BA%95%E5%AD%97%E6%A3%8B%E6%B8%B8%E6%88%8F%EF%BC%8Cdos%E7%95%8C%E9%9D%A2%E7%89%88/" target="_blank">C++井字棋游戏，DOS界面版</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/c%E4%BA%95%E5%AD%97%E6%A3%8B%E6%B8%B8%E6%88%8F%EF%BC%8Cdos%E7%95%8C%E9%9D%A2%E7%89%88/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>C++井字棋游戏，DOS界面版</p>
+<p>据说有一个能保证不败的算法，明天看看先再写个PVC版的。</p>
+<p>正题，今天无聊写了个井字棋游戏，顺便逐渐让自己习惯良好的代码风格，放上来给新手学习学习。</p>
+<p>jzq2.cpp</p>
+<p>/*<br>N字棋游戏PVP版，DOS版<br>本棋盘可扩充，只需调整检测条件即可，其他接口不需改变。<br>非人机对战型，PVP类型;<br>@author:天下无双<br>@date:2014-5-25<br>@version:1.0<br>*/<br>#include <iostream><br>#include <string><br>#define INVALIDINDEX -1<br>#define FULL -2<br>#define OK 0<br>#define WIN 1<br>#define ISIN -3<br>using namespace std;<br>struct box{ //用box代表棋盘上每一个格子<br>int chess;//用一种颜色代表棋子，black和white<br>int status;//0代表该格子没有棋子，1代表已经有了棋子<br>};<br>enum COLOR{black,white};<br>class chessBoard<br>{<br>private:</p>
+<p>static const int MAXROW=10;<br>static const int MAXCOLUMN=10;<br>int row;<br>int column;<br>int blackBox;//剩余棋盘格子数,即可落棋点<br>box arr[MAXROW][MAXCOLUMN];<br>void setRow(int r){row=r;};<br>void setCol(int c){column=c;};<br>int GetRow()const{return row;};<br>int GetCol()const{return column;};<br>public:<br>chessBoard(int r,int col){<br>if(r&gt;MAXROWcol&gt;MAXCOLUMN){<br>cerr&lt;&lt;”棋盘大小超出范围”&lt;&lt;endl;<br>setRow(MAXROW);<br>setCol(MAXCOLUMN);<br>}else{<br>setRow(r);<br>setCol(col);<br>//int rr=GetRow();<br>//int cc=GetCol();<br>//blackBox=r*col;//初始化可落棋点//无法在这里设置blackBox,这是什么情况？<br>}<br>initialize();<br>creat();<br>}<br>void initialize()<br>{<br>int r=chessBoard::GetRow();<br>int col=chessBoard::GetCol();<br>blackBox=r*col;<br>for(int i=0;i&lt;r;i++)<br>for(int j=0;j&lt;col;j++)<br>{<br>arr[i][j].chess=-1;<br>arr[i][j].status=0;<br>}</p>
+<p>}</p>
+<p>//超出范围，返回 INVALIDINDEX -1<br>//已经赢了，返回 WIN 1<br>//棋盘满了，返回 FULL -2<br>//正常落棋  返回 OK 0<br>//该点存在棋子  返回 ISIN -3<br>int insertChess(int i,int j,COLOR c)//落棋//仅提供落棋接口<br>{<br>int r=chessBoard::GetRow();<br>int col=chessBoard::GetCol();<br>if(i&lt;0j&lt;0i&gt;=rj&gt;=col)<br>return INVALIDINDEX;<br>//if(c!=black&amp;&amp;c!=white)<br>//return INVALIDINDEX;<br>if(arr[i][j].status==0){//将棋子落入棋盘<br>arr[i][j].chess=c;<br>arr[i][j].status=1;//标识此格<br>flush();//刷新<br>blackBox–;<br>if(isGameOver())<br>return WIN;<br>if(isFull())<br>return FULL;<br>return OK;<br>}<br>return ISIN;<br>}</p>
+<p>protected:<br>void creat(){//初始化棋盘<br>int r=chessBoard::GetRow();<br>int col=chessBoard::GetCol();<br>for(int i=0;i&lt;r;i++){<br>for(int j=0;j&lt;col-1;j++){<br>cout&lt;&lt;” “;<br>}<br>cout&lt;&lt;endl;<br>}<br>};</p>
+<p>void flush(){//重绘棋盘</p>
+<p>system(“cls”);<br>int r=chessBoard::GetRow();<br>int col=chessBoard::GetCol();<br>for(int i=0;i&lt;r;i++){<br>for(int j=0;j&lt;col;j++){<br>if(white==arr[i][j].chess)<br>cout&lt;&lt;”0”;<br>else if(black==arr[i][j].chess)<br>cout&lt;&lt;”*“;<br>else<br>cout&lt;&lt;” “;<br>if(j!=col-1)<br>cout&lt;&lt;””;<br>}<br>cout&lt;&lt;endl;<br>}<br>}</p>
+<p>bool isFull()const{//判断棋盘是否已经落满棋子<br>return blackBox==0;<br>};</p>
+<p>bool isEmpty()const{;//判断棋盘是否为空<br>return blackBox==GetRow()*GetCol();<br>};<br>//由棋盘自己检测是否已经满了。<br>//或者游戏是否结束<br>bool isFinish()const{//检测棋盘是否已满<br>return isFull();//若棋盘满了，则游戏结束<br>};</p>
+<p>bool isGameOver()const{<br>int r=chessBoard::GetRow();<br>int col=chessBoard::GetCol();<br>int color=-1;<br>for(int i=0;i&lt;r;i++){//检测每一行，是否连成一排，<br>if(arr[i][0].chess==blackarr[i][0].chess==white)<br>   color=arr[i][0].chess;//如果每行的第一个box有内容且为blackwhite<br>else<br>continue;//检测下一行<br>for(int j=1;j&lt;col;j++){<br>if(color==arr[i][j].chess)//如果后面的跟第一个颜色相同<br>if(col==j+1){//如果到了比较最后一个且相等时<br>string colors;<br>if(color==1)<br>colors=”white”;<br>else<br>colors=”black”;<br>//cout&lt;&lt;endl&lt;&lt;colors&lt;&lt;” is winner!”&lt;&lt;endl;<br>cout&lt;&lt;endl&lt;&lt;”恭喜”&lt;&lt;colors&lt;&lt;”赢得了本次游戏！”&lt;&lt;endl;<br>return true;<br>}<br>else//如果不是最后一个，继续比较<br>continue;<br>else//如果颜色不同<br>break;<br>}<br>}<br>//检测每一列<br>for(int i=0;i&lt;col;i++){//检测每一列，是否连成一排，<br>if(arr[0][i].chess==blackarr[0][i].chess==white)<br>   color=arr[0][i].chess;//如果每列的第一个box有内容且为blackwhite<br>else<br>continue;//检测下一列<br>for(int j=1;j&lt;r;j++){<br>if(color==arr[j][i].chess)//如果后面的跟第一个颜色相同<br>if(r==j+1){//如果到了比较最后一个且相等时<br>string colors;<br>if(color==1)<br>colors=”white”;<br>else<br>colors=”black”;<br>//cout&lt;&lt;endl&lt;&lt;colors&lt;&lt;” is winner!”&lt;&lt;endl;<br>cout&lt;&lt;endl&lt;&lt;”恭喜”&lt;&lt;colors&lt;&lt;”赢得了本次游戏！”&lt;&lt;endl;<br>return true;<br>}<br>else//如果不是最后一个，继续比较<br>continue;<br>else//如果颜色不同<br>break;<br>}<br>}<br>//检测正对角线<br>color=arr[0][0].chess;<br>bool falg=false;<br>if(color==blackcolor==white)//第一格是否有棋子<br>falg=true;<br>if(falg) //如果有棋子<br>for(int i=1,j=1;i&lt;r&amp;&amp;j&lt;col;i++,j++){<br>if(arr[i][j].chess==color)<br>if(i==r-1){<br>string colors;<br>if(color==1)<br>colors=”white”;<br>else<br>colors=”black”;<br>//cout&lt;&lt;endl&lt;&lt;colors&lt;&lt;” is winner!”&lt;&lt;endl;<br>cout&lt;&lt;endl&lt;&lt;”恭喜”&lt;&lt;colors&lt;&lt;”赢得了本次游戏！”&lt;&lt;endl;<br>return true;<br>}<br>else<br>continue;<br>else<br>break;<br>}<br>//检测侧对角线X<br>color=arr[r-1][0].chess;<br>falg=false;<br>if(color==blackcolor==white)//第一格是否有棋子<br>falg=true;<br>if(falg) //如果有棋子<br>for(int i=r-2,j=1;i&gt;=0&amp;&amp;j&lt;col;i–,j++){<br>if(arr[i][j].chess==color)<br>if(i==0){<br>string colors;<br>if(color==1)<br>colors=”white”;<br>else<br>colors=”black”;<br>//cout&lt;&lt;endl&lt;&lt;colors&lt;&lt;” is winner!”&lt;&lt;endl;<br>cout&lt;&lt;endl&lt;&lt;”恭喜”&lt;&lt;colors&lt;&lt;”赢得了本次游戏！”&lt;&lt;endl;<br>return true;<br>}<br>else<br>continue;<br>else<br>break;<br>}<br>return false;//如果都不满足，说明游戏还没有结束<br>};<br>};</p>
+<p>main.cpp</p>
+<p>#include <iostream><br>#include “jzq2.cpp”<br>using namespace std;<br>int main()<br>{<br>//3,3代表棋盘为3*3，并且是指三个一排即为胜利<br>//同样的，5,5代表5字棋，但是棋盘大小也是5*5<br>//扩展棋盘将在下一版本推出<br>chessBoard cb(3,3);<br>int status;<br>COLOR c=black;//记录下一步轮到谁走<br>int x,y;<br>bool falg=false;//用于记录是否成功落棋<br>bool isExit=false;//用于记录游戏是否结束<br>while(!isExit)<br>{<br>cout&lt;&lt;”\n\“0\“代表white,\“*\“代表black”&lt;&lt;endl;<br>cout&lt;&lt;”请输入落棋点:如(1,1)则输入：1 1”&lt;&lt;endl;<br>string colors;<br>if(c==black)<br>colors=”black”;<br>else<br>colors=”white”;<br>cout&lt;&lt;”现在轮到”&lt;&lt;colors&lt;&lt;”走下一步棋：”;<br>cin&gt;&gt;x&gt;&gt;y;<br>/*<br>if(falg)<br>c=c==black?white:black;//换人走<br>*/<br>status=cb.insertChess(x,y,c);<br>switch(status){<br>//超出范围，返回 INVALIDINDEX -1<br>//已经赢了，返回 WIN 1<br>//棋盘满了，返回 FULL -2<br>//正常落棋  返回 OK 0<br>case 0:falg=true;<br>c=c==black?white:black;//如果成功落棋，换人走下一步棋<br>break;<br>case -1:cout&lt;&lt;”\n\n输入坐标不对，超出范围”&lt;&lt;endl;<br>falg=false;<br>break;<br>case 1:cout&lt;&lt;”\n\n游戏结束！”&lt;&lt;endl;<br>falg=false;<br>isExit=true;<br>break;<br>case -2:cout&lt;&lt;”\n\n棋盘已满！”&lt;&lt;endl;<br>cout&lt;&lt;”\n\n游戏即将结束！”&lt;&lt;endl;<br>falg=false;<br>isExit=true;<br>break;<br>case -3:cout&lt;&lt;”\n\n该点已有棋子”&lt;&lt;endl;<br>falg=false;<br>break;<br>}<br>}<br>cin.get();<br>cin.get();<br>};</p>
+<p>已经测试过了3*3的无BUG，当然前提是你输入的是数字。你要是输入字母的话，果断崩！</p>
+<p>先放到PVP的来玩玩，哈哈哈。</p>
+<p>今天跑去多益网络机试，回来的途中居然想起来最后一道题少写了一个判断，郁闷。</p>
+<p>还有一道回来的途中才大概想了出来。</p>
+<p>郁闷ing……</p>
+<p>好了，睡了，各位晚安。  </p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/26888861">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C-C//" class="article-tag-list-link color1">C/C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/c%E4%BA%95%E5%AD%97%E6%A3%8B%E6%B8%B8%E6%88%8F%EF%BC%8Cdos%E7%95%8C%E9%9D%A2%E7%89%88/">展开全文 >></a>
     </p>
     
 
@@ -715,114 +823,6 @@
 
 
   
-    <article id="post-c井字棋游戏，dos界面版" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/c%E4%BA%95%E5%AD%97%E6%A3%8B%E6%B8%B8%E6%88%8F%EF%BC%8Cdos%E7%95%8C%E9%9D%A2%E7%89%88/" target="_blank">C++井字棋游戏，DOS界面版</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/c%E4%BA%95%E5%AD%97%E6%A3%8B%E6%B8%B8%E6%88%8F%EF%BC%8Cdos%E7%95%8C%E9%9D%A2%E7%89%88/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>C++井字棋游戏，DOS界面版</p>
-<p>据说有一个能保证不败的算法，明天看看先再写个PVC版的。</p>
-<p>正题，今天无聊写了个井字棋游戏，顺便逐渐让自己习惯良好的代码风格，放上来给新手学习学习。</p>
-<p>jzq2.cpp</p>
-<p>/*<br>N字棋游戏PVP版，DOS版<br>本棋盘可扩充，只需调整检测条件即可，其他接口不需改变。<br>非人机对战型，PVP类型;<br>@author:天下无双<br>@date:2014-5-25<br>@version:1.0<br>*/<br>#include <iostream><br>#include <string><br>#define INVALIDINDEX -1<br>#define FULL -2<br>#define OK 0<br>#define WIN 1<br>#define ISIN -3<br>using namespace std;<br>struct box{ //用box代表棋盘上每一个格子<br>int chess;//用一种颜色代表棋子，black和white<br>int status;//0代表该格子没有棋子，1代表已经有了棋子<br>};<br>enum COLOR{black,white};<br>class chessBoard<br>{<br>private:</p>
-<p>static const int MAXROW=10;<br>static const int MAXCOLUMN=10;<br>int row;<br>int column;<br>int blackBox;//剩余棋盘格子数,即可落棋点<br>box arr[MAXROW][MAXCOLUMN];<br>void setRow(int r){row=r;};<br>void setCol(int c){column=c;};<br>int GetRow()const{return row;};<br>int GetCol()const{return column;};<br>public:<br>chessBoard(int r,int col){<br>if(r&gt;MAXROWcol&gt;MAXCOLUMN){<br>cerr&lt;&lt;”棋盘大小超出范围”&lt;&lt;endl;<br>setRow(MAXROW);<br>setCol(MAXCOLUMN);<br>}else{<br>setRow(r);<br>setCol(col);<br>//int rr=GetRow();<br>//int cc=GetCol();<br>//blackBox=r*col;//初始化可落棋点//无法在这里设置blackBox,这是什么情况？<br>}<br>initialize();<br>creat();<br>}<br>void initialize()<br>{<br>int r=chessBoard::GetRow();<br>int col=chessBoard::GetCol();<br>blackBox=r*col;<br>for(int i=0;i&lt;r;i++)<br>for(int j=0;j&lt;col;j++)<br>{<br>arr[i][j].chess=-1;<br>arr[i][j].status=0;<br>}</p>
-<p>}</p>
-<p>//超出范围，返回 INVALIDINDEX -1<br>//已经赢了，返回 WIN 1<br>//棋盘满了，返回 FULL -2<br>//正常落棋  返回 OK 0<br>//该点存在棋子  返回 ISIN -3<br>int insertChess(int i,int j,COLOR c)//落棋//仅提供落棋接口<br>{<br>int r=chessBoard::GetRow();<br>int col=chessBoard::GetCol();<br>if(i&lt;0j&lt;0i&gt;=rj&gt;=col)<br>return INVALIDINDEX;<br>//if(c!=black&amp;&amp;c!=white)<br>//return INVALIDINDEX;<br>if(arr[i][j].status==0){//将棋子落入棋盘<br>arr[i][j].chess=c;<br>arr[i][j].status=1;//标识此格<br>flush();//刷新<br>blackBox–;<br>if(isGameOver())<br>return WIN;<br>if(isFull())<br>return FULL;<br>return OK;<br>}<br>return ISIN;<br>}</p>
-<p>protected:<br>void creat(){//初始化棋盘<br>int r=chessBoard::GetRow();<br>int col=chessBoard::GetCol();<br>for(int i=0;i&lt;r;i++){<br>for(int j=0;j&lt;col-1;j++){<br>cout&lt;&lt;” “;<br>}<br>cout&lt;&lt;endl;<br>}<br>};</p>
-<p>void flush(){//重绘棋盘</p>
-<p>system(“cls”);<br>int r=chessBoard::GetRow();<br>int col=chessBoard::GetCol();<br>for(int i=0;i&lt;r;i++){<br>for(int j=0;j&lt;col;j++){<br>if(white==arr[i][j].chess)<br>cout&lt;&lt;”0”;<br>else if(black==arr[i][j].chess)<br>cout&lt;&lt;”*“;<br>else<br>cout&lt;&lt;” “;<br>if(j!=col-1)<br>cout&lt;&lt;””;<br>}<br>cout&lt;&lt;endl;<br>}<br>}</p>
-<p>bool isFull()const{//判断棋盘是否已经落满棋子<br>return blackBox==0;<br>};</p>
-<p>bool isEmpty()const{;//判断棋盘是否为空<br>return blackBox==GetRow()*GetCol();<br>};<br>//由棋盘自己检测是否已经满了。<br>//或者游戏是否结束<br>bool isFinish()const{//检测棋盘是否已满<br>return isFull();//若棋盘满了，则游戏结束<br>};</p>
-<p>bool isGameOver()const{<br>int r=chessBoard::GetRow();<br>int col=chessBoard::GetCol();<br>int color=-1;<br>for(int i=0;i&lt;r;i++){//检测每一行，是否连成一排，<br>if(arr[i][0].chess==blackarr[i][0].chess==white)<br>   color=arr[i][0].chess;//如果每行的第一个box有内容且为blackwhite<br>else<br>continue;//检测下一行<br>for(int j=1;j&lt;col;j++){<br>if(color==arr[i][j].chess)//如果后面的跟第一个颜色相同<br>if(col==j+1){//如果到了比较最后一个且相等时<br>string colors;<br>if(color==1)<br>colors=”white”;<br>else<br>colors=”black”;<br>//cout&lt;&lt;endl&lt;&lt;colors&lt;&lt;” is winner!”&lt;&lt;endl;<br>cout&lt;&lt;endl&lt;&lt;”恭喜”&lt;&lt;colors&lt;&lt;”赢得了本次游戏！”&lt;&lt;endl;<br>return true;<br>}<br>else//如果不是最后一个，继续比较<br>continue;<br>else//如果颜色不同<br>break;<br>}<br>}<br>//检测每一列<br>for(int i=0;i&lt;col;i++){//检测每一列，是否连成一排，<br>if(arr[0][i].chess==blackarr[0][i].chess==white)<br>   color=arr[0][i].chess;//如果每列的第一个box有内容且为blackwhite<br>else<br>continue;//检测下一列<br>for(int j=1;j&lt;r;j++){<br>if(color==arr[j][i].chess)//如果后面的跟第一个颜色相同<br>if(r==j+1){//如果到了比较最后一个且相等时<br>string colors;<br>if(color==1)<br>colors=”white”;<br>else<br>colors=”black”;<br>//cout&lt;&lt;endl&lt;&lt;colors&lt;&lt;” is winner!”&lt;&lt;endl;<br>cout&lt;&lt;endl&lt;&lt;”恭喜”&lt;&lt;colors&lt;&lt;”赢得了本次游戏！”&lt;&lt;endl;<br>return true;<br>}<br>else//如果不是最后一个，继续比较<br>continue;<br>else//如果颜色不同<br>break;<br>}<br>}<br>//检测正对角线<br>color=arr[0][0].chess;<br>bool falg=false;<br>if(color==blackcolor==white)//第一格是否有棋子<br>falg=true;<br>if(falg) //如果有棋子<br>for(int i=1,j=1;i&lt;r&amp;&amp;j&lt;col;i++,j++){<br>if(arr[i][j].chess==color)<br>if(i==r-1){<br>string colors;<br>if(color==1)<br>colors=”white”;<br>else<br>colors=”black”;<br>//cout&lt;&lt;endl&lt;&lt;colors&lt;&lt;” is winner!”&lt;&lt;endl;<br>cout&lt;&lt;endl&lt;&lt;”恭喜”&lt;&lt;colors&lt;&lt;”赢得了本次游戏！”&lt;&lt;endl;<br>return true;<br>}<br>else<br>continue;<br>else<br>break;<br>}<br>//检测侧对角线X<br>color=arr[r-1][0].chess;<br>falg=false;<br>if(color==blackcolor==white)//第一格是否有棋子<br>falg=true;<br>if(falg) //如果有棋子<br>for(int i=r-2,j=1;i&gt;=0&amp;&amp;j&lt;col;i–,j++){<br>if(arr[i][j].chess==color)<br>if(i==0){<br>string colors;<br>if(color==1)<br>colors=”white”;<br>else<br>colors=”black”;<br>//cout&lt;&lt;endl&lt;&lt;colors&lt;&lt;” is winner!”&lt;&lt;endl;<br>cout&lt;&lt;endl&lt;&lt;”恭喜”&lt;&lt;colors&lt;&lt;”赢得了本次游戏！”&lt;&lt;endl;<br>return true;<br>}<br>else<br>continue;<br>else<br>break;<br>}<br>return false;//如果都不满足，说明游戏还没有结束<br>};<br>};</p>
-<p>main.cpp</p>
-<p>#include <iostream><br>#include “jzq2.cpp”<br>using namespace std;<br>int main()<br>{<br>//3,3代表棋盘为3*3，并且是指三个一排即为胜利<br>//同样的，5,5代表5字棋，但是棋盘大小也是5*5<br>//扩展棋盘将在下一版本推出<br>chessBoard cb(3,3);<br>int status;<br>COLOR c=black;//记录下一步轮到谁走<br>int x,y;<br>bool falg=false;//用于记录是否成功落棋<br>bool isExit=false;//用于记录游戏是否结束<br>while(!isExit)<br>{<br>cout&lt;&lt;”\n\“0\“代表white,\“*\“代表black”&lt;&lt;endl;<br>cout&lt;&lt;”请输入落棋点:如(1,1)则输入：1 1”&lt;&lt;endl;<br>string colors;<br>if(c==black)<br>colors=”black”;<br>else<br>colors=”white”;<br>cout&lt;&lt;”现在轮到”&lt;&lt;colors&lt;&lt;”走下一步棋：”;<br>cin&gt;&gt;x&gt;&gt;y;<br>/*<br>if(falg)<br>c=c==black?white:black;//换人走<br>*/<br>status=cb.insertChess(x,y,c);<br>switch(status){<br>//超出范围，返回 INVALIDINDEX -1<br>//已经赢了，返回 WIN 1<br>//棋盘满了，返回 FULL -2<br>//正常落棋  返回 OK 0<br>case 0:falg=true;<br>c=c==black?white:black;//如果成功落棋，换人走下一步棋<br>break;<br>case -1:cout&lt;&lt;”\n\n输入坐标不对，超出范围”&lt;&lt;endl;<br>falg=false;<br>break;<br>case 1:cout&lt;&lt;”\n\n游戏结束！”&lt;&lt;endl;<br>falg=false;<br>isExit=true;<br>break;<br>case -2:cout&lt;&lt;”\n\n棋盘已满！”&lt;&lt;endl;<br>cout&lt;&lt;”\n\n游戏即将结束！”&lt;&lt;endl;<br>falg=false;<br>isExit=true;<br>break;<br>case -3:cout&lt;&lt;”\n\n该点已有棋子”&lt;&lt;endl;<br>falg=false;<br>break;<br>}<br>}<br>cin.get();<br>cin.get();<br>};</p>
-<p>已经测试过了3*3的无BUG，当然前提是你输入的是数字。你要是输入字母的话，果断崩！</p>
-<p>先放到PVP的来玩玩，哈哈哈。</p>
-<p>今天跑去多益网络机试，回来的途中居然想起来最后一道题少写了一个判断，郁闷。</p>
-<p>还有一道回来的途中才大概想了出来。</p>
-<p>郁闷ing……</p>
-<p>好了，睡了，各位晚安。  </p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/26888861">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C-C//" class="article-tag-list-link color1">C/C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/c%E4%BA%95%E5%AD%97%E6%A3%8B%E6%B8%B8%E6%88%8F%EF%BC%8Cdos%E7%95%8C%E9%9D%A2%E7%89%88/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-c冒泡排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1103,7 +1103,7 @@
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#114;&#x6f;&#121;&#97;&#108;&#x63;&#104;&#x65;&#x6e;&#64;&#x72;&#x6f;&#121;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#46;&#99;&#x6f;&#x6d;">&#114;&#x6f;&#121;&#97;&#108;&#x63;&#104;&#x65;&#x6e;&#64;&#x72;&#x6f;&#121;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#46;&#99;&#x6f;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#x72;&#111;&#121;&#x61;&#108;&#99;&#x68;&#101;&#x6e;&#64;&#x72;&#x6f;&#x79;&#x61;&#108;&#x63;&#104;&#101;&#x6e;&#46;&#x63;&#111;&#109;">&#x72;&#111;&#121;&#x61;&#108;&#99;&#x68;&#101;&#x6e;&#64;&#x72;&#x6f;&#x79;&#x61;&#108;&#x63;&#104;&#101;&#x6e;&#46;&#x63;&#111;&#109;</a></p>
 <p>2015-7-18</p>
 <p>于广州天河荷光路</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -1214,7 +1214,7 @@
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#103;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#x63;&#111;&#x64;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#103;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#100;&#x65;&#114;&#103;&#x75;&#97;&#110;&#x67;&#x40;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;">&#99;&#111;&#100;&#x65;&#114;&#103;&#x75;&#97;&#110;&#x67;&#x40;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;</a></p>
 <p>2014-11-2</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>

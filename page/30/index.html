@@ -758,138 +758,6 @@
 
 
   
-    <article id="post-stlvector中的pop-back方法（22）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84pop-back%E6%96%B9%E6%B3%95%EF%BC%8822%EF%BC%89/" target="_blank">STLvector中的pop_back方法（22）</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84pop-back%E6%96%B9%E6%B3%95%EF%BC%8822%EF%BC%89/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>STLvector中的pop_back方法（22）</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/pop_back/">http://www.cplusplus.com/reference/vector/vector/pop_back/</a></p>
-<p>public member function</p>
-<vector>
-
-<h1 id="std-vector-pop-back"><a href="#std-vector-pop-back" class="headerlink" title="std::vector::pop_back"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::pop_back</h1><p>void pop_back();</p>
-<p>Delete last element</p>
-<p>Removes the last element in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>, effectively reducing the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> by one.<br>可以高效地移除vector中的最后一个元素.  </p>
-<p>This destroys the removed element.</p>
-<p>将销毁并移除该元素。</p>
-<p>例子:</p>
-<p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi={10,20,30};<br>cout&lt;&lt;”vi is :”&lt;&lt;endl;<br>for_each(vi.begin(),vi.end(),[](int i){cout&lt;&lt;i&lt;&lt;” “;});<br>vi.pop_back();<br>cout&lt;&lt;endl&lt;&lt;”after the pop_back():”&lt;&lt;endl;<br>for_each(vi.begin(),vi.end(),[](int i){cout&lt;&lt;i&lt;&lt;” “;});<br>cout&lt;&lt;endl&lt;&lt;”try to access vi[2]=”&lt;&lt;vi[2]&lt;&lt;endl;</p>
-<p>}</p>
-<p>结果截图：</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014949_16747155862773.jpg">  </p>
-<p>果然又是逗我呢，还是没有销毁数据阿。</p>
-<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none  </p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// vector::pop_back</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line">  int sum (0);</span><br><span class="line">  myvector.push_back (100);</span><br><span class="line">  myvector.push_back (200);</span><br><span class="line">  myvector.push_back (300);</span><br><span class="line"></span><br><span class="line">  while (!myvector.empty())</span><br><span class="line">  &#123;</span><br><span class="line">    sum+=myvector.back();</span><br><span class="line">    myvector.pop_back();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;The elements of myvector add up to &quot; &lt;&lt; sum &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/pop_back/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
-<p>In this example, the elements are popped out of the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> after they are added up in the sum. Output:  </p>
-<p>The elements of myvector add up to 600 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
-<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>The <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">end iterator</a> and any iterator, pointer and reference referring to the removed element are invalidated.</p>
-<p>通过end（）获得的iterator以及其他指向被移除的元素的迭代器，指针，引用都将失效。</p>
-<p>例子:  </p>
-<p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi={10,20,30};<br>cout&lt;&lt;”vi is :”&lt;&lt;endl;<br>for_each(vi.begin(),vi.end(),[](int i){cout&lt;&lt;i&lt;&lt;” “;});<br>auto it=vi.end();<br>int &amp;ri=vi.back();<br>int *p=&amp;vi[2];<br>cout&lt;&lt;endl&lt;&lt;”vi.end()=”&lt;&lt;*it&lt;&lt;endl;<br>cout&lt;&lt;”ri=”&lt;&lt;ri&lt;&lt;endl;<br>cout&lt;&lt;”*p=”&lt;&lt;*p&lt;&lt;endl;<br>vi.pop_back();<br>cout&lt;&lt;endl&lt;&lt;”after the pop_back():”&lt;&lt;endl;<br>for_each(vi.begin(),vi.end(),[](int i){cout&lt;&lt;i&lt;&lt;” “;});<br>cout&lt;&lt;endl&lt;&lt;”try to access vi[2]=”&lt;&lt;vi[2]&lt;&lt;endl&lt;&lt;endl;<br>cout&lt;&lt;”vi.end()=”&lt;&lt;*it&lt;&lt;endl;<br>cout&lt;&lt;”ri=”&lt;&lt;ri&lt;&lt;endl;<br>cout&lt;&lt;”*p=”&lt;&lt;*p&lt;&lt;endl;</p>
-<p>}</p>
-<p>其他的迭代器，指针以及引用，只要不是指向被移除的那个元素，都有效。</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is modified.<br>The last element is modified. Concurrently accessing or modifying other elements is safe, although iterating ranges that include the removed element is not.  </p>
-<p>容器将被修改。</p>
-<p>最后一个元素将被修改。访问以及修改其他元素都是安全的，但是不包括范围在被移除那个元素的例外。</p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the container is not <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::empty">empty</a>, the function never throws exceptions (no-throw guarantee).  </p>
-<p>Otherwise, it causes <em>undefined behavior</em>.</p>
-<p>如果容器非空，不会抛出异常，否则，将会导致未知的错误。</p>
-<p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi;<br>cout&lt;&lt;”vi.pop_back()”&lt;&lt;endl;<br>vi.pop_back();</p>
-<p>}</p>
-<p>在我这里似乎没有什么反应啊，难道真的是编译器问题?</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014950_34713618636484.jpg"><br><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014951_30538329572836.jpg">  </p>
-<p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
-<p>2014-8-16</p>
-<p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38611555">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL容器//" class="article-tag-list-link color1">STL容器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84pop-back%E6%96%B9%E6%B3%95%EF%BC%8822%EF%BC%89/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-stlvector中的operator方法（30）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1015,6 +883,138 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84operator%E6%96%B9%E6%B3%95%EF%BC%8830%EF%BC%89/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-stlvector中的pop-back方法（22）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84pop-back%E6%96%B9%E6%B3%95%EF%BC%8822%EF%BC%89/" target="_blank">STLvector中的pop_back方法（22）</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84pop-back%E6%96%B9%E6%B3%95%EF%BC%8822%EF%BC%89/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>STLvector中的pop_back方法（22）</p>
+<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/pop_back/">http://www.cplusplus.com/reference/vector/vector/pop_back/</a></p>
+<p>public member function</p>
+<vector>
+
+<h1 id="std-vector-pop-back"><a href="#std-vector-pop-back" class="headerlink" title="std::vector::pop_back"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::pop_back</h1><p>void pop_back();</p>
+<p>Delete last element</p>
+<p>Removes the last element in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>, effectively reducing the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> by one.<br>可以高效地移除vector中的最后一个元素.  </p>
+<p>This destroys the removed element.</p>
+<p>将销毁并移除该元素。</p>
+<p>例子:</p>
+<p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi={10,20,30};<br>cout&lt;&lt;”vi is :”&lt;&lt;endl;<br>for_each(vi.begin(),vi.end(),[](int i){cout&lt;&lt;i&lt;&lt;” “;});<br>vi.pop_back();<br>cout&lt;&lt;endl&lt;&lt;”after the pop_back():”&lt;&lt;endl;<br>for_each(vi.begin(),vi.end(),[](int i){cout&lt;&lt;i&lt;&lt;” “;});<br>cout&lt;&lt;endl&lt;&lt;”try to access vi[2]=”&lt;&lt;vi[2]&lt;&lt;endl;</p>
+<p>}</p>
+<p>结果截图：</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014949_16747155862773.jpg">  </p>
+<p>果然又是逗我呢，还是没有销毁数据阿。</p>
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none  </p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// vector::pop_back</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line">  int sum (0);</span><br><span class="line">  myvector.push_back (100);</span><br><span class="line">  myvector.push_back (200);</span><br><span class="line">  myvector.push_back (300);</span><br><span class="line"></span><br><span class="line">  while (!myvector.empty())</span><br><span class="line">  &#123;</span><br><span class="line">    sum+=myvector.back();</span><br><span class="line">    myvector.pop_back();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;The elements of myvector add up to &quot; &lt;&lt; sum &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/pop_back/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p>In this example, the elements are popped out of the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> after they are added up in the sum. Output:  </p>
+<p>The elements of myvector add up to 600 </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
+<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>The <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">end iterator</a> and any iterator, pointer and reference referring to the removed element are invalidated.</p>
+<p>通过end（）获得的iterator以及其他指向被移除的元素的迭代器，指针，引用都将失效。</p>
+<p>例子:  </p>
+<p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi={10,20,30};<br>cout&lt;&lt;”vi is :”&lt;&lt;endl;<br>for_each(vi.begin(),vi.end(),[](int i){cout&lt;&lt;i&lt;&lt;” “;});<br>auto it=vi.end();<br>int &amp;ri=vi.back();<br>int *p=&amp;vi[2];<br>cout&lt;&lt;endl&lt;&lt;”vi.end()=”&lt;&lt;*it&lt;&lt;endl;<br>cout&lt;&lt;”ri=”&lt;&lt;ri&lt;&lt;endl;<br>cout&lt;&lt;”*p=”&lt;&lt;*p&lt;&lt;endl;<br>vi.pop_back();<br>cout&lt;&lt;endl&lt;&lt;”after the pop_back():”&lt;&lt;endl;<br>for_each(vi.begin(),vi.end(),[](int i){cout&lt;&lt;i&lt;&lt;” “;});<br>cout&lt;&lt;endl&lt;&lt;”try to access vi[2]=”&lt;&lt;vi[2]&lt;&lt;endl&lt;&lt;endl;<br>cout&lt;&lt;”vi.end()=”&lt;&lt;*it&lt;&lt;endl;<br>cout&lt;&lt;”ri=”&lt;&lt;ri&lt;&lt;endl;<br>cout&lt;&lt;”*p=”&lt;&lt;*p&lt;&lt;endl;</p>
+<p>}</p>
+<p>其他的迭代器，指针以及引用，只要不是指向被移除的那个元素，都有效。</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is modified.<br>The last element is modified. Concurrently accessing or modifying other elements is safe, although iterating ranges that include the removed element is not.  </p>
+<p>容器将被修改。</p>
+<p>最后一个元素将被修改。访问以及修改其他元素都是安全的，但是不包括范围在被移除那个元素的例外。</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the container is not <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::empty">empty</a>, the function never throws exceptions (no-throw guarantee).  </p>
+<p>Otherwise, it causes <em>undefined behavior</em>.</p>
+<p>如果容器非空，不会抛出异常，否则，将会导致未知的错误。</p>
+<p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi;<br>cout&lt;&lt;”vi.pop_back()”&lt;&lt;endl;<br>vi.pop_back();</p>
+<p>}</p>
+<p>在我这里似乎没有什么反应啊，难道真的是编译器问题?</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014950_34713618636484.jpg"><br><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014951_30538329572836.jpg">  </p>
+<p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
+<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>2014-8-16</p>
+<p>于GDUT</p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38611555">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL容器//" class="article-tag-list-link color1">STL容器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84pop-back%E6%96%B9%E6%B3%95%EF%BC%8822%EF%BC%89/">展开全文 >></a>
     </p>
     
 
