@@ -53,6 +53,22 @@
   
   
 
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+
+</script>
+
+
 
   
 
@@ -106,6 +122,11 @@
 					
 						<a class="github" href="https://github.com/coderguang" 
 												title="GitHub" target="_blank"><i class="icon-github"></i></a>
+					
+				
+					
+						<a class="blog" href="https://www.royalchen.com" 
+												title="博客" target="_blank"><i class="icon-blog"></i></a>
 					
 				
 					
@@ -164,6 +185,11 @@
 						
 						<a class="github" target="_blank" 
 							href="https://github.com/coderguang" title="GitHub"><i class="icon-github"></i></a>
+						
+					
+						
+						<a class="blog" target="_blank" 
+							href="https://www.royalchen.com" title="博客"><i class="icon-blog"></i></a>
 						
 					
 						
@@ -254,7 +280,7 @@
     
     <p> </p>
 <p>有时候我们想将一个类类型转换为另一个类类型,同时,这两个类并不存在继承关系,这时候我们就需要一种叫做转换运算符的运算符. 一个简单的例子.要将类A转换为int类型 #include <iostream> #include <string> using namespace std; class A{ private: int n; string str; public: A(int m,string s):n(m),str(s){ } }; int main(){ A a(10,”hello”); int m=a; cout&lt;&lt;”m=”&lt;&lt;m&lt;&lt;endl; //string s=a; //cout&lt;&lt;”s=”&lt;&lt;s&lt;&lt;endl; } 编译结果 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015309_17185768220368.jpg"> 可能你想将其强制转换.例如 int m=(int)a; 结果还是不行,因为编译器依然不知道应该怎么转换. <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015312_1159565637986.jpg"> 这时候,就需要转换运算符了. 这个转换运算符的类型如下: operator int ()const{ return n; } 函数名为operator int ,这个函数是没有返回类型的,因为返回类型是通过运算符的名称确定的:int 同时应声明为const,因为不会修改被调用的对象. 整个程序如下: #include <iostream> #include <string> using namespace std; class A{ private: int n; string str; public: A(int m,string s):n(m),str(s){ } operator int ()const{ return n; } operator string()const{ return str; } }; int main(){ A a(10,”hello”); int m=a; cout&lt;&lt;”m=”&lt;&lt;m&lt;&lt;endl; string s=a; cout&lt;&lt;”s=”&lt;&lt;s&lt;&lt;endl; } 运行结果: <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015313_20318948633676.jpg"> 类类型转换为基本类型是这样,同样,转换为其他类类型也是同样的道理. #include <iostream> #include <string> using namespace std; class A{ private: int n; string str; public: A(int m,string s):n(m),str(s){ } A(string s){ str=s+” is called!”; } operator int ()const{ return n; } operator string()const{ return str; } void show()const{ cout&lt;&lt;”str=”&lt;&lt;str&lt;&lt;endl; } }; class B{ private: string s; public: B(string str):s(str){ } operator A()const{ return s; } }; int main(){ B b(“this is b “); A a=b; a.show(); } 结果: <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015314_41228807200995.jpg"> 这样,我们就可以对不是同一条继承链上的类进行转换了!</p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#110;&#64;&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#110;&#46;&#x63;&#111;&#109;">&#114;&#111;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#110;&#64;&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#110;&#46;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#121;&#x61;&#108;&#x63;&#104;&#101;&#x6e;&#x40;&#114;&#111;&#121;&#97;&#108;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#x6f;&#109;">&#114;&#111;&#121;&#x61;&#108;&#x63;&#104;&#101;&#x6e;&#x40;&#114;&#111;&#121;&#97;&#108;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 

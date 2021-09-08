@@ -55,6 +55,22 @@
   
   
 
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+
+</script>
+
+
 
   
 
@@ -108,6 +124,11 @@
 					
 						<a class="github" href="https://github.com/coderguang" 
 												title="GitHub" target="_blank"><i class="icon-github"></i></a>
+					
+				
+					
+						<a class="blog" href="https://www.royalchen.com" 
+												title="博客" target="_blank"><i class="icon-blog"></i></a>
 					
 				
 					
@@ -166,6 +187,11 @@
 						
 						<a class="github" target="_blank" 
 							href="https://github.com/coderguang" title="GitHub"><i class="icon-github"></i></a>
+						
+					
+						
+						<a class="blog" target="_blank" 
+							href="https://www.royalchen.com" title="博客"><i class="icon-blog"></i></a>
 						
 					
 						
@@ -262,7 +288,7 @@
 <p>#include <iostream><br>using namespace std;<br>int main(){<br>    int x=10;<br>    int y=20;<br>    int z=30;<br>    int* ptx=&x;<br>    int* ptz=&z;<br>    //指针的引用,声明从右往左看，rtp与&amp;结合，<br>    //剩余的符号和左边结合<br>    //引用一旦创建，不能改变其指向，只能改变其值<br>    int* &amp;rtp=ptx;<br>    ptx=&y;<br>    //ptx的值改变了，rtp的值也相对改变了<br>    //但其指向不变<br>    rtp=ptz;<br>    //rtp的值改变了，ptx的值也相对改变了<br>    //但rtp指向不变</p>
 <p>}</p>
 <p>单步运行截图：（看ptx和rtp的值） <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015422_222218310052820.jpg">  <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015424_39929696847850.jpg"> <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015425_27548409526000.jpg"> <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015427_3783378296242.jpg"> 可以看到，rtp一直指向0x22fed8,而这个地址，正是&amp;ptx的地址，从这里可以看出，引用一旦创建其指向不可改变，能改变的只是其值（ptx的值）！ 这就是指针的引用，指向引用的指针请看下一篇博文！ </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x40;&#114;&#x6f;&#121;&#x61;&#x6c;&#99;&#104;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;">&#114;&#111;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x40;&#114;&#x6f;&#121;&#x61;&#x6c;&#99;&#104;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#x40;&#114;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#99;&#111;&#109;">&#114;&#111;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#x40;&#114;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
