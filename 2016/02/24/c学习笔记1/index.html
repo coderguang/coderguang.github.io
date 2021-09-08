@@ -251,7 +251,7 @@
     <p>   </p>
 <p>string 转int<br>string  str=”123”;<br>int i;<br>i=atoi(str.c_str());</p>
 <p>  cin.getline()输入最后会自动丢弃回车符 cin.clear()是不会清除最后的回车符的 如果想清楚最后那个回车符,必须调用一次cin.get()!   关于模板类： 错误 1 error C2955: “List”: 使用类 模板 需要 模板 参数列表 e:\c++\number10\number10\list.cpp61number10 template <class T> class List{/**/} cpp实现： template <class T> List<T>::List() //模板类的定义必须有模板参数,不能写出List::List!! { front=rear=nullptr; qsize=0; }   关于char []里面的元素个数 char a[5]={1,2,3}; sizeof(a)=5; strlen(a)=3;   函数后的const 表明此函数不能影响对象的状态，说白一点就是<br>不会改变对象中成员变量的数值。   关于返回this String &amp;operator=(const String &amp;st) { if(this==&amp;st)//this的应用 return *this;//不能写成return this,*this才是对象，this只是一个引用 } 关于派生类调用父类方法，用域运算符：：   关于派生类调用父类的友元函数： friend ostream&amp;operator&lt;&lt;(ostream &amp;os,const baseDMA &amp;bd) { os&lt;&lt;”This is baseDMA:  “; os&lt;&lt;(const  DMA &amp;)bd;//通过强制类型转换调用基类友元函数 //os&lt;&lt;”label:”&lt;&lt;rs.label&lt;&lt;”   rating:”&lt;&lt;rs.rating&lt;&lt;endl; return os; }   throw 指针问题 class A{..} throw (new A()); catch(A  *a);   peek()返回下一个字符，但不抽取流中字符   静态变量是不如栈的。</p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#x61;&#x6c;&#x63;&#104;&#x65;&#110;&#64;&#114;&#111;&#121;&#97;&#x6c;&#x63;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#x6d;">&#114;&#111;&#x79;&#x61;&#x6c;&#x63;&#104;&#x65;&#110;&#64;&#114;&#111;&#121;&#97;&#x6c;&#x63;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#64;&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#x65;&#x6e;&#46;&#x63;&#x6f;&#x6d;">&#x72;&#111;&#x79;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#64;&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#x65;&#x6e;&#46;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -449,30 +449,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "C++学习笔记1" -->
-    var gitment = new Gitment({
-      id: "20160224000000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "C++学习笔记1" -->
+  var giteement = new Giteement({
+    id: '20160224000000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

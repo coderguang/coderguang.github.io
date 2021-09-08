@@ -267,14 +267,14 @@ else
 <p>}</p>
 <p>运行截图：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013051_37893075972095.jpg"><br>可以看出来，it!=vi.end(),只是理论上的超尾迭代器。  </p>
-<p>下面内容来自：<a target="_blank" rel="noopener" href="http://blog.csdn.net/wangwenwen/article/details/7583986">http://blog.csdn.net/wangwenwen/article/details/7583986</a></p>
+<p>下面内容来自：<a href="http://blog.csdn.net/wangwenwen/article/details/7583986">http://blog.csdn.net/wangwenwen/article/details/7583986</a></p>
 <p>*******************************************************************************************</p>
 <h2 id="条款32：如果你真的想删除东西的话就在类似remove的算法后接上erase"><a href="#条款32：如果你真的想删除东西的话就在类似remove的算法后接上erase" class="headerlink" title="条款32：如果你真的想删除东西的话就在类似remove的算法后接上erase"></a>条款32：如果你真的想删除东西的话就在类似remove的算法后接上erase</h2><p>只有容器成员函数可以除去容器元素：如果你真的要删除东西的话，你应该在remove后面接上erase。</p>
-<p>你要erase的元素很容易识别。它们是从区间的“新逻辑终点”开始持续到区间真的终点的原来区间的元素。要除去那些元素，你要做的所有事情就是用那两个迭代器调用erase的区间形式（参见<a target="_blank" rel="noopener" href="http://blog.csdn.net/wangwenwen/article/details/7583986">条款5</a>）。因为remove本身很方便地返回了区间新逻辑终点的迭代器，这个调用很直截了当：</p>
+<p>你要erase的元素很容易识别。它们是从区间的“新逻辑终点”开始持续到区间真的终点的原来区间的元素。要除去那些元素，你要做的所有事情就是用那两个迭代器调用erase的区间形式（参见<a href="http://blog.csdn.net/wangwenwen/article/details/7583986">条款5</a>）。因为remove本身很方便地返回了区间新逻辑终点的迭代器，这个调用很直截了当：</p>
 <p>vector<int> v;// 正如从前<br>v.erase(remove(v.begin(), v.end(), 99), v.end());// _真的_删除所有<br>// 等于99的元素<br>cout &lt;&lt; v.size();// 现在返回7</p>
 <p>把remove的返回值作为erase区间形式第一个实参传递很常见，这是个惯用法。事实上，remove和erase是亲密联盟，这两个整合到list成员函数remove中。这是STL中唯一名叫remove又能从容器中除去元素的函数：</p>
 <p>list<int> li;// 建立一个list<br>// 放一些值进去<br>li.remove(99);// 除去所有等于99的元素：<br>// 真的删除元素，<br>// 所以它的大小可能改变了</p>
-<p>坦白地说，调用这个remove函数是一个STL中的矛盾。在关联容器中类似的函数叫erase，list的remove也可以叫做erase。但它没有，所以我们都必须习惯它。我们所处于的世界不是所有可能中最好的世界，但却是我们所处的。（附加一点，<a target="_blank" rel="noopener" href="http://blog.csdn.net/wangwenwen/article/details/7583986">条款44</a>指出，对于list，调用remove成员函数比应用erase-remove惯用法更高效。）</p>
+<p>坦白地说，调用这个remove函数是一个STL中的矛盾。在关联容器中类似的函数叫erase，list的remove也可以叫做erase。但它没有，所以我们都必须习惯它。我们所处于的世界不是所有可能中最好的世界，但却是我们所处的。（附加一点，<a href="http://blog.csdn.net/wangwenwen/article/details/7583986">条款44</a>指出，对于list，调用remove成员函数比应用erase-remove惯用法更高效。）</p>
 <p>一旦你知道了remove不能“真的”从一个容器中删除东西，和erase联合使用就变成理所当然了。你要记住的唯一其他的东西是remove不是唯一这种情况的算法。另外有两种“类似remove”的算法：remove_if和unique。</p>
 <p>remove和remove_if之间的相似性很直截了当。所以我不会细讲，但unique行为也像remove。它用来从一个区间删除东西（邻近的重复值）而不用访问持有区间元素的容器。结果，如果你真的要从容器中删除元素，你也必须成对调用unique和erase，unique在list中也类似于remove。正像list::remove真的删除东西（而且比erase-remove惯用法高效得多）。list::unique也真的删除邻近的重复值（也比erase-unique高效）。</p>
 <p>———————————————————————————————————————————————————</p>
@@ -295,13 +295,13 @@ else
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013052_33488818015476.jpg">  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#100;&#101;&#x72;&#103;&#117;&#x61;&#x6e;&#x67;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;">&#99;&#111;&#100;&#101;&#x72;&#103;&#117;&#x61;&#x6e;&#x67;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#x6f;&#x64;&#101;&#x72;&#103;&#117;&#x61;&#x6e;&#103;&#64;&#x67;&#109;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#109;">&#99;&#x6f;&#x64;&#101;&#x72;&#103;&#117;&#x61;&#x6e;&#103;&#64;&#x67;&#109;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#109;</a></p>
 <p>2014-9-25</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39545857">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39545857">原文链接</a></p>
 
     
 
@@ -484,30 +484,31 @@ else
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLalgorithm算法remonve,remove_if(47)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLalgorithm算法remonve,remove_if(47)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

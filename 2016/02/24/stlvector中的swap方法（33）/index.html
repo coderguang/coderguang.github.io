@@ -249,13 +249,13 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的swap方法（33）</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/swap/">http://www.cplusplus.com/reference/vector/vector/swap/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/swap/">http://www.cplusplus.com/reference/vector/vector/swap/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-swap"><a href="#std-vector-swap" class="headerlink" title="std::vector::swap"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::swap</h1><p>void swap (vector&amp; x);</p>
+<h1 id="std-vector-swap"><a href="#std-vector-swap" class="headerlink" title="std::vector::swap"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::swap</h1><p>void swap (vector&amp; x);</p>
 <p>Swap content</p>
-<p>Exchanges the content of the container by the content of <em>x</em>, which is another <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> object of the same type. Sizes may differ.  </p>
+<p>Exchanges the content of the container by the content of <em>x</em>, which is another <a href="http://www.cplusplus.com/vector">vector</a> object of the same type. Sizes may differ.  </p>
 <p>与x交换其内容，x的类型要与该vector一样，大小可以不同。</p>
 <p>After the call to this member function, the elements in this container are those which were in <em>x</em> before the call, and the elements of <em>x</em> are those which were in this. All iterators, references and pointers remain valid for the swapped objects.  </p>
 <p>调用该函数之后，存储在该容器内的元素是那些本来在x中的元素，x中的元素是原本存储在该容器中的元素(即交换内容)，所有的迭代器，引用以及指针在交换后依旧有效。</p>
@@ -272,23 +272,23 @@
 <p>运行结果：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014812_20963785530443.jpg">  </p>
 <p>居然还真的都是保持有效，真是少见啊，以前都是失效，难得有个保持有效的。</p>
-<p>Notice that a non-member function exists with the same name, <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector:swap">swap</a>, overloading that algorithm with an optimization that behaves like this member function.  </p>
+<p>Notice that a non-member function exists with the same name, <a href="http://www.cplusplus.com/vector:swap">swap</a>, overloading that algorithm with an optimization that behaves like this member function.  </p>
 <p>需要注意的是在algorithm中，有一个非成员方法swap,优化重写了该方法，行为也相似。</p>
 <ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
-<p>Whether the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::get_allocator">allocators</a> are also swapped is not defined, unless in the case the appropriate <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits">allocator traits</a> indicate explicitly that they shall <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits#types">propagate</a>.<br>不肯定容器的内存分配器是否也会交换，除非内存分配器的特性特别指明其内存分配器应该被继承。  </p>
-<p>The bool specialization of <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> provides an additional overload for this function (see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector%3Cbool%3E::swap">vector<bool>::swap</a>).<br>vector<bool>::swap特别重写了该方法。</p>
+<p>Whether the container <a href="http://www.cplusplus.com/vector::get_allocator">allocators</a> are also swapped is not defined, unless in the case the appropriate <a href="http://www.cplusplus.com/allocator_traits">allocator traits</a> indicate explicitly that they shall <a href="http://www.cplusplus.com/allocator_traits#types">propagate</a>.<br>不肯定容器的内存分配器是否也会交换，除非内存分配器的特性特别指明其内存分配器应该被继承。  </p>
+<p>The bool specialization of <a href="http://www.cplusplus.com/vector">vector</a> provides an additional overload for this function (see <a href="http://www.cplusplus.com/vector%3Cbool%3E::swap">vector<bool>::swap</a>).<br>vector<bool>::swap特别重写了该方法。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>x</p>
-<p>Another <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> container of the same type (i.e., instantiated with the same template parameters, T and Alloc) whose content is swapped with that of this container.</p>
+<p>Another <a href="http://www.cplusplus.com/vector">vector</a> container of the same type (i.e., instantiated with the same template parameters, T and Alloc) whose content is swapped with that of this container.</p>
 <p>x是另一个将被交换的同类型的vector容器。</p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// swap vectors</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; foo (3,100);   // three ints with a value of 100</span><br><span class="line">  std::vector&lt;int&gt; bar (5,200);   // five ints with a value of 200</span><br><span class="line"></span><br><span class="line">  foo.swap(bar);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;foo contains:&quot;;</span><br><span class="line">  for (unsigned i=0; i&lt;foo.size(); i++)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; foo[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;bar contains:&quot;;</span><br><span class="line">  for (unsigned i=0; i&lt;bar.size(); i++)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; bar[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/swap/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/swap/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>foo contains: 200 200 200 200 200<br>bar contains: 100 100 100 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
@@ -299,13 +299,13 @@
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>Both the container and <em>x</em> are modified.<br>No contained elements are accessed by the call (although see <em>iterator validity</em> above).  </p>
 <p>x以及该容器都将被修改。</p>
 <p>容器的元素不会被访问。</p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the allocators in both <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vectors</a> compare equal, or if their <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits">allocator traits</a> indicate that the allocators shall <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits#types">propagate</a>, the function never throws exceptions (no-throw guarantee).</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the allocators in both <a href="http://www.cplusplus.com/vector">vectors</a> compare equal, or if their <a href="http://www.cplusplus.com/allocator_traits">allocator traits</a> indicate that the allocators shall <a href="http://www.cplusplus.com/allocator_traits#types">propagate</a>, the function never throws exceptions (no-throw guarantee).</p>
 <p>Otherwise, it causes <em>undefined behavior</em>.</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-19</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38686549">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38686549">原文链接</a></p>
 
     
 
@@ -488,30 +488,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLvector中的swap方法（33）" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLvector中的swap方法（33）" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

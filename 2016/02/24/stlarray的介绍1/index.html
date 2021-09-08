@@ -249,7 +249,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLarray的介绍(1)</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/">http://www.cplusplus.com/reference/array/array/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/array/array/">http://www.cplusplus.com/reference/array/array/</a></p>
 <p>class template</p>
 <array>
 
@@ -259,9 +259,9 @@
 <p>array是固定大小的序列容器，array存储固定大小的元素在连续的精确的序列中。</p>
 <p>Internally, an array does not keep any data other than the elements it contains (not even its size, which is a template parameter, fixed on compile time). It is as efficient in terms of storage size as an ordinary array declared with the language’s bracket syntax ([]). This class merely adds a layer of member and global functions to it, so that arrays can be used as standard containers.  </p>
 <p>在内部，一个array除了它的元素之外不保存其他的任何数据（甚至是其大小，因为其大小是array的模板参数，在编译的时候就已经确定了）。这是一种和平常利用[]语法来声明的数组一样高效的容器，该类仅仅只是在普通数组上加了一些成员以及全局方法，使array可以被当成标准容器来使用。</p>
-<p>Unlike the other standard containers, arrays have a fixed size and do not manage the allocation of its elements through an allocator: they are an aggregate type encapsulating a fixed-size array of elements. Therefore, they cannot be expanded or contracted dynamically (see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> for a similar container that can be expanded).</p>
+<p>Unlike the other standard containers, arrays have a fixed size and do not manage the allocation of its elements through an allocator: they are an aggregate type encapsulating a fixed-size array of elements. Therefore, they cannot be expanded or contracted dynamically (see <a href="http://www.cplusplus.com/vector">vector</a> for a similar container that can be expanded).</p>
 <p>和其他标准容器不一样的是，array具有固定的大小以及当它的元素超过（限制的大小）时它不能通过内存分配器来继续重分配，它是一个固定大小数组元素的封装，因此，他们不能自动增长或者收缩（比如vector）.</p>
-<p>Zero-sized arrays are valid, but they should not be dereferenced (members <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array::front">front</a>, <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array::back">back</a>, and <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array::data">data</a>).  </p>
+<p>Zero-sized arrays are valid, but they should not be dereferenced (members <a href="http://www.cplusplus.com/array::front">front</a>, <a href="http://www.cplusplus.com/array::back">back</a>, and <a href="http://www.cplusplus.com/array::data">data</a>).  </p>
 <p>大小为0的array是有效的，但是不应该被解除引用。（front,back,data方法）.</p>
 <p>例子：</p>
 <p>#include <iostream><br>#include <array><br>using namespace std;<br>int main()<br>{<br>    array&lt;int,0&gt; ai;<br>    cout&lt;&lt;ai.front()&lt;&lt;endl;<br>    cout&lt;&lt;ai.back()&lt;&lt;endl;<br>    cout&lt;&lt;ai.data()&lt;&lt;endl;<br>}</p>
@@ -269,7 +269,7 @@
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014427_7418246358537.jpg"><br>可以看到，对其front,back得不到正确的值。</p>
 <p>Unlike with the other containers in the Standard Library, swapping two array containers is a linear operation that involves swapping all the elements in the ranges individually, which generally is a considerably less efficient operation. On the other side, this allows the iterators to elements in both containers to keep their original container association.  </p>
 <p>和其他容器在标准库中的行为不同，交换两个array容器将分别交换两者的元素，这是一种线性操作，通常被认为是一种低效的行为。另一方面，这可以使原来的迭代器保持有效。</p>
-<p>Another unique feature of array containers is that they can be treated as <a target="_blank" rel="noopener" href="http://www.cplusplus.com/tuple">tuple</a> objects: The <array> header overloads the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array:get">get</a> function to access the elements of the array as if it was a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/tuple">tuple</a>, as well as specialized <a target="_blank" rel="noopener" href="http://www.cplusplus.com/tuple_size">tuple_size</a> and <a target="_blank" rel="noopener" href="http://www.cplusplus.com/tuple_element">tuple_element</a> types.</p>
+<p>Another unique feature of array containers is that they can be treated as <a href="http://www.cplusplus.com/tuple">tuple</a> objects: The <array> header overloads the <a href="http://www.cplusplus.com/array:get">get</a> function to access the elements of the array as if it was a <a href="http://www.cplusplus.com/tuple">tuple</a>, as well as specialized <a href="http://www.cplusplus.com/tuple_size">tuple_size</a> and <a href="http://www.cplusplus.com/tuple_element">tuple_element</a> types.</p>
 <p>array容器另一个独有的特性是可以被当成一个元组对象看待，array头文件重载了get方法可以使其像元组一样访问其元素，同样被特化的还有tuple_size以及tuple_element  </p>
 <h3 id="Container-properties"><a href="#Container-properties" class="headerlink" title="Container properties"></a>Container properties</h3><p>Sequence</p>
 <p>Elements in sequence containers are ordered in a strict linear sequence. Individual elements are accessed by their position in this sequence.<br>元素严格地顺序排列在序列中，可以通过位置访问序列中的元素。  </p>
@@ -297,71 +297,71 @@
 <p>const_pointer</p>
 <p>const value_type*</p>
 <p>iterator</p>
-<p>a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> to value_type</p>
+<p>a <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> to value_type</p>
 <p>convertible to const_iterator</p>
 <p>const_iterator</p>
-<p>a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> to const value_type</p>
+<p>a <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> to const value_type</p>
 <p>reverse_iterator</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reverse_iterator">reverse_iterator</a><iterator></p>
+<p><a href="http://www.cplusplus.com/reverse_iterator">reverse_iterator</a><iterator></p>
 <p>const_reverse_iterator</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reverse_iterator">reverse_iterator</a>&lt;const_iterator&gt;</p>
+<p><a href="http://www.cplusplus.com/reverse_iterator">reverse_iterator</a>&lt;const_iterator&gt;</p>
 <p>size_type</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/size_t">size_t</a></p>
+<p><a href="http://www.cplusplus.com/size_t">size_t</a></p>
 <p>unsigned integral type</p>
 <p>difference_type</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/ptrdiff_t">ptrdiff_t</a></p>
+<p><a href="http://www.cplusplus.com/ptrdiff_t">ptrdiff_t</a></p>
 <p>signed integral type</p>
-<h3 id="Member-functions"><a href="#Member-functions" class="headerlink" title="Member functions"></a>Member functions</h3><h4 id="Iterators"><a href="#Iterators" class="headerlink" title="Iterators"></a>Iterators</h4><p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/begin/"><strong>begin</strong></a></p>
+<h3 id="Member-functions"><a href="#Member-functions" class="headerlink" title="Member functions"></a>Member functions</h3><h4 id="Iterators"><a href="#Iterators" class="headerlink" title="Iterators"></a>Iterators</h4><p><a href="http://www.cplusplus.com/reference/array/array/begin/"><strong>begin</strong></a></p>
 <p>Return iterator to beginning (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/end/"><strong>end</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/end/"><strong>end</strong></a></p>
 <p>Return iterator to end (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/rbegin/"><strong>rbegin</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/rbegin/"><strong>rbegin</strong></a></p>
 <p>Return reverse iterator to reverse beginning (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/rend/"><strong>rend</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/rend/"><strong>rend</strong></a></p>
 <p>Return reverse iterator to reverse end (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/cbegin/"><strong>cbegin</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/cbegin/"><strong>cbegin</strong></a></p>
 <p>Return const_iterator to beginning (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/cend/"><strong>cend</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/cend/"><strong>cend</strong></a></p>
 <p>Return const_iterator to end (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/crbegin/"><strong>crbegin</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/crbegin/"><strong>crbegin</strong></a></p>
 <p>Return const_reverse_iterator to reverse beginning (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/crend/"><strong>crend</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/crend/"><strong>crend</strong></a></p>
 <p>Return const_reverse_iterator to reverse end (public member function )</p>
-<h4 id="Capacity"><a href="#Capacity" class="headerlink" title="Capacity"></a>Capacity</h4><p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/size/"><strong>size</strong></a></p>
+<h4 id="Capacity"><a href="#Capacity" class="headerlink" title="Capacity"></a>Capacity</h4><p><a href="http://www.cplusplus.com/reference/array/array/size/"><strong>size</strong></a></p>
 <p>Return size (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/max_size/"><strong>max_size</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/max_size/"><strong>max_size</strong></a></p>
 <p>Return maximum size (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/empty/"><strong>empty</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/empty/"><strong>empty</strong></a></p>
 <p>Test whether array is empty (public member function )</p>
-<h4 id="Element-access"><a href="#Element-access" class="headerlink" title="Element access"></a>Element access</h4><p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/operator[]/"><strong>operator[]</strong></a></p>
+<h4 id="Element-access"><a href="#Element-access" class="headerlink" title="Element access"></a>Element access</h4><p><a href="http://www.cplusplus.com/reference/array/array/operator[]/"><strong>operator[]</strong></a></p>
 <p>Access element (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/at/"><strong>at</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/at/"><strong>at</strong></a></p>
 <p>Access element (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/front/"><strong>front</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/front/"><strong>front</strong></a></p>
 <p>Access first element (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/back/"><strong>back</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/back/"><strong>back</strong></a></p>
 <p>Access last element (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/data/"><strong>data</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/data/"><strong>data</strong></a></p>
 <p>Get pointer to data (public member function )</p>
-<h4 id="Modifiers"><a href="#Modifiers" class="headerlink" title="Modifiers"></a>Modifiers</h4><p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/fill/"><strong>fill</strong></a></p>
+<h4 id="Modifiers"><a href="#Modifiers" class="headerlink" title="Modifiers"></a>Modifiers</h4><p><a href="http://www.cplusplus.com/reference/array/array/fill/"><strong>fill</strong></a></p>
 <p>Fill array with value (public member function )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/swap/"><strong>swap</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/swap/"><strong>swap</strong></a></p>
 <p>Swap content (public member function )</p>
-<h3 id="Non-member-function-overloads"><a href="#Non-member-function-overloads" class="headerlink" title="Non-member function overloads"></a>Non-member function overloads</h3><p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/get/"><strong>get (array)</strong></a></p>
+<h3 id="Non-member-function-overloads"><a href="#Non-member-function-overloads" class="headerlink" title="Non-member function overloads"></a>Non-member function overloads</h3><p><a href="http://www.cplusplus.com/reference/array/array/get/"><strong>get (array)</strong></a></p>
 <p>Get element (tuple interface) (function template )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/operators/"><strong>relational operators (array)</strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/operators/"><strong>relational operators (array)</strong></a></p>
 <p>Relational operators for array (function template )</p>
-<h3 id="Non-member-class-specializations"><a href="#Non-member-class-specializations" class="headerlink" title="Non-member class specializations"></a>Non-member class specializations</h3><p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/tuple_element/"><strong>tuple_element<array></strong></a></p>
+<h3 id="Non-member-class-specializations"><a href="#Non-member-class-specializations" class="headerlink" title="Non-member class specializations"></a>Non-member class specializations</h3><p><a href="http://www.cplusplus.com/reference/array/array/tuple_element/"><strong>tuple_element<array></strong></a></p>
 <p>Tuple element type for array (class template specialization )</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/tuple_size/"><strong>tuple_size<array></strong></a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/tuple_size/"><strong>tuple_size<array></strong></a></p>
 <p>Tuple size traits for array (class template specialization )  </p>
 <p>—————————————————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
 <p>2014-8-25</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————————————-———  </p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38798187">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38798187">原文链接</a></p>
 
     
 
@@ -544,30 +544,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLarray的介绍(1)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLarray的介绍(1)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

@@ -253,11 +253,11 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvectorz中的resize方法（16）</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/resize/">http://www.cplusplus.com/reference/vector/vector/resize/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/vector/vector/resize/">http://www.cplusplus.com/reference/vector/vector/resize/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-resize"><a href="#std-vector-resize" class="headerlink" title="std::vector::resize"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::resize</h1><ul>
+<h1 id="std-vector-resize"><a href="#std-vector-resize" class="headerlink" title="std::vector::resize"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::resize</h1><ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
@@ -265,7 +265,7 @@
 <p>Change size</p>
 <p>Resizes the container so that it contains <em>n</em> elements.  </p>
 <p>调整容器使其包含n个元素。</p>
-<p>If <em>n</em> is smaller than the current container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a>, the content is reduced to its first <em>n</em> elements, removing those beyond (and destroying them).  </p>
+<p>If <em>n</em> is smaller than the current container <a href="http://www.cplusplus.com/vector::size">size</a>, the content is reduced to its first <em>n</em> elements, removing those beyond (and destroying them).  </p>
 <p>如果n小于当前的容器大小(通过size获得，而不是capacity),那么将会只是保留前n个元素，移除多余的元素（并且销毁他们)</p>
 <p>例子:</p>
 <p>#include <iostream><br>#include <vector><br>using namespace std;<br>int main()<br>{<br>vector<int> vi={1,2,3,4,5,6,7};<br>int mcapacity=vi.capacity();<br>int msize=vi.size();<br>cout&lt;&lt;”size=”&lt;&lt;msize&lt;&lt;”,capcity=”&lt;&lt;mcapacity&lt;&lt;endl;<br>vi.resize(3);<br>cout&lt;&lt;”after resize(3):”&lt;&lt;endl;<br>for(auto it=vi.begin();it!=vi.end();++it)<br>cout&lt;&lt;*it&lt;&lt;endl;<br>cout&lt;&lt;”size=”&lt;&lt;msize&lt;&lt;”,capcity=”&lt;&lt;mcapacity&lt;&lt;endl;<br>cout&lt;&lt;”try to access vi[5] now,vi[5]=”&lt;&lt;vi[5]&lt;&lt;endl;</p>
@@ -274,7 +274,7 @@
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015026_52238239876888.jpg">  </p>
 <p>可以看到，resize(3)之后，只保留了前3个元素，其容量和大小都没有改变.</p>
 <p>但是发现vi[5]还是可以访问并且得到正确的数据，并没有销毁里面的数据，这里可能是编译器的实现问题。（这样个人觉得可能会导致数据泄露，使用时需要注意）</p>
-<p>If <em>n</em> is greater than the current container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a>, the content is expanded by inserting at the end as many elements as needed to reach a size of <em>n</em>. If <em>val</em> is specified, the new elements are initialized as copies of <em>val</em>, otherwise, they are value-initialized.</p>
+<p>If <em>n</em> is greater than the current container <a href="http://www.cplusplus.com/vector::size">size</a>, the content is expanded by inserting at the end as many elements as needed to reach a size of <em>n</em>. If <em>val</em> is specified, the new elements are initialized as copies of <em>val</em>, otherwise, they are value-initialized.</p>
 <p>如果n大于当前容器的大小，那么容器将会从尾部开始增长至大小n,如果指定了val的值，那么新增长的元素的值将会被初始化为val的一个拷贝，否则将会时元素值类型的默认值。</p>
 <p>例子：</p>
 <p>#include <iostream><br>#include <vector><br>using namespace std;<br>int main()<br>{<br>vector<int> vi={1,2,3};<br>cout&lt;&lt;”at first ,vi:”&lt;&lt;endl;<br>for(auto it=vi.begin();it!=vi.end();++it)<br>cout&lt;&lt;*it&lt;&lt;”  “;<br>cout&lt;&lt;endl;<br>vi.resize(7);<br>cout&lt;&lt;”after resize ,vi:”&lt;&lt;endl;<br>for(auto it=vi.begin();it!=vi.end();++it)<br>cout&lt;&lt;*it&lt;&lt;”  “;<br>cout&lt;&lt;endl;</p>
@@ -283,7 +283,7 @@
 <p>可以看到，如果不知道val的值，那么将会是int类型的默认值0!</p>
 <p>下面使指定val为999的情况。即vi.resize(7,999);</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015028_35540168054498.jpg">  </p>
-<p>If <em>n</em> is also greater than the current container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::capacity">capacity</a>, an automatic reallocation of the allocated storage space takes place.  </p>
+<p>If <em>n</em> is also greater than the current container <a href="http://www.cplusplus.com/vector::capacity">capacity</a>, an automatic reallocation of the allocated storage space takes place.  </p>
 <p>如果n大于当前容器的容量(通过capacity获得),那么容器将会自动重分配空间以适应其增长。</p>
 <p>例子:</p>
 <p>#include <iostream><br>#include <vector><br>using namespace std;<br>int main()<br>{<br>vector<int> vi={1,2,3};<br>cout&lt;&lt;”size=”&lt;&lt;vi.size()&lt;&lt;”   ,capacity=”&lt;&lt;vi.capacity()&lt;&lt;endl;<br>cout&lt;&lt;”at first ,vi:”&lt;&lt;endl;<br>for(auto it=vi.begin();it!=vi.end();++it)<br>cout&lt;&lt;*it&lt;&lt;”  “;<br>cout&lt;&lt;endl;<br>vi.resize(30,999);<br>cout&lt;&lt;”size=”&lt;&lt;vi.size()&lt;&lt;”   ,capacity=”&lt;&lt;vi.capacity()&lt;&lt;endl;<br>cout&lt;&lt;”after resize ,vi:”&lt;&lt;endl;<br>for(auto it=vi.begin();it!=vi.end();++it)<br>cout&lt;&lt;*it&lt;&lt;”  “;<br>cout&lt;&lt;endl;</p>
@@ -306,45 +306,45 @@
 <p>新容器的大小，表现为元素的个数</p>
 <p>n是一个无符号整型.</p>
 <p>val</p>
-<p>Object whose content is copied to the added elements in case that <em>n</em> is greater than the current container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a>.<br>If not specified, the default constructor is used instead.  </p>
-<p>Member type value_type is the type of the elements in the container, defined in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> as an alias of the first template parameter (T).</p>
+<p>Object whose content is copied to the added elements in case that <em>n</em> is greater than the current container <a href="http://www.cplusplus.com/vector::size">size</a>.<br>If not specified, the default constructor is used instead.  </p>
+<p>Member type value_type is the type of the elements in the container, defined in <a href="http://www.cplusplus.com/vector">vector</a> as an alias of the first template parameter (T).</p>
 <p>val为当n大于当前容器大小需要增长时，新的元素的值为val的拷贝。</p>
 <p>如果不特别指定，那么将使用元素类型的默认构造器构造新的元素。</p>
 <p>其类型由vector的第一个模版参数指定。</p>
 <h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>none  </p>
-<p>If a reallocation happens, the storage is allocated using the container’s <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).  </p>
+<p>If a reallocation happens, the storage is allocated using the container’s <a href="http://www.cplusplus.com/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).  </p>
 <p>无返回值。</p>
 <p>如果发生重分配，那么使用容器的分配器的过程中如果分配失败可能会发生异常（例如对于默认分配器allocator,当分配不成功使会抛出bad_alloc异常）。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// resizing vector</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line"></span><br><span class="line">  // set some initial content:</span><br><span class="line">  for (int i=1;i&lt;10;i++) myvector.push_back(i);</span><br><span class="line"></span><br><span class="line">  myvector.resize(5);</span><br><span class="line">  myvector.resize(8,100);</span><br><span class="line">  myvector.resize(12);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (int i=0;i&lt;myvector.size();i++)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; myvector[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/resize/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/resize/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector contains: 1 2 3 4 5 100 100 100 0 0 0 0 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear on the number of elements inserted/erased (constructions/destructions).  </p>
 <p>增加或者截断时，时间或空间复杂度为线性复杂度（构造/析构）</p>
-<p>If a reallocation happens, the reallocation is itself up to linear in the entire <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">vector size</a>.<br>如果发生重分配,重分配将复制整个数组到新数组也将需要线性时间//好像不太对。。。。  </p>
+<p>If a reallocation happens, the reallocation is itself up to linear in the entire <a href="http://www.cplusplus.com/vector::size">vector size</a>.<br>如果发生重分配,重分配将复制整个数组到新数组也将需要线性时间//好像不太对。。。。  </p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>In case the container shrinks, all iterators, pointers and references to elements that have not been removed remain valid after the resize and refer to the same elements they were referring to before the call.  </p>
 <p>假设是收缩的情况下，所有的迭代器，指针以及引用在resize之后并不会移动，因此都保此有效，都指向之前其所指向的元素。</p>
-<p>If the container expands, the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">end iterator</a> is invalidated and, if it has to reallocate storage, all iterators, pointers and references related to this container are also invalidated.  </p>
+<p>If the container expands, the <a href="http://www.cplusplus.com/vector::end">end iterator</a> is invalidated and, if it has to reallocate storage, all iterators, pointers and references related to this container are also invalidated.  </p>
 <p>如果使扩展的情况，那么超尾迭代器将变得无效，并且如果发生了重分配（超出了capacity），那么所有的迭代器，指针以及引用都将失效。</p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is modified.<br>If a reallocation happens, all contained elements are modified.<br>Otherwise, none of the elements before <em>n</em> is accessed, and concurrently accessing or modifying them is safe.  </p>
 <p>容器将被修改。</p>
 <p>如果发生重分配，容器内所有元素都将被修改（这里修改的是地址么？）；</p>
 <p>否则，前n个元素不会被访问，同时访问以及修改他们都是安全的。</p>
 <p>Exception safety</p>
-<p>If <em>n</em> is less than or equal to the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> of the container, the function never throws exceptions (no-throw guarantee).</p>
+<p>If <em>n</em> is less than or equal to the <a href="http://www.cplusplus.com/vector::size">size</a> of the container, the function never throws exceptions (no-throw guarantee).</p>
 <p>如果n小于或者等于容器的size,那么不会抛出异常。</p>
 <p>If <em>n</em> is greater and a reallocation happens, there are no changes in the container in case of exception (strong guarantee) if the type of the elements is either <em>copyable</em> or <em>no-throw moveable</em>.</p>
 <p>如果n大于容器的size，并且发生了重分配，如果元素的复制构造器以及移动构造器都不会抛出异常，那么其抛出异常的规则不变。//这句翻译的不太好。</p>
 <p>Otherwise, if an exception is thrown, the container is left with a valid state (basic guarantee).</p>
 <p>否则，如果抛出一个异常，容器将留在一个有效的状态？？？还是将这个异常留给</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-13</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38522321">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38522321">原文链接</a></p>
 
     
 
@@ -527,30 +527,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLvectorz中的resize方法（16）" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLvectorz中的resize方法（16）" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

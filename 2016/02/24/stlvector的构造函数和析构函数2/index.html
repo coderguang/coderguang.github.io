@@ -247,14 +247,14 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector的构造函数和析构函数(2)</p>
-<p>原文来自：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/vector/">点击打开链接</a></p>
+<p>原文来自：<a href="http://www.cplusplus.com/reference/vector/vector/vector/">点击打开链接</a></p>
 <p>译文:</p>
 <p>public member function</p>
 <p>vector的构造器：这里我只翻译C++11的，C++98的就不翻译了。</p>
 <p>构造器原型：</p>
 <vector>
 
-<h1 id="std-vector-vector"><a href="#std-vector-vector" class="headerlink" title="std::vector::vector"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::vector</h1><ul>
+<h1 id="std-vector-vector"><a href="#std-vector-vector" class="headerlink" title="std::vector::vector"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::vector</h1><ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
@@ -271,14 +271,14 @@
 <p>initializer list (6)</p>
 <p>vector (initializer_list&lt;value_type&gt; il,<br>       const allocator_type&amp; alloc = allocator_type());</p>
 <p>Construct vector</p>
-<p>Constructs a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>, initializing its contents depending on the constructor version used:  </p>
+<p>Constructs a <a href="http://www.cplusplus.com/vector">vector</a>, initializing its contents depending on the constructor version used:  </p>
 <ul>
 <li>  C++98</li>
 <li>C++11</li>
 </ul>
 <p>(1) empty container constructor (default constructor)</p>
 <p>原型：explicit vector (const allocator_type&amp; alloc = allocator_type());</p>
-<p>Constructs an <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::empty">empty</a> container, with no elements</p>
+<p>Constructs an <a href="http://www.cplusplus.com/vector::empty">empty</a> container, with no elements</p>
 <p>空参数构造器，默认的构造器</p>
 <p>例子：vector<int> vi;</p>
 <p>(2) fill constructor</p>
@@ -323,37 +323,37 @@
 <p>初始化列表构造器，从初始化列表il中复制每一个元素，放到vector中，方向一致。</p>
 <p>例子：</p>
 <p>vector<int> v1({10,20,30,40});//v1的值为{10,20,30,40}</p>
-<p>The container keeps an internal copy of <em>alloc</em>, which is used to allocate and deallocate storage for its elements, and to construct and destroy them (as specified by its <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits">allocator_traits</a>).<br>//这段可能不怎么正确，但意思是差不多的<br>  容器分配器使用元素内置的分配器创建容器里面的元素，析构时也是一样，例如如果里面元素是int，那么分配器也是使用int的分配器</p>
-<p>The copy constructor <em>(4, first signature)</em> creates a container that keeps and uses a copy of the allocator returned by calling the appropriate <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::select_on_container_copy_construction">selected_on_container_copy_construction</a> trait on <em>x</em>‘s allocator.<br>复制构造函数(第4种)创建一个使用和x一样的分配器。<br>The move constructor <em>(5, first signature)</em> acquires <em>x</em>‘s allocator.All elements are <em>copied</em>, <em>moved</em> or otherwise <em>constructed</em> by calling <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> with the appropriate arguments.<br>移动构造函数（第5种）如果使用x的分配器，那么将是所有权的转移，如果是其他的分配器，那么将移动原来的元素。  </p>
+<p>The container keeps an internal copy of <em>alloc</em>, which is used to allocate and deallocate storage for its elements, and to construct and destroy them (as specified by its <a href="http://www.cplusplus.com/allocator_traits">allocator_traits</a>).<br>//这段可能不怎么正确，但意思是差不多的<br>  容器分配器使用元素内置的分配器创建容器里面的元素，析构时也是一样，例如如果里面元素是int，那么分配器也是使用int的分配器</p>
+<p>The copy constructor <em>(4, first signature)</em> creates a container that keeps and uses a copy of the allocator returned by calling the appropriate <a href="http://www.cplusplus.com/allocator_traits::select_on_container_copy_construction">selected_on_container_copy_construction</a> trait on <em>x</em>‘s allocator.<br>复制构造函数(第4种)创建一个使用和x一样的分配器。<br>The move constructor <em>(5, first signature)</em> acquires <em>x</em>‘s allocator.All elements are <em>copied</em>, <em>moved</em> or otherwise <em>constructed</em> by calling <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> with the appropriate arguments.<br>移动构造函数（第5种）如果使用x的分配器，那么将是所有权的转移，如果是其他的分配器，那么将移动原来的元素。  </p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>参数说明：</p>
 <p>alloc</p>
 <p>Allocator object.<br>The container keeps and uses an internal copy of this allocator.<br>分配器对象<br>容器使用并保持一个内在的复制分配器。  </p>
-<p>Member type allocator_type is the internal allocator type used by the container, defined in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> as an alias of its second template parameter (Alloc).<br>allocator_type是一种容器使用的内在的分配器类型，作为vector模板参数里面的第二个参数。  </p>
-<p>If allocator_type is an instantiation of the default <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator">allocator</a> (which has no state), this is not relevant.</p>
+<p>Member type allocator_type is the internal allocator type used by the container, defined in <a href="http://www.cplusplus.com/vector">vector</a> as an alias of its second template parameter (Alloc).<br>allocator_type是一种容器使用的内在的分配器类型，作为vector模板参数里面的第二个参数。  </p>
+<p>If allocator_type is an instantiation of the default <a href="http://www.cplusplus.com/allocator">allocator</a> (which has no state), this is not relevant.</p>
 <p>//这句不太会翻译<br>如果allocator_type是默认的实例化分配器(没有状态),这是不相关的。  </p>
 <p>n</p>
 <p>Initial container size (i.e., the number of elements in the container at construction).<br>Member type size_type is an unsigned integral type.<br>容器最初的大小，（即最开始容器存放的元素数目）<br>n是一个无符号整形类型。</p>
 <p>val</p>
-<p>Value to fill the container with. Each of the <em>n</em> elements in the container will be initialized to a copy of this value.<br>Member type value_type is the type of the elements in the container, defined in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> as an alias of its first template parameter (T).</p>
+<p>Value to fill the container with. Each of the <em>n</em> elements in the container will be initialized to a copy of this value.<br>Member type value_type is the type of the elements in the container, defined in <a href="http://www.cplusplus.com/vector">vector</a> as an alias of its first template parameter (T).</p>
 <p>容器初始化时里面每一个元素的初始化值。</p>
 <p>val的值类型必须和模板参数里面的参数《T》一致</p>
 <p>first, last</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial and final positions in a range. The range used is [first,last), which includes all the elements between _first_ and _last_, including the element pointed by _first_ but not the element pointed by_last_.<br>The function template argument InputIterator shall be an <a target="_blank" rel="noopener" href="http://www.cplusplus.com/InputIterator">input iterator</a> type that points to elements of a type from which value_type objects can be constructed.</p>
+<p><a href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial and final positions in a range. The range used is [first,last), which includes all the elements between _first_ and _last_, including the element pointed by _first_ but not the element pointed by_last_.<br>The function template argument InputIterator shall be an <a href="http://www.cplusplus.com/InputIterator">input iterator</a> type that points to elements of a type from which value_type objects can be constructed.</p>
 <p>输入迭代器开始和结束的范围。这是一个开区间的范围[first,last),包括first–end里面的所有元素，包括first，但是不包括last</p>
 <p>x</p>
-<p>Another <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> object of the same type (with the same class template arguments T and Alloc), whose contents are either copied or acquired.  </p>
+<p>Another <a href="http://www.cplusplus.com/vector">vector</a> object of the same type (with the same class template arguments T and Alloc), whose contents are either copied or acquired.  </p>
 <p>另一个同类型（T和Alloc）vector数组的名称</p>
 <p>il</p>
-<p>An <a target="_blank" rel="noopener" href="http://www.cplusplus.com/initializer_list">initializer_list</a> object.<br>These objects are automatically constructed from <em>initializer list</em> declarators.<br>Member type value_type is the type of the elements in the container, defined in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> as an alias of its first template parameter (T).</p>
+<p>An <a href="http://www.cplusplus.com/initializer_list">initializer_list</a> object.<br>These objects are automatically constructed from <em>initializer list</em> declarators.<br>Member type value_type is the type of the elements in the container, defined in <a href="http://www.cplusplus.com/vector">vector</a> as an alias of its first template parameter (T).</p>
 <p>一个初始化列表对象。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// constructing vectors</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  unsigned int i;</span><br><span class="line"></span><br><span class="line">  // constructors used in the same order as described above:</span><br><span class="line">  std::vector&lt;int&gt; first;                                // empty vector of ints</span><br><span class="line">  std::vector&lt;int&gt; second (4,100);                       // four ints with value 100</span><br><span class="line">  std::vector&lt;int&gt; third (second.begin(),second.end());  // iterating through second</span><br><span class="line">  std::vector&lt;int&gt; fourth (third);                       // a copy of third</span><br><span class="line"></span><br><span class="line">  // the iterator constructor can also be used to construct from arrays:</span><br><span class="line">  int myints[] = &#123;16,2,77,29&#125;;</span><br><span class="line">  std::vector&lt;int&gt; fifth (myints, myints + sizeof(myints) / sizeof(int) );</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;The contents of fifth are:&quot;;</span><br><span class="line">  for (std::vector&lt;int&gt;::iterator it = fifth.begin(); it != fifth.end(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/vector/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/vector/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>The contents of fifth are: 16 2 77 29 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant for the <em>default constructor (1)</em>, and for the <em>move constructors (5)</em> (unless <em>alloc</em> is different from <em>x</em>‘s allocator).除了默认的构造器和移动构造器<br>For all other cases, linear in the resulting container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a>.其他的情况下，生成容器都在线性时间内。<br>Additionally, if InputIterator in the <em>range constructor (3)</em> is not at least of a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/ForwardIterator">forward iterator</a> category (i.e., it is just an <a target="_blank" rel="noopener" href="http://www.cplusplus.com/InputIterator">input iterator</a>), the new capacity cannot be determined beforehand and the construction incurs in additional logarithmic complexity in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> (reallocations while growing).  </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant for the <em>default constructor (1)</em>, and for the <em>move constructors (5)</em> (unless <em>alloc</em> is different from <em>x</em>‘s allocator).除了默认的构造器和移动构造器<br>For all other cases, linear in the resulting container <a href="http://www.cplusplus.com/vector::size">size</a>.其他的情况下，生成容器都在线性时间内。<br>Additionally, if InputIterator in the <em>range constructor (3)</em> is not at least of a <a href="http://www.cplusplus.com/ForwardIterator">forward iterator</a> category (i.e., it is just an <a href="http://www.cplusplus.com/InputIterator">input iterator</a>), the new capacity cannot be determined beforehand and the construction incurs in additional logarithmic complexity in <a href="http://www.cplusplus.com/vector::size">size</a> (reallocations while growing).  </p>
 <p>//翻译可能不太准确</p>
 <p>此外，如果输入构造器至少不属于前向迭代器，那么新的容量不能事先确定并且当增长时重分配容量将在对数时间内完成。</p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>The <em>move constructors</em> (5), invalidate all iterators, pointers and references related to <em>x</em> if the elements are moved.<br>迭代器的有效性：</p>
@@ -362,14 +362,14 @@
 <p>数据争用：</p>
 <p>所有元素复制访问。</p>
 <p>移动复制构造函数除外。</p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>Strong guarantee:</strong> no effects in case an exception is thrown.<br>If <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments for the element constructions, or if the range specified by [first,last) is not valid, it causes <em>undefined behavior</em>.  </p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>Strong guarantee:</strong> no effects in case an exception is thrown.<br>If <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments for the element constructions, or if the range specified by [first,last) is not valid, it causes <em>undefined behavior</em>.  </p>
 <p>异常安全性：</p>
 <p>强有力的保证。没有异常被抛出。</p>
 <p>如果分配器不支持元素的默认的构造函数（合适的参数构造函数），或者是超出了范围的迭代器，都将导致不确定的行为。</p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-vector-1"><a href="#std-vector-vector-1" class="headerlink" title="std::vector::~vector"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::~vector</h1><p>析构函数</p>
+<h1 id="std-vector-vector-1"><a href="#std-vector-vector-1" class="headerlink" title="std::vector::~vector"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::~vector</h1><p>析构函数</p>
 <p>~vector();</p>
 <p>Vector destructor</p>
 <p>Destroys the container object.  </p>
@@ -377,14 +377,14 @@
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
-<p>This calls <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::destroy">allocator_traits::destroy</a> on each of the contained elements, and deallocates all the storage <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::capacity">capacity</a>allocated by the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> using its <a target="_blank" rel="noopener" href="http://www.cplusplus.com/list::get_allocator">allocator</a>.<br>使用元素自带的析构函数析构里面的每一个元素。  </p>
-<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">vector::size</a> (destructors).  </p>
+<p>This calls <a href="http://www.cplusplus.com/allocator_traits::destroy">allocator_traits::destroy</a> on each of the contained elements, and deallocates all the storage <a href="http://www.cplusplus.com/vector::capacity">capacity</a>allocated by the <a href="http://www.cplusplus.com/vector">vector</a> using its <a href="http://www.cplusplus.com/list::get_allocator">allocator</a>.<br>使用元素自带的析构函数析构里面的每一个元素。  </p>
+<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in <a href="http://www.cplusplus.com/vector::size">vector::size</a> (destructors).  </p>
 <h3 id="Iterator-validity-1"><a href="#Iterator-validity-1" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>All iterators, pointers and references are invalidated.  </p>
 <h3 id="Data-races-1"><a href="#Data-races-1" class="headerlink" title="Data races"></a>Data races</h3><p>The container and all its elements are modified.  </p>
 <h3 id="Exception-safety-1"><a href="#Exception-safety-1" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> never throws exceptions.  </p>
 <p>//翻译不一定很正确，只能保证大意正确，请多体谅。</p>
 <p>.</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/32939893">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/32939893">原文链接</a></p>
 
     
 
@@ -567,30 +567,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLvector的构造函数和析构函数(2)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLvector的构造函数和析构函数(2)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

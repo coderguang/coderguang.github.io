@@ -251,11 +251,11 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++11thread(1)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/thread/">http://www.cplusplus.com/reference/thread/thread/thread/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/thread/thread/thread/">http://www.cplusplus.com/reference/thread/thread/thread/</a></p>
 <p>public member function</p>
 <thread>
 
-<h1 id="std-thread-thread"><a href="#std-thread-thread" class="headerlink" title="std::thread::thread"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::thread</h1><p>default (1)</p>
+<h1 id="std-thread-thread"><a href="#std-thread-thread" class="headerlink" title="std::thread::thread"></a>std::<a href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::thread</h1><p>default (1)</p>
 <p>thread() noexcept; </p>
 <p>initialization (2)</p>
 <p>template &lt;class Fn, class… Args&gt;<br>explicit thread (Fn&amp;&amp; fn, Args&amp;&amp;… args); </p>
@@ -264,9 +264,9 @@
 <p>move (4)</p>
 <p>thread (thread&amp;&amp; x) noexcept;</p>
 <p>Construct thread</p>
-<p>Constructs a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object:<br>构造一个线程对象。  </p>
+<p>Constructs a <a href="http://www.cplusplus.com/thread">thread</a> object:<br>构造一个线程对象。  </p>
 <p>(1) default constructor</p>
-<p>Construct a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object that does not represent any thread of execution.</p>
+<p>Construct a <a href="http://www.cplusplus.com/thread">thread</a> object that does not represent any thread of execution.</p>
 <p>构造一个不执行任何线程的线程对象。</p>
 <p>例子：</p>
 <p>#include <iostream><br>#include <thread><br>using namespace std;<br>int main()<br>{<br>thread t;<br>cout&lt;&lt;”t.id=”&lt;&lt;t.get_id()&lt;&lt;endl;</p>
@@ -275,8 +275,8 @@
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013738_16657508365189.jpg">  </p>
 <p>可以看到,t是处于non-executing（未执行）状态的。</p>
 <p>(2) initialization constructor</p>
-<p>Construct a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object that represents a new <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em> thread of execution.</p>
-<p>The new thread of execution calls fn passing args as arguments (using <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/decay">decay copies</a></em> of its lvalue or rvalue references).  </p>
+<p>Construct a <a href="http://www.cplusplus.com/thread">thread</a> object that represents a new <em><a href="http://www.cplusplus.com/thread::joinable">joinable</a></em> thread of execution.</p>
+<p>The new thread of execution calls fn passing args as arguments (using <em><a href="http://www.cplusplus.com/decay">decay copies</a></em> of its lvalue or rvalue references).  </p>
 <p>The completion of this construction synchronizes with the beginning of the invocation of this copy of fn.</p>
 <p>构造一个新的可等待的线程对象。</p>
 <p>新的线程将调用函数fn并将args传递给fn.</p>
@@ -286,10 +286,10 @@
 <p>运行截图：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013741_38454207187068.jpg">  </p>
 <p>(3) copy constructor</p>
-<p>Deleted constructor form (<a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> objects cannot be copied).</p>
+<p>Deleted constructor form (<a href="http://www.cplusplus.com/thread">thread</a> objects cannot be copied).</p>
 <p>默认被Delete的构造器。（线程对象不能被复制）</p>
 <p>(4) move constructor</p>
-<p>Construct a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object that acquires the thread of execution represented by x (if any). This operation does not affect the execution of the moved thread in any way, it simply transfers its handler.<br>The x object no longer represents any thread of execution.</p>
+<p>Construct a <a href="http://www.cplusplus.com/thread">thread</a> object that acquires the thread of execution represented by x (if any). This operation does not affect the execution of the moved thread in any way, it simply transfers its handler.<br>The x object no longer represents any thread of execution.</p>
 <p>从执行中的线程x中构造。该操作不会以任何方式影响执行中的线程，只会移交其控制权。</p>
 <p>x不再代理任何线程的执行。</p>
 <p>例子：</p>
@@ -298,27 +298,27 @@
 <p>thread t2(returnThread());<br>t2.join();<br>cout&lt;&lt;”ok!”&lt;&lt;endl;<br>}</p>
 <p>运行截图：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013742_43568710150148.jpg"><br>这是我电脑上运行一次的结果，结果不一定一样。</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> objects that are <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em> shall either be <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::join">joined</a></em> or <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::detach">detached</a></em> before they are <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::~thread">destroyed</a></em>.  </p>
+<p><a href="http://www.cplusplus.com/thread">thread</a> objects that are <em><a href="http://www.cplusplus.com/thread::joinable">joinable</a></em> shall either be <em><a href="http://www.cplusplus.com/thread::join">joined</a></em> or <em><a href="http://www.cplusplus.com/thread::detach">detached</a></em> before they are <em><a href="http://www.cplusplus.com/thread::~thread">destroyed</a></em>.  </p>
 <p>可连接线程对象在销毁之前应该被joined或者detached.</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>fn</p>
-<p>A pointer to function, pointer to member, or any kind of <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_move_constructible">move-constructible</a></em> function object (i.e., an object whose class defines operator(), including <em>closures</em> and <a target="_blank" rel="noopener" href="http://www.cplusplus.com/function">function</a> objects).  </p>
+<p>A pointer to function, pointer to member, or any kind of <em><a href="http://www.cplusplus.com/is_move_constructible">move-constructible</a></em> function object (i.e., an object whose class defines operator(), including <em>closures</em> and <a href="http://www.cplusplus.com/function">function</a> objects).  </p>
 <p>The return value (if any) is ignored.</p>
 <p>fn为一个指向函数的指针，或者一个指向成员的的指针，甚至是任一的可以被移动构造的函数对象。</p>
 <p>fn的返回值会被忽略。</p>
 <p>args…</p>
-<p>Arguments passed to the call to fn (if any). Their types shall be <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_move_constructible">move-constructible</a></em>.  </p>
-<p>If fn is a <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_member_pointer">member pointer</a></em>, the first argument shall be an object for which that member is defined (or a reference, or a pointer to it).</p>
+<p>Arguments passed to the call to fn (if any). Their types shall be <em><a href="http://www.cplusplus.com/is_move_constructible">move-constructible</a></em>.  </p>
+<p>If fn is a <em><a href="http://www.cplusplus.com/is_member_pointer">member pointer</a></em>, the first argument shall be an object for which that member is defined (or a reference, or a pointer to it).</p>
 <p>fn函数的参数。</p>
 <p>x</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object whose state is moved to the constructed object.</p>
+<p><a href="http://www.cplusplus.com/thread">thread</a> object whose state is moved to the constructed object.</p>
 <p>x是一个线程对象。</p>
-<p> <code>Fn</code> and <code>Args...</code> are template parameters: if implicitly deduced, these are the proper <em>lvalue</em> or <em>rvalue</em> reference type to bind the arguments to. Note though, that on the call to fn in the new thread, <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/decay">decay copies</a></em> of fn and args… are always used (see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/ref">std::ref</a> for a wrapper class that makes references copyable).</p>
+<p> <code>Fn</code> and <code>Args...</code> are template parameters: if implicitly deduced, these are the proper <em>lvalue</em> or <em>rvalue</em> reference type to bind the arguments to. Note though, that on the call to fn in the new thread, <em><a href="http://www.cplusplus.com/decay">decay copies</a></em> of fn and args… are always used (see <a href="http://www.cplusplus.com/ref">std::ref</a> for a wrapper class that makes references copyable).</p>
 <p>Fn,Args是模版参数，如果是隐式推导，那么这会绑定相应的左值或者右值，fn将会在新线程中被调用。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">// constructing threads</span><br><span class="line">#include &lt;iostream&gt;       // std::cout</span><br><span class="line">#include &lt;atomic&gt;         // std::atomic</span><br><span class="line">#include &lt;thread&gt;         // std::thread</span><br><span class="line">#include &lt;vector&gt;         // std::vector</span><br><span class="line"></span><br><span class="line">std::atomic&lt;int&gt; global_counter (0);</span><br><span class="line"></span><br><span class="line">void increase_global (int n) &#123; for (int i=0; i&lt;n; ++i) ++global_counter; &#125;</span><br><span class="line"></span><br><span class="line">void increase_reference (std::atomic&lt;int&gt;&amp; variable, int n) &#123; for (int i=0; i&lt;n; ++i) ++variable; &#125;</span><br><span class="line"></span><br><span class="line">struct C : std::atomic&lt;int&gt; &#123;</span><br><span class="line">  C() : std::atomic&lt;int&gt;(0) &#123;&#125;</span><br><span class="line">  void increase_member (int n) &#123; for (int i=0; i&lt;n; ++i) fetch_add(1); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;std::thread&gt; threads;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;increase global counter with 10 threads...\n&quot;;</span><br><span class="line">  for (int i=1; i&lt;=10; ++i)</span><br><span class="line">    threads.push_back(std::thread(increase_global,1000));</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;increase counter (foo) with 10 threads using reference...\n&quot;;</span><br><span class="line">  std::atomic&lt;int&gt; foo;</span><br><span class="line">  for (int i=1; i&lt;=10; ++i)</span><br><span class="line">    threads.push_back(std::thread(increase_reference,std::ref(foo),1000));</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;increase counter (bar) with 10 threads using member...\n&quot;;</span><br><span class="line">  C bar;</span><br><span class="line">  for (int i=1; i&lt;=10; ++i)</span><br><span class="line">    threads.push_back(std::thread(&amp;C::increase_member,std::ref(bar),1000));</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;synchronizing all threads...\n&quot;;</span><br><span class="line">  for (auto&amp; th : threads) th.join();</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;global_counter: &quot; &lt;&lt; global_counter &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">  std::cout &lt;&lt; &quot;foo: &quot; &lt;&lt; foo &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">  std::cout &lt;&lt; &quot;bar: &quot; &lt;&lt; bar &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/thread/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/thread/thread/thread/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>increase global counter using 10 threads…<br>increase counter (foo) with 10 threads using reference…<br>increase counter (bar) with 10 threads using member…<br>synchronizing all threads…<br>global_counter: 10000<br>foo: 10000<br>bar: 10000 </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The <em>move constructor (4)</em> modifies x.  </p>
@@ -326,22 +326,22 @@
 <p>exception type</p>
 <p>error condition</p>
 <p>description</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/errc">errc::resource_unavailable_try_again</a></p>
+<p><a href="http://www.cplusplus.com/system_error">system_error</a></p>
+<p><a href="http://www.cplusplus.com/errc">errc::resource_unavailable_try_again</a></p>
 <p>The system is unable to start a new thread</p>
-<p>It also throws if the construction of any of the copies it makes (of the <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/decay">decay types</a></em> of Fn and Args…) throws.<br>Depending on the library implementation, this constructor may also throw exceptions to report other situations (such as <a target="_blank" rel="noopener" href="http://www.cplusplus.com/bad_alloc">bad_alloc</a> or<a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a> with other <em>error conditions</em>).  </p>
+<p>It also throws if the construction of any of the copies it makes (of the <em><a href="http://www.cplusplus.com/decay">decay types</a></em> of Fn and Args…) throws.<br>Depending on the library implementation, this constructor may also throw exceptions to report other situations (such as <a href="http://www.cplusplus.com/bad_alloc">bad_alloc</a> or<a href="http://www.cplusplus.com/system_error">system_error</a> with other <em>error conditions</em>).  </p>
 <p>如果复制过程出错，会抛出system_error错误。</p>
 <p>Note that if an exception is thrown from the function invocation (i.e., from fn itself), it is handled by the new thread. If this invocation terminates with an uncaught exception, <code>[terminate()](http://www.cplusplus.com/terminate)</code> is called.</p>
 <p>如果fn抛出异常，线程将会将控制权移交给新的线程，如果不捕获异常，将调用terminate.</p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#101;&#x72;&#x67;&#117;&#x61;&#x6e;&#x67;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#111;&#109;">&#99;&#x6f;&#100;&#101;&#x72;&#x67;&#117;&#x61;&#x6e;&#x67;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#111;&#109;</a></p>
+<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#103;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x63;&#111;&#x64;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#103;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a></p>
 <p>2014-9-3</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39032623">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39032623">原文链接</a></p>
 
     
 
@@ -524,30 +524,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "C++11thread(1)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "C++11thread(1)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

@@ -249,29 +249,29 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLarray的fill方法（12）</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/fill/">http://www.cplusplus.com/reference/array/array/fill/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/array/array/fill/">http://www.cplusplus.com/reference/array/array/fill/</a></p>
 <p>public member function</p>
 <array>
 
-<h1 id="std-array-fill"><a href="#std-array-fill" class="headerlink" title="std::array::fill"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/">array</a>::fill</h1><p>void fill (const value_type&amp; val);</p>
+<h1 id="std-array-fill"><a href="#std-array-fill" class="headerlink" title="std::array::fill"></a>std::<a href="http://www.cplusplus.com/reference/array/array/">array</a>::fill</h1><p>void fill (const value_type&amp; val);</p>
 <p>Fill array with value</p>
-<p>Sets <em>val</em> as the value for all the elements in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array">array</a> object.</p>
+<p>Sets <em>val</em> as the value for all the elements in the <a href="http://www.cplusplus.com/array">array</a> object.</p>
 <p>将val设为array里面所有元素的值。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>val</p>
 <p>Value to fill the array with.</p>
-<p>Member type value_type is the type of the elements in the container, defined in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array">array</a> as an alias of its first template parameter (T).  </p>
+<p>Member type value_type is the type of the elements in the container, defined in <a href="http://www.cplusplus.com/array">array</a> as an alias of its first template parameter (T).  </p>
 <p>val是用来填满array的值。</p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// array::fill example</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;array&gt;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  std::array&lt;int,6&gt; myarray;</span><br><span class="line"></span><br><span class="line">  myarray.fill(5);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myarray contains:&quot;;</span><br><span class="line">  for ( int&amp; x : myarray) &#123; std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; x; &#125;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/fill/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/fill/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myarray contains: 5 5 5 5 5 5 </p>
 <p>运行截图：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013932_496725010112173.jpg">  </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear: Performs as many assignment operations as the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array::size">size</a> of the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array">array</a> object.<br>和array的size成线性相关。  </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear: Performs as many assignment operations as the <a href="http://www.cplusplus.com/array::size">size</a> of the <a href="http://www.cplusplus.com/array">array</a> object.<br>和array的size成线性相关。  </p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>No changes.  </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>All contained elements are modified.<br>容器所有元素都将被修改。  </p>
 <h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>Basic guarantee:</strong> if an exception is thrown, the container is in a valid state.</p>
@@ -280,12 +280,12 @@
 <p>如果元素的赋值抛出异常，那么将会抛出异常。</p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#x64;&#101;&#114;&#x67;&#x75;&#x61;&#x6e;&#103;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;">&#99;&#x6f;&#x64;&#101;&#114;&#x67;&#x75;&#x61;&#x6e;&#103;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#x64;&#x65;&#114;&#x67;&#x75;&#x61;&#x6e;&#103;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#x63;&#x6f;&#x64;&#x65;&#114;&#x67;&#x75;&#x61;&#x6e;&#103;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;</a></p>
 <p>2014-8-30</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38943777">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38943777">原文链接</a></p>
 
     
 
@@ -468,30 +468,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLarray的fill方法（12）" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLarray的fill方法（12）" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

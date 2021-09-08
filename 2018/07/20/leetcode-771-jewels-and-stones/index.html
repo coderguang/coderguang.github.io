@@ -247,7 +247,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>之前在leetcode刷了一些题，放到这里做个记录以及分享。</p>
-<p>//leetcode url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/jewels-and-stones/description/">https://leetcode.com/problems/jewels-and-stones/description/</a><br>class Solution {<br>public:<br>    int numJewelsInStones(string J, string S) {<br>        vector jv;<br>        vector sv;<br>        for(int i=0;i&lt;J.length();i++){<br>            jv.push_back(J[i]);<br>        }<br>        for(int i=0;i&lt;S.length();i++){<br>            sv.push_back(S[i]);<br>        }<br>        sort(jv.begin(),jv.end());<br>        sort(sv.begin(),sv.end());<br>        int num=0;<br>        int checkIndex=0;<br>        for(int i=0;i&lt;jv.size();i++){ if(checkIndex&gt;=sv.size())<br>                break;<br>            if(jv[i]&lt;sv[checkIndex])<br>                continue;<br>            for(;checkIndex&lt;sv.size();checkIndex++){<br>               if(jv[i]==sv[checkIndex]){<br>                   num++;<br>                   continue;<br>               }<br>               if(jv[i]&lt;sv[checkIndex])<br>                   break;<br>            }<br>        }<br>        return num;<br>    }<br>};</p>
+<p>//leetcode url:<a href="https://leetcode.com/problems/jewels-and-stones/description/">https://leetcode.com/problems/jewels-and-stones/description/</a><br>class Solution {<br>public:<br>    int numJewelsInStones(string J, string S) {<br>        vector jv;<br>        vector sv;<br>        for(int i=0;i&lt;J.length();i++){<br>            jv.push_back(J[i]);<br>        }<br>        for(int i=0;i&lt;S.length();i++){<br>            sv.push_back(S[i]);<br>        }<br>        sort(jv.begin(),jv.end());<br>        sort(sv.begin(),sv.end());<br>        int num=0;<br>        int checkIndex=0;<br>        for(int i=0;i&lt;jv.size();i++){ if(checkIndex&gt;=sv.size())<br>                break;<br>            if(jv[i]&lt;sv[checkIndex])<br>                continue;<br>            for(;checkIndex&lt;sv.size();checkIndex++){<br>               if(jv[i]==sv[checkIndex]){<br>                   num++;<br>                   continue;<br>               }<br>               if(jv[i]&lt;sv[checkIndex])<br>                   break;<br>            }<br>        }<br>        return num;<br>    }<br>};</p>
 
     
 
@@ -430,30 +430,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "LeetCode---771. Jewels and Stones" -->
-    var gitment = new Gitment({
-      id: "20180720150619",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "LeetCode---771. Jewels and Stones" -->
+  var giteement = new Giteement({
+    id: '20180720150619',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

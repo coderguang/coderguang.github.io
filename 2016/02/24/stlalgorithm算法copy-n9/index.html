@@ -250,7 +250,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLalgorithm算法copy_n(9)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy/_n/">http://www.cplusplus.com/reference/algorithm/copy\_n/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/algorithm/copy/_n/">http://www.cplusplus.com/reference/algorithm/copy\_n/</a></p>
 <p>function template</p>
 <algorithm>
 
@@ -297,11 +297,11 @@ cout&lt;&lt;&quot;the return values is it=&quot;&lt;&lt;\*it&lt;&lt;endl;
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class InputIterator, class Size, class OutputIterator&gt;</span><br><span class="line">  OutputIterator copy_n (InputIterator first, Size n, OutputIterator result)</span><br><span class="line">&#123;</span><br><span class="line">  while (n&gt;0) &#123;</span><br><span class="line">    *result = *first;</span><br><span class="line">    ++result; ++first;</span><br><span class="line">    --n;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial position in a sequence of at least n elements to be copied.<br>InputIterator shall point to a type <a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_assignable">assignable</a> to the elements pointed by OutputIterator.<br>序列开始复制的位置。</p>
+<p><a href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial position in a sequence of at least n elements to be copied.<br>InputIterator shall point to a type <a href="http://www.cplusplus.com/is_assignable">assignable</a> to the elements pointed by OutputIterator.<br>序列开始复制的位置。</p>
 <p>n</p>
 <p>Number of elements to copy.<br>If this value is negative, the function does nothing.<br>Size shall be (convertible to) an integral type.<br>要被复制的元素个数。<br>如果是负数，不会做任何事情。  </p>
 <p>result</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/OutputIterator">Output iterator</a> to the initial position in the destination sequence of at least n elements.<br>This shall not point to any element in the range <code>[first,last)</code>.  </p>
+<p><a href="http://www.cplusplus.com/OutputIterator">Output iterator</a> to the initial position in the destination sequence of at least n elements.<br>This shall not point to any element in the range <code>[first,last)</code>.  </p>
 <p>序列开始被覆盖的位置。  </p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator to the end of the destination range where elements have been copied.  </p>
 <p>该函数返回一个指向目标序列最后一个被覆盖元素的下一个元素的迭代器。</p>
@@ -309,21 +309,21 @@ cout&lt;&lt;&quot;the return values is it=&quot;&lt;&lt;\*it&lt;&lt;endl;
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// copy_n algorithm example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::copy</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  int myints[]=&#123;10,20,30,40,50,60,70&#125;;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line"></span><br><span class="line">  myvector.resize(7);   // allocate space for 7 elements</span><br><span class="line"></span><br><span class="line">  std::copy_n ( myints, 7, myvector.begin() );</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (std::vector&lt;int&gt;::iterator it = myvector.begin(); it!=myvector.end(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy_n/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/algorithm/copy_n/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector contains: 10 20 30 40 50 60 70</p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between first and last: Performs an assignment operation for each element in the range.  </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a href="http://www.cplusplus.com/distance">distance</a> between first and last: Performs an assignment operation for each element in the range.  </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The objects in the range of n elements pointed by first are accessed (each object is accessed exactly once).<br>The objects in the range between result and the returned value are modified (each object is modified exactly once).  </p>
 <h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if either an element assignment or an operation on iterators throws.<br>Note that invalid arguments cause <em>undefined behavior</em>.  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#101;&#114;&#x67;&#117;&#97;&#110;&#103;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;">&#x63;&#x6f;&#100;&#101;&#114;&#x67;&#117;&#97;&#110;&#103;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#x64;&#x65;&#114;&#103;&#x75;&#97;&#110;&#103;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#109;">&#99;&#111;&#x64;&#x65;&#114;&#103;&#x75;&#97;&#110;&#103;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#109;</a></p>
 <p>2014-9-11</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39187145">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39187145">原文链接</a></p>
 
     
 
@@ -506,30 +506,31 @@ cout&lt;&lt;&quot;the return values is it=&quot;&lt;&lt;\*it&lt;&lt;endl;
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLalgorithm算法copy_n(9)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLalgorithm算法copy_n(9)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

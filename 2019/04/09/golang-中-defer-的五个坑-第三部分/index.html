@@ -250,10 +250,10 @@
 <p>译注：全文总共有四篇，本文为同系列文章的第三篇</p>
 </blockquote>
 <ul>
-<li>  <a target="_blank" rel="noopener" href="https://studygolang.com/articles/12061">第一部分</a></li>
-<li>  <a target="_blank" rel="noopener" href="https://studygolang.com/articles/12136">第二部分</a></li>
+<li>  <a href="https://studygolang.com/articles/12061">第一部分</a></li>
+<li>  <a href="https://studygolang.com/articles/12136">第二部分</a></li>
 </ul>
-<p>本文将侧重于讲解使用 defer 的一些技巧 如果你对 defer 的基本操作还没有清晰的认识，请先阅读这篇 <a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/golang-defer-simplified-77d3b2b817ff">文章</a> （GCTT 出品的译文 <a target="_blank" rel="noopener" href="https://studygolang.com/articles/11907">https://studygolang.com/articles/11907</a>）。</p>
+<p>本文将侧重于讲解使用 defer 的一些技巧 如果你对 defer 的基本操作还没有清晰的认识，请先阅读这篇 <a href="https://blog.learngoprogramming.com/golang-defer-simplified-77d3b2b817ff">文章</a> （GCTT 出品的译文 <a href="https://studygolang.com/articles/11907">https://studygolang.com/articles/11907</a>）。</p>
 <h2 id="1-——-在延迟调用函数的外部使用-recover"><a href="#1-——-在延迟调用函数的外部使用-recover" class="headerlink" title="#1 —— 在延迟调用函数的外部使用 recover"></a>#1 —— 在延迟调用函数的外部使用 recover</h2><p>你总是应该在被延迟函数的内部调用 <code>recover()</code> ，当出现一个 <em>panic</em> 异常时，在 <em>defer</em> 外调用 <code>recover()</code> 将无法捕获这个异常，而且 <code>recover()</code> 的返回值会是 <em>nil</em> 。 例子</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">do</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="built_in">recover</span>()</span><br><span class="line">    <span class="built_in">panic</span>(<span class="string">&quot;error&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -266,7 +266,7 @@
 <p>输出</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">recovered: error</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-——-在错误的位置使用-defer"><a href="#2-——-在错误的位置使用-defer" class="headerlink" title="#2 —— 在错误的位置使用 defer"></a>#2 —— 在错误的位置使用 defer</h2><p>这个陷阱来自于这篇 <a target="_blank" rel="noopener" href="http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/#anameclose_http_resp_bodyaclosinghttpresponsebody">Go 的 50 个阴影</a>。 例子 当 <code>http.Get</code> 失败时会抛出异常。</p>
+<h2 id="2-——-在错误的位置使用-defer"><a href="#2-——-在错误的位置使用-defer" class="headerlink" title="#2 —— 在错误的位置使用 defer"></a>#2 —— 在错误的位置使用 defer</h2><p>这个陷阱来自于这篇 <a href="http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/#anameclose_http_resp_bodyaclosinghttpresponsebody">Go 的 50 个阴影</a>。 例子 当 <code>http.Get</code> 失败时会抛出异常。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">do</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    res, err := http.Get(<span class="string">&quot;http://notexists&quot;</span>)</span><br><span class="line">    <span class="keyword">defer</span> res.Body.Close()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ..code...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出</p>
@@ -277,7 +277,7 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">do</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    res, err := http.Get(<span class="string">&quot;http://notexists&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> res != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">defer</span> res.Body.Close()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ..code...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在上述的代码中，当有错误的时候，<em>err</em> 会被返回，否则当整个函数返回的时候，会关闭 <em>res.Body</em> 。</p>
-<h3 id="旁注-1"><a href="#旁注-1" class="headerlink" title="旁注 1"></a>旁注 1</h3><p>在这里，你同样需要检查 <em>resp</em> 的值是否为 <em>nil</em> ，这是 <em>http.Get</em> 中的一个警告。通常情况下，出错的时候，返回的内容应为空并且错误会被返回，可当你获得的是一个重定向 <em>error</em> 时， <em>resp</em> 的值并不会为 <em>nil</em> ，但其又会将错误返回。上面的代码保证了无论如何 <em>Body</em> 都会被关闭，如果你没有打算使用其中的数据，那么你还需要丢弃已经接收的数据。更多 <a target="_blank" rel="noopener" href="http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/#anameclose_http_resp_bodyaclosinghttpresponsebody">详情</a>。</p>
+<h3 id="旁注-1"><a href="#旁注-1" class="headerlink" title="旁注 1"></a>旁注 1</h3><p>在这里，你同样需要检查 <em>resp</em> 的值是否为 <em>nil</em> ，这是 <em>http.Get</em> 中的一个警告。通常情况下，出错的时候，返回的内容应为空并且错误会被返回，可当你获得的是一个重定向 <em>error</em> 时， <em>resp</em> 的值并不会为 <em>nil</em> ，但其又会将错误返回。上面的代码保证了无论如何 <em>Body</em> 都会被关闭，如果你没有打算使用其中的数据，那么你还需要丢弃已经接收的数据。更多 <a href="http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/#anameclose_http_resp_bodyaclosinghttpresponsebody">详情</a>。</p>
 <h2 id="3-——-不检查错误"><a href="#3-——-不检查错误" class="headerlink" title="#3 —— 不检查错误"></a>#3 —— 不检查错误</h2><p>简单地将清理的逻辑委托给 <em>defer</em> 并不意味着资源的释放就万无一失了，你也可能会错失有用的报错信息，让一些潜在的问题石沉大海。</p>
 <h3 id="反面教材"><a href="#反面教材" class="headerlink" title="反面教材"></a>反面教材</h3><p>在这里，<code>f.Close()</code> 可能会返回一个错误，可这个错误会被我们忽略掉</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">do</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    f, err := os.Open(<span class="string">&quot;book.txt&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">defer</span> f.Close()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ..code...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -288,7 +288,7 @@
 <h3 id="再改进一下"><a href="#再改进一下" class="headerlink" title="再改进一下"></a>再改进一下</h3><p>你也可以通过命名的返回变量来返回 <em>defer</em> 内的错误。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">do</span><span class="params">()</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">    f, err := os.Open(<span class="string">&quot;book.txt&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> ferr := f.Close(); ferr != <span class="literal">nil</span> &#123;</span><br><span class="line">            err = ferr</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ..code...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="旁注-2"><a href="#旁注-2" class="headerlink" title="旁注 2"></a>旁注 2</h3><p>你可以使用这个 <a target="_blank" rel="noopener" href="https://godoc.org/github.com/pkg/errors">包</a> 来整合多个不同的错误，这会非常必要因为 defer 中的 <em>f.Close</em> 可能会把之前的错误也覆盖掉，将多个错误包裹在一起能够将所有的错误信息都写入日志，在诊断问题的时候能有更多的依据。 你也可以使用这个 <a target="_blank" rel="noopener" href="https://github.com/kisielk/errcheck">包</a> 来查看你遗漏的本应该检查错误的地方。</p>
+<h3 id="旁注-2"><a href="#旁注-2" class="headerlink" title="旁注 2"></a>旁注 2</h3><p>你可以使用这个 <a href="https://godoc.org/github.com/pkg/errors">包</a> 来整合多个不同的错误，这会非常必要因为 defer 中的 <em>f.Close</em> 可能会把之前的错误也覆盖掉，将多个错误包裹在一起能够将所有的错误信息都写入日志，在诊断问题的时候能有更多的依据。 你也可以使用这个 <a href="https://github.com/kisielk/errcheck">包</a> 来查看你遗漏的本应该检查错误的地方。</p>
 <h2 id="4-——-释放相同的资源"><a href="#4-——-释放相同的资源" class="headerlink" title="#4 —— 释放相同的资源"></a>#4 —— 释放相同的资源</h2><p>在第三小节中有一个小小的警告：如果你尝试使用相同的变量释放不同的资源，那么这个操作可能无法正常执行。 例子 这段看似没什么问题的代码尝试第二次关闭相同的资源。第二个 <em>变量 f</em> 会被关闭两次，因为 <em>f 变量</em> 会因第二个资源而改变它的值</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">do</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    f, err := os.Open(<span class="string">&quot;book.txt&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> err := f.Close(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="comment">// log etc</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ..code...</span></span><br><span class="line"></span><br><span class="line">    f, err = os.Open(<span class="string">&quot;another-book.txt&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> err := f.Close(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="comment">// log etc</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -301,7 +301,7 @@
 <p>输出</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">closing resource #another-book.txt</span><br><span class="line">closing resource #book.txt</span><br></pre></td></tr></table></figure>
 
-<p>你也可以使用函数来避免上述问题的发生，参考我在 <a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/gotchas-of-defer-in-go-1-8d070894cb01#ac69">这里</a> 讲过的开闭模式。</p>
+<p>你也可以使用函数来避免上述问题的发生，参考我在 <a href="https://blog.learngoprogramming.com/gotchas-of-defer-in-go-1-8d070894cb01#ac69">这里</a> 讲过的开闭模式。</p>
 <h2 id="5-——-panic-recover-会取得并返回任意类型"><a href="#5-——-panic-recover-会取得并返回任意类型" class="headerlink" title="#5 —— panic/recover 会取得并返回任意类型"></a>#5 —— panic/recover 会取得并返回任意类型</h2><p>你可能认为你总是需要往 <em>panic</em> 中传 <em>string</em> 或 <em>error</em> 类型的数据</p>
 <h3 id="传入-string"><a href="#传入-string" class="headerlink" title="传入 string"></a>传入 string</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">errorly</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        fmt.Println(<span class="built_in">recover</span>())</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> badHappened &#123;</span><br><span class="line">        <span class="built_in">panic</span>(<span class="string">&quot;error run run&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -313,7 +313,7 @@
 <p>输出</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;error run run&quot;</span><br></pre></td></tr></table></figure>
 
-<h3 id="传入任意类型"><a href="#传入任意类型" class="headerlink" title="传入任意类型"></a>传入任意类型</h3><p>正如你所看到的 <em>panic</em> 可以接收 <em>string</em> 以及 <a target="_blank" rel="noopener" href="https://golang.org/pkg/builtin/#error">error类型</a> 。这意味着事实上你可以给 panic 传 “任意类型” 的数据并能够在 <em>defer</em> 中使用 <em>recover</em> 来获取这个数据。</p>
+<h3 id="传入任意类型"><a href="#传入任意类型" class="headerlink" title="传入任意类型"></a>传入任意类型</h3><p>正如你所看到的 <em>panic</em> 可以接收 <em>string</em> 以及 <a href="https://golang.org/pkg/builtin/#error">error类型</a> 。这意味着事实上你可以给 panic 传 “任意类型” 的数据并能够在 <em>defer</em> 中使用 <em>recover</em> 来获取这个数据。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> myerror <span class="keyword">struct</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(myerror)</span> <span class="title">String</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;myerror there!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">errorly</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        fmt.Println(<span class="built_in">recover</span>())</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> badHappened &#123;</span><br><span class="line">        <span class="built_in">panic</span>(myerror&#123;&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="为什么可以这么写？"><a href="#为什么可以这么写？" class="headerlink" title="为什么可以这么写？"></a>为什么可以这么写？</h3><p>这是因为 <em>panic</em> 的函数签名显示它可以接收 <em>interface{}</em> 类型，我们可以将它理解为 Go 中的 “任意类型” 这是 <em>panic</em> 的签名</p>
@@ -327,7 +327,7 @@
 
 <p><em>recover</em> 会把传入 <em>panic</em> 的值返回出来 这一部分就先告一段落了，我们第四部分见！</p>
 <hr>
-<p>via: <a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/5-gotchas-of-defer-in-go-golang-part-iii-36a1ab3d6ef1">https://blog.learngoprogramming.com/5-gotchas-of-defer-in-go-golang-part-iii-36a1ab3d6ef1</a> 作者：<a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/@inanc">Inanc Gumus</a>  译者：<a target="_blank" rel="noopener" href="https://github.com/yujiahaol68">yujiahaol68</a>  校对：<a target="_blank" rel="noopener" href="https://github.com/polaris1119">polaris1119</a> 本文由 <a target="_blank" rel="noopener" href="https://github.com/studygolang/GCTT">GCTT</a> 原创编译，<a target="_blank" rel="noopener" href="https://studygolang.com/articles/12319">Go语言中文网</a> 荣誉推出</p>
+<p>via: <a href="https://blog.learngoprogramming.com/5-gotchas-of-defer-in-go-golang-part-iii-36a1ab3d6ef1">https://blog.learngoprogramming.com/5-gotchas-of-defer-in-go-golang-part-iii-36a1ab3d6ef1</a> 作者：<a href="https://blog.learngoprogramming.com/@inanc">Inanc Gumus</a>  译者：<a href="https://github.com/yujiahaol68">yujiahaol68</a>  校对：<a href="https://github.com/polaris1119">polaris1119</a> 本文由 <a href="https://github.com/studygolang/GCTT">GCTT</a> 原创编译，<a href="https://studygolang.com/articles/12319">Go语言中文网</a> 荣誉推出</p>
 
     
 
@@ -510,30 +510,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "Golang 中 defer 的五个坑 - 第三部分" -->
-    var gitment = new Gitment({
-      id: "20190409212537",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "Golang 中 defer 的五个坑 - 第三部分" -->
+  var giteement = new Giteement({
+    id: '20190409212537',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

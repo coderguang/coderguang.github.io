@@ -249,7 +249,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLalgorithm算法copy_backward(7)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy/_backward/">http://www.cplusplus.com/reference/algorithm/copy\_backward/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/algorithm/copy/_backward/">http://www.cplusplus.com/reference/algorithm/copy\_backward/</a></p>
 <p>function template</p>
 <algorithm>
 
@@ -308,11 +308,11 @@ cout&lt;&lt;&quot;the return it2 is :\*it2=&quot;&lt;&lt;\*it2&lt;&lt;endl;
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013545_51779858872317.jpg">  </p>
 <p>The function returns an iterator to the first element in the destination range.  </p>
 <p>该函数返回目标范围的第一个元素。（例子中的100）</p>
-<p>The resulting range has the elements in the exact same order as <code>[first,last)</code>. To reverse their order, see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/reverse_copy">reverse_copy</a>.</p>
+<p>The resulting range has the elements in the exact same order as <code>[first,last)</code>. To reverse their order, see <a href="http://www.cplusplus.com/reverse_copy">reverse_copy</a>.</p>
 <p>结果的范围的顺序和[first,last)的次序一样。</p>
 <p>The function begins by copying <code>*(last-1)</code> into <code>*(result-1)</code>, and then follows backward by the elements preceding these, until first is reached (and including it).</p>
 <p>该函数开始于将*(last-1)复制到*(result-1),然后向前移动复制，直到到达first.</p>
-<p>The ranges shall not overlap in such a way that result (which is the <em>past-the-end element</em> in the destination range) points to an element in the range <code>(first,last]</code>. For such cases, see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/copy">copy</a>.</p>
+<p>The ranges shall not overlap in such a way that result (which is the <em>past-the-end element</em> in the destination range) points to an element in the range <code>(first,last]</code>. For such cases, see <a href="http://www.cplusplus.com/copy">copy</a>.</p>
 <p>范围不应该指向[first,last)中的任一元素，如果需要，应该使用copy.（这句话很有问题，因为copy也有一句几乎一样的话，具体需求请具体分析）  </p>
 <p>The behavior of this function template is equivalent to:  </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td></tr></table></figure>
@@ -320,31 +320,31 @@ cout&lt;&lt;&quot;the return it2 is :\*it2=&quot;&lt;&lt;\*it2&lt;&lt;endl;
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class BidirectionalIterator1, class BidirectionalIterator2&gt;</span><br><span class="line">  BidirectionalIterator2 copy_backward ( BidirectionalIterator1 first,</span><br><span class="line">                                         BidirectionalIterator1 last,</span><br><span class="line">                                         BidirectionalIterator2 result )</span><br><span class="line">&#123;</span><br><span class="line">  while (last!=first) *(--result) = *(--last);</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first, last</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/BidirectionalIterator">Bidirectional iterators</a> to the initial and final positions in a sequence to be copied. The range used is <code>[first,last)</code>, which contains all the elements between first and last, including the element pointed by <em>first</em> but not the element pointed by last.<br>要复制的范围。  </p>
+<p><a href="http://www.cplusplus.com/BidirectionalIterator">Bidirectional iterators</a> to the initial and final positions in a sequence to be copied. The range used is <code>[first,last)</code>, which contains all the elements between first and last, including the element pointed by <em>first</em> but not the element pointed by last.<br>要复制的范围。  </p>
 <p>result</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/BidirectionalIterator">Bidirectional iterator</a> to the <em>past-the-end</em> position in the destination sequence.<br>This shall not point to any element in the range <code>(first,last]</code>.  </p>
+<p><a href="http://www.cplusplus.com/BidirectionalIterator">Bidirectional iterator</a> to the <em>past-the-end</em> position in the destination sequence.<br>This shall not point to any element in the range <code>(first,last]</code>.  </p>
 <p>要覆盖的目标数据的超尾位置。<br>不应该是[first,last)里的任一元素。  </p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator to the first element of the destination sequence where elements have been copied.<br>返回一个指向目标序列被覆盖的第一个元素。  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// copy_backward example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::copy_backward</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line"></span><br><span class="line">  // set some values:</span><br><span class="line">  for (int i=1; i&lt;=5; i++)</span><br><span class="line">    myvector.push_back(i*10);          // myvector: 10 20 30 40 50</span><br><span class="line"></span><br><span class="line">  myvector.resize(myvector.size()+3);  // allocate space for 3 more elements</span><br><span class="line"></span><br><span class="line">  std::copy_backward ( myvector.begin(), myvector.begin()+5, myvector.end() );</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (std::vector&lt;int&gt;::iterator it=myvector.begin(); it!=myvector.end(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/copy_backward/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/algorithm/copy_backward/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector contains: 10 20 30 10 20 30 40 50</p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between first and last: Performs an assignment operation for each element in the range.  </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in the <a href="http://www.cplusplus.com/distance">distance</a> between first and last: Performs an assignment operation for each element in the range.  </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The objects in the range <code>[first,last)</code> are accessed (each object is accessed exactly once).<br>The objects in the range between the returned value and result are modified (each object is modified exactly once).  </p>
 <h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if either an element assignment or an operation on iterators throws.  </p>
 <p>Note that invalid arguments cause <em>undefined behavior</em>.</p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#100;&#101;&#x72;&#x67;&#117;&#97;&#110;&#x67;&#64;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#111;&#x6d;">&#99;&#111;&#100;&#101;&#x72;&#x67;&#117;&#97;&#110;&#x67;&#64;&#x67;&#x6d;&#x61;&#105;&#108;&#46;&#x63;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#x65;&#x72;&#x67;&#117;&#97;&#x6e;&#x67;&#64;&#x67;&#109;&#97;&#105;&#108;&#46;&#x63;&#111;&#x6d;">&#x63;&#111;&#x64;&#x65;&#x72;&#x67;&#117;&#97;&#x6e;&#x67;&#64;&#x67;&#109;&#97;&#105;&#108;&#46;&#x63;&#111;&#x6d;</a></p>
 <p>2014-9-8</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39136169">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39136169">原文链接</a></p>
 
     
 
@@ -527,30 +527,31 @@ cout&lt;&lt;&quot;the return it2 is :\*it2=&quot;&lt;&lt;\*it2&lt;&lt;endl;
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLalgorithm算法copy_backward(7)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLalgorithm算法copy_backward(7)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

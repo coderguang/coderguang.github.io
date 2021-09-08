@@ -247,7 +247,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLrelationaloperators(vector)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/operators/">http://www.cplusplus.com/reference/vector/vector/operators/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/vector/vector/operators/">http://www.cplusplus.com/reference/vector/vector/operators/</a></p>
 <p>function template</p>
 <vector>
 
@@ -262,12 +262,12 @@
 <p>(5)</p>
 <p>template &lt;class T, class Alloc&gt;<br>  bool operator&gt;  (const vector&lt;T,Alloc&gt;&amp; lhs, const vector&lt;T,Alloc&gt;&amp; rhs);<br>(6)template &lt;class T, class Alloc&gt;<br>  bool operator&gt;= (const vector&lt;T,Alloc&gt;&amp; lhs, const vector&lt;T,Alloc&gt;&amp; rhs);</p>
 <p>Relational operators for vector</p>
-<p>Performs the appropriate comparison operation between the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> containers <em>lhs</em> and <em>rhs</em>.  </p>
+<p>Performs the appropriate comparison operation between the <a href="http://www.cplusplus.com/vector">vector</a> containers <em>lhs</em> and <em>rhs</em>.  </p>
 <p>对两个vector数组执行合适的比较操作。</p>
-<p>The <em>equality comparison</em> (<code>operator==</code>) is performed by first comparing <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">sizes</a></em>, and if they match, the elements are compared sequentially using <code>operator==</code>, stopping at the first mismatch (as if using algorithm <a target="_blank" rel="noopener" href="http://www.cplusplus.com/equal">equal</a>).</p>
+<p>The <em>equality comparison</em> (<code>operator==</code>) is performed by first comparing <em><a href="http://www.cplusplus.com/vector::size">sizes</a></em>, and if they match, the elements are compared sequentially using <code>operator==</code>, stopping at the first mismatch (as if using algorithm <a href="http://www.cplusplus.com/equal">equal</a>).</p>
 <p>比较相等的操作是首先比较两者的大小，然后使用==依次比较他们的元素，直到第一次失配。</p>
 <p>The <em>less-than comparison</em> (<code>operator&lt;</code>) behaves as if using algorithm <code>[lexicographical_compare](http://www.cplusplus.com/lexicographical_compare)</code>, which compares the elements sequentially using <code>operator&lt;</code> in a reciprocal manner (i.e., checking both <code>a&lt;b</code> and <code>b&lt;a</code>) and stopping at the first occurrence.</p>
-<p>比较器&lt;的行为就像<a target="_blank" rel="noopener" href="http://www.cplusplus.com/lexicographical_compare">lexicographical_compare</a>的一样，依次使用&lt;比较两者相互之间的元素（不管大小是否相同），以及在第一次失败时停止比较。</p>
+<p>比较器&lt;的行为就像<a href="http://www.cplusplus.com/lexicographical_compare">lexicographical_compare</a>的一样，依次使用&lt;比较两者相互之间的元素（不管大小是否相同），以及在第一次失败时停止比较。</p>
 <p>The other operations also use the operators <code>==</code> and <code>&lt;</code> internally to compare the elements, behaving as if the following equivalent operations were performed:</p>
 <p>其他的操作也是令用==已经&lt;进行比较，行为就和下面的等价列表一样。</p>
 <p>operation</p>
@@ -280,21 +280,21 @@
 <p><code>!(b&lt;a)</code></p>
 <p><code>a&gt;=b</code></p>
 <p><code>!(a&lt;b)</code></p>
-<p>These operators are overloaded in header <a target="_blank" rel="noopener" href="http://www.cplusplus.com/%3Cvector%3E"><vector></a>.  </p>
+<p>These operators are overloaded in header <a href="http://www.cplusplus.com/%3Cvector%3E"><vector></a>.  </p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>lhs, rhs</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> containers (to the left- and right-hand side of the operator, respectively), having both the same template parameters (Tand Alloc).</p>
+<p><a href="http://www.cplusplus.com/vector">vector</a> containers (to the left- and right-hand side of the operator, respectively), having both the same template parameters (Tand Alloc).</p>
 <p>具有相同类型的两个vector.</p>
 <h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>true if the condition holds, and false otherwise.  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// vector comparisons</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; foo (3,100);   // three ints with a value of 100</span><br><span class="line">  std::vector&lt;int&gt; bar (2,200);   // two ints with a value of 200</span><br><span class="line"></span><br><span class="line">  if (foo==bar) std::cout &lt;&lt; &quot;foo and bar are equal\n&quot;;</span><br><span class="line">  if (foo!=bar) std::cout &lt;&lt; &quot;foo and bar are not equal\n&quot;;</span><br><span class="line">  if (foo&lt; bar) std::cout &lt;&lt; &quot;foo is less than bar\n&quot;;</span><br><span class="line">  if (foo&gt; bar) std::cout &lt;&lt; &quot;foo is greater than bar\n&quot;;</span><br><span class="line">  if (foo&lt;=bar) std::cout &lt;&lt; &quot;foo is less than or equal to bar\n&quot;;</span><br><span class="line">  if (foo&gt;=bar) std::cout &lt;&lt; &quot;foo is greater than or equal to bar\n&quot;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/operators/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/operators/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>foo and bar are not equal<br>foo is less than bar<br>foo is less than or equal to bar </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>For <em>(1)</em> and <em>(2)</em>, constant if the <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">sizes</a></em> of lhs and rhs differ, and up to linear in that <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a></em> (equality comparisons) otherwise.</p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>For <em>(1)</em> and <em>(2)</em>, constant if the <em><a href="http://www.cplusplus.com/vector::size">sizes</a></em> of lhs and rhs differ, and up to linear in that <em><a href="http://www.cplusplus.com/vector::size">size</a></em> (equality comparisons) otherwise.</p>
 <p>对于(1),（2）来说，如果两者大小不同，则是常量时间复杂的，否则时和大小相关的线性时间复杂的。</p>
-<p>For the others, up to linear in the smaller <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a></em> (each representing two comparisons with <code>operator&lt;</code>).</p>
+<p>For the others, up to linear in the smaller <em><a href="http://www.cplusplus.com/vector::size">size</a></em> (each representing two comparisons with <code>operator&lt;</code>).</p>
 <p>对于其他情况，和最小的那个size线性相关。</p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>No changes.  </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>Both containers, <em>lhs</em> and <em>rhs</em>, are accessed.</p>
@@ -306,10 +306,10 @@
 <h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the type of the elements supports the appropriate operation with no-throw guarantee, the function never throws exceptions (no-throw guarantee).</p>
 <p>如果元素的比较操作不会抛出异常，那么该函数也不会抛出异常。</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-20</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38711531">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38711531">原文链接</a></p>
 
     
 
@@ -492,30 +492,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLrelationaloperators(vector)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLrelationaloperators(vector)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

@@ -196,6 +196,13 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <script src="/lib/oauthcallback.browser.js"></script>
+  
+  <script>
+    Oauthcallback();
+  </script>
+
 
   
     <article id="post-leetcode-821-shortest-distance-to-a-character" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -227,7 +234,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/shortest-distance-to-a-character/description/">https://leetcode.com/problems/shortest-distance-to-a-character/description/</a><br>//最短的距离，取决于该位置左右两边目标C位置的距离<br>class Solution {<br>public:<br>    vector shortestToChar(string S, char C) {<br>        vector result;<br>        int firstMeet=-1;<br>        int lastMeet=-1;<br>        for(int i=0;i</p>
+    <p>//url:<a href="https://leetcode.com/problems/shortest-distance-to-a-character/description/">https://leetcode.com/problems/shortest-distance-to-a-character/description/</a><br>//最短的距离，取决于该位置左右两边目标C位置的距离<br>class Solution {<br>public:<br>    vector shortestToChar(string S, char C) {<br>        vector result;<br>        int firstMeet=-1;<br>        int lastMeet=-1;<br>        for(int i=0;i</p>
 
     
 
@@ -313,7 +320,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-complement/description/">https://leetcode.com/problems/number-complement/description/</a></p>
+    <p>//url:<a href="https://leetcode.com/problems/number-complement/description/">https://leetcode.com/problems/number-complement/description/</a></p>
 <p>class Solution {<br>public:<br>    int findComplement(int num) {<br>        int x=1;<br>        int sum=x;<br>        while(sum</p>
 
     
@@ -400,7 +407,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-lines-to-write-string/description/">https://leetcode.com/problems/number-of-lines-to-write-string/description/</a></p>
+    <p>//url:<a href="https://leetcode.com/problems/number-of-lines-to-write-string/description/">https://leetcode.com/problems/number-of-lines-to-write-string/description/</a></p>
 <p>class Solution {<br>public:<br>    vector numberOfLines(vector&amp; widths, string S) {<br>        vector result;<br>        int totalLine=0;<br>        int totalLength=0;<br>        for(int i=0;i100){<br>                totalLine++;<br>                totalLength=0;<br>            }<br>            totalLength+=widths[S[i]-‘a’];<br>        }<br>        if(totalLength&gt;0){<br>            totalLine++;<br>        }<br>        result.push_back(totalLine);<br>        result.push_back(totalLength);<br>        return result;<br>    }<br>};</p>
 
     
@@ -487,7 +494,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/leaf-similar-trees/description/">https://leetcode.com/problems/leaf-similar-trees/description/</a></p>
+    <p>//url:<a href="https://leetcode.com/problems/leaf-similar-trees/description/">https://leetcode.com/problems/leaf-similar-trees/description/</a></p>
 <p>/**<br> * Definition for a binary tree node.<br> * struct TreeNode {<br> *     int val;<br> *     TreeNode *left;<br> *     TreeNode *right;<br> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}<br> * };<br> */<br>class Solution {<br>public:<br>    bool leafSimilar(TreeNode* root1, TreeNode* root2) {<br>        vector v1,v2;<br>        getLeafVec(root1,v1);<br>        getLeafVec(root2,v2);<br>        int v1size=v1.size();<br>        int v2size=v2.size();<br>        if(v1size!=v2size)<br>            return false;<br>        for(int i=0;i&amp; vec){<br>        if(!root)<br>        {<br>            return;<br>        }<br>        if(!root-&gt;left&amp;&amp;!root-&gt;right){<br>            vec.push_back(root-&gt;val);<br>        }<br>        getLeafVec(root-&gt;left,vec);<br>        getLeafVec(root-&gt;right,vec);<br>    }<br>};</p>
 
     
@@ -574,7 +581,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/array-partition-i/description/">https://leetcode.com/problems/array-partition-i/description/</a><br>class Solution {<br>public:<br>    int arrayPairSum(vector&amp; nums) {<br>        int sum=0;<br>        sort(nums.begin(),nums.end());<br>        int size=nums.size(); //因为size方法每次调用都需要重新计算,这样会更高效<br>        for(int i=0;i</p>
+    <p>//url:<a href="https://leetcode.com/problems/array-partition-i/description/">https://leetcode.com/problems/array-partition-i/description/</a><br>class Solution {<br>public:<br>    int arrayPairSum(vector&amp; nums) {<br>        int sum=0;<br>        sort(nums.begin(),nums.end());<br>        int size=nums.size(); //因为size方法每次调用都需要重新计算,这样会更高效<br>        for(int i=0;i</p>
 
     
 
@@ -660,7 +667,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/self-dividing-numbers/description/">https://leetcode.com/problems/self-dividing-numbers/description/</a></p>
+    <p>//url:<a href="https://leetcode.com/problems/self-dividing-numbers/description/">https://leetcode.com/problems/self-dividing-numbers/description/</a></p>
 <p>class Solution {<br>public:<br>    vector selfDividingNumbers(int left, int right) {<br>        vector result;<br>        for(int i=left;i&lt;=right;i++){<br>            int n=i;<br>            bool isDividingNum=true;<br>            while(n){<br>                if(0==n%100!=(i%(n%10))){<br>                    isDividingNum=false;<br>                    break;<br>                }<br>                n/=10;<br>            }<br>            if(isDividingNum)<br>                result.push_back(i);<br>        }<br>        return result;<br>    }<br>};</p>
 
     
@@ -747,7 +754,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/merge-two-binary-trees/description/">https://leetcode.com/problems/merge-two-binary-trees/description/</a></p>
+    <p>//url:<a href="https://leetcode.com/problems/merge-two-binary-trees/description/">https://leetcode.com/problems/merge-two-binary-trees/description/</a></p>
 <p>/**<br> * Definition for a binary tree node.<br> * struct TreeNode {<br> *     int val;<br> *     TreeNode *left;<br> *     TreeNode *right;<br> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}<br> * };<br> */<br>class Solution {<br>public:<br>    TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {<br>        if(!t1)<br>            return t2;<br>        if(!t2)<br>            return t1;<br>        t1-&gt;val+=t2-&gt;val;<br>        t1-&gt;left=mergeTrees(t1-&gt;left,t2-&gt;left);<br>        t1-&gt;right=mergeTrees(t1-&gt;right,t2-&gt;right);<br>        return t1;<br>    }</p>
 <p>};</p>
 
@@ -835,7 +842,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/transpose-matrix/description/">https://leetcode.com/problems/transpose-matrix/description/</a></p>
+    <p>//url:<a href="https://leetcode.com/problems/transpose-matrix/description/">https://leetcode.com/problems/transpose-matrix/description/</a></p>
 <p>class Solution {<br>public:<br>    vector&gt; transpose(vector&gt;&amp; A) {<br>        int xsize=A.size();<br>        int ysize=A[0].size();<br>        vector&gt; result;<br>        for(int i=0;i tmp;<br>            for(int j=0;j</p>
 
     
@@ -922,7 +929,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/peak-index-in-a-mountain-array/description/">https://leetcode.com/problems/peak-index-in-a-mountain-array/description/</a><br>class Solution {<br>public:<br>    int peakIndexInMountainArray(vector&amp; A) {<br>        int size=A.size();<br>        for(int i=0;iA[i+1])<br>                return i;<br>        }<br>    }<br>};</p>
+    <p>//url:<a href="https://leetcode.com/problems/peak-index-in-a-mountain-array/description/">https://leetcode.com/problems/peak-index-in-a-mountain-array/description/</a><br>class Solution {<br>public:<br>    int peakIndexInMountainArray(vector&amp; A) {<br>        int size=A.size();<br>        for(int i=0;iA[i+1])<br>                return i;<br>        }<br>    }<br>};</p>
 
     
 
@@ -1008,7 +1015,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/judge-route-circle/description/">https://leetcode.com/problems/judge-route-circle/description/</a><br>class Solution {<br>public:<br>    bool judgeCircle(string moves) {<br>        int x=0;<br>        int y=0;<br>        for(int i=0;i</p>
+    <p>//url:<a href="https://leetcode.com/problems/judge-route-circle/description/">https://leetcode.com/problems/judge-route-circle/description/</a><br>class Solution {<br>public:<br>    bool judgeCircle(string moves) {<br>        int x=0;<br>        int y=0;<br>        for(int i=0;i</p>
 
     
 

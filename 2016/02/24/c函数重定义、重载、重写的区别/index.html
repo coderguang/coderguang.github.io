@@ -247,7 +247,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++函数重定义、重载、重写的区别</p>
-<p>转自:<a target="_blank" rel="noopener" href="http://http//www.cnblogs.com/BeyondTechnology/archive/2010/09/20/1831441.html">点击打开链接</a></p>
+<p>转自:<a href="http://http//www.cnblogs.com/BeyondTechnology/archive/2010/09/20/1831441.html">点击打开链接</a></p>
 <p>1. 重写 (override):</p>
 <p>      父类与子类之间的多态性。子类重新定义父类中有相同名称和参数的虚函数。</p>
 <ol>
@@ -267,7 +267,7 @@
 <p>2、重写要求参数列表相同；重载要求参数列表不同。</p>
 <p>3、重写关系中，调用那个方法体，是根据对象的类型（对象对应存储空间类型）来决定；重载关系，是根据调用时的实参表与形参表来选择方法体的。 </p>
 <p>注意：在 C++ 中若基类中有一个函数名被重载，在子类中重定义该函数，则基类的所有 版本将被隐藏——即子类只能用子类定义的，基类的不再可用。——名字隐藏特性。  </p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/31381121">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/31381121">原文链接</a></p>
 
     
 
@@ -450,30 +450,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "C++函数重定义、重载、重写的区别" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "C++函数重定义、重载、重写的区别" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

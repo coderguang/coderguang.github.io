@@ -196,6 +196,13 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <script src="/lib/oauthcallback.browser.js"></script>
+  
+  <script>
+    Oauthcallback();
+  </script>
+
 
   
     <article id="post-c11this-threadsleep-for10" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -228,7 +235,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++11this_threadsleep_for(10)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/this/_thread/sleep/_for/">http://www.cplusplus.com/reference/thread/this\_thread/sleep\_for/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/thread/this/_thread/sleep/_for/">http://www.cplusplus.com/reference/thread/this\_thread/sleep\_for/</a></p>
 <p>function</p>
 <thread>
 
@@ -236,7 +243,7 @@
 <p>Sleep for time span</p>
 <p>Blocks execution of the calling thread during the span of time specified by rel_time.</p>
 <p>阻塞当前线程rel_time的时间。</p>
-<p>参考链接：<a target="_blank" rel="noopener" href="http://www.cnblogs.com/jwk000/p/3560086.html%E4%B8%80">http://www.cnblogs.com/jwk000/p/3560086.html一</a></p>
+<p>参考链接：<a href="http://www.cnblogs.com/jwk000/p/3560086.html%E4%B8%80">http://www.cnblogs.com/jwk000/p/3560086.html一</a></p>
 <p>The execution of the current thread is stopped until at least rel_time has passed from now. Other threads continue their execution.</p>
 <p>从当前时间开始阻塞当前线程直到rel_time（一段时间）这段时间过去，其他线程依旧指向。</p>
 <p>例子：</p>
@@ -245,26 +252,26 @@
 <p>运行截图：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013726_38749057332094.jpg">  </p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>rel_time</p>
-<p>The time span after which the calling thread shall resume its execution.<br>Note that multi-threading management operations may cause certain delays beyond this.<br><a target="_blank" rel="noopener" href="http://www.cplusplus.com/duration">duration</a> is an object that represents a specific <em>relative time</em>.</p>
+<p>The time span after which the calling thread shall resume its execution.<br>Note that multi-threading management operations may cause certain delays beyond this.<br><a href="http://www.cplusplus.com/duration">duration</a> is an object that represents a specific <em>relative time</em>.</p>
 <p>线程阻塞的时间。  </p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// this_thread::sleep_for example</span><br><span class="line">#include &lt;iostream&gt;       // std::cout, std::endl</span><br><span class="line">#include &lt;thread&gt;         // std::this_thread::sleep_for</span><br><span class="line">#include &lt;chrono&gt;         // std::chrono::seconds</span><br><span class="line"> </span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">  std::cout &lt;&lt; &quot;countdown:\n&quot;;</span><br><span class="line">  for (int i=10; i&gt;0; --i) &#123;</span><br><span class="line">    std::cout &lt;&lt; i &lt;&lt; std::endl;</span><br><span class="line">    std::this_thread::sleep_for (std::chrono::seconds(1));</span><br><span class="line">  &#125;</span><br><span class="line">  std::cout &lt;&lt; &quot;Lift off!\n&quot;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/this_thread/sleep_for/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/thread/this_thread/sleep_for/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output (after 10 seconds):  </p>
 <p>countdown:<br>10<br>9<br>8<br>7<br>6<br>5<br>4<br>3<br>2<br>1<br>Lift off! </p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the type of rel_time never throws exceptions (like the instantiations of <a target="_blank" rel="noopener" href="http://www.cplusplus.com/duration">duration</a> in header <a target="_blank" rel="noopener" href="http://www.cplusplus.com/%3Cchrono%3E"><chrono></a>), this function never throws exceptions (no-throw guarantee).</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the type of rel_time never throws exceptions (like the instantiations of <a href="http://www.cplusplus.com/duration">duration</a> in header <a href="http://www.cplusplus.com/%3Cchrono%3E"><chrono></a>), this function never throws exceptions (no-throw guarantee).</p>
 <p>—————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#x64;&#101;&#114;&#x67;&#x75;&#97;&#x6e;&#x67;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;">&#99;&#x6f;&#x64;&#101;&#114;&#x67;&#x75;&#97;&#x6e;&#x67;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;</a></p>
+<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#x65;&#x72;&#x67;&#117;&#97;&#110;&#x67;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">&#x63;&#111;&#x64;&#x65;&#x72;&#x67;&#117;&#97;&#110;&#x67;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <p>2014-9-4</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39057989">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39057989">原文链接</a></p>
 
     
 
@@ -351,7 +358,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++11this_threadsleep_until(11)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/this/_thread/sleep/_until/">http://www.cplusplus.com/reference/thread/this\_thread/sleep\_until/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/thread/this/_thread/sleep/_until/">http://www.cplusplus.com/reference/thread/this\_thread/sleep\_until/</a></p>
 <p>function</p>
 <thread>
 
@@ -362,26 +369,26 @@
 <p>The execution of the current thread is stopped until at least abs_time, while other threads may continue to advance.<br>该线程阻塞至少直到时间点abs_time到来。其他线程可能提前。  </p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>abs_time</p>
 <p>A point in time when the calling thread shall resume its execution.<br>Note that multi-threading management operations may cause certain delays beyond this.  </p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/time_point">time_point</a> is an object that represents a specific <em>absolute time</em>.</p>
+<p><a href="http://www.cplusplus.com/time_point">time_point</a> is an object that represents a specific <em>absolute time</em>.</p>
 <p>线程应该恢复执行的时间点。</p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// this_thread::sleep_for example</span><br><span class="line">#include &lt;iostream&gt;       // std::cout</span><br><span class="line">#include &lt;iomanip&gt;        // std::put_time</span><br><span class="line">#include &lt;thread&gt;         // std::this_thread::sleep_until</span><br><span class="line">#include &lt;chrono&gt;         // std::chrono::system_clock</span><br><span class="line">#include &lt;ctime&gt;          // std::time_t, std::tm, std::localtime, std::mktime</span><br><span class="line"></span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">  using std::chrono::system_clock;</span><br><span class="line">  std::time_t tt = system_clock::to_time_t (system_clock::now());</span><br><span class="line"></span><br><span class="line">  struct std::tm * ptm = std::localtime(&amp;tt);</span><br><span class="line">  std::cout &lt;&lt; &quot;Current time: &quot; &lt;&lt; std::put_time(ptm,&quot;%X&quot;) &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;Waiting for the next minute to begin...\n&quot;;</span><br><span class="line">  ++ptm-&gt;tm_min; ptm-&gt;tm_sec=0;</span><br><span class="line">  std::this_thread::sleep_until (system_clock::from_time_t (mktime(ptm)));</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; std::put_time(ptm,&quot;%X&quot;) &lt;&lt; &quot; reached!\n&quot;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/this_thread/sleep_until/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/thread/this_thread/sleep_until/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output (after an avg. of 30 seconds):  </p>
 <p>Current time: 11:52:36<br>Waiting for the next minute to begin…<br>11:53:00 reached! </p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the type of abs_time never throws exceptions (like if it only uses values from the standard clocks provided in header <a target="_blank" rel="noopener" href="http://www.cplusplus.com/%3Cchrono%3E"><chrono></a>), this function never throws exceptions (no-throw guarantee).</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the type of abs_time never throws exceptions (like if it only uses values from the standard clocks provided in header <a href="http://www.cplusplus.com/%3Cchrono%3E"><chrono></a>), this function never throws exceptions (no-throw guarantee).</p>
 <p>—————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#101;&#x72;&#x67;&#117;&#97;&#110;&#103;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109;">&#99;&#x6f;&#100;&#101;&#x72;&#x67;&#117;&#97;&#110;&#103;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#x64;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#x67;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;">&#99;&#111;&#x64;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#x67;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;</a></p>
 <p>2014-9-4</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39058351">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39058351">原文链接</a></p>
 
     
 
@@ -468,7 +475,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++11this_threadyeild(12)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/this/_thread/yield/">http://www.cplusplus.com/reference/thread/this\_thread/yield/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/thread/this/_thread/yield/">http://www.cplusplus.com/reference/thread/this\_thread/yield/</a></p>
 <p>function</p>
 <thread>
 
@@ -483,19 +490,19 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// this_thread::yield example</span><br><span class="line">#include &lt;iostream&gt;       // std::cout</span><br><span class="line">#include &lt;thread&gt;         // std::thread, std::this_thread::yield</span><br><span class="line">#include &lt;atomic&gt;         // std::atomic</span><br><span class="line"></span><br><span class="line">std::atomic&lt;bool&gt; ready (false);</span><br><span class="line"></span><br><span class="line">void count1m(int id) &#123;</span><br><span class="line">  while (!ready) &#123;             // wait until main() sets ready...</span><br><span class="line">    std::this_thread::yield();</span><br><span class="line">  &#125;</span><br><span class="line">  for (volatile int i=0; i&lt;1000000; ++i) &#123;&#125;</span><br><span class="line">  std::cout &lt;&lt; id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::thread threads[10];</span><br><span class="line">  std::cout &lt;&lt; &quot;race of 10 threads that count to 1 million:\n&quot;;</span><br><span class="line">  for (int i=0; i&lt;10; ++i) threads[i]=std::thread(count1m,i);</span><br><span class="line">  ready = true;               // go!</span><br><span class="line">  for (auto&amp; th : threads) th.join();</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/this_thread/yield/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/thread/this_thread/yield/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Possible output (last line may vary):  </p>
 <p>race of 10 threads that count to 1 million…<br>6189370542 </p>
 <h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> never throws exceptions.  </p>
 <p>—————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#100;&#x65;&#114;&#x67;&#117;&#97;&#x6e;&#103;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;">&#99;&#111;&#100;&#x65;&#114;&#x67;&#117;&#97;&#x6e;&#103;&#64;&#x67;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;</a></p>
+<p>Email:<a href="mailto:&#x63;&#111;&#100;&#x65;&#114;&#x67;&#x75;&#x61;&#x6e;&#x67;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#x6d;">&#x63;&#111;&#100;&#x65;&#114;&#x67;&#x75;&#x61;&#x6e;&#x67;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#x6d;</a></p>
 <p>2014-9-4</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39059025">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39059025">原文链接</a></p>
 
     
 
@@ -582,11 +589,11 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++11thread(1)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/thread/">http://www.cplusplus.com/reference/thread/thread/thread/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/thread/thread/thread/">http://www.cplusplus.com/reference/thread/thread/thread/</a></p>
 <p>public member function</p>
 <thread>
 
-<h1 id="std-thread-thread"><a href="#std-thread-thread" class="headerlink" title="std::thread::thread"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::thread</h1><p>default (1)</p>
+<h1 id="std-thread-thread"><a href="#std-thread-thread" class="headerlink" title="std::thread::thread"></a>std::<a href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::thread</h1><p>default (1)</p>
 <p>thread() noexcept; </p>
 <p>initialization (2)</p>
 <p>template &lt;class Fn, class… Args&gt;<br>explicit thread (Fn&amp;&amp; fn, Args&amp;&amp;… args); </p>
@@ -595,9 +602,9 @@
 <p>move (4)</p>
 <p>thread (thread&amp;&amp; x) noexcept;</p>
 <p>Construct thread</p>
-<p>Constructs a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object:<br>构造一个线程对象。  </p>
+<p>Constructs a <a href="http://www.cplusplus.com/thread">thread</a> object:<br>构造一个线程对象。  </p>
 <p>(1) default constructor</p>
-<p>Construct a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object that does not represent any thread of execution.</p>
+<p>Construct a <a href="http://www.cplusplus.com/thread">thread</a> object that does not represent any thread of execution.</p>
 <p>构造一个不执行任何线程的线程对象。</p>
 <p>例子：</p>
 <p>#include <iostream><br>#include <thread><br>using namespace std;<br>int main()<br>{<br>thread t;<br>cout&lt;&lt;”t.id=”&lt;&lt;t.get_id()&lt;&lt;endl;</p>
@@ -606,8 +613,8 @@
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013738_16657508365189.jpg">  </p>
 <p>可以看到,t是处于non-executing（未执行）状态的。</p>
 <p>(2) initialization constructor</p>
-<p>Construct a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object that represents a new <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em> thread of execution.</p>
-<p>The new thread of execution calls fn passing args as arguments (using <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/decay">decay copies</a></em> of its lvalue or rvalue references).  </p>
+<p>Construct a <a href="http://www.cplusplus.com/thread">thread</a> object that represents a new <em><a href="http://www.cplusplus.com/thread::joinable">joinable</a></em> thread of execution.</p>
+<p>The new thread of execution calls fn passing args as arguments (using <em><a href="http://www.cplusplus.com/decay">decay copies</a></em> of its lvalue or rvalue references).  </p>
 <p>The completion of this construction synchronizes with the beginning of the invocation of this copy of fn.</p>
 <p>构造一个新的可等待的线程对象。</p>
 <p>新的线程将调用函数fn并将args传递给fn.</p>
@@ -617,10 +624,10 @@
 <p>运行截图：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013741_38454207187068.jpg">  </p>
 <p>(3) copy constructor</p>
-<p>Deleted constructor form (<a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> objects cannot be copied).</p>
+<p>Deleted constructor form (<a href="http://www.cplusplus.com/thread">thread</a> objects cannot be copied).</p>
 <p>默认被Delete的构造器。（线程对象不能被复制）</p>
 <p>(4) move constructor</p>
-<p>Construct a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object that acquires the thread of execution represented by x (if any). This operation does not affect the execution of the moved thread in any way, it simply transfers its handler.<br>The x object no longer represents any thread of execution.</p>
+<p>Construct a <a href="http://www.cplusplus.com/thread">thread</a> object that acquires the thread of execution represented by x (if any). This operation does not affect the execution of the moved thread in any way, it simply transfers its handler.<br>The x object no longer represents any thread of execution.</p>
 <p>从执行中的线程x中构造。该操作不会以任何方式影响执行中的线程，只会移交其控制权。</p>
 <p>x不再代理任何线程的执行。</p>
 <p>例子：</p>
@@ -629,27 +636,27 @@
 <p>thread t2(returnThread());<br>t2.join();<br>cout&lt;&lt;”ok!”&lt;&lt;endl;<br>}</p>
 <p>运行截图：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013742_43568710150148.jpg"><br>这是我电脑上运行一次的结果，结果不一定一样。</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> objects that are <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em> shall either be <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::join">joined</a></em> or <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::detach">detached</a></em> before they are <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::~thread">destroyed</a></em>.  </p>
+<p><a href="http://www.cplusplus.com/thread">thread</a> objects that are <em><a href="http://www.cplusplus.com/thread::joinable">joinable</a></em> shall either be <em><a href="http://www.cplusplus.com/thread::join">joined</a></em> or <em><a href="http://www.cplusplus.com/thread::detach">detached</a></em> before they are <em><a href="http://www.cplusplus.com/thread::~thread">destroyed</a></em>.  </p>
 <p>可连接线程对象在销毁之前应该被joined或者detached.</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>fn</p>
-<p>A pointer to function, pointer to member, or any kind of <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_move_constructible">move-constructible</a></em> function object (i.e., an object whose class defines operator(), including <em>closures</em> and <a target="_blank" rel="noopener" href="http://www.cplusplus.com/function">function</a> objects).  </p>
+<p>A pointer to function, pointer to member, or any kind of <em><a href="http://www.cplusplus.com/is_move_constructible">move-constructible</a></em> function object (i.e., an object whose class defines operator(), including <em>closures</em> and <a href="http://www.cplusplus.com/function">function</a> objects).  </p>
 <p>The return value (if any) is ignored.</p>
 <p>fn为一个指向函数的指针，或者一个指向成员的的指针，甚至是任一的可以被移动构造的函数对象。</p>
 <p>fn的返回值会被忽略。</p>
 <p>args…</p>
-<p>Arguments passed to the call to fn (if any). Their types shall be <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_move_constructible">move-constructible</a></em>.  </p>
-<p>If fn is a <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_member_pointer">member pointer</a></em>, the first argument shall be an object for which that member is defined (or a reference, or a pointer to it).</p>
+<p>Arguments passed to the call to fn (if any). Their types shall be <em><a href="http://www.cplusplus.com/is_move_constructible">move-constructible</a></em>.  </p>
+<p>If fn is a <em><a href="http://www.cplusplus.com/is_member_pointer">member pointer</a></em>, the first argument shall be an object for which that member is defined (or a reference, or a pointer to it).</p>
 <p>fn函数的参数。</p>
 <p>x</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object whose state is moved to the constructed object.</p>
+<p><a href="http://www.cplusplus.com/thread">thread</a> object whose state is moved to the constructed object.</p>
 <p>x是一个线程对象。</p>
-<p> <code>Fn</code> and <code>Args...</code> are template parameters: if implicitly deduced, these are the proper <em>lvalue</em> or <em>rvalue</em> reference type to bind the arguments to. Note though, that on the call to fn in the new thread, <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/decay">decay copies</a></em> of fn and args… are always used (see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/ref">std::ref</a> for a wrapper class that makes references copyable).</p>
+<p> <code>Fn</code> and <code>Args...</code> are template parameters: if implicitly deduced, these are the proper <em>lvalue</em> or <em>rvalue</em> reference type to bind the arguments to. Note though, that on the call to fn in the new thread, <em><a href="http://www.cplusplus.com/decay">decay copies</a></em> of fn and args… are always used (see <a href="http://www.cplusplus.com/ref">std::ref</a> for a wrapper class that makes references copyable).</p>
 <p>Fn,Args是模版参数，如果是隐式推导，那么这会绑定相应的左值或者右值，fn将会在新线程中被调用。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">// constructing threads</span><br><span class="line">#include &lt;iostream&gt;       // std::cout</span><br><span class="line">#include &lt;atomic&gt;         // std::atomic</span><br><span class="line">#include &lt;thread&gt;         // std::thread</span><br><span class="line">#include &lt;vector&gt;         // std::vector</span><br><span class="line"></span><br><span class="line">std::atomic&lt;int&gt; global_counter (0);</span><br><span class="line"></span><br><span class="line">void increase_global (int n) &#123; for (int i=0; i&lt;n; ++i) ++global_counter; &#125;</span><br><span class="line"></span><br><span class="line">void increase_reference (std::atomic&lt;int&gt;&amp; variable, int n) &#123; for (int i=0; i&lt;n; ++i) ++variable; &#125;</span><br><span class="line"></span><br><span class="line">struct C : std::atomic&lt;int&gt; &#123;</span><br><span class="line">  C() : std::atomic&lt;int&gt;(0) &#123;&#125;</span><br><span class="line">  void increase_member (int n) &#123; for (int i=0; i&lt;n; ++i) fetch_add(1); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;std::thread&gt; threads;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;increase global counter with 10 threads...\n&quot;;</span><br><span class="line">  for (int i=1; i&lt;=10; ++i)</span><br><span class="line">    threads.push_back(std::thread(increase_global,1000));</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;increase counter (foo) with 10 threads using reference...\n&quot;;</span><br><span class="line">  std::atomic&lt;int&gt; foo;</span><br><span class="line">  for (int i=1; i&lt;=10; ++i)</span><br><span class="line">    threads.push_back(std::thread(increase_reference,std::ref(foo),1000));</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;increase counter (bar) with 10 threads using member...\n&quot;;</span><br><span class="line">  C bar;</span><br><span class="line">  for (int i=1; i&lt;=10; ++i)</span><br><span class="line">    threads.push_back(std::thread(&amp;C::increase_member,std::ref(bar),1000));</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;synchronizing all threads...\n&quot;;</span><br><span class="line">  for (auto&amp; th : threads) th.join();</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;global_counter: &quot; &lt;&lt; global_counter &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">  std::cout &lt;&lt; &quot;foo: &quot; &lt;&lt; foo &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">  std::cout &lt;&lt; &quot;bar: &quot; &lt;&lt; bar &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/thread/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/thread/thread/thread/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>increase global counter using 10 threads…<br>increase counter (foo) with 10 threads using reference…<br>increase counter (bar) with 10 threads using member…<br>synchronizing all threads…<br>global_counter: 10000<br>foo: 10000<br>bar: 10000 </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The <em>move constructor (4)</em> modifies x.  </p>
@@ -657,22 +664,22 @@
 <p>exception type</p>
 <p>error condition</p>
 <p>description</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/errc">errc::resource_unavailable_try_again</a></p>
+<p><a href="http://www.cplusplus.com/system_error">system_error</a></p>
+<p><a href="http://www.cplusplus.com/errc">errc::resource_unavailable_try_again</a></p>
 <p>The system is unable to start a new thread</p>
-<p>It also throws if the construction of any of the copies it makes (of the <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/decay">decay types</a></em> of Fn and Args…) throws.<br>Depending on the library implementation, this constructor may also throw exceptions to report other situations (such as <a target="_blank" rel="noopener" href="http://www.cplusplus.com/bad_alloc">bad_alloc</a> or<a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a> with other <em>error conditions</em>).  </p>
+<p>It also throws if the construction of any of the copies it makes (of the <em><a href="http://www.cplusplus.com/decay">decay types</a></em> of Fn and Args…) throws.<br>Depending on the library implementation, this constructor may also throw exceptions to report other situations (such as <a href="http://www.cplusplus.com/bad_alloc">bad_alloc</a> or<a href="http://www.cplusplus.com/system_error">system_error</a> with other <em>error conditions</em>).  </p>
 <p>如果复制过程出错，会抛出system_error错误。</p>
 <p>Note that if an exception is thrown from the function invocation (i.e., from fn itself), it is handled by the new thread. If this invocation terminates with an uncaught exception, <code>[terminate()](http://www.cplusplus.com/terminate)</code> is called.</p>
 <p>如果fn抛出异常，线程将会将控制权移交给新的线程，如果不捕获异常，将调用terminate.</p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#101;&#x72;&#x67;&#117;&#x61;&#x6e;&#x67;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#111;&#109;">&#99;&#x6f;&#100;&#101;&#x72;&#x67;&#117;&#x61;&#x6e;&#x67;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#111;&#109;</a></p>
+<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#103;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x63;&#111;&#x64;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#103;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a></p>
 <p>2014-9-3</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39032623">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39032623">原文链接</a></p>
 
     
 
@@ -759,11 +766,11 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++11threaddetach(2)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/detach/">http://www.cplusplus.com/reference/thread/thread/detach/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/thread/thread/detach/">http://www.cplusplus.com/reference/thread/thread/detach/</a></p>
 <p>public member function</p>
 <thread>
 
-<h1 id="std-thread-detach"><a href="#std-thread-detach" class="headerlink" title="std::thread::detach"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::detach</h1><p>void detach();</p>
+<h1 id="std-thread-detach"><a href="#std-thread-detach" class="headerlink" title="std::thread::detach"></a>std::<a href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::detach</h1><p>void detach();</p>
 <p>Detach thread</p>
 <p>Detaches the thread represented by the object from the calling thread, allowing them to execute independently from each other.</p>
 <p>将本线程从调用线程中分离出来，允许本线程独立执行。(但是当主进程结束的时候，即便是detach（）出去的子线程不管有没有完成都会被强制杀死)</p>
@@ -775,7 +782,7 @@
 <p>可以看出，当进程结束的时候，即便detach没有完成任务也会被强制杀死。</p>
 <p>Both threads continue without blocking nor synchronizing in any way. Note that when either one ends execution, its resources are released.</p>
 <p>两个线程不会堵塞也不会同步，注意他们任一一个结束的时候，所持有的资源将会被释放。</p>
-<p>After a call to this function, the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object becomes <em>non-<a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em> and can be <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::~thread">destroyed</a></em> safely.  </p>
+<p>After a call to this function, the <a href="http://www.cplusplus.com/thread">thread</a> object becomes <em>non-<a href="http://www.cplusplus.com/thread::joinable">joinable</a></em> and can be <em><a href="http://www.cplusplus.com/thread::~thread">destroyed</a></em> safely.  </p>
 <p>调用该方法后，该线程对象变得不可连接以及可以安全地销毁。</p>
 <p>例子:</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
@@ -784,30 +791,30 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;       // std::cout</span><br><span class="line">#include &lt;thread&gt;         // std::thread, std::this_thread::sleep_for</span><br><span class="line">#include &lt;chrono&gt;         // std::chrono::seconds</span><br><span class="line"> </span><br><span class="line">void pause_thread(int n) </span><br><span class="line">&#123;</span><br><span class="line">  std::this_thread::sleep_for (std::chrono::seconds(n));</span><br><span class="line">  std::cout &lt;&lt; &quot;pause of &quot; &lt;&lt; n &lt;&lt; &quot; seconds ended\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">  std::cout &lt;&lt; &quot;Spawning and detaching 3 threads...\n&quot;;</span><br><span class="line">  std::thread (pause_thread,1).detach();</span><br><span class="line">  std::thread (pause_thread,2).detach();</span><br><span class="line">  std::thread (pause_thread,3).detach();</span><br><span class="line">  std::cout &lt;&lt; &quot;Done spawning threads.\n&quot;;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;(the main thread will now pause for 5 seconds)\n&quot;;</span><br><span class="line">  // give the detached threads time to finish (but not guaranteed!):</span><br><span class="line">  pause_thread(5);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/detach/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/thread/thread/detach/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output (after 5 seconds):  </p>
 <p>Spawning and detaching 3 threads…<br>Done spawning threads.<br>(the main thread will now pause for 5 seconds)<br>pause of 1 seconds ended<br>pause of 2 seconds ended<br>pause of 3 seconds ended<br>pause of 5 seconds ended </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The object is modified.  </p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>Basic guarantee:</strong> if an exception is thrown by this member function, the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is left in a valid state.  </p>
-<p>If the call fails, a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a> exception is thrown:  </p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>Basic guarantee:</strong> if an exception is thrown by this member function, the <a href="http://www.cplusplus.com/thread">thread</a> object is left in a valid state.  </p>
+<p>If the call fails, a <a href="http://www.cplusplus.com/system_error">system_error</a> exception is thrown:  </p>
 <p>exception type</p>
 <p>error condition</p>
 <p>description</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/errc">errc::invalid_argument</a></p>
-<p>The <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is not <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em></p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/errc">errc::no_such_process</a></p>
-<p>The <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is not valid</p>
+<p><a href="http://www.cplusplus.com/system_error">system_error</a></p>
+<p><a href="http://www.cplusplus.com/errc">errc::invalid_argument</a></p>
+<p>The <a href="http://www.cplusplus.com/thread">thread</a> object is not <em><a href="http://www.cplusplus.com/thread::joinable">joinable</a></em></p>
+<p><a href="http://www.cplusplus.com/system_error">system_error</a></p>
+<p><a href="http://www.cplusplus.com/errc">errc::no_such_process</a></p>
+<p>The <a href="http://www.cplusplus.com/thread">thread</a> object is not valid</p>
 <p>—————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#x65;&#x72;&#x67;&#x75;&#x61;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#x6f;&#100;&#x65;&#x72;&#x67;&#x75;&#x61;&#110;&#103;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#x6f;&#x64;&#x65;&#114;&#x67;&#117;&#x61;&#110;&#103;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;">&#99;&#x6f;&#x64;&#x65;&#114;&#x67;&#117;&#x61;&#110;&#103;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;</a></p>
 <p>2014-9-3</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39035065">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39035065">原文链接</a></p>
 
     
 
@@ -894,15 +901,15 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++11threadget_id(3)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/get/_id/">http://www.cplusplus.com/reference/thread/thread/get\_id/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/thread/thread/get/_id/">http://www.cplusplus.com/reference/thread/thread/get\_id/</a></p>
 <p>public member function</p>
 <thread>
 
-<h1 id="std-thread-get-id"><a href="#std-thread-get-id" class="headerlink" title="std::thread::get_id"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::get_id</h1><p>id get_id() const noexcept;</p>
+<h1 id="std-thread-get-id"><a href="#std-thread-get-id" class="headerlink" title="std::thread::get_id"></a>std::<a href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::get_id</h1><p>id get_id() const noexcept;</p>
 <p>Get thread id</p>
 <p>Returns the <em>thread id</em>.  </p>
 <p>返回线程ID</p>
-<p>If the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em>, the function returns a value that uniquely identifies the thread.  </p>
+<p>If the <a href="http://www.cplusplus.com/thread">thread</a> object is <em><a href="http://www.cplusplus.com/thread::joinable">joinable</a></em>, the function returns a value that uniquely identifies the thread.  </p>
 <p>如果线程对象是joinable的，那么将会返回一个独一无二的线程标识。（这里我试了几个例子，还是搞不太明白，还是先保留该问题。看最后一个的例子）</p>
 <p>例子：</p>
 <p>#include <iostream><br>#include <thread><br>using namespace std;<br>void show(int n){<br>cout&lt;&lt;”show1:get_id() is “&lt;&lt;this_thread::get_id()&lt;&lt;”,Now n is “&lt;&lt;n&lt;&lt;endl;<br>}<br>void show2(int n){</p>
@@ -923,15 +930,15 @@
 <p>运行截图：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013642_23775448649070.jpg">  </p>
 <p>可以看到show1和t1的ID是一样的，show2和t3的ID是一样的。（这里显示的有点混乱）</p>
-<p>If the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is <em>not <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em>, the function returns a <em>default-constructed</em> object of member type <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::id">thread::id</a>.<br>如果线程对象不是joinable,那么将会返回默认构造时的ID。  </p>
+<p>If the <a href="http://www.cplusplus.com/thread">thread</a> object is <em>not <a href="http://www.cplusplus.com/thread::joinable">joinable</a></em>, the function returns a <em>default-constructed</em> object of member type <a href="http://www.cplusplus.com/thread::id">thread::id</a>.<br>如果线程对象不是joinable,那么将会返回默认构造时的ID。  </p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An object of member type <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::id">thread::id</a> that uniquely identifies the thread (if <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em>), or default-constructed (if <em>not <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em>)</p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An object of member type <a href="http://www.cplusplus.com/thread::id">thread::id</a> that uniquely identifies the thread (if <em><a href="http://www.cplusplus.com/thread::joinable">joinable</a></em>), or default-constructed (if <em>not <a href="http://www.cplusplus.com/thread::joinable">joinable</a></em>)</p>
 <p>返回一个线程id标识。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// thread::get_id / this_thread::get_id</span><br><span class="line">#include &lt;iostream&gt;       // std::cout</span><br><span class="line">#include &lt;thread&gt;         // std::thread, std::thread::id, std::this_thread::get_id</span><br><span class="line">#include &lt;chrono&gt;         // std::chrono::seconds</span><br><span class="line"> </span><br><span class="line">std::thread::id main_thread_id = std::this_thread::get_id();</span><br><span class="line"></span><br><span class="line">void is_main_thread() &#123;</span><br><span class="line">  if ( main_thread_id == std::this_thread::get_id() )</span><br><span class="line">    std::cout &lt;&lt; &quot;This is the main thread.\n&quot;;</span><br><span class="line">  else</span><br><span class="line">    std::cout &lt;&lt; &quot;This is not the main thread.\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">  is_main_thread();</span><br><span class="line">  std::thread th (is_main_thread);</span><br><span class="line">  th.join();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/get_id/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/thread/thread/get_id/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>This is the main thread.<br>This is not the main thread. </p>
 <p>根据example修改的例子：</p>
@@ -951,13 +958,13 @@
 <h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> never throws exceptions.</p>
 <p>—————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#101;&#x72;&#103;&#117;&#97;&#x6e;&#x67;&#x40;&#x67;&#109;&#97;&#105;&#108;&#46;&#x63;&#111;&#109;">&#x63;&#x6f;&#100;&#101;&#x72;&#103;&#117;&#97;&#x6e;&#x67;&#x40;&#x67;&#109;&#97;&#105;&#108;&#46;&#x63;&#111;&#109;</a></p>
+<p>Email:<a href="mailto:&#x63;&#111;&#100;&#101;&#114;&#x67;&#117;&#x61;&#x6e;&#x67;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#x63;&#111;&#100;&#101;&#114;&#x67;&#117;&#x61;&#x6e;&#x67;&#64;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a></p>
 <p>2014-9-4</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39037245">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39037245">原文链接</a></p>
 
     
 
@@ -1044,11 +1051,11 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++11threadjoin(4)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/join/">http://www.cplusplus.com/reference/thread/thread/join/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/thread/thread/join/">http://www.cplusplus.com/reference/thread/thread/join/</a></p>
 <p>public member function</p>
 <thread>
 
-<h1 id="std-thread-join"><a href="#std-thread-join" class="headerlink" title="std::thread::join"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::join</h1><p>void join();</p>
+<h1 id="std-thread-join"><a href="#std-thread-join" class="headerlink" title="std::thread::join"></a>std::<a href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::join</h1><p>void join();</p>
 <p>Join thread</p>
 <p>The function returns when the thread execution has completed.  </p>
 <p>当该线程执行完成后才返回。（即等待子线程执行完毕才继续执行主线程）</p>
@@ -1061,7 +1068,7 @@
 <p>加上t2.join()之后的执行结果：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013650_4344895871216.jpg">  </p>
 <p>可以看到，阻塞了主线程，等待t2执行完毕才继续执行main线程。</p>
-<p>After a call to this function, the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object becomes non-<em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em> and can be <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::~thread">destroyed</a></em> safely.  </p>
+<p>After a call to this function, the <a href="http://www.cplusplus.com/thread">thread</a> object becomes non-<em><a href="http://www.cplusplus.com/thread::joinable">joinable</a></em> and can be <em><a href="http://www.cplusplus.com/thread::~thread">destroyed</a></em> safely.  </p>
 <p>调用该函数后，子线程对象变成non-joinable以及可以安全地销毁。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none  </p>
@@ -1069,34 +1076,34 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// example for thread::join</span><br><span class="line">#include &lt;iostream&gt;       // std::cout</span><br><span class="line">#include &lt;thread&gt;         // std::thread, std::this_thread::sleep_for</span><br><span class="line">#include &lt;chrono&gt;         // std::chrono::seconds</span><br><span class="line"> </span><br><span class="line">void pause_thread(int n) </span><br><span class="line">&#123;</span><br><span class="line">  std::this_thread::sleep_for (std::chrono::seconds(n));</span><br><span class="line">  std::cout &lt;&lt; &quot;pause of &quot; &lt;&lt; n &lt;&lt; &quot; seconds ended\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">  std::cout &lt;&lt; &quot;Spawning 3 threads...\n&quot;;</span><br><span class="line">  std::thread t1 (pause_thread,1);</span><br><span class="line">  std::thread t2 (pause_thread,2);</span><br><span class="line">  std::thread t3 (pause_thread,3);</span><br><span class="line">  std::cout &lt;&lt; &quot;Done spawning threads. Now waiting for them to join:\n&quot;;</span><br><span class="line">  t1.join();</span><br><span class="line">  t2.join();</span><br><span class="line">  t3.join();</span><br><span class="line">  std::cout &lt;&lt; &quot;All threads joined!\n&quot;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/join/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/thread/thread/join/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output (after 3 seconds):  </p>
 <p>Spawning 3 threads…<br>Done spawning threads. Now waiting for them to join:<br>pause of 1 seconds ended<br>pause of 2 seconds ended<br>pause of 3 seconds ended<br>All threads joined! </p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The object is modified.<br>Note that any operations on the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object itself are not synchronized (unlike the operations within the thread it represents).  </p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>Basic guarantee:</strong> if an exception is thrown by this member function, the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is left in a valid state.  </p>
-<p>If the call fails, a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a> exception is thrown:  </p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The object is modified.<br>Note that any operations on the <a href="http://www.cplusplus.com/thread">thread</a> object itself are not synchronized (unlike the operations within the thread it represents).  </p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>Basic guarantee:</strong> if an exception is thrown by this member function, the <a href="http://www.cplusplus.com/thread">thread</a> object is left in a valid state.  </p>
+<p>If the call fails, a <a href="http://www.cplusplus.com/system_error">system_error</a> exception is thrown:  </p>
 <p>exception type</p>
 <p>error condition</p>
 <p>description</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/errc">errc::invalid_argument</a></p>
-<p>- The <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is not <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em></p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/errc">errc::no_such_process</a></p>
-<p>- The <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is not valid</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/errc">errc::resource_deadlock_would_occur</a></p>
+<p><a href="http://www.cplusplus.com/system_error">system_error</a></p>
+<p><a href="http://www.cplusplus.com/errc">errc::invalid_argument</a></p>
+<p>- The <a href="http://www.cplusplus.com/thread">thread</a> object is not <em><a href="http://www.cplusplus.com/thread::joinable">joinable</a></em></p>
+<p><a href="http://www.cplusplus.com/system_error">system_error</a></p>
+<p><a href="http://www.cplusplus.com/errc">errc::no_such_process</a></p>
+<p>- The <a href="http://www.cplusplus.com/thread">thread</a> object is not valid</p>
+<p><a href="http://www.cplusplus.com/system_error">system_error</a></p>
+<p><a href="http://www.cplusplus.com/errc">errc::resource_deadlock_would_occur</a></p>
 <p>- The current thread is the same as the thread attempted to join, or<br>- A deadlock was detected (implementations may detect certain cases of deadlock).</p>
 <p>Note that if the thread represented by the object terminates with an uncaught exception, this cannot be caught by the current thread, and <code>[terminate()](http://www.cplusplus.com/terminate)</code> is automatically called.</p>
 <p>—————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#111;&#100;&#101;&#114;&#x67;&#x75;&#x61;&#110;&#x67;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;">&#x63;&#111;&#100;&#101;&#114;&#x67;&#x75;&#x61;&#110;&#x67;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#100;&#x65;&#114;&#103;&#117;&#97;&#x6e;&#103;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#99;&#111;&#100;&#x65;&#114;&#103;&#117;&#97;&#x6e;&#103;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></p>
 <p>2014-9-4</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39049475">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39049475">原文链接</a></p>
 
     
 
@@ -1183,22 +1190,22 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++11threadjoinable(5)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/joinable/">http://www.cplusplus.com/reference/thread/thread/joinable/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/thread/thread/joinable/">http://www.cplusplus.com/reference/thread/thread/joinable/</a></p>
 <p>public member function</p>
 <thread>
 
-<h1 id="std-thread-joinable"><a href="#std-thread-joinable" class="headerlink" title="std::thread::joinable"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::joinable</h1><p>bool joinable() const noexcept;</p>
+<h1 id="std-thread-joinable"><a href="#std-thread-joinable" class="headerlink" title="std::thread::joinable"></a>std::<a href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::joinable</h1><p>bool joinable() const noexcept;</p>
 <p>Check if joinable</p>
-<p>Returns whether the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is <em>joinable</em>.  </p>
+<p>Returns whether the <a href="http://www.cplusplus.com/thread">thread</a> object is <em>joinable</em>.  </p>
 <p>返回线程对象是否是joinable的。</p>
-<p>A <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is joinable if it represents a thread of execution.  </p>
+<p>A <a href="http://www.cplusplus.com/thread">thread</a> object is joinable if it represents a thread of execution.  </p>
 <p>如果是一个正在执行的线程，那么它是joinable的。</p>
-<p>A <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is not joinable in any of these cases:</p>
+<p>A <a href="http://www.cplusplus.com/thread">thread</a> object is not joinable in any of these cases:</p>
 <p>下列任一情况都是非joinable</p>
 <ul>
-<li>if it was <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::thread">default-constructed</a></em>.<br>  默认构造器构造的。</li>
-<li>if it has been moved from (either <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::thread">constructing</a></em> another <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object, or <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::operator=">assigning to it</a></em>).<br>  通过移动构造获得的。</li>
-<li>if either of its members <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::join">join</a> or <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::detach">detach</a> has been called.<br>  调用了join或者detach方法的。  </li>
+<li>if it was <em><a href="http://www.cplusplus.com/thread::thread">default-constructed</a></em>.<br>  默认构造器构造的。</li>
+<li>if it has been moved from (either <em><a href="http://www.cplusplus.com/thread::thread">constructing</a></em> another <a href="http://www.cplusplus.com/thread">thread</a> object, or <em><a href="http://www.cplusplus.com/thread::operator=">assigning to it</a></em>).<br>  通过移动构造获得的。</li>
+<li>if either of its members <a href="http://www.cplusplus.com/thread::join">join</a> or <a href="http://www.cplusplus.com/thread::detach">detach</a> has been called.<br>  调用了join或者detach方法的。  </li>
 </ul>
 <p>例子：</p>
 <p>#include <iostream><br>#include <thread><br>#include <ctime><br>using namespace std;<br>void delay(double sec)<br>{<br>    time_t start_time, cur_time; // 变量声明<br>    time(&amp;start_time);<br>    do {<br>        time(&amp;cur_time);<br>        }while((cur_time - start_time) &lt; sec );<br>}; </p>
@@ -1222,20 +1229,20 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// example for thread::joinable</span><br><span class="line">#include &lt;iostream&gt;       // std::cout</span><br><span class="line">#include &lt;thread&gt;         // std::thread</span><br><span class="line"> </span><br><span class="line">void mythread() </span><br><span class="line">&#123;</span><br><span class="line">  // do stuff...</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">  std::thread foo;</span><br><span class="line">  std::thread bar(mythread);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;Joinable after construction:\n&quot; &lt;&lt; std::boolalpha;</span><br><span class="line">  std::cout &lt;&lt; &quot;foo: &quot; &lt;&lt; foo.joinable() &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">  std::cout &lt;&lt; &quot;bar: &quot; &lt;&lt; bar.joinable() &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  if (foo.joinable()) foo.join();</span><br><span class="line">  if (bar.joinable()) bar.join();</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;Joinable after joining:\n&quot; &lt;&lt; std::boolalpha;</span><br><span class="line">  std::cout &lt;&lt; &quot;foo: &quot; &lt;&lt; foo.joinable() &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">  std::cout &lt;&lt; &quot;bar: &quot; &lt;&lt; bar.joinable() &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/joinable/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/thread/thread/joinable/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output (after 3 seconds):  </p>
 <p>Joinable after construction:<br>foo: false<br>bar: true<br>Joinable after joining:<br>foo: false<br>bar: false </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The object is accessed.  </p>
 <h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> never throws exceptions.</p>
 <p>—————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#111;&#100;&#x65;&#114;&#103;&#117;&#97;&#x6e;&#x67;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x63;&#111;&#100;&#x65;&#114;&#103;&#117;&#97;&#x6e;&#x67;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#101;&#x72;&#103;&#117;&#97;&#x6e;&#x67;&#64;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#109;">&#x63;&#x6f;&#100;&#101;&#x72;&#103;&#117;&#97;&#x6e;&#x67;&#64;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#109;</a></p>
 <p>2014-9-4</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39050685">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39050685">原文链接</a></p>
 
     
 
@@ -1322,13 +1329,13 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++11threadnative_handle(6)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/native/_handle/">http://www.cplusplus.com/reference/thread/thread/native\_handle/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/thread/thread/native/_handle/">http://www.cplusplus.com/reference/thread/thread/native\_handle/</a></p>
 <p>public member function</p>
 <thread>
 
-<h1 id="std-thread-native-handle"><a href="#std-thread-native-handle" class="headerlink" title="std::thread::native_handle"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::native_handle</h1><p>native_handle_type native_handle();</p>
+<h1 id="std-thread-native-handle"><a href="#std-thread-native-handle" class="headerlink" title="std::thread::native_handle"></a>std::<a href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::native_handle</h1><p>native_handle_type native_handle();</p>
 <p>Get native handle</p>
-<p>This member function is only present in class <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> if the library implementation supports it.  </p>
+<p>This member function is only present in class <a href="http://www.cplusplus.com/thread">thread</a> if the library implementation supports it.  </p>
 <p>只有库函数支持该函数时该方法才会有效。</p>
 <p>If present, it returns a value used to access <em>implementation-specific</em> information associated to the thread.  </p>
 <p>如果有效，用于获得与操作系统相关的原生线程句柄</p>
@@ -1337,18 +1344,18 @@
 <p>运行截图：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013705_33720895871003.jpg">  </p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>A value of member type <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::native_handle_type">thread::native_handle_type</a>.  </p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>A value of member type <a href="http://www.cplusplus.com/thread::native_handle_type">thread::native_handle_type</a>.  </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p><em>Unspecified.</em>  </p>
 <h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><em>Unspecified.</em></p>
 <p>—————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#100;&#x65;&#114;&#103;&#117;&#97;&#110;&#x67;&#64;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#109;">&#99;&#111;&#100;&#x65;&#114;&#103;&#117;&#97;&#110;&#x67;&#64;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#109;</a></p>
+<p>Email:<a href="mailto:&#x63;&#111;&#100;&#101;&#x72;&#103;&#x75;&#97;&#x6e;&#x67;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#109;">&#x63;&#111;&#100;&#101;&#x72;&#103;&#x75;&#97;&#x6e;&#x67;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#109;</a></p>
 <p>2014-9-4</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39056615">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39056615">原文链接</a></p>
 
     
 
@@ -1435,32 +1442,32 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++11threadoperator=(7)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/operator=/">http://www.cplusplus.com/reference/thread/thread/operator=/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/thread/thread/operator=/">http://www.cplusplus.com/reference/thread/thread/operator=/</a></p>
 <p>public member function</p>
 <thread>
 
-<h1 id="std-thread-operator"><a href="#std-thread-operator" class="headerlink" title="std::thread::operator="></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::operator=</h1><p>move (1)</p>
+<h1 id="std-thread-operator"><a href="#std-thread-operator" class="headerlink" title="std::thread::operator="></a>std::<a href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::operator=</h1><p>move (1)</p>
 <p>thread&amp; operator= (thread&amp;&amp; rhs) noexcept; </p>
 <p>copy [deleted] (2)</p>
 <p>thread&amp; operator= (const thread&amp;) = delete;</p>
 <p>Move-assign thread</p>
-<p>If the object is currently not <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a>, it acquires the thread of execution represented by rhs (if any).</p>
+<p>If the object is currently not <a href="http://www.cplusplus.com/thread::joinable">joinable</a>, it acquires the thread of execution represented by rhs (if any).</p>
 <p>如果对象现在是非joinable,将获取rhs的执行线程。</p>
-<p>If it is <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a>, <code>[terminate()](http://www.cplusplus.com/terminate)</code> is called.</p>
+<p>If it is <a href="http://www.cplusplus.com/thread::joinable">joinable</a>, <code>[terminate()](http://www.cplusplus.com/terminate)</code> is called.</p>
 <p>如果是joinable,将调用terminate().</p>
-<p>After the call, rhs no longer represents any thread of execution (as if <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::thread">default-constructed</a></em>).</p>
+<p>After the call, rhs no longer represents any thread of execution (as if <em><a href="http://www.cplusplus.com/thread::thread">default-constructed</a></em>).</p>
 <p>调用之后，rhs不再执行任何线程。</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> objects cannot be copied <em>(2)</em>.  </p>
+<p><a href="http://www.cplusplus.com/thread">thread</a> objects cannot be copied <em>(2)</em>.  </p>
 <p>线程对象不能被复制。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>rhs</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object whose state is moved to <code>*this</code>.</p>
+<p><a href="http://www.cplusplus.com/thread">thread</a> object whose state is moved to <code>*this</code>.</p>
 <p>将被移动到现在线程的线程rhs.</p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p><code>*this</code> 返回该线程。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// example for thread::operator=</span><br><span class="line">#include &lt;iostream&gt;       // std::cout</span><br><span class="line">#include &lt;thread&gt;         // std::thread, std::this_thread::sleep_for</span><br><span class="line">#include &lt;chrono&gt;         // std::chrono::seconds</span><br><span class="line"> </span><br><span class="line">void pause_thread(int n) </span><br><span class="line">&#123;</span><br><span class="line">  std::this_thread::sleep_for (std::chrono::seconds(n));</span><br><span class="line">  std::cout &lt;&lt; &quot;pause of &quot; &lt;&lt; n &lt;&lt; &quot; seconds ended\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">  std::thread threads[5];                         // default-constructed threads</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;Spawning 5 threads...\n&quot;;</span><br><span class="line">  for (int i=0; i&lt;5; ++i)</span><br><span class="line">    threads[i] = std::thread(pause_thread,i+1);   // move-assign threads</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;Done spawning threads. Now waiting for them to join:\n&quot;;</span><br><span class="line">  for (int i=0; i&lt;5; ++i)</span><br><span class="line">    threads[i].join();</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;All threads joined!\n&quot;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/operator=/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/thread/thread/operator=/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output (after 5 seconds):  </p>
 <p> Spawning 5 threads…<br>Done spawning threads. Now waiting for them to join:<br>pause of 1 seconds ended<br>pause of 2 seconds ended<br>pause of 3 seconds ended<br>pause of 4 seconds ended<br>pause of 5 seconds ended<br>All threads joined! </p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013711_14882178709209.jpg">  </p>
@@ -1468,13 +1475,13 @@
 <h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> never throws exceptions.</p>
 <p>—————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#x65;&#114;&#103;&#x75;&#x61;&#x6e;&#103;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#99;&#x6f;&#100;&#x65;&#114;&#103;&#x75;&#x61;&#x6e;&#103;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#101;&#x72;&#x67;&#x75;&#97;&#110;&#103;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#x6f;&#100;&#101;&#x72;&#x67;&#x75;&#97;&#110;&#103;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></p>
 <p>2014-9-4</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39056883">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39056883">原文链接</a></p>
 
     
 

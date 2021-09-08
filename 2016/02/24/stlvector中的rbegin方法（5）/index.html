@@ -253,7 +253,7 @@
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-rbegin"><a href="#std-vector-rbegin" class="headerlink" title="std::vector::rbegin"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::rbegin</h1><ul>
+<h1 id="std-vector-rbegin"><a href="#std-vector-rbegin" class="headerlink" title="std::vector::rbegin"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::rbegin</h1><ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
@@ -266,7 +266,7 @@
 <p>运行结果:</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015135_301046010329562.jpg">  </p>
 <p>可以看到，vi里面元素排列顺序为{5,999},而运用rbegin()返回的迭代器指向的正是最后一个元素的位置，但这个位置和end()的位置是不同的，因为end()指向的是最后一个元素再后面的一个位置（超尾迭代器）.</p>
-<p>Returns a <em>reverse iterator</em> pointing to the last element in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> (i.e., its <em>reverse beginning</em>).</p>
+<p>Returns a <em>reverse iterator</em> pointing to the last element in the <a href="http://www.cplusplus.com/vector">vector</a> (i.e., its <em>reverse beginning</em>).</p>
 <p>返回一个指向最后一个元素的反向迭代器 （相当于从后往前看）</p>
 <p>Reverse iterators iterate backwards: increasing them moves them towards the beginning of the container.</p>
 <p>反向迭代器的向后迭代：当增加该反向迭代器的时候其实该迭代器是向容器的开头位置移动。</p>
@@ -276,23 +276,23 @@
 <p>结果：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015136_30889296042231.jpg">  </p>
 <p>可以看到,vr++之后，vr的位置其实是向前移动了！</p>
-<p>rbegin points to the element right before the one that would be pointed to by member <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">end</a>.</p>
+<p>rbegin points to the element right before the one that would be pointed to by member <a href="http://www.cplusplus.com/vector::end">end</a>.</p>
 <p>rbegin指向的元素位置刚好就是end()所指向的前一个。</p>
-<p>Notice that unlike member <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::back">vector::back</a>, which returns a reference to this same element, this function returns a <em>reverse <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a></em>.  </p>
+<p>Notice that unlike member <a href="http://www.cplusplus.com/vector::back">vector::back</a>, which returns a reference to this same element, this function returns a <em>reverse <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a></em>.  </p>
 <p>需要注意的是，不同于back()，back()返回的是一个引用，这个方法返回的是一个反向的随机访问迭代器。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
 <h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>返回值：</p>
 <p>A reverse iterator to the <em>reverse beginning</em> of the sequence container.</p>
 <p>返回一个反向迭代器指向顺序容器的反向的开头。</p>
-<p>If the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> object is const-qualified, the function returns a const_reverse_iterator. Otherwise, it returns a reverse_iterator.</p>
+<p>If the <a href="http://www.cplusplus.com/vector">vector</a> object is const-qualified, the function returns a const_reverse_iterator. Otherwise, it returns a reverse_iterator.</p>
 <p>如果这个vector对象具有const属性，那么这个方法返回的iterator也将具有const属性，否则，返回一个普通的reverse_iterator.</p>
-<p>Member types reverse_iterator and const_reverse_iterator are reverse <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types (pointing to an element and to a const element, respectively). See <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector#types">vector member types</a>.  </p>
+<p>Member types reverse_iterator and const_reverse_iterator are reverse <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types (pointing to an element and to a const element, respectively). See <a href="http://www.cplusplus.com/vector#types">vector member types</a>.  </p>
 <p>reverse_iterator的是一个反向的随机访问迭代器。  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// vector::rbegin/rend</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector (5);  // 5 default-constructed ints</span><br><span class="line"></span><br><span class="line">  std::vector&lt;int&gt;::reverse_iterator rit = myvector.rbegin();</span><br><span class="line"></span><br><span class="line">  int i=0;</span><br><span class="line">  for (rit = myvector.rbegin(); rit!= myvector.rend(); ++rit)</span><br><span class="line">    *rit = ++i;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (std::vector&lt;int&gt;::iterator it = myvector.begin(); it != myvector.end(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/rbegin/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/rbegin/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector contains: 5 4 3 2 1 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
@@ -306,11 +306,11 @@
 <p>该方法不会抛出异常。</p>
 <p>The copy construction or assignment of the returned iterator is also guaranteed to never throw.</p>
 <p>利用复制构造器或者是赋值运算符得到的该iterator也不会抛出异常。</p>
-<p>//不足之处请多多指导，转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38458505">点击打开链接</a></p>
-<p>个人博客主页：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">点击打开链接</a></p>
+<p>//不足之处请多多指导，转载请注明出处：<a href="http://blog.csdn.net/qq844352155/article/details/38458505">点击打开链接</a></p>
+<p>个人博客主页：<a href="http://blog.csdn.net/qq844352155">点击打开链接</a></p>
 <p>2014-8-9</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38458505">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38458505">原文链接</a></p>
 
     
 
@@ -493,30 +493,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLvector中的rbegin方法（5）" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLvector中的rbegin方法（5）" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

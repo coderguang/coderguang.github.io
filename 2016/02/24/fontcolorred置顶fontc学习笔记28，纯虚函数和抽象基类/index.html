@@ -249,23 +249,23 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>   </p>
-<p>纯<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/161302.htm">虚函数</a>是一种特殊的虚函数，在许多情况下，在<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/535539.htm">基类</a>中不能对虚函数给出有意义的实现，而把它声明为纯虚函数，它的实现留给该基类的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/535532.htm">派生类</a>去做。这就是纯虚函数的作用。  </p>
-<p>纯<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/161302.htm">虚函数</a>是一种特殊的虚函数，它的一般格式如下：</p>
+<p>纯<a href="http://baike.baidu.com/view/161302.htm">虚函数</a>是一种特殊的虚函数，在许多情况下，在<a href="http://baike.baidu.com/view/535539.htm">基类</a>中不能对虚函数给出有意义的实现，而把它声明为纯虚函数，它的实现留给该基类的<a href="http://baike.baidu.com/view/535532.htm">派生类</a>去做。这就是纯虚函数的作用。  </p>
+<p>纯<a href="http://baike.baidu.com/view/161302.htm">虚函数</a>是一种特殊的虚函数，它的一般格式如下：</p>
 <p>class &lt;类名&gt;</p>
 <p>{</p>
 <p>virtual &lt;类型&gt;&lt;函数名&gt;(&lt;参数表&gt;)=0;</p>
 <p>…</p>
 <p>};</p>
-<p>在许多情况下，在<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/535539.htm">基类</a>中不能对虚函数给出有意义的实现，而把它声明为纯虚函数，它的实现留给该基类的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/535532.htm">派生类</a>去做。这就是纯虚函数的作用。</p>
-<p>纯虚函数可以让类先具有一个操作名称，而没有操作内容，让派生类在继承时再去具体地给出定义。凡是含有纯虚函数的类叫做<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/262290.htm">抽象类</a>。这种类不能声明对象，只是作为基类为派生类服务。除非在派生类中完全实现基类中所有的的纯虚函数，否则，派生类也变成了抽象类，不能实例化对象。</p>
+<p>在许多情况下，在<a href="http://baike.baidu.com/view/535539.htm">基类</a>中不能对虚函数给出有意义的实现，而把它声明为纯虚函数，它的实现留给该基类的<a href="http://baike.baidu.com/view/535532.htm">派生类</a>去做。这就是纯虚函数的作用。</p>
+<p>纯虚函数可以让类先具有一个操作名称，而没有操作内容，让派生类在继承时再去具体地给出定义。凡是含有纯虚函数的类叫做<a href="http://baike.baidu.com/view/262290.htm">抽象类</a>。这种类不能声明对象，只是作为基类为派生类服务。除非在派生类中完全实现基类中所有的的纯虚函数，否则，派生类也变成了抽象类，不能实例化对象。</p>
 <p>引入原因：  </p>
-<p>1、为了方便使用<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/126521.htm">多态</a>特性，我们常常需要在基类中定义虚函数。</p>
+<p>1、为了方便使用<a href="http://baike.baidu.com/view/126521.htm">多态</a>特性，我们常常需要在基类中定义虚函数。</p>
 <p>2、在很多情况下，基类本身生成对象是不合情理的。例如，动物作为一个基类可以派生出老虎、孔雀等子类，但动物本身生成对象明显不合常理。</p>
 <p>为了解决上述问题，引入了纯虚函数的概念，将函数定义为纯虚函数（方法：virtual ReturnType Function()= 0;）。若要使派生类为非抽象类，则编译器要求在派生类中，必须对纯虚函数予以重写以实现多态性。同时含有纯虚函数的类称为抽象类，它不能生成对象。这样就很好地解决了上述两个问题。</p>
 <p>-—-百度百科</p>
 <p>抽象基类不能实例化该类对象，但是该类的子类可以，只要子类不是抽象基类。</p>
 <p>如果派生类没有实现基类的纯虚函数，也将因为继承了抽象方法而成为抽象类。</p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#97;&#108;&#99;&#104;&#x65;&#x6e;&#x40;&#x72;&#x6f;&#x79;&#97;&#108;&#x63;&#104;&#x65;&#x6e;&#46;&#x63;&#111;&#x6d;">&#x72;&#x6f;&#121;&#97;&#108;&#99;&#104;&#x65;&#x6e;&#x40;&#x72;&#x6f;&#x79;&#97;&#108;&#x63;&#104;&#x65;&#x6e;&#46;&#x63;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#64;&#114;&#111;&#x79;&#x61;&#108;&#99;&#104;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#109;">&#114;&#111;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#64;&#114;&#111;&#x79;&#x61;&#108;&#99;&#104;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -463,30 +463,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "C++学习笔记28，纯虚函数和抽象基类" -->
-    var gitment = new Gitment({
-      id: "20160224000000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "C++学习笔记28，纯虚函数和抽象基类" -->
+  var giteement = new Giteement({
+    id: '20160224000000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

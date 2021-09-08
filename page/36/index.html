@@ -196,6 +196,13 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <script src="/lib/oauthcallback.browser.js"></script>
+  
+  <script>
+    Oauthcallback();
+  </script>
+
 
   
     <article id="post-影响你成功最重要的两种人" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -261,7 +268,7 @@
 <p> 所以，找到一个可以和你“撞击”的伙伴，是你能否成功的第二大关键。你跟谁搭配能产生13万吨炸药的威力呢？去找这样的搭档呀！有些人找不到这样的搭档，有些人自以为找到后却又很快散伙……</p>
 <p> 你一定要懂得和别人搭档、合作，如果刘备找不到诸葛亮，就没有中国历史上最佳搭配的君臣组合。</p>
 <p> 如果你渴望成功，一定要学会“如何与人合作”，这太重要了。</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/46509221">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/46509221">原文链接</a></p>
 
     
 
@@ -375,7 +382,7 @@
 <p>【悟到】你不能容忍他人， 就会给自己带来不幸。   </p>
 <p>13. 人骑自行车，两脚使劲踩1小时只能跑10公里左右；人开汽车，一脚轻踏油门1小时能跑100公里；人坐高铁，闭上眼睛1小时也能跑300公里；人乘飞机，吃着美味1小时能跑1000公里。  </p>
 <p>【悟到】人还是那个人，同样的努力不一样的平台和载体，结果就不一样了。</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/46509349">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/46509349">原文链接</a></p>
 
     
 
@@ -487,7 +494,7 @@
 <p>坚持写点东西必定是好的，不管是对自己还是别人！我也从别人的博客上学到了很多东西，感谢广大的网友在我学习路上的帮助！</p>
 <p>努力奋斗，微笑面对生活，你总会遇见世间所有美好。</p>
 <p>-—2014.9.1</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38986633">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38986633">原文链接</a></p>
 
     
 
@@ -617,7 +624,7 @@
 <p>没想到我还是选择这么一条路，还是走上了码农这条路。</p>
 <p>好吧，不管如何，好好努力！</p>
 <p>-————–2014/4/22</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/24329013">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/24329013">原文链接</a></p>
 
     
 
@@ -705,7 +712,7 @@
     
     <p>折腾了一天半，终于把自己的服务器搭建起来了</p>
 <p>好开心的赶脚~~~</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/44577275">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/44577275">原文链接</a></p>
 
     
 
@@ -809,7 +816,7 @@
 <p>stack.cpp</p>
 <p>//用于实现栈的操作<br>#include <iostream><br>using namespace std;<br>//const int MAX=100；//栈最大长度值为100，用数组实现栈<br>//写成模板类是为了方便我以后使用<br>template <class T><br>class mStack{<br>private:<br>enum {MAX=100};<br>T arr[MAX];<br>int Size;<br>int top;//用于指示栈顶位置<br>public:<br>mStack()//构建空栈<br>{<br>  top=-1;//下标为-1则为空栈<br>  Size=0;<br>}<br>bool isEmpty()<br>{<br>return top==-1;<br>}<br>bool isFull()<br>{<br>return top==MAX-1;<br>}<br>bool Push(T &amp;item)<br>{<br>if(isFull())<br>{<br>cout&lt;&lt;”stack is full!”&lt;&lt;endl;<br>return false;<br>}<br>//++top;<br>//arr[++top]=item;<br>arr[++top]=item;//因为下标从-1开始，使用前+1<br>//cout&lt;&lt;”this “&lt;&lt;top&lt;&lt;” item push values is :”&lt;&lt;arr[top]&lt;&lt;endl;<br>Size++;<br>return true;<br>}<br>bool Pop(T &amp;item)<br>{<br>if(isEmpty())<br>{<br>cout&lt;&lt;”stack is empty!”&lt;&lt;endl;<br>return false;<br>}<br>item=arr[top–];//因为下标从-1开始，top指向当前最后一个元素,使用后-1<br>//cout&lt;&lt;”this “&lt;&lt;top&lt;&lt;” item pop values is :”&lt;&lt;arr[top]&lt;&lt;endl;<br>Size–;<br>return true;<br>}<br>int size()<br>{<br>return Size;<br>}</p>
 <p>};</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/25126729">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/25126729">原文链接</a></p>
 
     
 
@@ -909,7 +916,7 @@
 <p>然后右边就会出来了。</p>
 <p>如果右上角找不到这个图片，可以在终端键入</p>
 <p>ibus-setup即可！</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/25050917">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/25050917">原文链接</a></p>
 
     
 
@@ -998,7 +1005,7 @@
     <p>搞个linuxg++真心不简单啊</p>
 <p>感觉在Linux下面开发C++会是一件很痛苦的事情啊。</p>
 <p>好麻烦的说。  </p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/24464035">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/24464035">原文链接</a></p>
 
     
 
@@ -1086,7 +1093,7 @@
     
     <p>搭建自己的Git服务器失败了</p>
 <p>本来想自己在自己的服务器上面搭建一个git服务器用来进行版本控制，但是使用ssh的方式搭建的出了好多问题，有些问题查了挺久也没解决，暂时还是先用CSDN的好了，毕设要紧，不能花太多时间在其他东西上面</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/44058573">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/44058573">原文链接</a></p>
 
     
 
@@ -1184,7 +1191,7 @@
 <p>下一步也应该开始了。</p>
 <p>下一步，数据结构以及算法。</p>
 <p>还有那个五子棋的游戏，有空也要开始搞了。</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/24938425">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/24938425">原文链接</a></p>
 
     
 

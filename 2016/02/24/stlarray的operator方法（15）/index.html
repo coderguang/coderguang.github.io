@@ -249,15 +249,15 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLarray的operator[]方法（15）</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/operator/[/]/">http://www.cplusplus.com/reference/array/array/operator\[\]/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/array/array/operator/[/]/">http://www.cplusplus.com/reference/array/array/operator\[\]/</a></p>
 <p>public member function</p>
 <array>
 
-<h1 id="std-array-operator"><a href="#std-array-operator" class="headerlink" title="std::array::operator[]"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/">array</a>::operator[]</h1><p> reference operator[] (size_type n);<br>const_reference operator[] (size_type n) const;</p>
+<h1 id="std-array-operator"><a href="#std-array-operator" class="headerlink" title="std::array::operator[]"></a>std::<a href="http://www.cplusplus.com/reference/array/array/">array</a>::operator[]</h1><p> reference operator[] (size_type n);<br>const_reference operator[] (size_type n) const;</p>
 <p>Access element</p>
-<p>Returns a reference to the element at position <em>n</em> in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array">array</a> container.  </p>
+<p>Returns a reference to the element at position <em>n</em> in the <a href="http://www.cplusplus.com/array">array</a> container.  </p>
 <p>返回array容器中位置为n的元素的引用。</p>
-<p>A similar member function, <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array::at">array::at</a>, has the same behavior as this operator function, except that <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array::at">array::at</a> checks the array bounds and signals whether n is out of range by throwing an exception.  </p>
+<p>A similar member function, <a href="http://www.cplusplus.com/array::at">array::at</a>, has the same behavior as this operator function, except that <a href="http://www.cplusplus.com/array::at">array::at</a> checks the array bounds and signals whether n is out of range by throwing an exception.  </p>
 <p>一个相似的方法是at,和该方法有相同的行为，但是at会检测范围的合法性，并且如果n超出范围会抛出异常。</p>
 <p>例子：</p>
 <p>#include <iostream><br>#include <array><br>using namespace std;<br>int main()<br>{<br>array&lt;int,3&gt; ai{10,20,30};<br>cout&lt;&lt;”ai[-1]=”&lt;&lt;ai[-1]&lt;&lt;endl;<br>cout&lt;&lt;”ai[0]=”&lt;&lt;ai[0]&lt;&lt;endl;<br>cout&lt;&lt;”ai[1]=”&lt;&lt;ai[1]&lt;&lt;endl;<br>cout&lt;&lt;”ai[2]=”&lt;&lt;ai[2]&lt;&lt;endl;<br>cout&lt;&lt;”ai[5]=”&lt;&lt;ai[5]&lt;&lt;endl;</p>
@@ -267,36 +267,36 @@
 <p>可以看到,operator[]不会检测n的合法性。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>n</p>
 <p>Position of an element in the array.</p>
-<p>Notice that the first element has a position of 0, not 1.<br>Member type size_type is an alias of the unsigned integral type <a target="_blank" rel="noopener" href="http://www.cplusplus.com/size_t">size_t</a>.</p>
+<p>Notice that the first element has a position of 0, not 1.<br>Member type size_type is an alias of the unsigned integral type <a href="http://www.cplusplus.com/size_t">size_t</a>.</p>
 <p>array中元素的位置。</p>
 <p>注意第一个元素位置是0而不是1.</p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>The element at the specified position in the array.  </p>
 <p>返回指定位置元素的引用。</p>
-<p>If the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array">array</a> object is const-qualified, the function returns a const_reference. Otherwise, it returns a reference.  </p>
+<p>If the <a href="http://www.cplusplus.com/array">array</a> object is const-qualified, the function returns a const_reference. Otherwise, it returns a reference.  </p>
 <p>如果array是const的，那么返回的将是const引用。</p>
-<p>Member types reference and const_reference are the reference types to the elements of the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array">array</a> (see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array#types">array member types</a>).  </p>
+<p>Member types reference and const_reference are the reference types to the elements of the <a href="http://www.cplusplus.com/array">array</a> (see <a href="http://www.cplusplus.com/array#types">array member types</a>).  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// array::operator[]</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;array&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::array&lt;int,10&gt; myarray;</span><br><span class="line">  unsigned int i;</span><br><span class="line"></span><br><span class="line">  // assign some values:</span><br><span class="line">  for (i=0; i&lt;10; i++) myarray[i]=i;</span><br><span class="line"></span><br><span class="line">  // print content</span><br><span class="line">  std::cout &lt;&lt; &quot;myarray contains:&quot;;</span><br><span class="line">  for (i=0; i&lt;10; i++)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; myarray[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/operator[]/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/operator[]/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myarray contains: 0 1 2 3 4 5 6 7 8 9 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>No changes.  </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The reference returned can be used to access or modify elements. Concurrently accessing or modifying different elements is safe.  </p>
 <p>返回的引用可以用来访问以及修改元素，同时访问以及修改不同的元素是安全的。</p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> is greater than <em>n</em>, the function never throws exceptions (no-throw guarantee).</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the container <a href="http://www.cplusplus.com/vector::size">size</a> is greater than <em>n</em>, the function never throws exceptions (no-throw guarantee).</p>
 <p>如果容器的size大于n,不会抛出异常。</p>
 <p>Otherwise, it causes <em>undefined behavior</em>.</p>
 <p>否则，会导致未定义的行为。</p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
 <p>2014-8-30</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38944055">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38944055">原文链接</a></p>
 
     
 
@@ -479,30 +479,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLarray的operator[]方法（15）" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLarray的operator[]方法（15）" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

@@ -246,7 +246,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="reinterpret-cast-lt-new-type-gt-expression"><a href="#reinterpret-cast-lt-new-type-gt-expression" class="headerlink" title="reinterpret_cast &lt;new_type&gt; (expression)"></a><a target="_blank" rel="noopener" href="http://publib.boulder.ibm.com/infocenter/compbgpl/v9v111/index.jsp?topic=/com.ibm.xlcpp9.bg.doc/language_ref/keyword_reinterpret_cast.htm">reinterpret_cast &lt;new_type&gt; (expression)</a></h2><p>reinterpret_cast运算符是用来处理无关类型之间的转换；它会产生一个新的值，这个值会有与原始参数（expressoin）有完全相同的比特位。 什么是无关类型？我没有弄清楚，没有找到好的文档来说明类型之间到底都有些什么关系（除了类的继承以外）。后半句倒是看出了reinterpret_cast的字面意思：重新解释（类型的比特位）。我们真的可以随意将一个类型值的比特位交给另一个类型作为它的值吗？其实不然。 <a target="_blank" rel="noopener" href="http://publib.boulder.ibm.com/infocenter/compbgpl/v9v111/index.jsp?topic=/com.ibm.xlcpp9.bg.doc/language_ref/keyword_reinterpret_cast.htm">IBM的C++指南</a>里倒是明确告诉了我们reinterpret_cast可以，或者说应该在什么地方用来作为转换运算符：</p>
+    <h2 id="reinterpret-cast-lt-new-type-gt-expression"><a href="#reinterpret-cast-lt-new-type-gt-expression" class="headerlink" title="reinterpret_cast &lt;new_type&gt; (expression)"></a><a href="http://publib.boulder.ibm.com/infocenter/compbgpl/v9v111/index.jsp?topic=/com.ibm.xlcpp9.bg.doc/language_ref/keyword_reinterpret_cast.htm">reinterpret_cast &lt;new_type&gt; (expression)</a></h2><p>reinterpret_cast运算符是用来处理无关类型之间的转换；它会产生一个新的值，这个值会有与原始参数（expressoin）有完全相同的比特位。 什么是无关类型？我没有弄清楚，没有找到好的文档来说明类型之间到底都有些什么关系（除了类的继承以外）。后半句倒是看出了reinterpret_cast的字面意思：重新解释（类型的比特位）。我们真的可以随意将一个类型值的比特位交给另一个类型作为它的值吗？其实不然。 <a href="http://publib.boulder.ibm.com/infocenter/compbgpl/v9v111/index.jsp?topic=/com.ibm.xlcpp9.bg.doc/language_ref/keyword_reinterpret_cast.htm">IBM的C++指南</a>里倒是明确告诉了我们reinterpret_cast可以，或者说应该在什么地方用来作为转换运算符：</p>
 <ul>
 <li>  从指针类型到一个足够大的整数类型</li>
 <li>  从整数类型或者枚举类型到指针类型</li>
@@ -256,15 +256,15 @@
 <li>  从一个指向类数据成员的指针到另一个指向不同类型的数据成员的指针</li>
 </ul>
 <p>不过我在Xcode中测试了一下，事实上reinterpret_cast的使用并不局限在上边所说的几项的，任何类型的指针之间都可以互相转换，都不会得到编译错误。上述列出的几项，可能 是Linux下reinterpret_cast使用的限制，也可能是IBM推荐我们使用reinterpret_cast的方式 所以总结来说：reinterpret_cast用在任意指针（或引用）类型之间的转换；以及指针与足够大的整数类型之间的转换；从整数类型（包括枚举类型）到指针类型，无视大小。 （所谓”足够大的整数类型”,取决于操作系统的参数，如果是32位的操作系统，就需要整形（int）以上的；如果是64位的操作系统，则至少需要长整形（long）。具体大小可以通过sizeof运算符来查看）。</p>
-<h2 id="reinterpret-cast有何作用"><a href="#reinterpret-cast有何作用" class="headerlink" title="reinterpret_cast有何作用"></a>reinterpret_cast有何作用</h2><p>从上边对reinterpret_cast介绍，可以感觉出reinterpret_cast是个很强大的运算符，因为它可以无视种族隔离，随便搞。但就像生物的准则，不符合自然规律的随意杂交只会得到不能长久生存的物种。随意在不同类型之间使用reinterpret_cast，也之后造成程序的破坏和不能使用。 比如下边的代码 <code>typedef int (*FunctionPointer)(int); int value = 21; FunctionPointer funcP; funcP = reinterpret_cast&lt;FunctionPointer&gt; (&amp;value); funcP(value);</code> 我先用typedef定义了一个指向函数的指针类型，所指向的函数接受一个int类型作为参数。然后我用reinterpret_cast将一个整型的地址转换成该函数类型并赋值给了相应的变量。最后，我还用该整形变量作为参数交给了指向函数的指针变量。 这个过程编译器都成功的编译通过，不过一旦运行我们就会得到”EXC_BAD_ACCESS”的运行错误，因为我们通过funcP所指的地址找到的并不是函数入口。 由此可知，reinterpret_cast虽然看似强大，作用却没有那么广。<a target="_blank" rel="noopener" href="http://publib.boulder.ibm.com/infocenter/compbgpl/v9v111/index.jsp?topic=/com.ibm.xlcpp9.bg.doc/language_ref/keyword_reinterpret_cast.htm">IBM的C++指南</a>、C++之父<a target="_blank" rel="noopener" href="http://www2.research.att.com/~bs/bs_faq2.html#static-cast">Bjarne Stroustrup的FAQ网页</a>和<a target="_blank" rel="noopener" href="http://msdn.microsoft.com/en-us/library/e0w9f63b%28VS.80%29.aspx">MSDN的Visual C++</a>也都指出：错误的使用reinterpret_cast很容易导致程序的不安全，只有将转换后的类型值转换回到其原始类型，这样才是正确使用reinterpret_cast方式。 这样说起来，reinterpret_cast转换成其它类型的目的只是临时的隐藏自己的什么（做个卧底？），要真想使用那个值，还是需要让其露出真面目才行。那到底它在C++中有其何存在的价值呢？</p>
-<p><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/en-us/library/e0w9f63b%28VS.80%29.aspx">MSDN的Visual C++ Developer Center</a> 给出了它的使用价值：用来辅助哈希函数。下边是MSNDN上的例子：</p>
+<h2 id="reinterpret-cast有何作用"><a href="#reinterpret-cast有何作用" class="headerlink" title="reinterpret_cast有何作用"></a>reinterpret_cast有何作用</h2><p>从上边对reinterpret_cast介绍，可以感觉出reinterpret_cast是个很强大的运算符，因为它可以无视种族隔离，随便搞。但就像生物的准则，不符合自然规律的随意杂交只会得到不能长久生存的物种。随意在不同类型之间使用reinterpret_cast，也之后造成程序的破坏和不能使用。 比如下边的代码 <code>typedef int (*FunctionPointer)(int); int value = 21; FunctionPointer funcP; funcP = reinterpret_cast&lt;FunctionPointer&gt; (&amp;value); funcP(value);</code> 我先用typedef定义了一个指向函数的指针类型，所指向的函数接受一个int类型作为参数。然后我用reinterpret_cast将一个整型的地址转换成该函数类型并赋值给了相应的变量。最后，我还用该整形变量作为参数交给了指向函数的指针变量。 这个过程编译器都成功的编译通过，不过一旦运行我们就会得到”EXC_BAD_ACCESS”的运行错误，因为我们通过funcP所指的地址找到的并不是函数入口。 由此可知，reinterpret_cast虽然看似强大，作用却没有那么广。<a href="http://publib.boulder.ibm.com/infocenter/compbgpl/v9v111/index.jsp?topic=/com.ibm.xlcpp9.bg.doc/language_ref/keyword_reinterpret_cast.htm">IBM的C++指南</a>、C++之父<a href="http://www2.research.att.com/~bs/bs_faq2.html#static-cast">Bjarne Stroustrup的FAQ网页</a>和<a href="http://msdn.microsoft.com/en-us/library/e0w9f63b%28VS.80%29.aspx">MSDN的Visual C++</a>也都指出：错误的使用reinterpret_cast很容易导致程序的不安全，只有将转换后的类型值转换回到其原始类型，这样才是正确使用reinterpret_cast方式。 这样说起来，reinterpret_cast转换成其它类型的目的只是临时的隐藏自己的什么（做个卧底？），要真想使用那个值，还是需要让其露出真面目才行。那到底它在C++中有其何存在的价值呢？</p>
+<p><a href="http://msdn.microsoft.com/en-us/library/e0w9f63b%28VS.80%29.aspx">MSDN的Visual C++ Developer Center</a> 给出了它的使用价值：用来辅助哈希函数。下边是MSNDN上的例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// expre_reinterpret_cast_Operator.cpp</span><br><span class="line">// compile with: /EHsc</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">// Returns a hash code based on an address</span><br><span class="line">unsigned short Hash( void *p ) &#123;</span><br><span class="line">unsigned int val = reinterpret_cast&lt;unsigned int&gt;( p );</span><br><span class="line">return ( unsigned short )( val ^ (val &gt;&gt; 16));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">int a[20];</span><br><span class="line">for ( int i = 0; i &lt; 20; i++ )</span><br><span class="line">cout &lt;&lt; Hash( a + i ) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//如果跟我一样是64位的系统，可能需要将unsigned int改成 unsigned long才能运行。</span><br></pre></td></tr></table></figure>
 
 <p>这段代码适合体现哈希的思想，暂时不做深究，但至少看Hash函数里面的操作，也能体会到，对整数的操作显然要对地址操作更方便。在集合中存放整形数值，也要比存放地址更具有扩展性（当然如果存void *扩展性也是一样很高的），唯一损失的可能就是存取的时候整形和地址的转换（这完全可以忽略不计）。 不过可读性可能就不高，所以在这种情况下使用的时候，就可以用typedef来定义个指针类型： <code>typedef unsigned int PointerType;</code> 这样不是更棒，当我们在64位机器上运行的时候，只要改成： <code>typedef unsigned long PointerType;</code> 个人觉得reinterpret_cast 更大的作用可能是用于网络流的序列化过程中。因为我们可以在序列化的时候，强制将所有的类型都转化为字节流，等到反序列化的时候，再将对应字节流的内容，reinterpret_cast回来原来的类型。因为 reinterpret_cast 的目标，具有完全相同的比特位。这样，就可以完美地将数据重新反序列化出来。</p>
-<h2 id="当reinterpret-cast面对const"><a href="#当reinterpret-cast面对const" class="headerlink" title="当reinterpret_cast面对const"></a>当reinterpret_cast面对const</h2><p><a target="_blank" rel="noopener" href="http://publib.boulder.ibm.com/infocenter/compbgpl/v9v111/index.jsp?topic=/com.ibm.xlcpp9.bg.doc/language_ref/keyword_reinterpret_cast.htm">IBM的C++指南</a>指出:reinterpret_cast不能像const_cast那样去除const修饰符。 这是什么意思呢？代码还是最直观的表述：</p>
+<h2 id="当reinterpret-cast面对const"><a href="#当reinterpret-cast面对const" class="headerlink" title="当reinterpret_cast面对const"></a>当reinterpret_cast面对const</h2><p><a href="http://publib.boulder.ibm.com/infocenter/compbgpl/v9v111/index.jsp?topic=/com.ibm.xlcpp9.bg.doc/language_ref/keyword_reinterpret_cast.htm">IBM的C++指南</a>指出:reinterpret_cast不能像const_cast那样去除const修饰符。 这是什么意思呢？代码还是最直观的表述：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">typedef void (*FunctionPointer)(int);</span><br><span class="line">int value = 21;</span><br><span class="line">const int* pointer = &amp;value;</span><br><span class="line"></span><br><span class="line">//int * pointer_r = reinterpret_cast&lt;int*&gt; (pointer); </span><br><span class="line">// Error: reinterpret_cast from type &#x27;const int*&#x27; to type &#x27;int*&#x27; casts away constness</span><br><span class="line"></span><br><span class="line">FunctionPointer funcP = reinterpret_cast&lt;FunctionPointer&gt; (pointer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>例子里，我们像前面<a target="_blank" rel="noopener" href="http://www.cnblogs.com/ider/archive/2011/07/22/cpp_cast_operator_part2.html">const_cast一篇</a>举到的例子那样，希望将指向const的指针用运算符转换成非指向const的指针。但是当实用reinterpret_cast的时候，编译器直接报错组织了该过程。这就体现出了const_cast的独特之处。 但是，例子中还有一个转换是将指向const int的指针付给指向函数的指针，编译顺利通过编译，当然结果也会跟前面的例子一样是无意义的。 如果我们换一种角度来看，这似乎也是合理的。因为 <code>const int* p = &amp;value; int * const q = &amp;value;</code> 这两个语句的含义是不同的，前者是”所指内容不可变”，后者则是”指向的地址不可变”（<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Const-correctness">具体参考此处</a>）。因此指向函数的指针默认应该就带有”所指内容不可变”的特性。 毕竟函数在编译之后，其操作过程就固定在那里了，我们唯一能做的就是传递一些参数给指针，而无法改变已编译函数的过程。所以从这个角度来想，上边例子使用reinterpret_cast从const int * 到FunctionPointer转换就变得合理了，因为它并没有去除const限定</p>
+<p>例子里，我们像前面<a href="http://www.cnblogs.com/ider/archive/2011/07/22/cpp_cast_operator_part2.html">const_cast一篇</a>举到的例子那样，希望将指向const的指针用运算符转换成非指向const的指针。但是当实用reinterpret_cast的时候，编译器直接报错组织了该过程。这就体现出了const_cast的独特之处。 但是，例子中还有一个转换是将指向const int的指针付给指向函数的指针，编译顺利通过编译，当然结果也会跟前面的例子一样是无意义的。 如果我们换一种角度来看，这似乎也是合理的。因为 <code>const int* p = &amp;value; int * const q = &amp;value;</code> 这两个语句的含义是不同的，前者是”所指内容不可变”，后者则是”指向的地址不可变”（<a href="http://en.wikipedia.org/wiki/Const-correctness">具体参考此处</a>）。因此指向函数的指针默认应该就带有”所指内容不可变”的特性。 毕竟函数在编译之后，其操作过程就固定在那里了，我们唯一能做的就是传递一些参数给指针，而无法改变已编译函数的过程。所以从这个角度来想，上边例子使用reinterpret_cast从const int * 到FunctionPointer转换就变得合理了，因为它并没有去除const限定</p>
 
     
 
@@ -447,30 +447,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "C++标准转换运算符reinterpret_cast【转】" -->
-    var gitment = new Gitment({
-      id: "20170610205122",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "C++标准转换运算符reinterpret_cast【转】" -->
+  var giteement = new Giteement({
+    id: '20170610205122',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

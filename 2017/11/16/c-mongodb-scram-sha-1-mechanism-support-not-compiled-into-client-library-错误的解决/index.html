@@ -246,7 +246,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>版本： mongodb 3.4.x mongo-cxx-driver-legacy-1.1.0 编译器： c++11 直接使用驱动的鉴权函数 auth(), 结果报  mongodb SCRAM-SHA-1 mechanism support not compiled into client library. (Some mechanisms require the driver be compiled with the flags –ssl or –use-sasl-client) 这个异常。 如果你就按照提示的这段信息去做，你就被坑了，别问我为什么知道 真实情况是，mongodb的驱动需要初始化，不初始化就会报这个错误，这该死的提示信息。做法如下： 在使用之前调用  mongo::client::initialize();   一次即可，不用重复初始化。 把特~~你以为这就结束了？ 我的调用 mongo 初始化函数之后就挂了~~~ 最后查出来了原因，需要在 mongo-cxx-driver-legacy-1.1.0 编译的时候加 –c++11=on  选项。 OK 都搞定了。 用的时候，记得每次调用 connect() 之后都要 auth() 一下 参考链接 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/28448406/the-authentication-mechanism-scram-sha-1-is-not-supported">https://stackoverflow.com/questions/28448406/the-authentication-mechanism-scram-sha-1-is-not-supported</a> <a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/30107966/mongoclientoptionsoptions-at-options-h32">http://stackoverflow.com/questions/30107966/mongoclientoptionsoptions-at-options-h32</a>   问题原文链接:<a target="_blank" rel="noopener" href="http://blog.csdn.net/lili861217/article/details/52779920">http://blog.csdn.net/lili861217/article/details/52779920</a> tips: 如果实在windows下面，如果是默认的，可以不用auth，initalize之后就可以直接用了，如果是在linux下面initalize挂了，就是编译c++ driver的时候，没有加 –c++11=on 选项 测试代码:</p>
+    <p>版本： mongodb 3.4.x mongo-cxx-driver-legacy-1.1.0 编译器： c++11 直接使用驱动的鉴权函数 auth(), 结果报  mongodb SCRAM-SHA-1 mechanism support not compiled into client library. (Some mechanisms require the driver be compiled with the flags –ssl or –use-sasl-client) 这个异常。 如果你就按照提示的这段信息去做，你就被坑了，别问我为什么知道 真实情况是，mongodb的驱动需要初始化，不初始化就会报这个错误，这该死的提示信息。做法如下： 在使用之前调用  mongo::client::initialize();   一次即可，不用重复初始化。 把特~~你以为这就结束了？ 我的调用 mongo 初始化函数之后就挂了~~~ 最后查出来了原因，需要在 mongo-cxx-driver-legacy-1.1.0 编译的时候加 –c++11=on  选项。 OK 都搞定了。 用的时候，记得每次调用 connect() 之后都要 auth() 一下 参考链接 <a href="https://stackoverflow.com/questions/28448406/the-authentication-mechanism-scram-sha-1-is-not-supported">https://stackoverflow.com/questions/28448406/the-authentication-mechanism-scram-sha-1-is-not-supported</a> <a href="http://stackoverflow.com/questions/30107966/mongoclientoptionsoptions-at-options-h32">http://stackoverflow.com/questions/30107966/mongoclientoptionsoptions-at-options-h32</a>   问题原文链接:<a href="http://blog.csdn.net/lili861217/article/details/52779920">http://blog.csdn.net/lili861217/article/details/52779920</a> tips: 如果实在windows下面，如果是默认的，可以不用auth，initalize之后就可以直接用了，如果是在linux下面initalize挂了，就是编译c++ driver的时候，没有加 –c++11=on 选项 测试代码:</p>
 <p>using namespace mongo;</p>
 <p>void run()<br>{</p>
 <p>mongo::client::initialize();</p>
@@ -445,30 +445,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "c++: mongodb SCRAM-SHA-1 mechanism support not compiled into client library 错误的解决" -->
-    var gitment = new Gitment({
-      id: "20171116235411",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "c++: mongodb SCRAM-SHA-1 mechanism support not compiled into client library 错误的解决" -->
+  var giteement = new Giteement({
+    id: '20171116235411',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

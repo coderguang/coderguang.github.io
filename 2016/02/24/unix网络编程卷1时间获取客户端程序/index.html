@@ -252,8 +252,8 @@
     
     <p>unix网络编程卷1时间获取客户端程序</p>
 <p>在尝试unix卷1的例子时所遇到的问题，记录下来作为备忘。</p>
-<p><a target="_blank" rel="noopener" href="http://bbs.chinaunix.net/archiver/tid-505577.html">http://bbs.chinaunix.net/archiver/tid-505577.html</a> </p>
-<p>和<a target="_blank" rel="noopener" href="http://chenliang.info/?p=224">http://chenliang.info/?p=224</a><br>cd unpv12e<br>./configure<br>make<br>vim README看怎么安装<br>cd unpv12e/lib<br>make会报错unp.h:114: error: redefinition of ‘struct in_pktin<br>unp.h中，这段代码注释掉，因为在linux系统include文件中已经定义了这个结构，   </p>
+<p><a href="http://bbs.chinaunix.net/archiver/tid-505577.html">http://bbs.chinaunix.net/archiver/tid-505577.html</a> </p>
+<p>和<a href="http://chenliang.info/?p=224">http://chenliang.info/?p=224</a><br>cd unpv12e<br>./configure<br>make<br>vim README看怎么安装<br>cd unpv12e/lib<br>make会报错unp.h:114: error: redefinition of ‘struct in_pktin<br>unp.h中，这段代码注释掉，因为在linux系统include文件中已经定义了这个结构，   </p>
 <p>Java代码  <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015113_13985399061724.png" alt="收藏代码"></p>
 <ol>
 <li> /* The structure returned by recvfrom_flags() */ </li>
@@ -278,7 +278,7 @@
 <p>#cd ../intro<br>#make<br>#./daytimetcpsrv &amp;   </p>
 <p>#./daytimetcpcli 127.0.0.1 </p>
 <p>得到错误：connect error: Connection refused</p>
-<p>答案参考来自于:<a target="_blank" rel="noopener" href="http://www.oschina.net/question/234345/_42484?sort=time">http://www.oschina.net/question/234345\_42484?sort=time</a></p>
+<p>答案参考来自于:<a href="http://www.oschina.net/question/234345/_42484?sort=time">http://www.oschina.net/question/234345\_42484?sort=time</a></p>
 <p>那么是你的daytime服务没有开启！  </p>
 <p>我的是fedora，那么先看看有没有安装xinetd</p>
 <p>yum install xinetd.</p>
@@ -291,7 +291,7 @@
 <p>看到成功显示时间</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015113_25321796835513.jpg">  </p>
 <p>得到输出时间应该就表示安装初步成功了 .</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38375463">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38375463">原文链接</a></p>
 
     
 
@@ -474,30 +474,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "unix网络编程卷1时间获取客户端程序" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "unix网络编程卷1时间获取客户端程序" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

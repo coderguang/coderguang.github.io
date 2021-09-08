@@ -249,7 +249,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>windows 安装ice 是非常简单的一件事情，不像linux ，windows下只需要下载文件，安装，然后设置一下环境变量就可以了。 下载的官方地址是：<a target="_blank" rel="noopener" href="https://zeroc.com/download/">https://zeroc.com/download/</a> 我选的版本是3.5.0，下载地址是：<a target="_blank" rel="noopener" href="https://zeroc.com/download/Ice/3.5/Ice-3.5.0.msi">https://zeroc.com/download/Ice/3.5/Ice-3.5.0.msi</a> 安装成功后，设置一下环境变量即可。 新增 ICE_HOME 变量，值为ice安装目录下的bin目录 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/04/11-300x115.png" alt="11"> 然后将ICE_HOME加入到系统的path里面即可。 然后在cmd里面，运行 slice2cpp，可以看到提示信息即代表安装成功。   这里附加个ice的例子。 t.ice module Demo{ interface Printer{ void printString(string s); }; }; 然后在cmd里面，进到该文件所在的目录，执行slice2cpp  t.ice即可生成对应的cpp文件。 // 还有非常重要的就是要安装第三方依赖库，否则官方Demo是跑不起来的！！！ 安装完毕之后，设置第三方库的环境变量 <strong>THIRDPARTY_HOME</strong>=C:\Program Files\ZeroC\Ice-3.5.1-ThirdParty 之后，使用VS2010打开Demo中的demo中的ICE里面的hello项目， 将ice的include文件加入到项目的包含目录里面。 编译生成，就能看到效果了，如图 [gallery ids=”2011”] 不懂的可以留言。</p>
+    <p>windows 安装ice 是非常简单的一件事情，不像linux ，windows下只需要下载文件，安装，然后设置一下环境变量就可以了。 下载的官方地址是：<a href="https://zeroc.com/download/">https://zeroc.com/download/</a> 我选的版本是3.5.0，下载地址是：<a href="https://zeroc.com/download/Ice/3.5/Ice-3.5.0.msi">https://zeroc.com/download/Ice/3.5/Ice-3.5.0.msi</a> 安装成功后，设置一下环境变量即可。 新增 ICE_HOME 变量，值为ice安装目录下的bin目录 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/04/11-300x115.png" alt="11"> 然后将ICE_HOME加入到系统的path里面即可。 然后在cmd里面，运行 slice2cpp，可以看到提示信息即代表安装成功。   这里附加个ice的例子。 t.ice module Demo{ interface Printer{ void printString(string s); }; }; 然后在cmd里面，进到该文件所在的目录，执行slice2cpp  t.ice即可生成对应的cpp文件。 // 还有非常重要的就是要安装第三方依赖库，否则官方Demo是跑不起来的！！！ 安装完毕之后，设置第三方库的环境变量 <strong>THIRDPARTY_HOME</strong>=C:\Program Files\ZeroC\Ice-3.5.1-ThirdParty 之后，使用VS2010打开Demo中的demo中的ICE里面的hello项目， 将ice的include文件加入到项目的包含目录里面。 编译生成，就能看到效果了，如图 [gallery ids=”2011”] 不懂的可以留言。</p>
 
     
 
@@ -443,30 +443,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "windows下安装ICE 3.5.0 及运行demo" -->
-    var gitment = new Gitment({
-      id: "20160408192827",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "windows下安装ICE 3.5.0 及运行demo" -->
+  var giteement = new Giteement({
+    id: '20160408192827',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

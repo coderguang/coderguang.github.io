@@ -257,7 +257,7 @@
 <p>//递归思想<br>//其实跟goto是一样的思想<br>//不过设多两个变量i,j用于指示要比较的字符和正在比较的字符传递给递归函数<br>#include <iostream><br>using std::cout;<br>using std::endl;<br>using std::strlen;<br>using std::cin;<br>#define ERROR ‘-1’//倘若没有任何一个匹配</p>
 <p>char digui(const char *str,int i,int j)<br>{<br>int len=strlen(str);<br>if(i==j)//如果i=j，则不与自身比较<br>{<br>if(i==len-1)//但如果是i=j=len-1，说明最后一个只在最后出现了一次，输出<br>return str[i];<br>else//否则，跳过i=j,j++<br>{<br>j++;<br>digui(str,i,j);//进入下一次递归<br>}<br>}<br>else if(str[i]==str[j])//倘若一个字符出现两次<br>{<br>//cout&lt;&lt;”i=”&lt;&lt;i&lt;&lt;”  “&lt;&lt;”j=”&lt;&lt;j&lt;&lt;”  “&lt;&lt;(int*)(&amp;str[i])&lt;&lt;”  “&lt;&lt;(int*)(&amp;str[j])&lt;&lt;endl;<br>i++;//进行下一个字符比较;<br>if(i==len)<br>{<br>cout&lt;&lt;”没有一个只出现一次的字符”&lt;&lt;endl;<br>return ERROR;<br>}<br>else<br>{<br>j=0;//重置j=0;<br>digui(str,i,j);<br>}<br>}<br>else//否则，移动j,继续比较，知道j=len;<br>{<br>j++;<br>if(j==len)//如果比较到了最后都不相等<br>{<br>//cout&lt;&lt;str[i]&lt;&lt;endl;<br>return str[i];<br>}<br>else//还没到最后<br>{<br>digui(str,i,j);<br>}<br>}<br>}<br>int main()<br>{<br>char *s=”cceet”;<br>cout&lt;&lt;digui(s,0,0);<br>cin.get();<br>return 0;</p>
 <p>}</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/25885603">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/25885603">原文链接</a></p>
 
     
 
@@ -440,30 +440,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "输出一串字符中第一个只出现一次的字符不能使用while for循环" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "输出一串字符中第一个只出现一次的字符不能使用while for循环" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

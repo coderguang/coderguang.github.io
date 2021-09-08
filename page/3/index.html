@@ -196,6 +196,13 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <script src="/lib/oauthcallback.browser.js"></script>
+  
+  <script>
+    Oauthcallback();
+  </script>
+
 
   
     <article id="post-leetcode-292-nim-game" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -228,7 +235,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>必胜策略：第一次拿 n%4个，然后不管对手拿多少个，自己拿 (n-对手拿的个数)就必赢了</p>
-<p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/nim-game/description/">https://leetcode.com/problems/nim-game/description/</a></p>
+<p>//url:<a href="https://leetcode.com/problems/nim-game/description/">https://leetcode.com/problems/nim-game/description/</a></p>
 <p>class Solution {<br>public:<br>    bool canWinNim(int n) {<br>        if(n%4&gt;0)<br>            return true;<br>        return false;<br>    }<br>};</p>
 
     
@@ -316,7 +323,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>分两步,首先获取为1的bit位的数量，然后判断改数量是否是质数, 10^6的位数有限，可以先写出对应范围内的质数,加快质数的判断</p>
-<p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/prime-number-of-set-bits-in-binary-representation/description/">https://leetcode.com/problems/prime-number-of-set-bits-in-binary-representation/description/</a><br>class Solution {<br>public:<br>    int getSetBitNum(int n){<br>        int num=0;<br>        while(n&gt;0){<br>            num++;<br>            n=n&amp;(n-1);<br>        }<br>        return num;<br>    }<br>    bool isPrime(int n){<br>        if(0==n1==n)<br>            return false;<br>        int i=2;<br>        while(i</p>
+<p>//url:<a href="https://leetcode.com/problems/prime-number-of-set-bits-in-binary-representation/description/">https://leetcode.com/problems/prime-number-of-set-bits-in-binary-representation/description/</a><br>class Solution {<br>public:<br>    int getSetBitNum(int n){<br>        int num=0;<br>        while(n&gt;0){<br>            num++;<br>            n=n&amp;(n-1);<br>        }<br>        return num;<br>    }<br>    bool isPrime(int n){<br>        if(0==n1==n)<br>            return false;<br>        int i=2;<br>        while(i</p>
 
     
 
@@ -403,7 +410,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>递归遍历即可</p>
-<p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-depth-of-binary-tree/description/">https://leetcode.com/problems/maximum-depth-of-binary-tree/description/</a><br>/**<br> * Definition for a binary tree node.<br> * struct TreeNode {<br> *     int val;<br> *     TreeNode *left;<br> *     TreeNode *right;<br> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}<br> * };<br> */<br>class Solution {<br>public:</p>
+<p>//url:<a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/description/">https://leetcode.com/problems/maximum-depth-of-binary-tree/description/</a><br>/**<br> * Definition for a binary tree node.<br> * struct TreeNode {<br> *     int val;<br> *     TreeNode *left;<br> *     TreeNode *right;<br> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}<br> * };<br> */<br>class Solution {<br>public:</p>
 <pre><code>void maxDepth(TreeNode\* root,int&amp; depth,int level)&#123;
     if(!root)
         return ;
@@ -508,7 +515,7 @@ int maxDepth(TreeNode\* root) &#123;
   <div class="article-entry" itemprop="articleBody">
     
     <p>solution 1: 低效,每次判断最后一位bit的值,然后和上一次最后一位的bit值对比</p>
-<p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/binary-number-with-alternating-bits/description/">https://leetcode.com/problems/binary-number-with-alternating-bits/description/</a></p>
+<p>//url:<a href="https://leetcode.com/problems/binary-number-with-alternating-bits/description/">https://leetcode.com/problems/binary-number-with-alternating-bits/description/</a></p>
 <p>class Solution {<br>public:<br>    bool hasAlternatingBits(int n) {<br>        int v=n&1;//最右边一位的bit值<br>        while(n&gt;0){<br>            n&gt;&gt;=1;<br>            int tmp=n&1;<br>            //cout&lt;&lt;”n=”&lt; solution 2：高效,符合条件的数,其必有以下特点<br>1: 该数和该数右移一位的值的与运算，其结果必然为0<br>2：该数和该数右移一位的值的异或运算，其结果的每一个bit位必然都为1</p>
 <p>class Solution {<br>public:<br>    bool hasAlternatingBits(int n) {<br>       int v=n&amp;(n&gt;&gt;1);<br>       if(v&gt;0){<br>           return false;<br>       }<br>       v=n^(n&gt;&gt;1);<br>       while(v&gt;0){<br>           if(1!=(v&amp;1)){<br>               return false;<br>           }<br>           v&gt;&gt;=1;<br>       }<br>        return true;<br>    }<br>};</p>
 
@@ -597,7 +604,7 @@ int maxDepth(TreeNode\* root) &#123;
   <div class="article-entry" itemprop="articleBody">
     
     <p>solution 1: 比较低效</p>
-<p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/average-of-levels-in-binary-tree/description/">https://leetcode.com/problems/average-of-levels-in-binary-tree/description/</a><br>/**<br> * Definition for a binary tree node.<br> * struct TreeNode {<br> *     int val;<br> *     TreeNode *left;<br> *     TreeNode *right;<br> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}<br> * };<br> */</p>
+<p>//url:<a href="https://leetcode.com/problems/average-of-levels-in-binary-tree/description/">https://leetcode.com/problems/average-of-levels-in-binary-tree/description/</a><br>/**<br> * Definition for a binary tree node.<br> * struct TreeNode {<br> *     int val;<br> *     TreeNode *left;<br> *     TreeNode *right;<br> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}<br> * };<br> */</p>
 <p>struct NodeSum{<br>    long sum;//该层级的和<br>    int num;//该层级节点数量<br>    NodeSum():sum(0),num(0){<br>    }<br>};</p>
 <p>class Solution {<br>public:<br>    vector averageOfLevels(TreeNode* root) {<br>        map sum;<br>        calLevelSum(root,0,sum);<br>        vector result;<br>        for(map::iterator it=sum.begin();it!=sum.end();it++){<br>            result.push_back(1.0*it-&gt;second.sum/it-&gt;second.num);<br>        }<br>        return result;<br>    }<br>    void calLevelSum(TreeNode* root,int level,map&amp; sum){<br>        if(!root)<br>            return;<br>        map::iterator it=sum.find(level);<br>        if(it==sum.end()){<br>            NodeSum s;<br>            s.sum=root-&gt;val;<br>            s.num=1;<br>            sum[level]=s;<br>        }else{<br>            it-&gt;second.sum+=root-&gt;val;<br>            it-&gt;second.num++;<br>        }<br>        calLevelSum(root-&gt;left,level+1,sum);<br>        calLevelSum(root-&gt;right,level+1,sum);<br>    }<br>}; </p>
 <p>solution 2:也是比较低效,只是在 calLevelSum 里面,减掉了find操作</p>
@@ -693,7 +700,7 @@ int maxDepth(TreeNode\* root) &#123;
   <div class="article-entry" itemprop="articleBody">
     
     <p>solution 1:</p>
-<p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/trim-a-binary-search-tree/description/">https://leetcode.com/problems/trim-a-binary-search-tree/description/</a><br>//这leetcode判断用时好像会有点问题,第一次提交,方案用时是在后30%,想了好一会有没有更优化的,发现好像没有,再次提交,就排到前90%了,有点怪<br>/**<br> * Definition for a binary tree node.<br> * struct TreeNode {<br> *     int val;<br> *     TreeNode *left;<br> *     TreeNode *right;<br> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}<br> * };<br> */<br>class Solution {<br>public:<br>    TreeNode* trimBST(TreeNode* root, int L, int R) {<br>        if(!root)<br>            return NULL;<br>        if(root-&gt;valright,L,R);<br>        if(root-&gt;val&gt;R)<br>            return trimBST(root-&gt;left,L,R);<br>        root-&gt;left=trimBST(root-&gt;left,L,R);<br>        root-&gt;right=trimBST(root-&gt;right,L,R);<br>        return root;<br>    }<br>};</p>
+<p>//url:<a href="https://leetcode.com/problems/trim-a-binary-search-tree/description/">https://leetcode.com/problems/trim-a-binary-search-tree/description/</a><br>//这leetcode判断用时好像会有点问题,第一次提交,方案用时是在后30%,想了好一会有没有更优化的,发现好像没有,再次提交,就排到前90%了,有点怪<br>/**<br> * Definition for a binary tree node.<br> * struct TreeNode {<br> *     int val;<br> *     TreeNode *left;<br> *     TreeNode *right;<br> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}<br> * };<br> */<br>class Solution {<br>public:<br>    TreeNode* trimBST(TreeNode* root, int L, int R) {<br>        if(!root)<br>            return NULL;<br>        if(root-&gt;valright,L,R);<br>        if(root-&gt;val&gt;R)<br>            return trimBST(root-&gt;left,L,R);<br>        root-&gt;left=trimBST(root-&gt;left,L,R);<br>        root-&gt;right=trimBST(root-&gt;right,L,R);<br>        return root;<br>    }<br>};</p>
 
     
 
@@ -779,7 +786,7 @@ int maxDepth(TreeNode\* root) &#123;
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/reverse-words-in-a-string-iii/description/">https://leetcode.com/problems/reverse-words-in-a-string-iii/description/</a><br>class Solution {<br>public:<br>     void SplitString(const string&amp; s, vector&amp; v, const string&amp; c)<br>    {<br>        string::size_type pos1, pos2;<br>        pos2 = s.find(c);<br>        pos1 = 0;<br>        while(string::npos != pos2)<br>        {<br>            v.push_back(s.substr(pos1, pos2-pos1));</p>
+    <p>//url:<a href="https://leetcode.com/problems/reverse-words-in-a-string-iii/description/">https://leetcode.com/problems/reverse-words-in-a-string-iii/description/</a><br>class Solution {<br>public:<br>     void SplitString(const string&amp; s, vector&amp; v, const string&amp; c)<br>    {<br>        string::size_type pos1, pos2;<br>        pos2 = s.find(c);<br>        pos1 = 0;<br>        while(string::npos != pos2)<br>        {<br>            v.push_back(s.substr(pos1, pos2-pos1));</p>
 <pre><code>        pos1 = pos2 + c.size();
         pos2 = s.find(c, pos1);
     &#125;
@@ -878,7 +885,7 @@ void reverseString(string&amp; s) &#123;
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/middle-of-the-linked-list/description/">https://leetcode.com/problems/middle-of-the-linked-list/description/</a></p>
+    <p>//url:<a href="https://leetcode.com/problems/middle-of-the-linked-list/description/">https://leetcode.com/problems/middle-of-the-linked-list/description/</a></p>
 <p>/**<br> * Definition for singly-linked list.<br> * struct ListNode {<br> *     int val;<br> *     ListNode *next;<br> *     ListNode(int x) : val(x), next(NULL) {}<br> * };<br> */<br>class Solution {<br>public:<br>    ListNode* middleNode(ListNode* head) {<br>        vector list;<br>        ListNode* tmp=head;<br>        while(tmp-&gt;next){<br>            list.push_back(tmp);<br>            tmp=tmp-&gt;next;<br>        }<br>        list.push_back(tmp);<br>        return list[list.size()/2];</p>
 <pre><code>&#125;
 </code></pre>
@@ -1054,7 +1061,7 @@ void reverseString(string&amp; s) &#123;
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/reverse-string/description/">https://leetcode.com/problems/reverse-string/description/</a></p>
+    <p>//url:<a href="https://leetcode.com/problems/reverse-string/description/">https://leetcode.com/problems/reverse-string/description/</a></p>
 <p>class Solution {<br>public:<br>    string reverseString(string s) {<br>        int size=s.length();<br>        for(int i=0;i</p>
 
     

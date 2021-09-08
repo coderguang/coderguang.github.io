@@ -249,11 +249,11 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLdeque的方法assign(3)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/deque/deque/assign/">http://www.cplusplus.com/reference/deque/deque/assign/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/deque/deque/assign/">http://www.cplusplus.com/reference/deque/deque/assign/</a></p>
 <p>public member function</p>
 <deque>
 
-<h1 id="std-deque-assign"><a href="#std-deque-assign" class="headerlink" title="std::deque::assign"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/deque/deque/">deque</a>::assign</h1><ul>
+<h1 id="std-deque-assign"><a href="#std-deque-assign" class="headerlink" title="std::deque::assign"></a>std::<a href="http://www.cplusplus.com/reference/deque/deque/">deque</a>::assign</h1><ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
@@ -264,7 +264,7 @@
 <p>initializer list (3)</p>
 <p>void assign (initializer_list&lt;value_type&gt; il);</p>
 <p>Assign container content</p>
-<p>Assigns new contents to the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/deque">deque</a> container, replacing its current contents, and modifying its <a target="_blank" rel="noopener" href="http://www.cplusplus.com/deque::size">size</a> accordingly.  </p>
+<p>Assigns new contents to the <a href="http://www.cplusplus.com/deque">deque</a> container, replacing its current contents, and modifying its <a href="http://www.cplusplus.com/deque::size">size</a> accordingly.  </p>
 <p>调整deque容器的内容，替换其中的内容，并修改其大小。</p>
 <ul>
 <li>  C++98</li>
@@ -273,7 +273,7 @@
 <p>In the <em>range version</em> (1), the new contents are elements constructed from each of the elements in the range between <em>first</em> and <em>last</em>, in the same order.<br>新的内容从范围first到last。  </p>
 <p>In the <em>fill version</em> (2), the new contents are <em>n</em> elements, each initialized to a copy of <em>val</em>.<br>新的内容一共有n个元素，每个元素的值都是val.  </p>
 <p>In the <em>initializer list version</em> (3), the new contents are copies of the values passed as initializer list, in the same order.<br>从初始化列表构造器中构造新的内容。  </p>
-<p>If there are changes in storage, the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/deque::get_allocator">internal allocator</a> is used (through its <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits">traits</a>). It is also used to <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::destroy">destroy</a> all existing elements, and to<a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">construct</a> the new ones.<br>如果内存存储发生变化，使用内部的分配器。</p>
+<p>If there are changes in storage, the <a href="http://www.cplusplus.com/deque::get_allocator">internal allocator</a> is used (through its <a href="http://www.cplusplus.com/allocator_traits">traits</a>). It is also used to <a href="http://www.cplusplus.com/allocator_traits::destroy">destroy</a> all existing elements, and to<a href="http://www.cplusplus.com/allocator_traits::construct">construct</a> the new ones.<br>如果内存存储发生变化，使用内部的分配器。</p>
 <p>Any elements held in the container before the call are <em>destroyed</em> and replaced by newly constructed elements (no assignments of elements take place).</p>
 <p>所有之前的元素都将被销毁以及替换成新的元素。</p>
 <p>例子：</p>
@@ -286,7 +286,7 @@
 <p>Parameters</p>
 <p>first, last</p>
 <p>Input iterators to the initial and final positions in a sequence. The range used is [first,last), which includes all the elements between <em>first</em> and <em>last</em>, including the element pointed by <em>first</em> but not the element pointed by <em>last</em>.  </p>
-<p>The function template argument InputIterator shall be an <a target="_blank" rel="noopener" href="http://www.cplusplus.com/InputIterator">input iterator</a> type that points to elements of a type from whichvalue_type objects can be constructed.</p>
+<p>The function template argument InputIterator shall be an <a href="http://www.cplusplus.com/InputIterator">input iterator</a> type that points to elements of a type from whichvalue_type objects can be constructed.</p>
 <p>序列用于替换的位置，范围为[first,last)。</p>
 <p>//今后的翻译将以简洁为主，翻译其主要意思，不再每句翻译。</p>
 <p>n</p>
@@ -295,34 +295,34 @@
 <p>n为新容器的大小。</p>
 <p>val</p>
 <p>Value to fill the container with. Each of the <em>n</em> elements in the container will be initialized to a copy of this value.  </p>
-<p>Member type value_type is the type of the elements in the container, defined in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/deque">deque</a> as an alias of its first template parameter (T).</p>
+<p>Member type value_type is the type of the elements in the container, defined in <a href="http://www.cplusplus.com/deque">deque</a> as an alias of its first template parameter (T).</p>
 <p>填满容器元素的值val.</p>
 <p>il</p>
-<p>An <a target="_blank" rel="noopener" href="http://www.cplusplus.com/initializer_list">initializer_list</a> object. The compiler will automatically construct such objects from <em>initializer list</em> declarators.  </p>
-<p>Member type value_type is the type of the elements in the container, defined in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/deque">deque</a> as an alias of its first template parameter (T).</p>
+<p>An <a href="http://www.cplusplus.com/initializer_list">initializer_list</a> object. The compiler will automatically construct such objects from <em>initializer list</em> declarators.  </p>
+<p>Member type value_type is the type of the elements in the container, defined in <a href="http://www.cplusplus.com/deque">deque</a> as an alias of its first template parameter (T).</p>
 <p>一个初始化列表对象。</p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// deque::assign</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;deque&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::deque&lt;int&gt; first;</span><br><span class="line">  std::deque&lt;int&gt; second;</span><br><span class="line">  std::deque&lt;int&gt; third;</span><br><span class="line"></span><br><span class="line">  first.assign (7,100);             // 7 ints with a value of 100</span><br><span class="line"></span><br><span class="line">  std::deque&lt;int&gt;::iterator it;</span><br><span class="line">  it=first.begin()+1;</span><br><span class="line"></span><br><span class="line">  second.assign (it,first.end()-1); // the 5 central values of first</span><br><span class="line"></span><br><span class="line">  int myints[] = &#123;1776,7,4&#125;;</span><br><span class="line">  third.assign (myints,myints+3);   // assigning from array.</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;Size of first: &quot; &lt;&lt; int (first.size()) &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">  std::cout &lt;&lt; &quot;Size of second: &quot; &lt;&lt; int (second.size()) &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">  std::cout &lt;&lt; &quot;Size of third: &quot; &lt;&lt; int (third.size()) &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/deque/deque/assign/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/deque/deque/assign/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>Size of first: 7<br>Size of second: 5<br>Size of third: 3 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in initial and final <a target="_blank" rel="noopener" href="http://www.cplusplus.com/deque::size">sizes</a> (destructions, constructions).  </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in initial and final <a href="http://www.cplusplus.com/deque::size">sizes</a> (destructions, constructions).  </p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>All iterators, pointers and references related to this container are invalidated.  </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>All copied elements are accessed.<br>The container is modified.<br>All contained elements are modified.  </p>
 <h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>Basic guarantee:</strong> if an exception is thrown, the container is in a valid state.  </p>
-<p>If <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments for the element constructions, or if the range specified by[first,last) is not valid, it causes <em>undefined behavior</em>.</p>
+<p>If <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments for the element constructions, or if the range specified by[first,last) is not valid, it causes <em>undefined behavior</em>.</p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>//今后的翻译将以简洁为主，翻译其主要意思，不再每句翻译。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#101;&#114;&#103;&#117;&#x61;&#x6e;&#103;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#x63;&#x6f;&#100;&#101;&#114;&#103;&#117;&#x61;&#x6e;&#103;&#x40;&#x67;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
+<p>Email:<a href="mailto:&#x63;&#111;&#100;&#101;&#x72;&#x67;&#x75;&#97;&#x6e;&#x67;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;">&#x63;&#111;&#100;&#101;&#x72;&#x67;&#x75;&#97;&#x6e;&#x67;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;</a></p>
 <p>2014-9-1</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38977125">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38977125">原文链接</a></p>
 
     
 
@@ -505,30 +505,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLdeque的方法assign(3)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLdeque的方法assign(3)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

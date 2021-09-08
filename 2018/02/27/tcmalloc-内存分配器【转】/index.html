@@ -246,18 +246,18 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>转载自<a target="_blank" rel="noopener" href="http://blog.csdn.net/chosen0ne/article/details/9338591">http://blog.csdn.net/chosen0ne/article/details/9338591</a> 一、原理 tcmalloc就是一个内存分配器，管理堆内存，主要影响malloc和free，用于降低频繁分配、释放内存造成的性能损耗，并且有效地控制内存碎片。glibc中的内存分配器是ptmalloc2，tcmalloc号称要比它快。一次malloc和free操作，ptmalloc需要300ns，而tcmalloc只要50ns。同时tcmalloc也优化了小对象的存储，需要更少的空间。tcmalloc特别对多线程做了优化，对于小对象的分配基本上是不存在锁竞争，而大对象使用了细粒度、高效的自旋锁（spinlock）。分配给线程的本地缓存，在长时间空闲的情况下会被回收，供其他线程使用，这样提高了在多线程情况下的内存利用率，不会浪费内存，而这一点ptmalloc2是做不到的。 tcmalloc区别的对待大、小对象。它为每个线程分配了一个线程局部的cache，线程需要的小对象都是在其cache中分配的，由于是thread local的，所以基本上是无锁操作（在cache不够，需要增加内存时，会加锁）。同时，tcmalloc维护了进程级别的cache，所有的大对象都在这个cache中分配，由于多个线程的大对象的分配都从这个cache进行，所以必须加锁访问。在实际的程序中，小对象分配的频率要远远高于大对象，通过这种方式（小对象无锁分配，大对象加锁分配）可以提升整体性能。 线程级别cache和进程级别cache实际上就是一个多级的空闲块列表（Free List）。一个Free List以大小为k bytes倍数的空闲块进行分配，包含n个链表，每个链表存放大小为nk bytes的空闲块。在tcmalloc中，&lt;=32KB的对象被称作是小对象，&gt;32KB的是大对象。在小对象中，&lt;=1024bytes的对象以8n bytes分配，1025&lt;size&lt;=32KB的对象以128n bytes大小分配，比如：要分配20bytes则返回的空闲块大小是24bytes的，这样在&lt;=1024的情况下最多浪费7bytes，&gt;1025则浪费127bytes。而大对象是以页大小4KB进行对齐的，最多会浪费4KB - 1 bytes。下图就是一个基本的free list的示意图：  实际上，一个free list（我称之为空闲块列表）就是一个数组索引多个链表，每个链表存放相同大小的块。可以根据要分配的内存大小size算出合适的块在free list中的下标，然后找到对应的空闲块链表。 tcmalloc的数据结构组织如下：  Thread-local free list：线程本地的空闲块cache，用于分配小对象。 Heap free list：中心free list，全局唯一，用于按页对齐分配大对象或者是将连续的多个页（被称作span）分割成多个小对象的空闲块分配给thread-local free list。 Page array：用于描述当前tcmalloc持有的内存状态，完成的是从page number到span的映射。 下面看一下小对象的分配： （1）根据分配的size计算出对应的空闲块大小，从而确定对应空闲块链表，然后从thread local的free list进行分配。 （2）如果的空闲块链表非空，直接将头结点对应的空闲块返回并从空闲块链表中将其删除。 （3）如果空闲块链表是空的，需要从heap free list获取一个span。如果heap free list非空，则将span切分成多个相同大小的空闲块插入空闲块链表中，然后返回头结点。 （4）如果heap free list是空的，则调用sbrk或者mmap进行内存的分配一系列连续的内存页，作为span，然后切分成多个相同大小的空闲块插入空闲块链表，然后返回头结点。 大对象的分配就要简单多了，直接从heap free list分配4nKB大小的空闲块即可，如果heap free list不存在该大小的空闲块，通过系统调用分配连续的内存页。 tcmalloc还会对thread local cache进行垃圾收集，从而避免内存浪费。 二、安装和使用 tcmalloc属于gperftools，安装比较简单，需要注意一下，在64bit系统上需要先安装libunwind（<a target="_blank" rel="noopener" href="http://download.savannah.gnu.org/releases/libunwind/libunwind-0.99-beta.tar.gz%EF%BC%8C%E5%8F%AA%E8%83%BD%E6%98%AF%E8%BF%99%E4%B8%AA%E7%89%88%E6%9C%AC%EF%BC%89%EF%BC%8C%E8%BF%99%E4%B8%AA%E5%BA%93%E4%B8%BA%E5%9F%BA%E4%BA%8E64%E4%BD%8DCPU%E5%92%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%8F%90%E4%BE%9B%E4%BA%86%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%A0%86%E6%A0%88%E8%BE%97%E8%BD%AC%E5%BC%80%E8%A7%A3%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E7%94%A8%E4%BA%8E%E8%BE%93%E5%87%BA%E5%A0%86%E6%A0%88%E8%B7%9F%E8%B8%AA%E7%9A%84API%E3%80%81%E7%94%A8%E4%BA%8E%E4%BB%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E5%BC%8F%E8%BE%97%E8%BD%AC%E5%BC%80%E8%A7%A3%E5%A0%86%E6%A0%88%E7%9A%84API%E4%BB%A5%E5%8F%8A%E6%94%AF%E6%8C%81C++%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6%E7%9A%84API%EF%BC%8C32bit%E7%B3%BB%E7%BB%9F%E4%B8%8D%E9%9C%80%E5%AE%89%E8%A3%85%E3%80%82%E5%9C%A8%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E4%B8%AD%EF%BC%8C%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E4%B8%8B%E5%88%97%E9%94%99%E8%AF%AF%EF%BC%9A">http://download.savannah.gnu.org/releases/libunwind/libunwind-0.99-beta.tar.gz，只能是这个版本），这个库为基于64位CPU和操作系统的程序提供了基本的堆栈辗转开解功能，其中包括用于输出堆栈跟踪的API、用于以编程方式辗转开解堆栈的API以及支持C++异常处理机制的API，32bit系统不需安装。在安装过程中，可能出现下列错误：</a></p>
-<p><strong>[plain]</strong> <a target="_blank" rel="noopener" href="http://blog.csdn.net/chosen0ne/article/details/9338591#" title="view plain">view plain</a><a target="_blank" rel="noopener" href="http://blog.csdn.net/chosen0ne/article/details/9338591#" title="copy">copy</a></p>
+    <p>转载自<a href="http://blog.csdn.net/chosen0ne/article/details/9338591">http://blog.csdn.net/chosen0ne/article/details/9338591</a> 一、原理 tcmalloc就是一个内存分配器，管理堆内存，主要影响malloc和free，用于降低频繁分配、释放内存造成的性能损耗，并且有效地控制内存碎片。glibc中的内存分配器是ptmalloc2，tcmalloc号称要比它快。一次malloc和free操作，ptmalloc需要300ns，而tcmalloc只要50ns。同时tcmalloc也优化了小对象的存储，需要更少的空间。tcmalloc特别对多线程做了优化，对于小对象的分配基本上是不存在锁竞争，而大对象使用了细粒度、高效的自旋锁（spinlock）。分配给线程的本地缓存，在长时间空闲的情况下会被回收，供其他线程使用，这样提高了在多线程情况下的内存利用率，不会浪费内存，而这一点ptmalloc2是做不到的。 tcmalloc区别的对待大、小对象。它为每个线程分配了一个线程局部的cache，线程需要的小对象都是在其cache中分配的，由于是thread local的，所以基本上是无锁操作（在cache不够，需要增加内存时，会加锁）。同时，tcmalloc维护了进程级别的cache，所有的大对象都在这个cache中分配，由于多个线程的大对象的分配都从这个cache进行，所以必须加锁访问。在实际的程序中，小对象分配的频率要远远高于大对象，通过这种方式（小对象无锁分配，大对象加锁分配）可以提升整体性能。 线程级别cache和进程级别cache实际上就是一个多级的空闲块列表（Free List）。一个Free List以大小为k bytes倍数的空闲块进行分配，包含n个链表，每个链表存放大小为nk bytes的空闲块。在tcmalloc中，&lt;=32KB的对象被称作是小对象，&gt;32KB的是大对象。在小对象中，&lt;=1024bytes的对象以8n bytes分配，1025&lt;size&lt;=32KB的对象以128n bytes大小分配，比如：要分配20bytes则返回的空闲块大小是24bytes的，这样在&lt;=1024的情况下最多浪费7bytes，&gt;1025则浪费127bytes。而大对象是以页大小4KB进行对齐的，最多会浪费4KB - 1 bytes。下图就是一个基本的free list的示意图：  实际上，一个free list（我称之为空闲块列表）就是一个数组索引多个链表，每个链表存放相同大小的块。可以根据要分配的内存大小size算出合适的块在free list中的下标，然后找到对应的空闲块链表。 tcmalloc的数据结构组织如下：  Thread-local free list：线程本地的空闲块cache，用于分配小对象。 Heap free list：中心free list，全局唯一，用于按页对齐分配大对象或者是将连续的多个页（被称作span）分割成多个小对象的空闲块分配给thread-local free list。 Page array：用于描述当前tcmalloc持有的内存状态，完成的是从page number到span的映射。 下面看一下小对象的分配： （1）根据分配的size计算出对应的空闲块大小，从而确定对应空闲块链表，然后从thread local的free list进行分配。 （2）如果的空闲块链表非空，直接将头结点对应的空闲块返回并从空闲块链表中将其删除。 （3）如果空闲块链表是空的，需要从heap free list获取一个span。如果heap free list非空，则将span切分成多个相同大小的空闲块插入空闲块链表中，然后返回头结点。 （4）如果heap free list是空的，则调用sbrk或者mmap进行内存的分配一系列连续的内存页，作为span，然后切分成多个相同大小的空闲块插入空闲块链表，然后返回头结点。 大对象的分配就要简单多了，直接从heap free list分配4nKB大小的空闲块即可，如果heap free list不存在该大小的空闲块，通过系统调用分配连续的内存页。 tcmalloc还会对thread local cache进行垃圾收集，从而避免内存浪费。 二、安装和使用 tcmalloc属于gperftools，安装比较简单，需要注意一下，在64bit系统上需要先安装libunwind（<a href="http://download.savannah.gnu.org/releases/libunwind/libunwind-0.99-beta.tar.gz%EF%BC%8C%E5%8F%AA%E8%83%BD%E6%98%AF%E8%BF%99%E4%B8%AA%E7%89%88%E6%9C%AC%EF%BC%89%EF%BC%8C%E8%BF%99%E4%B8%AA%E5%BA%93%E4%B8%BA%E5%9F%BA%E4%BA%8E64%E4%BD%8DCPU%E5%92%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%8F%90%E4%BE%9B%E4%BA%86%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%A0%86%E6%A0%88%E8%BE%97%E8%BD%AC%E5%BC%80%E8%A7%A3%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E7%94%A8%E4%BA%8E%E8%BE%93%E5%87%BA%E5%A0%86%E6%A0%88%E8%B7%9F%E8%B8%AA%E7%9A%84API%E3%80%81%E7%94%A8%E4%BA%8E%E4%BB%A5%E7%BC%96%E7%A8%8B%E6%96%B9%E5%BC%8F%E8%BE%97%E8%BD%AC%E5%BC%80%E8%A7%A3%E5%A0%86%E6%A0%88%E7%9A%84API%E4%BB%A5%E5%8F%8A%E6%94%AF%E6%8C%81C++%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6%E7%9A%84API%EF%BC%8C32bit%E7%B3%BB%E7%BB%9F%E4%B8%8D%E9%9C%80%E5%AE%89%E8%A3%85%E3%80%82%E5%9C%A8%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E4%B8%AD%EF%BC%8C%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E4%B8%8B%E5%88%97%E9%94%99%E8%AF%AF%EF%BC%9A">http://download.savannah.gnu.org/releases/libunwind/libunwind-0.99-beta.tar.gz，只能是这个版本），这个库为基于64位CPU和操作系统的程序提供了基本的堆栈辗转开解功能，其中包括用于输出堆栈跟踪的API、用于以编程方式辗转开解堆栈的API以及支持C++异常处理机制的API，32bit系统不需安装。在安装过程中，可能出现下列错误：</a></p>
+<p><strong>[plain]</strong> <a href="http://blog.csdn.net/chosen0ne/article/details/9338591#" title="view plain">view plain</a><a href="http://blog.csdn.net/chosen0ne/article/details/9338591#" title="copy">copy</a></p>
 <ol>
 <li> gcc -DHAVE_CONFIG_H -I. -I../include -I../include -I../include/tdep-x86_64 -I. -D_GNU_SOURCE -DNDEBUG -g -O2 -fexceptions -Wall -Wsign-compare -MT setjmp/longjmp.lo -MD -MP -MF setjmp/.deps/longjmp.Tpo -c setjmp/longjmp.c -fPIC -DPIC -o setjmp/.libs/longjmp.o</li>
 <li> /usr/include/x86_64-linux-gnu/bits/setjmp2.h:26:13: error: ‘longjmp’ aliased to undefined symbol ‘_longjmp</li>
 </ol>
 <p>是因为缺少编译选项U_FORTIFY_SOURCE，解决方法有两种： 1，尚未调用configure进行配置，则执行CPPFLAGS=-U_FORTIFY_SOURCE ./configure … 会自动将编译选项添加到Makefile中。 2，已经配置过，直接修改Makefile，查找CPPFLAGS然后添加上-U_FORTIFY_SOURCE。 然后就是安装gperftools，这个正常安装即可，默认安装到/usr/local/lib下，完成后调用lddconfig添加到动态链接库缓存，然后就可以使用了。 使用方法，很简单，在编译时加上tcmalloc动态链接库即可</p>
-<p><strong>[plain]</strong> <a target="_blank" rel="noopener" href="http://blog.csdn.net/chosen0ne/article/details/9338591#" title="view plain">view plain</a><a target="_blank" rel="noopener" href="http://blog.csdn.net/chosen0ne/article/details/9338591#" title="copy">copy</a></p>
+<p><strong>[plain]</strong> <a href="http://blog.csdn.net/chosen0ne/article/details/9338591#" title="view plain">view plain</a><a href="http://blog.csdn.net/chosen0ne/article/details/9338591#" title="copy">copy</a></p>
 <ol>
 <li> g++ test.cpp -ltcmalloc</li>
 </ol>
-<p>源码不需任何修改，<strong>tcmalloc会自动替换掉glibc默认的malloc和free</strong>，简简单单的一条命令就可以提升不少性能，very good。 附录一：ptmalloc Linux中malloc的早期版本是由Doug Lea实现的，它有一个重要问题就是在并行处理时多个线程共享进程的内存空间，各线程可能并发请求内存，在这种情况下应该如何保证分配和回收的正确和高效。Wolfram Gloger在Doug Lea的基础上改进使得Glibc的malloc可以支持多线程——ptmalloc，在glibc-2.3.x.中已经集成了ptmalloc2，这就是我们平时使用的malloc，目前ptmalloc的最新版本ptmalloc3。 ptmalloc实现了malloc()，free()以及一组其它的函数. 以提供动态内存管理的支持。分配器处在用户程序和内核之间，它响应用户的分配请求，向操作系统申请内存，然后将其返回给用户程序，为了保持高效的分配，分配器一般都会预先分配一块大于用户请求的内存，并通过某种算法管理这块内存。来满足用户的内存分配要求，用户释放掉的内存也并不是立即就返回给操作系统，相反，分配器会管理这些被释放掉的空闲空间，以应对用户以后的内存分配要求。也就是说，分配器不但要管理已分配的内存块，还需要管理空闲的内存块，当响应用户分配要求时，分配器会首先在空闲空间中寻找一块合适的内存给用户，在空闲空间中找不到的情况下才分配一块新的内存。为实现一个高效的分配器，需要考虑很多的因素。比如，分配器本身管理内存块所占用的内存空间必须很小，分配算法必须要足够的快。 在ptmolloc中，具有长生命周期的大内存分配使用mmap。具有短生命周期的内存分配使用brk，因为用mmap映射匿名页，当发生缺页异常时，linux内核为缺页分配一个新物理页，并将该物理页清0，一个mmap的内存块需要映射多个物理页，导致多次清0操作，很浪费系统资源，所以引入了mmap分配阈值动态调整机制，保证在必要的情况下才使用mmap分配内存。   附录二： 前文提到：如果heap free list是空的，则调用sbrk或者mmap进行内存的分配一系列连续的内存页。那么sbrk和与之相关的brk是做什么的呢? 参考<a target="_blank" rel="noopener" href="http://blog.csdn.net/ugg/article/details/4344522">http://blog.csdn.net/ugg/article/details/4344522</a> brk和sbrk主要的工作是实现虚拟内存到内存的映射。brk()是一个非常简单的系统调用，只是简单地改变mm_struct结构的成员变量brk（堆的当前最后地址）的值。sbrk不是系统调用，是C库函数，sbrk是对brk的简单封装。 如果程序 malloc的大小超出了库里所留存的空间，malloc函数族（realloc，calloc等）就调用sbrk函数将数据段的下界移动，sbrk函数在内核的管理下将虚拟地址空间映射到内存，供malloc函数使用。 C语言跟内存申请相关的函数主要有 alloc,calloc,malloc,free,realloc,sbrk等.其中alloc是向栈申请内存,因此无需释放.malloc分配的内存是位于堆中的,并且没有初始化内存的内容,因此基本上malloc之后,调用函数memset来初始化这部分的内存空间.calloc则将初始化这部分的内存,设置为0. 而realloc则对malloc申请的内存进行大小的调整.申请的内存最终需要通过函数free来释放. 而sbrk则是增加数据段的大小。 附录三：对以上内容的进一步总结 <a target="_blank" rel="noopener" href="http://www.findfunaax.com/notes/file/170">http://www.findfunaax.com/notes/file/170</a></p>
+<p>源码不需任何修改，<strong>tcmalloc会自动替换掉glibc默认的malloc和free</strong>，简简单单的一条命令就可以提升不少性能，very good。 附录一：ptmalloc Linux中malloc的早期版本是由Doug Lea实现的，它有一个重要问题就是在并行处理时多个线程共享进程的内存空间，各线程可能并发请求内存，在这种情况下应该如何保证分配和回收的正确和高效。Wolfram Gloger在Doug Lea的基础上改进使得Glibc的malloc可以支持多线程——ptmalloc，在glibc-2.3.x.中已经集成了ptmalloc2，这就是我们平时使用的malloc，目前ptmalloc的最新版本ptmalloc3。 ptmalloc实现了malloc()，free()以及一组其它的函数. 以提供动态内存管理的支持。分配器处在用户程序和内核之间，它响应用户的分配请求，向操作系统申请内存，然后将其返回给用户程序，为了保持高效的分配，分配器一般都会预先分配一块大于用户请求的内存，并通过某种算法管理这块内存。来满足用户的内存分配要求，用户释放掉的内存也并不是立即就返回给操作系统，相反，分配器会管理这些被释放掉的空闲空间，以应对用户以后的内存分配要求。也就是说，分配器不但要管理已分配的内存块，还需要管理空闲的内存块，当响应用户分配要求时，分配器会首先在空闲空间中寻找一块合适的内存给用户，在空闲空间中找不到的情况下才分配一块新的内存。为实现一个高效的分配器，需要考虑很多的因素。比如，分配器本身管理内存块所占用的内存空间必须很小，分配算法必须要足够的快。 在ptmolloc中，具有长生命周期的大内存分配使用mmap。具有短生命周期的内存分配使用brk，因为用mmap映射匿名页，当发生缺页异常时，linux内核为缺页分配一个新物理页，并将该物理页清0，一个mmap的内存块需要映射多个物理页，导致多次清0操作，很浪费系统资源，所以引入了mmap分配阈值动态调整机制，保证在必要的情况下才使用mmap分配内存。   附录二： 前文提到：如果heap free list是空的，则调用sbrk或者mmap进行内存的分配一系列连续的内存页。那么sbrk和与之相关的brk是做什么的呢? 参考<a href="http://blog.csdn.net/ugg/article/details/4344522">http://blog.csdn.net/ugg/article/details/4344522</a> brk和sbrk主要的工作是实现虚拟内存到内存的映射。brk()是一个非常简单的系统调用，只是简单地改变mm_struct结构的成员变量brk（堆的当前最后地址）的值。sbrk不是系统调用，是C库函数，sbrk是对brk的简单封装。 如果程序 malloc的大小超出了库里所留存的空间，malloc函数族（realloc，calloc等）就调用sbrk函数将数据段的下界移动，sbrk函数在内核的管理下将虚拟地址空间映射到内存，供malloc函数使用。 C语言跟内存申请相关的函数主要有 alloc,calloc,malloc,free,realloc,sbrk等.其中alloc是向栈申请内存,因此无需释放.malloc分配的内存是位于堆中的,并且没有初始化内存的内容,因此基本上malloc之后,调用函数memset来初始化这部分的内存空间.calloc则将初始化这部分的内存,设置为0. 而realloc则对malloc申请的内存进行大小的调整.申请的内存最终需要通过函数free来释放. 而sbrk则是增加数据段的大小。 附录三：对以上内容的进一步总结 <a href="http://www.findfunaax.com/notes/file/170">http://www.findfunaax.com/notes/file/170</a></p>
 
     
 
@@ -440,30 +440,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "tcmalloc——内存分配器【转】" -->
-    var gitment = new Gitment({
-      id: "20180227220808",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "tcmalloc——内存分配器【转】" -->
+  var giteement = new Giteement({
+    id: '20180227220808',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

@@ -255,11 +255,11 @@
     <h2 id="1——Z-到-A（译注：倒序）"><a href="#1——Z-到-A（译注：倒序）" class="headerlink" title="1——Z 到 A（译注：倒序）"></a>1——Z 到 A（译注：倒序）</h2><p>当你第一次学习 Go 的时候可能会中招。 例子</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">4</span>; i++ &#123;</span><br><span class="line">    <span class="keyword">defer</span> fmt.Print(i)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>输出 Go 的运行时会将延迟执行的函数保存至一个栈中（译注：意味着它们会按照入栈的顺序倒序执行）。想了解更多，请阅读这篇 <a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/golang-defer-simplified-77d3b2b817ff#702e">文章</a> <a target="_blank" rel="noopener" href="https://studygolang.com/articles/11907">GCTT 出品的译文：图解 Go 中的延迟调用 defer</a>。</p>
+<p>输出 Go 的运行时会将延迟执行的函数保存至一个栈中（译注：意味着它们会按照入栈的顺序倒序执行）。想了解更多，请阅读这篇 <a href="https://blog.learngoprogramming.com/golang-defer-simplified-77d3b2b817ff#702e">文章</a> <a href="https://studygolang.com/articles/11907">GCTT 出品的译文：图解 Go 中的延迟调用 defer</a>。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">2</span><br><span class="line">1</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2019/04/590a6165bd57f84002cbd1b01ad16b37.png"></p>
-<h2 id="2——作用域屏蔽了参数"><a href="#2——作用域屏蔽了参数" class="headerlink" title="2——作用域屏蔽了参数"></a>2——作用域屏蔽了参数</h2><p>事实上这是一个作用域的坑，但我想要让你知道它与 <strong>defer</strong> 和 <a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/golang-funcs-params-named-result-values-types-pass-by-value-67f4374d9c0a#7cf4">已命名的返回值</a> 之间的关系。 例子 这里我们定义了一个函数，这个函数声明了它需要延迟的函数（在返回的时候释放资源 <code>r</code> ）。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2019/04/f3659e97968a1197bef11202bd48113c.png"></p>
+<h2 id="2——作用域屏蔽了参数"><a href="#2——作用域屏蔽了参数" class="headerlink" title="2——作用域屏蔽了参数"></a>2——作用域屏蔽了参数</h2><p>事实上这是一个作用域的坑，但我想要让你知道它与 <strong>defer</strong> 和 <a href="https://blog.learngoprogramming.com/golang-funcs-params-named-result-values-types-pass-by-value-67f4374d9c0a#7cf4">已命名的返回值</a> 之间的关系。 例子 这里我们定义了一个函数，这个函数声明了它需要延迟的函数（在返回的时候释放资源 <code>r</code> ）。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2019/04/f3659e97968a1197bef11202bd48113c.png"></p>
 <h3 id="接着创建一个-reader-类型的结构体使得调用-Close-的时候返回一个-error"><a href="#接着创建一个-reader-类型的结构体使得调用-Close-的时候返回一个-error" class="headerlink" title="接着创建一个 reader 类型的结构体使得调用 Close 的时候返回一个 error"></a>接着创建一个 reader 类型的结构体使得调用 Close 的时候返回一个 error</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> reader <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(r reader)</span> <span class="title">Close</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> errors.New(<span class="string">&quot;Close Error&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>当 <code>reader</code> 调用 <code>Close()</code> 的时候总会返回一个 error ，<code>release</code> 会在 <strong>defer</strong> 内部调用。</p>
@@ -270,8 +270,8 @@
 
 <p>变量 <code>err</code> 的值为 <code>nil</code> ，而我们期望中的值应该是 <em>“Close Error”</em> 。</p>
 <h3 id="为什么会这样？"><a href="#为什么会这样？" class="headerlink" title="为什么会这样？"></a>为什么会这样？</h3><p>延迟函数内的赋值语句在延迟函数的 <code>if</code> 块中，因此在块中的 <code>err</code> 变量赋值会创建一个全新的变量，块级变量 <code>err</code> 的作用域会屏蔽返回变量 <code>err</code> ，因此， <code>release()</code> 还是返回 <code>err</code> 的原始值。</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>我们需要将值赋给 <code>release()</code> 的 <code>err</code> 变量，为了做到这一点，请看下面图示的第三行，这行代码并没有声明新的 <code>err</code> 变量，与之前不同的是，它使用的是原本的 <code>err</code> 返回变量（将 <code>:=</code> 替换成 <code>=</code>）。这就解决了块级屏蔽的问题。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2019/04/f8f3a52de70e3c9327259d62164a813f.png"> 如果你对 <code>=</code> 和 <code>:=</code> ，请看一下这篇 <a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/learn-go-lang-variables-visual-tutorial-and-ebook-9a061d29babe">文章</a></p>
-<h2 id="3——参数很快得到了值"><a href="#3——参数很快得到了值" class="headerlink" title="3——参数很快得到了值"></a>3——参数很快得到了值</h2><p>当一个 <strong>defer</strong> 函数出现而不是被执行的时候，传递给它的参数的值就会被立刻确定下来，在我的其他文章中有讲过类似的 <a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/golang-defer-simplified-77d3b2b817ff#649d">例子</a> 。 例子</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>我们需要将值赋给 <code>release()</code> 的 <code>err</code> 变量，为了做到这一点，请看下面图示的第三行，这行代码并没有声明新的 <code>err</code> 变量，与之前不同的是，它使用的是原本的 <code>err</code> 返回变量（将 <code>:=</code> 替换成 <code>=</code>）。这就解决了块级屏蔽的问题。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2019/04/f8f3a52de70e3c9327259d62164a813f.png"> 如果你对 <code>=</code> 和 <code>:=</code> ，请看一下这篇 <a href="https://blog.learngoprogramming.com/learn-go-lang-variables-visual-tutorial-and-ebook-9a061d29babe">文章</a></p>
+<h2 id="3——参数很快得到了值"><a href="#3——参数很快得到了值" class="headerlink" title="3——参数很快得到了值"></a>3——参数很快得到了值</h2><p>当一个 <strong>defer</strong> 函数出现而不是被执行的时候，传递给它的参数的值就会被立刻确定下来，在我的其他文章中有讲过类似的 <a href="https://blog.learngoprogramming.com/golang-defer-simplified-77d3b2b817ff#649d">例子</a> 。 例子</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> message <span class="keyword">struct</span> &#123;</span><br><span class="line">  content <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *message)</span> <span class="title">set</span><span class="params">(c <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">  p.content = c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *message)</span> <span class="title">print</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> p.content</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>试着运行一下上面的代码</p>
@@ -280,7 +280,7 @@
 <p>输出</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;Hello&quot;</span><br></pre></td></tr></table></figure>
 
-<h3 id="为什么输出不是-“World”"><a href="#为什么输出不是-“World”" class="headerlink" title="为什么输出不是 “World” ?"></a>为什么输出不是 “World” ?</h3><p>在 <strong>defer</strong> 中， <code>fmt.Print</code> 被推迟到函数返回后执行，可是 <code>m.print()</code> 的值在当时就已经被求出，因此， <code>m.print()</code> 会返回 _”Hello”_，这个值会保存一直到外围函数返回。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2019/04/f91fdea1f1ed115562e3413f0eb7cef8.png"> 这个过程类似于调用 <code>fmt.Print()</code> 打印 <em>“Hello”</em> ，进一步理解这个过程，可以看这篇 <a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/golang-defer-simplified-77d3b2b817ff#649d">文章</a> 。</p>
+<h3 id="为什么输出不是-“World”"><a href="#为什么输出不是-“World”" class="headerlink" title="为什么输出不是 “World” ?"></a>为什么输出不是 “World” ?</h3><p>在 <strong>defer</strong> 中， <code>fmt.Print</code> 被推迟到函数返回后执行，可是 <code>m.print()</code> 的值在当时就已经被求出，因此， <code>m.print()</code> 会返回 _”Hello”_，这个值会保存一直到外围函数返回。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2019/04/f91fdea1f1ed115562e3413f0eb7cef8.png"> 这个过程类似于调用 <code>fmt.Print()</code> 打印 <em>“Hello”</em> ，进一步理解这个过程，可以看这篇 <a href="https://blog.learngoprogramming.com/golang-defer-simplified-77d3b2b817ff#649d">文章</a> 。</p>
 <h2 id="4——循环中存址"><a href="#4——循环中存址" class="headerlink" title="4——循环中存址"></a>4——循环中存址</h2><p>当延迟函数执行的时候，会查看当时周围变量中的值 —— 除了被传入参数的值。我们来看看这一切是怎么在循环中发生的。 例子 我们在循环里定义了一个闭包函数。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">3</span>; i++ &#123;</span><br><span class="line">  <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">   fmt.Println(i)</span><br><span class="line">  &#125;()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -294,13 +294,13 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">1</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
 
 <h3 id="为什么这个又能正常执行？"><a href="#为什么这个又能正常执行？" class="headerlink" title="为什么这个又能正常执行？"></a>为什么这个又能正常执行？</h3><p>因为，这时 Go 的运行时在 for 循环的作用域中又创建了不同的 <code>i</code> 变量并把正确的值也保存在了那些变量中，现在，延迟函数不会去查看原始循环中的 <code>i</code> 变量，它们会查看各自的局部 <code>i</code> 变量。</p>
-<h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案 #2"></a>解决方案 #2</h3><p>在这里，我们故意使用一个新的 <code>i</code> 块级变量来屏蔽循环中的 <code>i</code> ，说实话我不太喜欢这种风格，所以我把这种方式放到了 <a target="_blank" rel="noopener" href="https://news.ycombinator.com/item?id=15979751">Hacker News</a> 上供大家讨论。</p>
+<h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案 #2"></a>解决方案 #2</h3><p>在这里，我们故意使用一个新的 <code>i</code> 块级变量来屏蔽循环中的 <code>i</code> ，说实话我不太喜欢这种风格，所以我把这种方式放到了 <a href="https://news.ycombinator.com/item?id=15979751">Hacker News</a> 上供大家讨论。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">3</span>; i++ &#123;</span><br><span class="line">  i := i</span><br><span class="line">  <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(i)</span><br><span class="line">  &#125;()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="解决方案-3"><a href="#解决方案-3" class="headerlink" title="解决方案 #3"></a>解决方案 #3</h3><p>如果一次延迟调用一个函数，你可以直接对这个函数使用 <strong>defer</strong> 。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">3</span>; i++ &#123;</span><br><span class="line">  <span class="keyword">defer</span> fmt.Println(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="5——不返回的意义"><a href="#5——不返回的意义" class="headerlink" title="5——不返回的意义"></a>5——不返回的意义</h2><p>对于调用者来说，在延迟函数中返回值几乎没有什么影响，可是，你依然可以使用 <a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/golang-funcs-params-named-result-values-types-pass-by-value-67f4374d9c0a#7cf4">命名返回值</a> 来影响返回的结果。 例子</p>
+<h2 id="5——不返回的意义"><a href="#5——不返回的意义" class="headerlink" title="5——不返回的意义"></a>5——不返回的意义</h2><p>对于调用者来说，在延迟函数中返回值几乎没有什么影响，可是，你依然可以使用 <a href="https://blog.learngoprogramming.com/golang-funcs-params-named-result-values-types-pass-by-value-67f4374d9c0a#7cf4">命名返回值</a> 来影响返回的结果。 例子</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">release</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">  <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> errors.New(<span class="string">&quot;error&quot;</span>)</span><br><span class="line">  &#125;()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出</p>
@@ -314,7 +314,7 @@
 <h3 id="为什么能起作用？"><a href="#为什么能起作用？" class="headerlink" title="为什么能起作用？"></a>为什么能起作用？</h3><p>在这里，我们在 <strong>defer</strong> 中，对 函数的 <code>err</code> 返回变量赋了新的值，并且函数会返回那个值，defer 函数并不直接返回值，它影响了返回命名变量的这个过程。</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>你不需要处处使用 defer ，没有 defer 你也可以直接返回 error 。 在函数有多个返回情况而你想要集中处理它们的时候使用 defer 会很方便，多思考如何进一步简化你的代码。</p>
 <hr>
-<p>via: <a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/5-gotchas-of-defer-in-go-golang-part-ii-cc550f6ad9aa">https://blog.learngoprogramming.com/5-gotchas-of-defer-in-go-golang-part-ii-cc550f6ad9aa</a> 作者：<a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/@inanc">Inanc Gumus</a>  译者：<a target="_blank" rel="noopener" href="https://github.com/yujiahaol68">yujiahaol68</a>  校对：<a target="_blank" rel="noopener" href="https://github.com/polaris1119">polaris1119</a> 本文由 <a target="_blank" rel="noopener" href="https://github.com/studygolang/GCTT">GCTT</a> 原创编译，<a target="_blank" rel="noopener" href="https://studygolang.com/articles/12136">Go语言中文网</a> 荣誉推出</p>
+<p>via: <a href="https://blog.learngoprogramming.com/5-gotchas-of-defer-in-go-golang-part-ii-cc550f6ad9aa">https://blog.learngoprogramming.com/5-gotchas-of-defer-in-go-golang-part-ii-cc550f6ad9aa</a> 作者：<a href="https://blog.learngoprogramming.com/@inanc">Inanc Gumus</a>  译者：<a href="https://github.com/yujiahaol68">yujiahaol68</a>  校对：<a href="https://github.com/polaris1119">polaris1119</a> 本文由 <a href="https://github.com/studygolang/GCTT">GCTT</a> 原创编译，<a href="https://studygolang.com/articles/12136">Go语言中文网</a> 荣誉推出</p>
 
     
 
@@ -497,30 +497,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "【转载】 Golang 中 defer 的五个坑 - 第二部分" -->
-    var gitment = new Gitment({
-      id: "20190409212837",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "【转载】 Golang 中 defer 的五个坑 - 第二部分" -->
+  var giteement = new Giteement({
+    id: '20190409212837',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

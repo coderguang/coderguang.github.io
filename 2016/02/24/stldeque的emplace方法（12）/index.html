@@ -247,53 +247,53 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLdeque的emplace方法（12）</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/deque/deque/emplace/">http://www.cplusplus.com/reference/deque/deque/emplace/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/deque/deque/emplace/">http://www.cplusplus.com/reference/deque/deque/emplace/</a></p>
 <p>public member function</p>
 <deque>
 
-<h1 id="std-deque-emplace"><a href="#std-deque-emplace" class="headerlink" title="std::deque::emplace"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/deque/deque/">deque</a>::emplace</h1><p>template &lt;class… Args&gt;<br>  iterator emplace (const_iterator position, Args&amp;&amp;… args);</p>
+<h1 id="std-deque-emplace"><a href="#std-deque-emplace" class="headerlink" title="std::deque::emplace"></a>std::<a href="http://www.cplusplus.com/reference/deque/deque/">deque</a>::emplace</h1><p>template &lt;class… Args&gt;<br>  iterator emplace (const_iterator position, Args&amp;&amp;… args);</p>
 <p>Construct and insert element</p>
 <p>The container is extended by inserting a new element at <em>position</em>. This new element is constructed in place using <em>args</em> as the arguments for its construction.  </p>
 <p>通过在指定位置插入一个新的元素以扩展容器，新的元素的值使用参数args传递给元素的构造器构造。  </p>
-<p>This effectively increases the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/deque::size">size</a> by one.</p>
+<p>This effectively increases the container <a href="http://www.cplusplus.com/deque::size">size</a> by one.</p>
 <p>这是一种高效的增加容器大小的方法。  </p>
-<p>Double-ended queues are designed to be efficient performing insertions (and removals) from either the end or the beginning of the sequence. Insertions on other positions are usually less efficient than in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/list">list</a> or <a target="_blank" rel="noopener" href="http://www.cplusplus.com/forward_list">forward_list</a> containers. See <a target="_blank" rel="noopener" href="http://www.cplusplus.com/deque::emplace_front">emplace_front</a> and <a target="_blank" rel="noopener" href="http://www.cplusplus.com/deque::emplace_back">emplace_back</a> for member functions that extend the container directly at the beginning or at the end.</p>
+<p>Double-ended queues are designed to be efficient performing insertions (and removals) from either the end or the beginning of the sequence. Insertions on other positions are usually less efficient than in <a href="http://www.cplusplus.com/list">list</a> or <a href="http://www.cplusplus.com/forward_list">forward_list</a> containers. See <a href="http://www.cplusplus.com/deque::emplace_front">emplace_front</a> and <a href="http://www.cplusplus.com/deque::emplace_back">emplace_back</a> for member functions that extend the container directly at the beginning or at the end.</p>
 <p>双端队列设计是为了能高效地在开头以及结尾插入以及删除元素的序列，在其他位置插入元素通常表现比list以及forward_list更差。</p>
-<p>The element is constructed in-place by calling <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> with <em>args</em> forwarded.</p>
+<p>The element is constructed in-place by calling <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> with <em>args</em> forwarded.</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>position</p>
 <p>Position in the container where the new element is inserted.  </p>
-<p>Member type const_iterator is a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to a constant element.</p>
+<p>Member type const_iterator is a <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to a constant element.</p>
 <p>新元素插入的位置。</p>
 <p>args</p>
 <p>Arguments forwarded to construct the new element.</p>
 <p>构造新元素的参数。  </p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator that points to the newly emplaced element.  </p>
 <p>返回插入新元素的迭代器。</p>
-<p>Member type iterator is a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to an element.  </p>
+<p>Member type iterator is a <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to an element.  </p>
 <p>迭代器属于随机访问迭代器。</p>
-<p>The storage for the new element is allocated using allocator_traits&lt;allocator_type&gt;::construct(), which may throw exceptions on failure (for the default <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).  </p>
+<p>The storage for the new element is allocated using allocator_traits&lt;allocator_type&gt;::construct(), which may throw exceptions on failure (for the default <a href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).  </p>
 <p>如果发生了重分配，将使用容器的分配器进行内存分配，这可能会抛出异常。（例如allocator这个默认的分配器在请求失败时会抛出bad_alloc异常）  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// deque::emplace</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;deque&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::deque&lt;int&gt; mydeque = &#123;10,20,30&#125;;</span><br><span class="line"></span><br><span class="line">  auto it = mydeque.emplace ( mydeque.begin()+1, 100 );</span><br><span class="line">  mydeque.emplace ( it, 200 );</span><br><span class="line">  mydeque.emplace ( mydeque.end(), 300 );</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;mydeque contains:&quot;;</span><br><span class="line">  for (auto&amp; x: mydeque)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; x;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/deque/deque/emplace/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/deque/deque/emplace/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>mydeque contains: 10 200 100 20 30 300 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Depending on the particular library implemention, up to linear in the number of elements between <em>position</em> and one of the ends of the<a target="_blank" rel="noopener" href="http://www.cplusplus.com/deque">deque</a>.</p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Depending on the particular library implemention, up to linear in the number of elements between <em>position</em> and one of the ends of the<a href="http://www.cplusplus.com/deque">deque</a>.</p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>If the insertion happens at the beginning or the end of the sequence, all iterators related to this container are invalidated, but pointers and references remain valid, referring to the same elements they were referring to before the call.</p>
-<p>If the insertion happens anywhere else in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/deque">deque</a>, all iterators, pointers and references related to this container are invalidated.  </p>
+<p>If the insertion happens anywhere else in the <a href="http://www.cplusplus.com/deque">deque</a>, all iterators, pointers and references related to this container are invalidated.  </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is modified.<br>If the insertion happens at the beginning or the end of the sequence, no contained elements are accessed (although see <em>iterator validity</em> above).<br>If it happens anywhere else, it is not safe to concurrently access elements.  </p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If <em>position</em> is <a target="_blank" rel="noopener" href="http://www.cplusplus.com/deque::begin">begin</a> or <a target="_blank" rel="noopener" href="http://www.cplusplus.com/deque::end">end</a>, there are no changes in the container in case of exception (strong guarantee).<br>Otherwise, the container is guaranteed to end in a valid state (basic guarantee).<br>If <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments, or if <em>position</em> is not valid, it causes <em>undefined behavior</em>.  </p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If <em>position</em> is <a href="http://www.cplusplus.com/deque::begin">begin</a> or <a href="http://www.cplusplus.com/deque::end">end</a>, there are no changes in the container in case of exception (strong guarantee).<br>Otherwise, the container is guaranteed to end in a valid state (basic guarantee).<br>If <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments, or if <em>position</em> is not valid, it causes <em>undefined behavior</em>.  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>//今后的翻译将以简洁为主，翻译其主要意思，一些重复率太高的也将不再翻译，只翻译重要的部分。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#101;&#x72;&#103;&#117;&#x61;&#x6e;&#103;&#x40;&#103;&#109;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#x63;&#x6f;&#100;&#101;&#x72;&#103;&#117;&#x61;&#x6e;&#103;&#x40;&#103;&#109;&#97;&#x69;&#108;&#46;&#x63;&#111;&#109;</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
+<p>Email:<a href="mailto:&#99;&#111;&#100;&#x65;&#x72;&#x67;&#x75;&#x61;&#110;&#103;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#109;">&#99;&#111;&#100;&#x65;&#x72;&#x67;&#x75;&#x61;&#110;&#103;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#109;</a></p>
 <p>2014-9-1</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38979865">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38979865">原文链接</a></p>
 
     
 
@@ -476,30 +476,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLdeque的emplace方法（12）" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLdeque的emplace方法（12）" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

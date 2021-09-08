@@ -247,31 +247,31 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的cend方法(9)</p>
-<p>原文来自于:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/cend/">http://www.cplusplus.com/reference/vector/vector/cend/</a></p>
+<p>原文来自于:<a href="http://www.cplusplus.com/reference/vector/vector/cend/">http://www.cplusplus.com/reference/vector/vector/cend/</a></p>
 <p>其实这跟end方法差不了多少，只不过这个iterator是有const属性。</p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-cend"><a href="#std-vector-cend" class="headerlink" title="std::vector::cend"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::cend</h1><p>const_iterator cend() const noexcept;</p>
+<h1 id="std-vector-cend"><a href="#std-vector-cend" class="headerlink" title="std::vector::cend"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::cend</h1><p>const_iterator cend() const noexcept;</p>
 <p>Return const_iterator to end</p>
 <p>Returns a const_iterator pointing to the <em>past-the-end</em> element in the container.  </p>
 <p>返回一个具有const属性的iterator指向超尾元素。</p>
-<p>A const_iterator is an iterator that points to const content. This iterator can be increased and decreased (unless it is itself also const), just like the iterator returned by <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">vector::end</a>, but it cannot be used to modify the contents it points to, even if the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> object is not itself const.  </p>
+<p>A const_iterator is an iterator that points to const content. This iterator can be increased and decreased (unless it is itself also const), just like the iterator returned by <a href="http://www.cplusplus.com/vector::end">vector::end</a>, but it cannot be used to modify the contents it points to, even if the <a href="http://www.cplusplus.com/vector">vector</a> object is not itself const.  </p>
 <p>一个const_iterator是一种类似于指向常量的迭代器，他们可以被递增或是递减（除非这个iterator本身是常量才不能这样），这就像和end()返回的iterator一样，只是cend()返回的迭代器不能用于修改该元素而已，甚至vector本身并不是const属性，该方法返回的iterator也是不能用于修改元素的.  </p>
-<p>If the container is <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::empty">empty</a>, this function returns the same as <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::cbegin">vector::cbegin</a>.  </p>
+<p>If the container is <a href="http://www.cplusplus.com/vector::empty">empty</a>, this function returns the same as <a href="http://www.cplusplus.com/vector::cbegin">vector::cbegin</a>.  </p>
 <p>如果容器为空，这个返回值跟cbegin（）是一样的。</p>
 <p>The value returned shall not be dereferenced.  </p>
 <p>该方法得到的iterator（除非递递减之后）不应该被解除引用。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
 <h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>A const_iterator to the element past the end of the sequence.  </p>
 <p>返回值为一个const_iterator指向序列的超尾元素。</p>
-<p>Member type const_iterator is a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to a const element.  </p>
+<p>Member type const_iterator is a <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to a const element.  </p>
 <p>返回的iterator属于随机访问迭代器。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// vector::cbegin/cend</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector = &#123;10,20,30,40,50&#125;;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line"></span><br><span class="line">  for (auto it = myvector.cbegin(); it != myvector.cend(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/cend/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/cend/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector contains: 10 20 30 40 50 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
@@ -282,10 +282,10 @@
 <p>该方法不会抛出异常。</p>
 <p>利用复制构造函数或者赋值运算得到该iterator的拷贝也不会抛出异常。</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-11</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38511677">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38511677">原文链接</a></p>
 
     
 
@@ -468,30 +468,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLvector中的cend方法(9)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLvector中的cend方法(9)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

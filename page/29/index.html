@@ -196,6 +196,13 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <script src="/lib/oauthcallback.browser.js"></script>
+  
+  <script>
+    Oauthcallback();
+  </script>
+
 
   
     <article id="post-stlvector中的clear方法（18）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -228,24 +235,24 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的clear方法（18）</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/clear/">http://www.cplusplus.com/reference/vector/vector/clear/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/clear/">http://www.cplusplus.com/reference/vector/vector/clear/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-clear"><a href="#std-vector-clear" class="headerlink" title="std::vector::clear"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::clear</h1><ul>
+<h1 id="std-vector-clear"><a href="#std-vector-clear" class="headerlink" title="std::vector::clear"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::clear</h1><ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
 <p>void clear() noexcept;</p>
 <p>Clear content</p>
-<p>Removes all elements from the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> (which are destroyed), leaving the container with a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> of 0.</p>
+<p>Removes all elements from the <a href="http://www.cplusplus.com/vector">vector</a> (which are destroyed), leaving the container with a <a href="http://www.cplusplus.com/vector::size">size</a> of 0.</p>
 <p>移除vector内所有元素（并销毁他们）,使容器大小为变为0（size而不是capacity）。</p>
 <p>例子：</p>
 <p>#include <iostream><br>#include <vector><br>using namespace std;<br>int main()<br>{<br>vector<int> vi={10,20,30};<br>cout&lt;&lt;”size=”&lt;&lt;vi.size()&lt;&lt;endl;<br>cout&lt;&lt;”capacity=”&lt;&lt;vi.capacity()&lt;&lt;endl;<br>vi.clear();<br>cout&lt;&lt;”size=”&lt;&lt;vi.size()&lt;&lt;endl;<br>cout&lt;&lt;”capacity=”&lt;&lt;vi.capacity()&lt;&lt;endl;<br>cout&lt;&lt;”vi[1]=”&lt;&lt;vi[1]&lt;&lt;endl;</p>
 <p>}</p>
 <p>运行结果:</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014956_32590178257477.jpg"><br>发现数据还是没有被销毁阿。。。</p>
-<p>A reallocation is not guaranteed to happen, and the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::capacity">vector capacity</a> is not guaranteed to change due to calling this function. A typical alternative that forces a reallocation is to use <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::swap">swap</a>:  </p>
+<p>A reallocation is not guaranteed to happen, and the <a href="http://www.cplusplus.com/vector::capacity">vector capacity</a> is not guaranteed to change due to calling this function. A typical alternative that forces a reallocation is to use <a href="http://www.cplusplus.com/vector::swap">swap</a>:  </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;T&gt;().swap(x);   // clear x reallocating </span><br></pre></td></tr></table></figure>
 
 <p> </p>
@@ -256,10 +263,10 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// clearing vectors</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line">  myvector.push_back (100);</span><br><span class="line">  myvector.push_back (200);</span><br><span class="line">  myvector.push_back (300);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (unsigned i=0; i&lt;myvector.size(); i++)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; myvector[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  myvector.clear();</span><br><span class="line">  myvector.push_back (1101);</span><br><span class="line">  myvector.push_back (2202);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (unsigned i=0; i&lt;myvector.size(); i++)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; myvector[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/clear/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/clear/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector contains: 100 200 300<br>myvector contains: 1101 2202 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> (destructions).<br>This may be optimized to <em>constant complexity</em> for <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_trivially_destructible">trivially-destructible types</a></em> (such as scalar or PODs), where elements need not be destroyed.  </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in <a href="http://www.cplusplus.com/vector::size">size</a> (destructions).<br>This may be optimized to <em>constant complexity</em> for <em><a href="http://www.cplusplus.com/is_trivially_destructible">trivially-destructible types</a></em> (such as scalar or PODs), where elements need not be destroyed.  </p>
 <p>复杂度和其大小线性相关（析构）</p>
 <p>最优复杂度可能是常量时间复杂度，因为可能其中的元素不需要析构。</p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>All iterators, pointers and references related to this container are invalidated.  </p>
@@ -274,10 +281,10 @@
 <h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> this member function never throws exceptions.</p>
 <p>该成员方法不会抛出异常。</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-15</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38583093">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38583093">原文链接</a></p>
 
     
 
@@ -369,19 +376,19 @@
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-crbegin"><a href="#std-vector-crbegin" class="headerlink" title="std::vector::crbegin"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::crbegin</h1><p>const_reverse_iterator crbegin() const noexcept;</p>
+<h1 id="std-vector-crbegin"><a href="#std-vector-crbegin" class="headerlink" title="std::vector::crbegin"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::crbegin</h1><p>const_reverse_iterator crbegin() const noexcept;</p>
 <p>Return const_reverse_iterator to reverse beginning</p>
 <p>Returns a const_reverse_iterator pointing to the last element in the container (i.e., its <em>reverse beginning</em>).  </p>
 <p>该函数返回一个具有const属性的reverse_iterator，指向该容器的最后一个元素。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
 <h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>A const_reverse_iterator to the <em>reverse beginning</em> of the sequence.  </p>
 <p>返回值是一个具有const属性的指向序列反向开头的反向迭代器。</p>
-<p>Member type const_reverse_iterator is a reverse <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to a const element (see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector#types">vector member types</a>).<br>返回值的类型属于反向的随机访问迭代器类型。  </p>
+<p>Member type const_reverse_iterator is a reverse <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to a const element (see <a href="http://www.cplusplus.com/vector#types">vector member types</a>).<br>返回值的类型属于反向的随机访问迭代器类型。  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// vector::crbegin/crend</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector = &#123;1,2,3,4,5&#125;;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector backwards:&quot;;</span><br><span class="line">  for (auto rit = myvector.crbegin(); rit != myvector.crend(); ++rit)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *rit;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/crbegin/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/crbegin/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector backwards: 5 4 3 2 1 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
@@ -394,10 +401,10 @@
 <p>该方法不会抛出异常。</p>
 <p>利用复制构造函数或者赋值运算得到该iterator的拷贝也不会抛出异常。</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-11</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38486373">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38486373">原文链接</a></p>
 
     
 
@@ -484,24 +491,24 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的crend()方法（11）</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/crend/">http://www.cplusplus.com/reference/vector/vector/crend/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/crend/">http://www.cplusplus.com/reference/vector/vector/crend/</a></p>
 <p>其实crend=cend+rend的特性组合。</p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-crend"><a href="#std-vector-crend" class="headerlink" title="std::vector::crend"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::crend</h1><p>const_reverse_iterator crend() const noexcept;</p>
+<h1 id="std-vector-crend"><a href="#std-vector-crend" class="headerlink" title="std::vector::crend"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::crend</h1><p>const_reverse_iterator crend() const noexcept;</p>
 <p>Return const_reverse_iterator to reverse end</p>
 <p>Returns a const_reverse_iterator pointing to the theoretical element preceding the first element in the container (which is considered its_reverse end_).<br>返回一个const_reverse_iterator（具有const属性的reverse_iterator）指向假设存在于一个倒序容器的最后一个位置后的超尾元素。（超尾元素本身并不是实际存在的）  </p>
 <h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
 <h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>A const_reverse_iterator to the <em>reverse end</em> of the sequence.</p>
 <p>返回一个const_reverse_iterator指向倒序序列的尾部。  </p>
-<p>Member type const_reverse_iterator is a reverse <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to a const element (see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector#types">vector member types</a>).</p>
+<p>Member type const_reverse_iterator is a reverse <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to a const element (see <a href="http://www.cplusplus.com/vector#types">vector member types</a>).</p>
 <p>返回的迭代器属于随机访问迭代器。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// vector::crbegin/crend</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector = &#123;1,2,3,4,5&#125;;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector backwards:&quot;;</span><br><span class="line">  for (auto rit = myvector.crbegin(); rit != myvector.crend(); ++rit)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *rit;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/crend/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/crend/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector backwards: 5 4 3 2 1 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
@@ -514,10 +521,10 @@
 <p>该方法不会抛出异常。</p>
 <p>利用复制构造函数或者赋值运算得到该iterator的拷贝也不会抛出异常。</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-12</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38516395">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38516395">原文链接</a></p>
 
     
 
@@ -604,15 +611,15 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的data方法(21)</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/data/">http://www.cplusplus.com/reference/vector/vector/data/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/data/">http://www.cplusplus.com/reference/vector/vector/data/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-data"><a href="#std-vector-data" class="headerlink" title="std::vector::data"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::data</h1><p> value_type* data() noexcept;<br>const value_type* data() const noexcept;</p>
+<h1 id="std-vector-data"><a href="#std-vector-data" class="headerlink" title="std::vector::data"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::data</h1><p> value_type* data() noexcept;<br>const value_type* data() const noexcept;</p>
 <p>Access data</p>
-<p>Returns a direct pointer to the memory array used internally by the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> to store its owned elements.</p>
+<p>Returns a direct pointer to the memory array used internally by the <a href="http://www.cplusplus.com/vector">vector</a> to store its owned elements.</p>
 <p>返回一个直接指向内存中存储vector元素位置的指针。</p>
-<p>Because elements in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> are guaranteed to be stored in contiguous storage locations in the same order as represented by the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>, the pointer retrieved can be offset to access any element in the array.</p>
+<p>Because elements in the <a href="http://www.cplusplus.com/vector">vector</a> are guaranteed to be stored in contiguous storage locations in the same order as represented by the <a href="http://www.cplusplus.com/vector">vector</a>, the pointer retrieved can be offset to access any element in the array.</p>
 <p>因为vector里面的元素都是顺序连续存放的，该指针可以通过偏移量来访问数组内的所有元素。</p>
 <p>#include <iostream><br>#include <vector><br>using namespace std;<br>int main()<br>{<br>vector<int> vi={1,20,30};<br>cout&lt;&lt;”vi.capacity=”&lt;&lt;vi.capacity()&lt;&lt;endl;<br>cout&lt;&lt;”vi.data()=”&lt;&lt;vi.data()&lt;&lt;endl;<br>auto *p=vi.data();<br>cout&lt;&lt;”p=”&lt;&lt;p&lt;&lt;endl;<br>cout&lt;&lt;”*p=”&lt;&lt;*p&lt;&lt;endl;<br>cout&lt;&lt;”*(p+2)=”&lt;&lt;*(p+2)&lt;&lt;endl;<br>cout&lt;&lt;”*(p+10)=”&lt;&lt;*(p+10)&lt;&lt;endl;<br>cout&lt;&lt;”vi.capacity=”&lt;&lt;vi.capacity()&lt;&lt;endl;</p>
 <p>}</p>
@@ -620,17 +627,17 @@
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014939_8588497150820.jpg"><br>要注意的是，即便是超出了范围好像也不会报错！使用gdb调试才发现会直接访问相应的内存，但不会出现错误。</p>
 <p>Parameters</p>
 <p>none  </p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>A pointer to the first element in the array used internally by the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>.  </p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>A pointer to the first element in the array used internally by the <a href="http://www.cplusplus.com/vector">vector</a>.  </p>
 <p>返回一个指针指向数组第一个元素所在的内存。</p>
-<p>If the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> object is const-qualified, the function returns a pointer to const value_type. Otherwise, it returns a pointer to value_type.  </p>
+<p>If the <a href="http://www.cplusplus.com/vector">vector</a> object is const-qualified, the function returns a pointer to const value_type. Otherwise, it returns a pointer to value_type.  </p>
 <p>如果vector是const的，那么返回的是一个const指针，否则，返回普通的指针。</p>
-<p>Member type value_type is the type of the elements in the container, defined in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> as an alias of the first class template parameter (T).</p>
+<p>Member type value_type is the type of the elements in the container, defined in <a href="http://www.cplusplus.com/vector">vector</a> as an alias of the first class template parameter (T).</p>
 <p>value_type是容器内的元素类型，由vector模版参数决定。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// vector::data</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector (5);</span><br><span class="line"></span><br><span class="line">  int* p = myvector.data();</span><br><span class="line"></span><br><span class="line">  *p = 10;</span><br><span class="line">  ++p;</span><br><span class="line">  *p = 20;</span><br><span class="line">  p[2] = 100;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (unsigned i=0; i&lt;myvector.size(); ++i)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; myvector[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/data/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/data/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector contains: 10 20 0 100 0 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
@@ -649,10 +656,10 @@
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014942_2167436550862.jpg">  </p>
 <p>可以看到,p所指针的内存0x0无法访问!</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-16</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38610645">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38610645">原文链接</a></p>
 
     
 
@@ -739,19 +746,19 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的emplace_back方法（24）</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/emplace_back/">http://www.cplusplus.com/reference/vector/vector/emplace_back/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/emplace_back/">http://www.cplusplus.com/reference/vector/vector/emplace_back/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-emplace-back"><a href="#std-vector-emplace-back" class="headerlink" title="std::vector::emplace_back"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::emplace_back</h1><p>template &lt;class… Args&gt;<br>  void emplace_back (Args&amp;&amp;… args);</p>
+<h1 id="std-vector-emplace-back"><a href="#std-vector-emplace-back" class="headerlink" title="std::vector::emplace_back"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::emplace_back</h1><p>template &lt;class… Args&gt;<br>  void emplace_back (Args&amp;&amp;… args);</p>
 <p>Construct and insert element at the end</p>
-<p>Inserts a new element at the end of the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>, right after its current last element. This new element is constructed in place using <em>args</em> as the arguments for its constructor.  </p>
+<p>Inserts a new element at the end of the <a href="http://www.cplusplus.com/vector">vector</a>, right after its current last element. This new element is constructed in place using <em>args</em> as the arguments for its constructor.  </p>
 <p>在vector的结尾插入一个新的元素，位置为当前最后一个元素的右边，元素的值使用args作为参数传递给其构造函数构造。</p>
-<p>This effectively increases the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> by one, which causes an automatic reallocation of the allocated storage space if -and only if- the new vector <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> surpasses the current vector <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::capacity">capacity</a>.</p>
+<p>This effectively increases the container <a href="http://www.cplusplus.com/vector::size">size</a> by one, which causes an automatic reallocation of the allocated storage space if -and only if- the new vector <a href="http://www.cplusplus.com/vector::size">size</a> surpasses the current vector <a href="http://www.cplusplus.com/vector::capacity">capacity</a>.</p>
 <p>该方法可以快速有效率地在数组size范围内增长元素，除非当增长的元素个数大小超出了vector的ccapacity的时候才会发生重分配。  </p>
-<p>The element is constructed in-place by calling <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> with <em>args</em> forwarded.</p>
-<p>元素由调用<a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> 以及参数args构造。</p>
-<p>A similar member function exists, <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::push_back">push_back</a>, which either copies or moves an existing object into the container.</p>
+<p>The element is constructed in-place by calling <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> with <em>args</em> forwarded.</p>
+<p>元素由调用<a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> 以及参数args构造。</p>
+<p>A similar member function exists, <a href="http://www.cplusplus.com/vector::push_back">push_back</a>, which either copies or moves an existing object into the container.</p>
 <p>一个相似的方法是push_back，一样是通过拷贝或者移动一个已经存在（这也是两者最大的区别，push_back的参数对象必须是已经存在的对象）的对象到容器.</p>
 <p>例子:</p>
 <p>#include <iostream><br>#include <vector><br>using namespace std;<br>class text{<br>private:<br>string str;<br>public:<br>text(string s):str(s){<br>}<br>void show()const{<br>cout&lt;&lt;str&lt;&lt;endl;<br>}</p>
@@ -768,20 +775,20 @@
 <p>Arguments forwarded to construct the new element.</p>
 <p>用于构造新元素的参数。  </p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none.  </p>
-<p>If a reallocation happens, the storage is allocated using the container’s <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).</p>
+<p>If a reallocation happens, the storage is allocated using the container’s <a href="http://www.cplusplus.com/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).</p>
 <p>如果发生了重分配，将使用容器的分配器进行内存分配，这可能会抛出异常。（例如allocator这个默认的分配器在请求失败时会抛出bad_alloc异常）</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// vector::emplace_back</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector = &#123;10,20,30&#125;;</span><br><span class="line"></span><br><span class="line">  myvector.emplace_back (100);</span><br><span class="line">  myvector.emplace_back (200);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (auto&amp; x: myvector)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; x;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/emplace_back/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/emplace_back/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector contains: 10 20 30 100 200 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant (amortized time, reallocation may happen).  </p>
-<p>If a reallocation happens, the reallocation is itself up to linear in the entire <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a>.<br>如果发生重分配，将额外增加与整个数组大小线性相关的时间复杂度。  </p>
+<p>If a reallocation happens, the reallocation is itself up to linear in the entire <a href="http://www.cplusplus.com/vector::size">size</a>.<br>如果发生重分配，将额外增加与整个数组大小线性相关的时间复杂度。  </p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>If a reallocation happens, all iterators, pointers and references related to this container are invalidated.</p>
 <p>如果发生重分配，之前所获得的所有迭代器，指针以及引用都将失效。  </p>
-<p>Otherwise, only the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">end</a> iterator is invalidated, and all other iterators, pointers and references to elements are guaranteed to keep referring to the same elements they were referring to before the call.</p>
+<p>Otherwise, only the <a href="http://www.cplusplus.com/vector::end">end</a> iterator is invalidated, and all other iterators, pointers and references to elements are guaranteed to keep referring to the same elements they were referring to before the call.</p>
 <p>否则，只有end得到的迭代器将失效，其他的迭代器，指针以及引用依然有效。</p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is modified.  </p>
 <p>容器将被访问。</p>
@@ -795,13 +802,13 @@
 <p>如果发生重分配，并且元素的拷贝或者移动构造不会抛出异常，发生异常的规则也是一样的。  </p>
 <p>Otherwise, the container is guaranteed to end in a valid state (basic guarantee).</p>
 <p>否则，容器保证最后依旧有效  </p>
-<p>If <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments, it causes <em>undefined behavior</em>.</p>
-<p>如果<a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a>不支持该元素，将导致未知的行为。</p>
+<p>If <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments, it causes <em>undefined behavior</em>.</p>
+<p>如果<a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a>不支持该元素，将导致未知的行为。</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-17</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38636715">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38636715">原文链接</a></p>
 
     
 
@@ -888,27 +895,27 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的emplace方法(23)</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/emplace/">http://www.cplusplus.com/reference/vector/vector/emplace/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/emplace/">http://www.cplusplus.com/reference/vector/vector/emplace/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-emplace"><a href="#std-vector-emplace" class="headerlink" title="std::vector::emplace"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::emplace</h1><p>template &lt;class… Args&gt;<br>iterator emplace (const_iterator position, Args&amp;&amp;… args);</p>
+<h1 id="std-vector-emplace"><a href="#std-vector-emplace" class="headerlink" title="std::vector::emplace"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::emplace</h1><p>template &lt;class… Args&gt;<br>iterator emplace (const_iterator position, Args&amp;&amp;… args);</p>
 <p>Construct and insert element</p>
 <p>The container is extended by inserting a new element at <em>position</em>. This new element is constructed in place using <em>args</em> as the arguments for its construction.  </p>
 <p>通过在指定位置插入一个新的元素以扩展容器，新的元素的值为args或者是元素根据args的值构造。</p>
-<p>This effectively increases the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> by one.  </p>
+<p>This effectively increases the container <a href="http://www.cplusplus.com/vector::size">size</a> by one.  </p>
 <p>这是一种高效的增加容器大小的方法。</p>
-<p>An automatic reallocation of the allocated storage space happens if -and only if- the new vector <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> surpasses the current vector <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::capacity">capacity</a>.</p>
+<p>An automatic reallocation of the allocated storage space happens if -and only if- the new vector <a href="http://www.cplusplus.com/vector::size">size</a> surpasses the current vector <a href="http://www.cplusplus.com/vector::capacity">capacity</a>.</p>
 <p>如果新的数组的大小超过了现在数组的capacity,那么将会自动发生重分配。</p>
-<p>Because vectors use an array as their underlying storage, inserting elements in positions other than the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">vector end</a> causes the container to shift all the elements that were after <em>position</em> by one to their new positions. This is generally an inefficient operation compared to the one performed by other kinds of sequence containers (such as <a target="_blank" rel="noopener" href="http://www.cplusplus.com/list">list</a> or <a target="_blank" rel="noopener" href="http://www.cplusplus.com/forward_list">forward_list</a>). See <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::emplace_back">emplace_back</a> for a member function that extends the container directly at the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">end</a>.</p>
+<p>Because vectors use an array as their underlying storage, inserting elements in positions other than the <a href="http://www.cplusplus.com/vector::end">vector end</a> causes the container to shift all the elements that were after <em>position</em> by one to their new positions. This is generally an inefficient operation compared to the one performed by other kinds of sequence containers (such as <a href="http://www.cplusplus.com/list">list</a> or <a href="http://www.cplusplus.com/forward_list">forward_list</a>). See <a href="http://www.cplusplus.com/vector::emplace_back">emplace_back</a> for a member function that extends the container directly at the <a href="http://www.cplusplus.com/vector::end">end</a>.</p>
 <p>因为vector是使用array作为底层的存储容器，在指定位置插入元素代表着容器将要移动所有position后面的元素到一个新的位置。这通常都是很低效率的事情（相对于另一种更高效的插入序列容器，例如list或者forward_list），emplace_back则是一种直接在数组最后位置扩展的方法。</p>
-<p>The element is constructed in-place by calling <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> with <em>args</em> forwarded.  </p>
-<p>元素是使用<a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a>以及args来构造。</p>
-<p>A similar member function exists, <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::insert">insert</a>, which either copies or moves existing objects into the container.</p>
+<p>The element is constructed in-place by calling <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> with <em>args</em> forwarded.  </p>
+<p>元素是使用<a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a>以及args来构造。</p>
+<p>A similar member function exists, <a href="http://www.cplusplus.com/vector::insert">insert</a>, which either copies or moves existing objects into the container.</p>
 <p>一个类似的方法是insert，这个则是通过拷贝或者移动存在的对象到容器内。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>position</p>
 <p>Position in the container where the new element is inserted.  </p>
-<p>Member type const_iterator is a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to a const element.</p>
+<p>Member type const_iterator is a <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to a const element.</p>
 <p>新元素插入容器的位置。</p>
 <p>类型为随机访问迭代器。注意是const_iterator.</p>
 <p>args</p>
@@ -922,18 +929,18 @@
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014901_47872349043243.jpg">  </p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator that points to the newly emplaced element.  </p>
 <p>返回值是一个指向新插入的元素的iterator。</p>
-<p>Member type iterator is a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to an element.  </p>
+<p>Member type iterator is a <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to an element.  </p>
 <p>类型为随机访问迭代器。</p>
-<p>If a reallocation happens, the storage is allocated using the container’s <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).</p>
+<p>If a reallocation happens, the storage is allocated using the container’s <a href="http://www.cplusplus.com/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).</p>
 <p>如果发生了重分配，将使用容器的分配器进行内存分配，这可能会抛出异常。（例如allocator这个默认的分配器在请求失败时会抛出bad_alloc异常）  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// vector::emplace</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector = &#123;10,20,30&#125;;</span><br><span class="line"></span><br><span class="line">  auto it = myvector.emplace ( myvector.begin()+1, 100 );</span><br><span class="line">  myvector.emplace ( it, 200 );</span><br><span class="line">  myvector.emplace ( myvector.end(), 300 );</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (auto&amp; x: myvector)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; x;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/emplace/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/emplace/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector contains: 10 200 100 20 30 300 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear on the number of elements after <em>position</em> (moving).<br>与插入位置后面元素的数目线性相关。（因为需要移动后面的元素）<br>If a reallocation happens, the reallocation is itself up to linear in the entire <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a>.  </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear on the number of elements after <em>position</em> (moving).<br>与插入位置后面元素的数目线性相关。（因为需要移动后面的元素）<br>If a reallocation happens, the reallocation is itself up to linear in the entire <a href="http://www.cplusplus.com/vector::size">size</a>.  </p>
 <p>如果发生重分配，重分配过程将导致与整个数组大小的线性时间的复杂度。（复制）</p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>If a reallocation happens, all iterators, pointers and references related to this container are invalidated.</p>
 <p>如果发生重分配，所由的迭代器，指针以及引用都将失效。</p>
@@ -945,19 +952,19 @@
 <p>如果发生重分配，容器内所有元素都将被修改。</p>
 <p>Otherwise, none of the elements before <em>position</em> is accessed, and concurrently accessing or modifying them is safe.</p>
 <p>否则，position之前的元素不会被访问，同时修改以及访问他们都是安全的。</p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If <em>position</em> is <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">end</a>, and no reallocations happen, there are no changes in the container in case of exception (strong guarantee).</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If <em>position</em> is <a href="http://www.cplusplus.com/vector::end">end</a>, and no reallocations happen, there are no changes in the container in case of exception (strong guarantee).</p>
 <p>如果位置为end，并且不发生重分配，发生异常的规则不变。</p>
 <p>If a reallocation happens, the strong guarantee is also given if the type of the elements is either <em>copyable</em> or <em>no-throw moveable</em>.</p>
 <p>如果发生重分配，并且元素的拷贝或者移动构造不会抛出异常，发生异常的规则也是一样的。</p>
 <p>Otherwise, the container is guaranteed to end in a valid state (basic guarantee).</p>
 <p>否则，容器保证最后依旧有效。</p>
-<p>If <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments, or if <em>position</em> is not valid, it causes <em>undefined behavior</em>.</p>
-<p>如果<a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a>不支持该元素，或者position不是有效的，将导致未知的行为。</p>
+<p>If <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments, or if <em>position</em> is not valid, it causes <em>undefined behavior</em>.</p>
+<p>如果<a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a>不支持该元素，或者position不是有效的，将导致未知的行为。</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-17</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38635465">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38635465">原文链接</a></p>
 
     
 
@@ -1044,28 +1051,28 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的empty方法(25)</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/empty/">http://www.cplusplus.com/reference/vector/vector/empty/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/empty/">http://www.cplusplus.com/reference/vector/vector/empty/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-empty"><a href="#std-vector-empty" class="headerlink" title="std::vector::empty"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::empty</h1><ul>
+<h1 id="std-vector-empty"><a href="#std-vector-empty" class="headerlink" title="std::vector::empty"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::empty</h1><ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
 <p>bool empty() const; </p>
 <p>Test whether vector is empty</p>
-<p>Returns whether the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> is empty (i.e. whether its <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> is 0).  </p>
+<p>Returns whether the <a href="http://www.cplusplus.com/vector">vector</a> is empty (i.e. whether its <a href="http://www.cplusplus.com/vector::size">size</a> is 0).  </p>
 <p>测试vector的是否为空(size为0)</p>
-<p>This function does not modify the container in any way. To clear the content of a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>, see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::clear">vector::clear</a>.</p>
+<p>This function does not modify the container in any way. To clear the content of a <a href="http://www.cplusplus.com/vector">vector</a>, see <a href="http://www.cplusplus.com/vector::clear">vector::clear</a>.</p>
 <p>该函数不会以任何的方式修改容器，如果要清空vector的内容，可以使用clear.</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
-<h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>true if the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> is 0, false otherwise.  </p>
+<h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>true if the container <a href="http://www.cplusplus.com/vector::size">size</a> is 0, false otherwise.  </p>
 <p>返回值为true或者false</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// vector::empty</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line">  int sum (0);</span><br><span class="line"></span><br><span class="line">  for (int i=1;i&lt;=10;i++) myvector.push_back(i);</span><br><span class="line"></span><br><span class="line">  while (!myvector.empty())</span><br><span class="line">  &#123;</span><br><span class="line">     sum += myvector.back();</span><br><span class="line">     myvector.pop_back();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;total: &quot; &lt;&lt; sum &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/empty/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/empty/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>The example initializes the content of the vector to a sequence of numbers (form 1 to 10). It then pops the elements one by one until it is empty and calculates their sum.  </p>
 <p>这个例子先将vector初始化为1–10，然后每次删除最后一个元素并将其加到sum中直到数组为空。</p>
 <p>Output:  </p>
@@ -1079,10 +1086,10 @@
 <h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> this member function never throws exceptions.</p>
 <p>该成员方法不会抛出异常。</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-17</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38637327">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38637327">原文链接</a></p>
 
     
 
@@ -1172,30 +1179,30 @@
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-end"><a href="#std-vector-end" class="headerlink" title="std::vector::end"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::end</h1><ul>
+<h1 id="std-vector-end"><a href="#std-vector-end" class="headerlink" title="std::vector::end"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::end</h1><ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
 <p> iterator end() noexcept;<br>const_iterator end() const noexcept; </p>
 <p>Return iterator to end</p>
-<p>Returns an iterator referring to the <em>past-the-end</em> element in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> container.  </p>
+<p>Returns an iterator referring to the <em>past-the-end</em> element in the <a href="http://www.cplusplus.com/vector">vector</a> container.  </p>
 <p>返回一个超尾迭代器指向vector容器最后元素的再下一个元素（这个位置是没有元素存在的）。</p>
-<p>The past-the-end element is the theoretical element that would follow the last element in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>. It does not point to any element, and thus shall not be dereferenced.  </p>
+<p>The past-the-end element is the theoretical element that would follow the last element in the <a href="http://www.cplusplus.com/vector">vector</a>. It does not point to any element, and thus shall not be dereferenced.  </p>
 <p>这个超尾元素是一个假设紧跟容器最后一个元素的下一个位置的元素，但是该超尾迭代器本身是不指向任何元素的，因此不应该被解除引用。</p>
-<p>Because the ranges used by functions of the standard library do not include the element pointed by their closing iterator, this function is often used in combination with <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::begin">vector::begin</a> to specify a range including all the elements in the container.  </p>
+<p>Because the ranges used by functions of the standard library do not include the element pointed by their closing iterator, this function is often used in combination with <a href="http://www.cplusplus.com/vector::begin">vector::begin</a> to specify a range including all the elements in the container.  </p>
 <p>因为标准库里面用于指示范围的函数并没有包含被超尾迭代器所指向的元素，这个函数通常联合begin一起来使用用于指出容器范围内的所有元素。区间范围为[begin,end)</p>
-<p>If the container is <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::empty">empty</a>, this function returns the same as <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::begin">vector::begin</a>.<br>如果容器是空的，那么这个函数的返回值和begin是一样的。  </p>
+<p>If the container is <a href="http://www.cplusplus.com/vector::empty">empty</a>, this function returns the same as <a href="http://www.cplusplus.com/vector::begin">vector::begin</a>.<br>如果容器是空的，那么这个函数的返回值和begin是一样的。  </p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
 <h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>An iterator to the element past the end of the sequence.<br>返回值是一个超尾迭代器，指向超出序列范围外的一个位置。  </p>
-<p>If the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> object is const-qualified, the function returns a const_iterator. Otherwise, it returns an iterator.</p>
+<p>If the <a href="http://www.cplusplus.com/vector">vector</a> object is const-qualified, the function returns a const_iterator. Otherwise, it returns an iterator.</p>
 <p>如果vector对象本身具有const属性，那么将返回一个const_iterator,否则，返回一个普通的iterator.</p>
-<p>Member types iterator and const_iterator are <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types (pointing to an element and to a const element, respectively).  </p>
+<p>Member types iterator and const_iterator are <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types (pointing to an element and to a const element, respectively).  </p>
 <p>该迭代器的类型属于随机访问迭代器类型。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// vector::begin/end</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line">  for (int i=1; i&lt;=5; i++) myvector.push_back(i);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (std::vector&lt;int&gt;::iterator it = myvector.begin() ; it != myvector.end(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/end/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/end/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector contains: 1 2 3 4 5 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
@@ -1209,10 +1216,10 @@
 <p>该方法不会抛出异常  </p>
 <p>利用复制构造器或者是赋值运算符得到的该iterator也不会抛出异常。</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-11</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38486629">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38486629">原文链接</a></p>
 
     
 
@@ -1299,17 +1306,17 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的erase方法（26）</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/erase/">http://www.cplusplus.com/reference/vector/vector/erase/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/erase/">http://www.cplusplus.com/reference/vector/vector/erase/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-erase"><a href="#std-vector-erase" class="headerlink" title="std::vector::erase"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::erase</h1><ul>
+<h1 id="std-vector-erase"><a href="#std-vector-erase" class="headerlink" title="std::vector::erase"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::erase</h1><ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
 <p>iterator erase (const_iterator position);<br>iterator erase (const_iterator first, const_iterator last); </p>
 <p>Erase elements</p>
-<p>Removes from the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> either a single element (<em>position</em>) or a range of elements ([first,last)).</p>
+<p>Removes from the <a href="http://www.cplusplus.com/vector">vector</a> either a single element (<em>position</em>) or a range of elements ([first,last)).</p>
 <p>从vector中移除单一（position）或者是指定范围内（[first,last））的元素。</p>
 <p>指定单一位置例子:</p>
 <p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi={11,22,33};<br>cout&lt;&lt;”vector=”;<br>for_each(vi.begin(),vi.end(),[](int m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;<br>auto it=vi.begin();<br>vi.erase(it);<br>cout&lt;&lt;”after vi.erase(vi.begin()) vector=”;<br>for_each(vi.begin(),vi.end(),[](int m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;</p>
@@ -1320,32 +1327,32 @@
 <p>}</p>
 <p>结果截图:</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014920_2671238044655.jpg">  </p>
-<p>This effectively reduces the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> by the number of elements removed, which are destroyed.</p>
+<p>This effectively reduces the container <a href="http://www.cplusplus.com/vector::size">size</a> by the number of elements removed, which are destroyed.</p>
 <p>这个方法可以高效地删除固定数目的元素，这些元素将被销毁。</p>
-<p>Because vectors use an array as their underlying storage, erasing elements in positions other than the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">vector end</a> causes the container to relocate all the elements after the segment erased to their new positions. This is generally an inefficient operation compared to the one performed for the same operation by other kinds of sequence containers (such as <a target="_blank" rel="noopener" href="http://www.cplusplus.com/list">list</a> or <a target="_blank" rel="noopener" href="http://www.cplusplus.com/forward_list">forward_list</a>).</p>
+<p>Because vectors use an array as their underlying storage, erasing elements in positions other than the <a href="http://www.cplusplus.com/vector::end">vector end</a> causes the container to relocate all the elements after the segment erased to their new positions. This is generally an inefficient operation compared to the one performed for the same operation by other kinds of sequence containers (such as <a href="http://www.cplusplus.com/list">list</a> or <a href="http://www.cplusplus.com/forward_list">forward_list</a>).</p>
 <p>因为vector底层的存储是采用array，擦除指定位置的元素会造成容器其他的在被擦除后面的元素要重新迁移到新的位置。这通常会导致很大的开销（相对于另一个更好的序列解决方案，例如list,forward_list）。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>position</p>
-<p>Iterator pointing to a single element to be removed from the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>.  </p>
-<p>Member types iterator and const_iterator are <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types that point to elements.</p>
+<p>Iterator pointing to a single element to be removed from the <a href="http://www.cplusplus.com/vector">vector</a>.  </p>
+<p>Member types iterator and const_iterator are <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types that point to elements.</p>
 <p>一个指向要被擦除的元素的迭代器。</p>
 <p>类型为随机访问迭代器。</p>
 <p>first, last</p>
-<p>Iterators specifying a range within the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>] to be removed: [first,last). i.e., the range includes all the elements between <em>first</em> and <em>last</em>, including the element pointed by <em>first</em> but not the one pointed by <em>last</em>.  </p>
-<p>Member types iterator and const_iterator are <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types that point to elements。</p>
+<p>Iterators specifying a range within the <a href="http://www.cplusplus.com/vector">vector</a>] to be removed: [first,last). i.e., the range includes all the elements between <em>first</em> and <em>last</em>, including the element pointed by <em>first</em> but not the one pointed by <em>last</em>.  </p>
+<p>Member types iterator and const_iterator are <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types that point to elements。</p>
 <p>指示特定范围内将被移除元素位置的迭代器。该范围包括first到last之间的所有元素，包括first指向的元素，但不包括last指向的元素。</p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator pointing to the new location of the element that followed the last element erased by the function call. This is the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">container end</a> if the operation erased the last element in the sequence.</p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator pointing to the new location of the element that followed the last element erased by the function call. This is the <a href="http://www.cplusplus.com/vector::end">container end</a> if the operation erased the last element in the sequence.</p>
 <p>返回值为一个迭代器，其指向被擦除的最后一个元素的下一个位置的元素。</p>
 <p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi={11,22,33};<br>cout&lt;&lt;”vector=”;<br>for_each(vi.begin(),vi.end(),[](int m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;<br>auto it=vi.erase(vi.begin()+1);<br>cout&lt;&lt;”after erase(vi.begin()+1) /n return is “&lt;&lt;*it&lt;&lt;endl;</p>
 <p>}</p>
 <p>截图:</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014921_21376725601289.jpg"><br>如果被擦除的最后一个元素是整个序列的最后一个元素，那么返回的值为end()迭代器.</p>
-<p>Member type iterator is a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to elements.  </p>
+<p>Member type iterator is a <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to elements.  </p>
 <p>迭代器的类型为随机访问迭代器。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// erasing from vector</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line"></span><br><span class="line">  // set some values (from 1 to 10)</span><br><span class="line">  for (int i=1; i&lt;=10; i++) myvector.push_back(i);</span><br><span class="line"></span><br><span class="line">  // erase the 6th element</span><br><span class="line">  myvector.erase (myvector.begin()+5);</span><br><span class="line"></span><br><span class="line">  // erase the first 3 elements:</span><br><span class="line">  myvector.erase (myvector.begin(),myvector.begin()+3);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (unsigned i=0; i&lt;myvector.size(); ++i)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; myvector[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/erase/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/erase/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector contains: 4 5 7 8 9 10 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear on the number of elements erased (destructions) plus the number of elements after the last element deleted (moving).</p>
@@ -1368,10 +1375,10 @@
 <p>结果截图：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014922_2202869406379.jpg">  </p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-17</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38641813">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38641813">原文链接</a></p>
 
     
 
@@ -1461,27 +1468,27 @@
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-front"><a href="#std-vector-front" class="headerlink" title="std::vector::front"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::front</h1><p> reference front();<br>const_reference front() const; </p>
+<h1 id="std-vector-front"><a href="#std-vector-front" class="headerlink" title="std::vector::front"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::front</h1><p> reference front();<br>const_reference front() const; </p>
 <p>Access first element</p>
 <p>访问第一个元素</p>
-<p>Returns a reference to the first element in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>.</p>
+<p>Returns a reference to the first element in the <a href="http://www.cplusplus.com/vector">vector</a>.</p>
 <p>返回第一个元素的引用。</p>
-<p>Unlike member <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::begin">vector::begin</a>, which returns an iterator to this same element, this function returns a direct reference.</p>
+<p>Unlike member <a href="http://www.cplusplus.com/vector::begin">vector::begin</a>, which returns an iterator to this same element, this function returns a direct reference.</p>
 <p>和begin不一样，begin是返回一个迭代器，而front是返回一个直接引用。</p>
-<p>Calling this function on an <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::empty">empty</a> container causes undefined behavior.</p>
+<p>Calling this function on an <a href="http://www.cplusplus.com/vector::empty">empty</a> container causes undefined behavior.</p>
 <p>对一个空的容器调用该方法将会导致不可预料的结果。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>A reference to the first element in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> container.</p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>A reference to the first element in the <a href="http://www.cplusplus.com/vector">vector</a> container.</p>
 <p>一个指向该vector容器中第一个元素的引用.</p>
-<p>If the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> object is const-qualified, the function returns a const_reference. Otherwise, it returns a reference.</p>
+<p>If the <a href="http://www.cplusplus.com/vector">vector</a> object is const-qualified, the function returns a const_reference. Otherwise, it returns a reference.</p>
 <p>如果该vector是const属性的，那么返回值也将是const属性的，否则，就是返回一个普通的iterator。  </p>
-<p>Member types reference and const_reference are the reference types to the elements of the container (see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector#types">vector member types</a>).  </p>
+<p>Member types reference and const_reference are the reference types to the elements of the container (see <a href="http://www.cplusplus.com/vector#types">vector member types</a>).  </p>
 <p>返回值的类型都是模版元素定义的类型。即元素类型。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// vector::front</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line"></span><br><span class="line">  myvector.push_back(78);</span><br><span class="line">  myvector.push_back(16);</span><br><span class="line"></span><br><span class="line">  // now front equals 78, and back 16</span><br><span class="line"></span><br><span class="line">  myvector.front() -= myvector.back();</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector.front() is now &quot; &lt;&lt; myvector.front() &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/front/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/front/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector.front() is now 62 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
@@ -1490,13 +1497,13 @@
 <p>容器可以被访问（该操作不会修改容器内容）</p>
 <p>The reference returned can be used to access or modify elements. Concurrently accessing or modifying different elements is safe.  </p>
 <p>该引用可以用来访问或者是修改元素，并且他们都是安全的。</p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the container is not <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::empty">empty</a>, the function never throws exceptions (no-throw guarantee).</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the container is not <a href="http://www.cplusplus.com/vector::empty">empty</a>, the function never throws exceptions (no-throw guarantee).</p>
 <p>如果容器非空，该方法不会抛出异常。</p>
 <p>Otherwise, it causes <em>undefined behavior</em>.</p>
 <p>否则，会导致未知的行为！</p>
 <p>//翻译的不好的地方麻烦大家指出来以便修改，谢谢。</p>
-<p>//转载请注明出处<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38458047">http://blog.csdn.net/qq844352155/article/details/38458047</a></p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38458047">原文链接</a></p>
+<p>//转载请注明出处<a href="http://blog.csdn.net/qq844352155/article/details/38458047">http://blog.csdn.net/qq844352155/article/details/38458047</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38458047">原文链接</a></p>
 
     
 

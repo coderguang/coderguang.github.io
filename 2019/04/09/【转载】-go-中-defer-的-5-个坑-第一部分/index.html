@@ -253,7 +253,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>本文只适合想要进阶学习 Golang 的新手阅读，大牛请绕道。</p>
-<h2 id="1-–-defer-nil-函数"><a href="#1-–-defer-nil-函数" class="headerlink" title="#1 – defer nil 函数"></a>#1 – defer nil 函数</h2><p>如果一个延迟函数被赋值为 <code>nil</code> ， 运行时的 <a target="_blank" rel="noopener" href="https://golang.org/ref/spec#Handling_panics"><code>panic</code></a> 异常会发生在外围函数执行结束后而不是 <code>defer</code> 的函数被调用的时候。 例子</p>
+<h2 id="1-–-defer-nil-函数"><a href="#1-–-defer-nil-函数" class="headerlink" title="#1 – defer nil 函数"></a>#1 – defer nil 函数</h2><p>如果一个延迟函数被赋值为 <code>nil</code> ， 运行时的 <a href="https://golang.org/ref/spec#Handling_panics"><code>panic</code></a> 异常会发生在外围函数执行结束后而不是 <code>defer</code> 的函数被调用的时候。 例子</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> run <span class="function"><span class="keyword">func</span><span class="params">()</span> = <span class="title">nil</span></span></span><br><span class="line">  <span class="keyword">defer</span> run()</span><br><span class="line"></span><br><span class="line">  fmt.Println(<span class="string">&quot;runs&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出结果</p>
@@ -263,7 +263,7 @@
 <h2 id="2-–-在循环中使用-defer"><a href="#2-–-在循环中使用-defer" class="headerlink" title="#2 – 在循环中使用 defer"></a>#2 – 在循环中使用 defer</h2><p>切忌在循环中使用 <code>defer</code>，除非你清楚自己在做什么，因为它们的执行结果常常会出人意料。 但是，在某些情况下，在循环中使用 <code>defer</code> 会相当方便，例如将函数中的递归转交给 <code>defer</code>，但这显然已经不是本文应该讲解的内容。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2019/04/110d95683a794d9dc81e35c681e6885c.png"> 在上面的例子中，<code>defer row.Close()</code> 在循环中的延迟函数会在函数结束过后运行，而不是每次 for 循环结束之后。这些延迟函数会不停地堆积到延迟调用栈中，最终可能会导致一些不可预知的问题。</p>
 <h3 id="解决方案-1："><a href="#解决方案-1：" class="headerlink" title="解决方案 #1："></a>解决方案 #1：</h3><p>不使用 <code>defer</code> ，直接在末尾调用。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2019/04/0a6a2cdd383f886cec64af46c7cb66e8.png"></p>
 <h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案 #2:"></a>解决方案 #2:</h3><p>将任务转交给另一个函数然后在里面使用 <code>defer</code>，在下面这种情况下，延迟函数会在每次匿名函数执行结束后执行。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2019/04/75dfb410e15679c8cb2b17f6f0d48eab.png"></p>
-<h3 id="进行基准测试"><a href="#进行基准测试" class="headerlink" title="进行基准测试"></a>进行基准测试</h3><p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2019/04/07978586e47c8709a63e895fbf3c3c7d.jpg"> <a target="_blank" rel="noopener" href="https://play.golang.org/p/GJ7oOMdBwJ">查看代码</a></p>
+<h3 id="进行基准测试"><a href="#进行基准测试" class="headerlink" title="进行基准测试"></a>进行基准测试</h3><p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2019/04/07978586e47c8709a63e895fbf3c3c7d.jpg"> <a href="https://play.golang.org/p/GJ7oOMdBwJ">查看代码</a></p>
 <h2 id="3-–-延迟调用含有闭包的函数"><a href="#3-–-延迟调用含有闭包的函数" class="headerlink" title="#3 – 延迟调用含有闭包的函数"></a>#3 – 延迟调用含有闭包的函数</h2><p>有时出于某种缘由，你想要让那些闭包延迟执行。例如，连接数据库，然后在查询语句执行过后中断与数据库的连接。 例子</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> database <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(db *database)</span> <span class="title">connect</span><span class="params">()</span> <span class="params">(disconnect <span class="keyword">func</span>()</span>)</span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">&quot;connect&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;disconnect&quot;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -293,7 +293,7 @@
 <h3 id="另一个解决方案"><a href="#另一个解决方案" class="headerlink" title="另一个解决方案"></a>另一个解决方案</h3><p>如果你希望在另一个块中使用 <code>defer</code> ，可以使用匿名函数（正如在第二个坑中我们采用的解决方案）。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">      fmt.Println(<span class="string">&quot;func: defer runs&quot;</span>)</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;func: ends&quot;</span>)</span><br><span class="line">  &#125;()</span><br><span class="line"></span><br><span class="line">  fmt.Println(<span class="string">&quot;main: ends&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="5-–-延迟方法的坑"><a href="#5-–-延迟方法的坑" class="headerlink" title="#5 – 延迟方法的坑"></a>#5 – 延迟方法的坑</h2><p>同样，你也可以使用 <code>defer</code> 来延迟 <a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/go-functions-overview-anonymous-closures-higher-order-deferred-concurrent-6799008dde7b#61ec">方法</a> 调用，但也可能出一些岔子。</p>
+<h2 id="5-–-延迟方法的坑"><a href="#5-–-延迟方法的坑" class="headerlink" title="#5 – 延迟方法的坑"></a>#5 – 延迟方法的坑</h2><p>同样，你也可以使用 <code>defer</code> 来延迟 <a href="https://blog.learngoprogramming.com/go-functions-overview-anonymous-closures-higher-order-deferred-concurrent-6799008dde7b#61ec">方法</a> 调用，但也可能出一些岔子。</p>
 <h3 id="没有使用指针作为接收者"><a href="#没有使用指针作为接收者" class="headerlink" title="没有使用指针作为接收者"></a>没有使用指针作为接收者</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Car <span class="keyword">struct</span> &#123;</span><br><span class="line">  model <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c Car)</span> <span class="title">PrintModel</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Println(c.model)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  c := Car&#123;model: <span class="string">&quot;DeLorean DMC-12&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">defer</span> c.PrintModel()</span><br><span class="line"></span><br><span class="line">  c.model = <span class="string">&quot;Chevrolet Impala&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出结果</p>
@@ -306,7 +306,7 @@
 
 <h3 id="为什么会这样？"><a href="#为什么会这样？" class="headerlink" title="为什么会这样？"></a>为什么会这样？</h3><p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2019/04/913a0620e0a02c917d82307f84f47793.png"> 我们需要记住的是，当外围函数还没有返回的时候，Go 的运行时就会立刻将传递给延迟函数的参数保存起来。 因此，当一个以值作为接收者的方法被 <strong>defer</strong> 修饰时，接收者会在声明时被拷贝（在这个例子中那就是 <em>Car</em> 对象），此时任何对拷贝的修改都将不可见（例中的 <em>Car.model</em> ），因为，接收者也同时是输入的参数，当使用 <strong>defer</strong> 修饰时会立刻得出参数的值(也就是 “DeLorean DMC-12” )。 在另一种情况下，当被延迟调用时，接收者为指针对象，此时虽然会产生新的指针变量，但其指向的地址依然与上例中的 “c” 指针的地址相同。因此，任何修改都会完美地作用在同一个对象中。 以上就是本文的全部内容，我会在后续的文章中补充更多类似的坑 – 已经有至少 15 个易犯的 defer 错误榜上有名，如果你有任何想法，欢迎在下面留言。</p>
 <hr>
-<p>via: <a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/gotchas-of-defer-in-go-1-8d070894cb01">https://blog.learngoprogramming.com/gotchas-of-defer-in-go-1-8d070894cb01</a> 作者：<a target="_blank" rel="noopener" href="https://blog.learngoprogramming.com/@inanc">Inanc Gumus</a>  译者：<a target="_blank" rel="noopener" href="https://github.com/yujiahaol68">yujiahaol68</a>  校对：<a target="_blank" rel="noopener" href="https://github.com/rxcai">rxcai</a> 本文由 <a target="_blank" rel="noopener" href="https://github.com/studygolang/GCTT">GCTT</a> 原创编译，<a target="_blank" rel="noopener" href="https://studygolang.com/articles/12061">Go语言中文网</a> 荣誉推出</p>
+<p>via: <a href="https://blog.learngoprogramming.com/gotchas-of-defer-in-go-1-8d070894cb01">https://blog.learngoprogramming.com/gotchas-of-defer-in-go-1-8d070894cb01</a> 作者：<a href="https://blog.learngoprogramming.com/@inanc">Inanc Gumus</a>  译者：<a href="https://github.com/yujiahaol68">yujiahaol68</a>  校对：<a href="https://github.com/rxcai">rxcai</a> 本文由 <a href="https://github.com/studygolang/GCTT">GCTT</a> 原创编译，<a href="https://studygolang.com/articles/12061">Go语言中文网</a> 荣誉推出</p>
 
     
 
@@ -489,30 +489,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "【转载】 Go 中 defer 的 5 个坑 - 第一部分" -->
-    var gitment = new Gitment({
-      id: "20190409212724",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "【转载】 Go 中 defer 的 5 个坑 - 第一部分" -->
+  var giteement = new Giteement({
+    id: '20190409212724',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

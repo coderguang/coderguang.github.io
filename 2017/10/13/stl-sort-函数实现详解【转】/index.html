@@ -262,7 +262,7 @@
 <li> 将<code>S</code>分割为<code>L</code>、<code>R</code>两端，使<code>L</code>内的元素都小于等于<code>pivot</code>，<code>R</code>内的元素都大于等于<code>pivot</code>。</li>
 <li> 对<code>L</code>、<code>R</code>递归执行上述过程。</li>
 </ol>
-<p>快速排序最关键的地方在于枢轴的选择，最坏的情况发生在分割时产生了一个空的区间，这样就完全没有达到分割的效果。<code>STL</code>采用的做法称为<code>median-of-three</code>，即取整个序列的首、尾、中央三个地方的元素，以其中值作为枢轴。 分割的方法通常采用两个迭代器<code>head</code>和<code>tail</code>，<code>head</code>从头端往尾端移动，<code>tail</code>从尾端往头端移动，当<code>head</code>遇到大于等于<code>pivot</code>的元素就停下来，<code>tail</code>遇到小于等于<code>pivot</code>的元素也停下来，若<code>head</code>迭代器仍然小于<code>tail</code>迭代器，即两者没有交叉，则互换元素，然后继续进行相同的动作，向中间逼近，直到两个迭代器交叉，结束一次分割。 看一张来自维基百科上关于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">快速排序</a>的动态图片，帮助理解。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2017/10/Sorting_quicksort_anim.gif"></p>
+<p>快速排序最关键的地方在于枢轴的选择，最坏的情况发生在分割时产生了一个空的区间，这样就完全没有达到分割的效果。<code>STL</code>采用的做法称为<code>median-of-three</code>，即取整个序列的首、尾、中央三个地方的元素，以其中值作为枢轴。 分割的方法通常采用两个迭代器<code>head</code>和<code>tail</code>，<code>head</code>从头端往尾端移动，<code>tail</code>从尾端往头端移动，当<code>head</code>遇到大于等于<code>pivot</code>的元素就停下来，<code>tail</code>遇到小于等于<code>pivot</code>的元素也停下来，若<code>head</code>迭代器仍然小于<code>tail</code>迭代器，即两者没有交叉，则互换元素，然后继续进行相同的动作，向中间逼近，直到两个迭代器交叉，结束一次分割。 看一张来自维基百科上关于<a href="https://zh.wikipedia.org/zh-cn/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">快速排序</a>的动态图片，帮助理解。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2017/10/Sorting_quicksort_anim.gif"></p>
 <h3 id="内省式排序-Introsort"><a href="#内省式排序-Introsort" class="headerlink" title="内省式排序 Introsort"></a>内省式排序 Introsort</h3><p>不当的枢轴选择，导致不当的分割，会使快速排序恶化为 O(n2)。David R.Musser于1996年提出一种混合式排序算法：<code>Introspective Sorting</code>（内省式排序），简称<code>IntroSort</code>，其行为大部分与上面所说的<code>median-of-three Quick Sort</code>完全相同，但是当分割行为有恶化为二次方的倾向时，能够自我侦测，转而改用堆排序，使效率维持在堆排序的 O(nlgn)，又比一开始就使用堆排序来得好。</p>
 <hr>
 <h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>下面是完整的<code>SGI STL sort()</code>源码（使用默认<code>&lt;</code>操作符版）</p>
@@ -283,7 +283,7 @@
 </ol>
 <p>递归上述过程，直到元素规模小于<code>__stl_threshold</code>，然后返回<code>sort</code>函数，对整个元素序列调用一次插入排序，此时序列中的元素已基本有序，所以插入排序也很快。至此，整个<code>sort</code>函数运行结束。</p>
 <hr>
-<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>好了，今天就到这里了，相信大家对<code>STL sort</code>也有了一定的了解，如果发现任何错误，欢迎大家批评指正，一起交流！ 原文转自：<a target="_blank" rel="noopener" href="http://www.cnblogs.com/fengcc/p/5256337.html">http://www.cnblogs.com/fengcc/p/5256337.html</a></p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>好了，今天就到这里了，相信大家对<code>STL sort</code>也有了一定的了解，如果发现任何错误，欢迎大家批评指正，一起交流！ 原文转自：<a href="http://www.cnblogs.com/fengcc/p/5256337.html">http://www.cnblogs.com/fengcc/p/5256337.html</a></p>
 
     
 
@@ -466,30 +466,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STL sort 函数实现详解【转】" -->
-    var gitment = new Gitment({
-      id: "20171013001024",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STL sort 函数实现详解【转】" -->
+  var giteement = new Giteement({
+    id: '20171013001024',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

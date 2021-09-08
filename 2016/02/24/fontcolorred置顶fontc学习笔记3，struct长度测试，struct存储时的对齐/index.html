@@ -270,26 +270,26 @@
 <h1 id="结构说明：（请先看这里的说明）"><a href="#结构说明：（请先看这里的说明）" class="headerlink" title="结构说明：（请先看这里的说明）"></a>结构说明：（请先看这里的说明）</h1><p> </p>
 <p>struct structOne1//16<br>{<br>char c;<br>int  i;<br>double d;</p>
 <p>};</p>
-<p>结构定义之后，即可进行变量说明。 凡说明为结构stuctOne1的变量都由上述3个成员组成。由此可见， 结构是一种复杂的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/675645.htm">数据类型</a>，是数目固定，类型不同的若干有序变量的集合。</p>
+<p>结构定义之后，即可进行变量说明。 凡说明为结构stuctOne1的变量都由上述3个成员组成。由此可见， 结构是一种复杂的<a href="http://baike.baidu.com/view/675645.htm">数据类型</a>，是数目固定，类型不同的若干有序变量的集合。</p>
 <p>对结构structOne1采用sizeof会出现什么结果呢？sizeof(structOne1)为多少呢？也许你会这样求：</p>
 <p>sizeof(structOne1=sizeof(char)+sizeof(int)+sizeof(double)=13</p>
 <p>但是当在VS中测试上面结构的大小时，你会发现sizeof(sructOne1)为16。你知道为什么在VS中会得出这样一个结果吗？</p>
-<p>其实，这是VS对<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/296689.htm">变量</a>存储的一个特殊处理。为了提高CPU的存储速度，VS对一些<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/296689.htm">变量</a>的起始地址做了“<strong>对齐</strong>”处理。在默认情况下，VS规定各<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/684821.htm">成员变量</a>存放的起始地址相对于结构的起始地址的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>必须为该变量的类型所占用的字节数的倍数。下面列出常用类型的对齐方式(VS2010,32位系统)。</p>
+<p>其实，这是VS对<a href="http://baike.baidu.com/view/296689.htm">变量</a>存储的一个特殊处理。为了提高CPU的存储速度，VS对一些<a href="http://baike.baidu.com/view/296689.htm">变量</a>的起始地址做了“<strong>对齐</strong>”处理。在默认情况下，VS规定各<a href="http://baike.baidu.com/view/684821.htm">成员变量</a>存放的起始地址相对于结构的起始地址的<a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>必须为该变量的类型所占用的字节数的倍数。下面列出常用类型的对齐方式(VS2010,32位系统)。</p>
 <p>类型</p>
-<p>对齐方式（<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/296689.htm">变量</a>存放的起始地址相对于结构的起始地址的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>）</p>
+<p>对齐方式（<a href="http://baike.baidu.com/view/296689.htm">变量</a>存放的起始地址相对于结构的起始地址的<a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>）</p>
 <p>Char</p>
-<p><a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>必须为sizeof(char)即1的倍数</p>
+<p><a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>必须为sizeof(char)即1的倍数</p>
 <p>int</p>
-<p><a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>必须为sizeof(int)即4的倍数</p>
+<p><a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>必须为sizeof(int)即4的倍数</p>
 <p>float</p>
-<p><a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>必须为sizeof(float)即4的倍数</p>
+<p><a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>必须为sizeof(float)即4的倍数</p>
 <p>double</p>
-<p><a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>必须为sizeof(double)即8的倍数</p>
+<p><a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>必须为sizeof(double)即8的倍数</p>
 <p>Short</p>
 <p>偏移量必须为sizeof(short)即2的倍数</p>
 <p>对齐方式:</p>
 <h3 id="默认的对齐方式-来自百度百科"><a href="#默认的对齐方式-来自百度百科" class="headerlink" title="默认的对齐方式//来自百度百科"></a>默认的对齐方式//来自百度百科</h3><p> </p>
-<p>各<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/684821.htm">成员变量</a>在存放的时候根据在结构中出现的顺序依次申请空间，同时按照上面的对齐方式调整位置，空缺的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/60408.htm">字节</a>VC会自动填充。同时VC为了确保结构的大小为结构的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/60408.htm">字节</a>边界数（即该结构中占用最大空间的类型所占用的字节数）的倍数，所以在为最后一个<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/684821.htm">成员变量</a>申请空间后，还会根据需要自动填充空缺的字节。</p>
+<p>各<a href="http://baike.baidu.com/view/684821.htm">成员变量</a>在存放的时候根据在结构中出现的顺序依次申请空间，同时按照上面的对齐方式调整位置，空缺的<a href="http://baike.baidu.com/view/60408.htm">字节</a>VC会自动填充。同时VC为了确保结构的大小为结构的<a href="http://baike.baidu.com/view/60408.htm">字节</a>边界数（即该结构中占用最大空间的类型所占用的字节数）的倍数，所以在为最后一个<a href="http://baike.baidu.com/view/684821.htm">成员变量</a>申请空间后，还会根据需要自动填充空缺的字节。</p>
 <p>下面用前面的例子来说明VC到底怎么样来存放结构的。</p>
 <p>struct MyStruct</p>
 <p>{</p>
@@ -297,8 +297,8 @@
 <p>char dda;</p>
 <p>int type;</p>
 <p>};</p>
-<p>为上面的结构分配空间的时候，VC根据<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/684821.htm">成员变量</a>出现的顺序和对齐方式，先为第一个成员dda1分配空间，其起始地址跟结构的起始地址相同（刚好<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>0刚好为sizeof(double)的倍数），该成员变量占用sizeof(double)=8个字节；接下来为第二个成员dda分配空间，这时下一个可以分配的地址对于结构的起始地址的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为8，是sizeof(char)的倍数，所以把dda存放在偏移量为8的地方满足对齐方式，该成员变量占用sizeof(char)=1个字节；接下来为第三个成员type分配空间，这时下一个可以分配的地址对于结构的起始地址的偏移量为9，不是sizeof(int)=4的倍数，为了满足对齐方式对偏移量的约束问题，VC自动填充3个字节（这三个字节没有放什么东西），这时下一个可以分配的地址对于结构的起始地址的偏移量为12，刚好是sizeof(int)=4的倍数，所以把type存放在偏移量为12的地方，该成员变量占用sizeof(int)=4个字节；这时整个结构的成员变量已经都分配了空间，总的占用的空间大小为：8+1+3+4=16，刚好为结构的字节边界数（即结构中占用最大空间的类型所占用的字节数sizeof(double)=8）的倍数，所以没有空缺的字节需要填充。所以整个结构的大小为：sizeof(MyStruct)=8+1+3+4=16，其中有3个字节是VC自动填充的，没有放任何有意义的东西。</p>
-<p>下面再举个例子，交换一下上面的MyStruct的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/684821.htm">成员变量</a>的位置，使它变成下面的情况：</p>
+<p>为上面的结构分配空间的时候，VC根据<a href="http://baike.baidu.com/view/684821.htm">成员变量</a>出现的顺序和对齐方式，先为第一个成员dda1分配空间，其起始地址跟结构的起始地址相同（刚好<a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>0刚好为sizeof(double)的倍数），该成员变量占用sizeof(double)=8个字节；接下来为第二个成员dda分配空间，这时下一个可以分配的地址对于结构的起始地址的<a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为8，是sizeof(char)的倍数，所以把dda存放在偏移量为8的地方满足对齐方式，该成员变量占用sizeof(char)=1个字节；接下来为第三个成员type分配空间，这时下一个可以分配的地址对于结构的起始地址的偏移量为9，不是sizeof(int)=4的倍数，为了满足对齐方式对偏移量的约束问题，VC自动填充3个字节（这三个字节没有放什么东西），这时下一个可以分配的地址对于结构的起始地址的偏移量为12，刚好是sizeof(int)=4的倍数，所以把type存放在偏移量为12的地方，该成员变量占用sizeof(int)=4个字节；这时整个结构的成员变量已经都分配了空间，总的占用的空间大小为：8+1+3+4=16，刚好为结构的字节边界数（即结构中占用最大空间的类型所占用的字节数sizeof(double)=8）的倍数，所以没有空缺的字节需要填充。所以整个结构的大小为：sizeof(MyStruct)=8+1+3+4=16，其中有3个字节是VC自动填充的，没有放任何有意义的东西。</p>
+<p>下面再举个例子，交换一下上面的MyStruct的<a href="http://baike.baidu.com/view/684821.htm">成员变量</a>的位置，使它变成下面的情况：</p>
 <p>struct MyStruct</p>
 <p>{</p>
 <p>char dda;</p>
@@ -308,38 +308,38 @@
 <p>这个结构占用的空间为多大呢？在VC6.0环境下，可以得到sizeof(MyStruct)为24。结合上面提到的分配空间的一些原则，分析下VC怎么样为上面的结构分配空间的。（简单说明）</p>
 <p>struct MyStruct</p>
 <p>{</p>
-<p>char dda;//<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为0，满足对齐方式，dda占用1个字节；</p>
-<p>double dda1;//下一个可用的地址的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为1，不是sizeof(double)=8</p>
-<p>//的倍数，需要补足7个字节才能使<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>变为8（满足对齐</p>
-<p>//方式），因此VC自动填充7个字节，dda1存放在<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为8</p>
+<p>char dda;//<a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为0，满足对齐方式，dda占用1个字节；</p>
+<p>double dda1;//下一个可用的地址的<a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为1，不是sizeof(double)=8</p>
+<p>//的倍数，需要补足7个字节才能使<a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>变为8（满足对齐</p>
+<p>//方式），因此VC自动填充7个字节，dda1存放在<a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为8</p>
 <p>//的地址上，它占用8个字节。</p>
-<p>int type;//下一个可用的地址的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为16，是sizeof(int)=4的倍</p>
+<p>int type;//下一个可用的地址的<a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为16，是sizeof(int)=4的倍</p>
 <p>//数，满足int的对齐方式，所以不需要VC自动填充，type存</p>
-<p>//放在<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为16的地址上，它占用4个<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/60408.htm">字节</a>。</p>
-<p>};//所有<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/684821.htm">成员变量</a>都分配了空间，空间总的大小为1+7+8+4=20，不是结构</p>
+<p>//放在<a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为16的地址上，它占用4个<a href="http://baike.baidu.com/view/60408.htm">字节</a>。</p>
+<p>};//所有<a href="http://baike.baidu.com/view/684821.htm">成员变量</a>都分配了空间，空间总的大小为1+7+8+4=20，不是结构</p>
 <p>//的节边界数（即结构中占用最大空间的类型所占用的字节数sizeof</p>
 <p>//(double)=8）的倍数，所以需要填充4个字节，以满足结构的大小为</p>
 <p>//sizeof(double)=8的倍数。</p>
 <p>所以该结构总的大小为：sizeof(MyStruct)为1+7+8+4+4=24。其中总的有7+4=11个字节是VC自动填充的，没有放任何有意义的东西。</p>
-<h3 id="字节的对齐方式"><a href="#字节的对齐方式" class="headerlink" title="字节的对齐方式"></a>字节的对齐方式</h3><p>VC对结构的存储的特殊处理确实提高了CPU存储<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/296689.htm">变量</a>的速度，但有时也会带来一些麻烦，我们也屏蔽掉变量默认的对齐方式，自己可以设定变量的对齐方式。</p>
-<p>VC中提供了<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1451188.htm">#pragma</a>pack(n)来设定<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/296689.htm">变量</a>以n<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1523557.htm">字节对齐</a>方式。n<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1523557.htm">字节对齐</a>就是说<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/296689.htm">变量</a>存放的起始地址的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>有两种情况：第一、如果n大于等于该变量所占用的字节数，那么偏移量必须满足默认的对齐方式，第二、如果n小于该变量的类型所占用的字节数，那么偏移量为n的倍数，不用满足默认的对齐方式。结构的总大小也有个约束条件，分下面两种情况：如果n大于所有<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/684821.htm">成员变量</a>类型所占用的字节数，那么结构的总大小必须为占用空间最大的变量占用的空间数的倍数；</p>
+<h3 id="字节的对齐方式"><a href="#字节的对齐方式" class="headerlink" title="字节的对齐方式"></a>字节的对齐方式</h3><p>VC对结构的存储的特殊处理确实提高了CPU存储<a href="http://baike.baidu.com/view/296689.htm">变量</a>的速度，但有时也会带来一些麻烦，我们也屏蔽掉变量默认的对齐方式，自己可以设定变量的对齐方式。</p>
+<p>VC中提供了<a href="http://baike.baidu.com/view/1451188.htm">#pragma</a>pack(n)来设定<a href="http://baike.baidu.com/view/296689.htm">变量</a>以n<a href="http://baike.baidu.com/view/1523557.htm">字节对齐</a>方式。n<a href="http://baike.baidu.com/view/1523557.htm">字节对齐</a>就是说<a href="http://baike.baidu.com/view/296689.htm">变量</a>存放的起始地址的<a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>有两种情况：第一、如果n大于等于该变量所占用的字节数，那么偏移量必须满足默认的对齐方式，第二、如果n小于该变量的类型所占用的字节数，那么偏移量为n的倍数，不用满足默认的对齐方式。结构的总大小也有个约束条件，分下面两种情况：如果n大于所有<a href="http://baike.baidu.com/view/684821.htm">成员变量</a>类型所占用的字节数，那么结构的总大小必须为占用空间最大的变量占用的空间数的倍数；</p>
 <p>否则必须为n的倍数。下面举例说明其用法。</p>
-<p><a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1451188.htm">#pragma</a>pack(push) //保存对齐状态</p>
-<p><a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1451188.htm">#pragma</a>pack(4)//设定为4<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1523557.htm">字节对齐</a></p>
+<p><a href="http://baike.baidu.com/view/1451188.htm">#pragma</a>pack(push) //保存对齐状态</p>
+<p><a href="http://baike.baidu.com/view/1451188.htm">#pragma</a>pack(4)//设定为4<a href="http://baike.baidu.com/view/1523557.htm">字节对齐</a></p>
 <p>struct test</p>
 <p>{</p>
 <p>char m1;</p>
 <p>double m4;</p>
 <p>int m3;</p>
 <p>};</p>
-<p><a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1451188.htm">#pragma</a>pack(pop)//恢复对齐状态</p>
-<p>以上结构的大小为16，下面分析其存储情况，首先为m1分配空间，其偏移量为0，满足我们自己设定的对齐方式（4<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1523557.htm">字节对齐</a>），m1占用1个字节。接着开始为m4分配空间，这时其<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为1，需要补足3个字节，这样使偏移量满足为n=4的倍数（因为sizeof(double)大于n）,m4占用8个字节。接着为m3分配空间，这时其<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为12，满足为4的倍数，m3占用4个字节。这时已经为所有<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/684821.htm">成员变量</a>分配了空间，共分配了16个字节，满足为n的倍数。如果把上面的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1451188.htm">#pragma</a>pack(4)改为#pragma pack(16)，那么我们可以得到结构的大小为24。（请读者自己分析）</p>
+<p><a href="http://baike.baidu.com/view/1451188.htm">#pragma</a>pack(pop)//恢复对齐状态</p>
+<p>以上结构的大小为16，下面分析其存储情况，首先为m1分配空间，其偏移量为0，满足我们自己设定的对齐方式（4<a href="http://baike.baidu.com/view/1523557.htm">字节对齐</a>），m1占用1个字节。接着开始为m4分配空间，这时其<a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为1，需要补足3个字节，这样使偏移量满足为n=4的倍数（因为sizeof(double)大于n）,m4占用8个字节。接着为m3分配空间，这时其<a href="http://baike.baidu.com/view/1254177.htm">偏移量</a>为12，满足为4的倍数，m3占用4个字节。这时已经为所有<a href="http://baike.baidu.com/view/684821.htm">成员变量</a>分配了空间，共分配了16个字节，满足为n的倍数。如果把上面的<a href="http://baike.baidu.com/view/1451188.htm">#pragma</a>pack(4)改为#pragma pack(16)，那么我们可以得到结构的大小为24。（请读者自己分析）</p>
 <p>二：在Fedora 20  64bit中测试</p>
 <p>gcc version=4.8.2</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020214_42316535382234.jpg"></p>
 <p>可以看出，除了指针的长度不一样之外，对齐规则都是一样的。</p>
 <p>细节很重要。</p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#x61;&#108;&#99;&#104;&#x65;&#110;&#64;&#x72;&#x6f;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#46;&#99;&#111;&#x6d;">&#114;&#x6f;&#121;&#x61;&#108;&#99;&#104;&#x65;&#110;&#64;&#x72;&#x6f;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#46;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#97;&#x6c;&#99;&#104;&#x65;&#110;&#x40;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#46;&#99;&#x6f;&#109;">&#x72;&#111;&#x79;&#97;&#x6c;&#99;&#104;&#x65;&#110;&#x40;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#46;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -533,30 +533,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "C++学习笔记3，struct长度测试，struct存储时的对齐方式" -->
-    var gitment = new Gitment({
-      id: "20160224000000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "C++学习笔记3，struct长度测试，struct存储时的对齐方式" -->
+  var giteement = new Giteement({
+    id: '20160224000000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

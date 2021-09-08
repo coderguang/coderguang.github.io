@@ -248,11 +248,11 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p><strong>情况描述</strong>：2014/03/13，Wooyun 乌云平台就报道<a target="_blank" rel="noopener" href="http://drops.wooyun.org/news/1062" title="超过16W的WordPress网站被用来做DDoS攻击">《超过16W的WordPress网站被用来做DDoS攻击》</a> 其中罪魁祸首就是 xmlrpc.php 文件中的 pingback 功能； 2014/07/23，Freebuf 又报道<a target="_blank" rel="noopener" href="http://www.freebuf.com/articles/web/38861.html" title="利用xmlrpc.php对WordPress进行暴力破解攻击">《利用xmlrpc.php对WordPress进行暴力破解攻击》</a>，指出虽然 WordPress 的正常登陆端口做了防暴力破解，但是可以通过 xmlrpc.php POST 到以下数据：</p>
+    <p><strong>情况描述</strong>：2014/03/13，Wooyun 乌云平台就报道<a href="http://drops.wooyun.org/news/1062" title="超过16W的WordPress网站被用来做DDoS攻击">《超过16W的WordPress网站被用来做DDoS攻击》</a> 其中罪魁祸首就是 xmlrpc.php 文件中的 pingback 功能； 2014/07/23，Freebuf 又报道<a href="http://www.freebuf.com/articles/web/38861.html" title="利用xmlrpc.php对WordPress进行暴力破解攻击">《利用xmlrpc.php对WordPress进行暴力破解攻击》</a>，指出虽然 WordPress 的正常登陆端口做了防暴力破解，但是可以通过 xmlrpc.php POST 到以下数据：</p>
 <blockquote>
 <?xml version=”1.0″ encoding=”iso-8859-1″?><p><methodCall> <methodName>wp.getUsersBlogs</methodName> <params> <param><value>username</value></param> <param><value>password</value></param> </params></methodCall></p>
 </blockquote>
-<p>几乎同时，小T站点也监测到针对xmlrpc.php的攻击： <a target="_blank" rel="noopener" href="http://tzh.in/wp-content/uploads/2014/07/20140726174648.jpg"><img src="http://tzh.in/wp-content/uploads/2014/07/20140726174648.jpg" alt="20140726174648"></a>   由于可以直接获取管理员账号密码，危险性极高，已经被大规模应用到针对 WordPress 的攻击之中，所以建议各位 WordPress 站长立即采取措施。 <strong>解决办法：</strong> 方法一：安装 <strong><a target="_blank" rel="noopener" href="http://wordpress.org/plugins/login-security-solution/">Login Security Solutin</a></strong> 插件，通过此插件设置密码尝试的次数。 <strong>P.S.：如果需要长时间在编辑器中写文章的童鞋，建议关闭 Login Security Solutin 中的 Idle Timeout 选项，将它设置为 0，这样就不会在默认的 15 分钟后被踢出后台，要求重新登陆了。</strong> 方法二：彻底关闭 XML-RPC 功能。如果没有使用 Word、Windows Live Writer 写博客的习惯，可以彻底关闭 XML-RPC，以绝后患。 在主题 functions.php 添加如下代码：（<strong>记得要在 &lt;?php 之后</strong>）</p>
+<p>几乎同时，小T站点也监测到针对xmlrpc.php的攻击： <a href="http://tzh.in/wp-content/uploads/2014/07/20140726174648.jpg"><img src="http://tzh.in/wp-content/uploads/2014/07/20140726174648.jpg" alt="20140726174648"></a>   由于可以直接获取管理员账号密码，危险性极高，已经被大规模应用到针对 WordPress 的攻击之中，所以建议各位 WordPress 站长立即采取措施。 <strong>解决办法：</strong> 方法一：安装 <strong><a href="http://wordpress.org/plugins/login-security-solution/">Login Security Solutin</a></strong> 插件，通过此插件设置密码尝试的次数。 <strong>P.S.：如果需要长时间在编辑器中写文章的童鞋，建议关闭 Login Security Solutin 中的 Idle Timeout 选项，将它设置为 0，这样就不会在默认的 15 分钟后被踢出后台，要求重新登陆了。</strong> 方法二：彻底关闭 XML-RPC 功能。如果没有使用 Word、Windows Live Writer 写博客的习惯，可以彻底关闭 XML-RPC，以绝后患。 在主题 functions.php 添加如下代码：（<strong>记得要在 &lt;?php 之后</strong>）</p>
 <blockquote>
 <p>add_filter(‘xmlrpc_enabled’, ‘__return_false’);</p>
 </blockquote>
@@ -438,30 +438,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "《转》WordPress安全警报：利用xmlrpc.php进行暴力破解攻击" -->
-    var gitment = new Gitment({
-      id: "20161227221432",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "《转》WordPress安全警报：利用xmlrpc.php进行暴力破解攻击" -->
+  var giteement = new Giteement({
+    id: '20161227221432',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

@@ -250,22 +250,22 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++11threadjoinable(5)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/joinable/">http://www.cplusplus.com/reference/thread/thread/joinable/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/thread/thread/joinable/">http://www.cplusplus.com/reference/thread/thread/joinable/</a></p>
 <p>public member function</p>
 <thread>
 
-<h1 id="std-thread-joinable"><a href="#std-thread-joinable" class="headerlink" title="std::thread::joinable"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::joinable</h1><p>bool joinable() const noexcept;</p>
+<h1 id="std-thread-joinable"><a href="#std-thread-joinable" class="headerlink" title="std::thread::joinable"></a>std::<a href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::joinable</h1><p>bool joinable() const noexcept;</p>
 <p>Check if joinable</p>
-<p>Returns whether the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is <em>joinable</em>.  </p>
+<p>Returns whether the <a href="http://www.cplusplus.com/thread">thread</a> object is <em>joinable</em>.  </p>
 <p>返回线程对象是否是joinable的。</p>
-<p>A <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is joinable if it represents a thread of execution.  </p>
+<p>A <a href="http://www.cplusplus.com/thread">thread</a> object is joinable if it represents a thread of execution.  </p>
 <p>如果是一个正在执行的线程，那么它是joinable的。</p>
-<p>A <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is not joinable in any of these cases:</p>
+<p>A <a href="http://www.cplusplus.com/thread">thread</a> object is not joinable in any of these cases:</p>
 <p>下列任一情况都是非joinable</p>
 <ul>
-<li>if it was <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::thread">default-constructed</a></em>.<br>  默认构造器构造的。</li>
-<li>if it has been moved from (either <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::thread">constructing</a></em> another <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object, or <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::operator=">assigning to it</a></em>).<br>  通过移动构造获得的。</li>
-<li>if either of its members <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::join">join</a> or <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::detach">detach</a> has been called.<br>  调用了join或者detach方法的。  </li>
+<li>if it was <em><a href="http://www.cplusplus.com/thread::thread">default-constructed</a></em>.<br>  默认构造器构造的。</li>
+<li>if it has been moved from (either <em><a href="http://www.cplusplus.com/thread::thread">constructing</a></em> another <a href="http://www.cplusplus.com/thread">thread</a> object, or <em><a href="http://www.cplusplus.com/thread::operator=">assigning to it</a></em>).<br>  通过移动构造获得的。</li>
+<li>if either of its members <a href="http://www.cplusplus.com/thread::join">join</a> or <a href="http://www.cplusplus.com/thread::detach">detach</a> has been called.<br>  调用了join或者detach方法的。  </li>
 </ul>
 <p>例子：</p>
 <p>#include <iostream><br>#include <thread><br>#include <ctime><br>using namespace std;<br>void delay(double sec)<br>{<br>    time_t start_time, cur_time; // 变量声明<br>    time(&amp;start_time);<br>    do {<br>        time(&amp;cur_time);<br>        }while((cur_time - start_time) &lt; sec );<br>}; </p>
@@ -289,20 +289,20 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// example for thread::joinable</span><br><span class="line">#include &lt;iostream&gt;       // std::cout</span><br><span class="line">#include &lt;thread&gt;         // std::thread</span><br><span class="line"> </span><br><span class="line">void mythread() </span><br><span class="line">&#123;</span><br><span class="line">  // do stuff...</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">  std::thread foo;</span><br><span class="line">  std::thread bar(mythread);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;Joinable after construction:\n&quot; &lt;&lt; std::boolalpha;</span><br><span class="line">  std::cout &lt;&lt; &quot;foo: &quot; &lt;&lt; foo.joinable() &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">  std::cout &lt;&lt; &quot;bar: &quot; &lt;&lt; bar.joinable() &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  if (foo.joinable()) foo.join();</span><br><span class="line">  if (bar.joinable()) bar.join();</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;Joinable after joining:\n&quot; &lt;&lt; std::boolalpha;</span><br><span class="line">  std::cout &lt;&lt; &quot;foo: &quot; &lt;&lt; foo.joinable() &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">  std::cout &lt;&lt; &quot;bar: &quot; &lt;&lt; bar.joinable() &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/joinable/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/thread/thread/joinable/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output (after 3 seconds):  </p>
 <p>Joinable after construction:<br>foo: false<br>bar: true<br>Joinable after joining:<br>foo: false<br>bar: false </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The object is accessed.  </p>
 <h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> never throws exceptions.</p>
 <p>—————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#111;&#100;&#x65;&#114;&#103;&#117;&#97;&#x6e;&#x67;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x63;&#111;&#100;&#x65;&#114;&#103;&#117;&#97;&#x6e;&#x67;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#101;&#x72;&#103;&#117;&#97;&#x6e;&#x67;&#64;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#109;">&#x63;&#x6f;&#100;&#101;&#x72;&#103;&#117;&#97;&#x6e;&#x67;&#64;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#109;</a></p>
 <p>2014-9-4</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39050685">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39050685">原文链接</a></p>
 
     
 
@@ -485,30 +485,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "C++11threadjoinable(5)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "C++11threadjoinable(5)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

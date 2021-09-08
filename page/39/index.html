@@ -196,6 +196,13 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <script src="/lib/oauthcallback.browser.js"></script>
+  
+  <script>
+    Oauthcallback();
+  </script>
+
 
   
     <article id="post-论复杂密码的重要性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -233,7 +240,7 @@
 <p>secure记录一日之内达到了25M</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224012055_14011678233798.jpg">  </p>
 <p>最简单的解决办法，禁止root远程登录即可</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/43678793">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/43678793">原文链接</a></p>
 
     
 
@@ -325,11 +332,11 @@
 <p>从想拥有一个自己的网站开始，到真正搞点东西出来，不容易啊~</p>
 <p>这几天做的东西离毕设的东西有点远啦，赶紧重回毕设模式~</p>
 <p>文章作者：coderguang      email:  <a href="mailto:royalchen@royalchen.com" title="royalchen@royalchen.com">royalchen@royalchen.com</a></p>
-<p>博客链接：<a target="_blank" rel="noopener" href="http://blog.royalchen.com/" title="http://blog.royalchen.com">http://blog.royalchen.com</a></p>
+<p>博客链接：<a href="http://blog.royalchen.com/" title="http://blog.royalchen.com">http://blog.royalchen.com</a></p>
 <p>备注：自2015-03-25之后，如无特殊说明，文章均为coderguang原创，转载请注明出处，文章由coderguang保留所有权利。</p>
 <p>日期：2015-03-26</p>
 <p>该文章摘自于自有博客，写于2015-03.26。  </p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/46506169">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/46506169">原文链接</a></p>
 
     
 
@@ -426,7 +433,7 @@
 <p>//递归思想<br>//其实跟goto是一样的思想<br>//不过设多两个变量i,j用于指示要比较的字符和正在比较的字符传递给递归函数<br>#include <iostream><br>using std::cout;<br>using std::endl;<br>using std::strlen;<br>using std::cin;<br>#define ERROR ‘-1’//倘若没有任何一个匹配</p>
 <p>char digui(const char *str,int i,int j)<br>{<br>int len=strlen(str);<br>if(i==j)//如果i=j，则不与自身比较<br>{<br>if(i==len-1)//但如果是i=j=len-1，说明最后一个只在最后出现了一次，输出<br>return str[i];<br>else//否则，跳过i=j,j++<br>{<br>j++;<br>digui(str,i,j);//进入下一次递归<br>}<br>}<br>else if(str[i]==str[j])//倘若一个字符出现两次<br>{<br>//cout&lt;&lt;”i=”&lt;&lt;i&lt;&lt;”  “&lt;&lt;”j=”&lt;&lt;j&lt;&lt;”  “&lt;&lt;(int*)(&amp;str[i])&lt;&lt;”  “&lt;&lt;(int*)(&amp;str[j])&lt;&lt;endl;<br>i++;//进行下一个字符比较;<br>if(i==len)<br>{<br>cout&lt;&lt;”没有一个只出现一次的字符”&lt;&lt;endl;<br>return ERROR;<br>}<br>else<br>{<br>j=0;//重置j=0;<br>digui(str,i,j);<br>}<br>}<br>else//否则，移动j,继续比较，知道j=len;<br>{<br>j++;<br>if(j==len)//如果比较到了最后都不相等<br>{<br>//cout&lt;&lt;str[i]&lt;&lt;endl;<br>return str[i];<br>}<br>else//还没到最后<br>{<br>digui(str,i,j);<br>}<br>}<br>}<br>int main()<br>{<br>char *s=”cceet”;<br>cout&lt;&lt;digui(s,0,0);<br>cin.get();<br>return 0;</p>
 <p>}</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/25885603">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/25885603">原文链接</a></p>
 
     
 
@@ -515,7 +522,7 @@
     <p>这么奇怪的bug已经很久不见了</p>
 <p>我了个擦，不就是将select ,poll,epoll 封了一层么，怎么就不行了呢~</p>
 <p>今天学会了个gdb新命令，step，gdb好强大~~</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/47790237">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/47790237">原文链接</a></p>
 
     
 
@@ -613,7 +620,7 @@
 <p>//outpue<br>cout&lt;&lt;”the “&lt;&lt;target&lt;&lt;”  translate to “&lt;&lt;n&lt;&lt;” is:”&lt;&lt;endl;<br>while(!my.isEmpty())<br>{<br>int temp;<br>my.Pop(temp);<br>//if(my.Pop(temp))<br>//cout&lt;&lt;”pop success!”&lt;&lt;endl;<br>cout&lt;&lt;temp;<br>}<br>cout&lt;&lt;endl;<br>}</p>
 <p>test.cpp</p>
 <p>#include <iostream><br>#include “translate.cpp”<br>using namespace std;<br>int main()<br>{<br>int target;<br>int n;<br>cout&lt;&lt;”please input two numbers;first for target,second for n:”;<br>while(cin&gt;&gt;target&gt;&gt;n)<br>{<br>translate(target,n);<br>//cin.get();<br>}<br>return 0;<br>}</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/25110377">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/25110377">原文链接</a></p>
 
     
 
@@ -714,7 +721,7 @@
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224011941_18592077017957.jpg">  </p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224011942_16294697214337.jpg">  </p>
 <p>醉了<del>醉了</del></p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/44560579">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/44560579">原文链接</a></p>
 
     
 
@@ -1159,7 +1166,7 @@ class Program
 </code></pre>
 <p>}</p>
 <p>   </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#97;&#x6c;&#x63;&#x68;&#101;&#x6e;&#64;&#x72;&#x6f;&#x79;&#97;&#108;&#99;&#x68;&#101;&#x6e;&#46;&#x63;&#x6f;&#x6d;">&#114;&#x6f;&#121;&#97;&#x6c;&#x63;&#x68;&#101;&#x6e;&#64;&#x72;&#x6f;&#x79;&#97;&#108;&#99;&#x68;&#101;&#x6e;&#46;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#x40;&#x72;&#x6f;&#x79;&#97;&#108;&#x63;&#104;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;">&#114;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#x40;&#x72;&#x6f;&#x79;&#97;&#108;&#x63;&#104;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1398,7 +1405,7 @@ class Program
 &#125;
 </code></pre>
 <p>}</p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#97;&#108;&#99;&#x68;&#x65;&#x6e;&#64;&#x72;&#111;&#121;&#x61;&#x6c;&#99;&#104;&#x65;&#110;&#46;&#x63;&#111;&#109;">&#x72;&#111;&#121;&#97;&#108;&#99;&#x68;&#x65;&#x6e;&#64;&#x72;&#111;&#121;&#x61;&#x6c;&#99;&#104;&#x65;&#110;&#46;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#101;&#110;&#64;&#114;&#111;&#121;&#x61;&#108;&#99;&#104;&#x65;&#x6e;&#46;&#x63;&#x6f;&#109;">&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#101;&#110;&#64;&#114;&#111;&#121;&#x61;&#108;&#99;&#104;&#x65;&#x6e;&#46;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 

@@ -247,8 +247,8 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>SQL级联更新，级联删除的概念</p>
-<h2 id="SQL级联更新，级联删除"><a href="#SQL级联更新，级联删除" class="headerlink" title="SQL级联更新，级联删除"></a><a target="_blank" rel="noopener" href="http://www.cnblogs.com/sunjun/archive/2009/09/26/1574657.html">SQL级联更新，级联删除</a></h2><p>今天做了个测试，搞清楚了级联更新，级联删除<br>级联删除：当我们没有对键加级联删除的时候，删除主键表中的数据（外键表有引用的数据）时，会报错，不能删除，必须先把相关联的外键数据<br> 删除了，才能删除主键表的数据，但如果新建外键的时候设置了级联删除，那么当我们删除主键表的数据时，数据库就会自动帮我们把相<br> 关联的外键表数据删除掉，这个好理解<br>级联更新：一直困扰我，级联更新有什么用，是更新什么东西呢，今天做了个测试(mssql)，终于搞清楚了一点，我们修改主键表中和外键表进<br> 行关联的字段(一般是主键表的主键，mssql好像必须是主键)，如果我们没有设置级联更新，那么这个时候会提示不能更新，因为外键表<br> 还有数据正在和这条数据进行关联，但是如果设置了级联更新，那么外键表的数据会自动帮我们更新</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/16942905">原文链接</a></p>
+<h2 id="SQL级联更新，级联删除"><a href="#SQL级联更新，级联删除" class="headerlink" title="SQL级联更新，级联删除"></a><a href="http://www.cnblogs.com/sunjun/archive/2009/09/26/1574657.html">SQL级联更新，级联删除</a></h2><p>今天做了个测试，搞清楚了级联更新，级联删除<br>级联删除：当我们没有对键加级联删除的时候，删除主键表中的数据（外键表有引用的数据）时，会报错，不能删除，必须先把相关联的外键数据<br> 删除了，才能删除主键表的数据，但如果新建外键的时候设置了级联删除，那么当我们删除主键表的数据时，数据库就会自动帮我们把相<br> 关联的外键表数据删除掉，这个好理解<br>级联更新：一直困扰我，级联更新有什么用，是更新什么东西呢，今天做了个测试(mssql)，终于搞清楚了一点，我们修改主键表中和外键表进<br> 行关联的字段(一般是主键表的主键，mssql好像必须是主键)，如果我们没有设置级联更新，那么这个时候会提示不能更新，因为外键表<br> 还有数据正在和这条数据进行关联，但是如果设置了级联更新，那么外键表的数据会自动帮我们更新</p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/16942905">原文链接</a></p>
 
     
 
@@ -431,30 +431,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "SQL级联更新，级联删除的概念" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "SQL级联更新，级联删除的概念" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

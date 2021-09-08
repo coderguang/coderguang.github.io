@@ -342,7 +342,7 @@
 <p><useSecurity>true</useSecurity><br>  <authorizationStrategy class="hudson.security.ProjectMatrixAuthorizationStrategy"><br>    <permission>hudson.model.Hudson.Administer:admin</permission><br>    <permission>hudson.model.Hudson.Read:anonymous</permission><br>    <permission>hudson.model.Item.Build:dev</permission><br>    <permission>hudson.model.Item.Read:anonymous</permission><br>    <permission>hudson.model.Item.Read:dev</permission><br>  </authorizationStrategy><br>  <securityRealm class="hudson.security.HudsonPrivateSecurityRealm"><br>    <disableSignup>false</disableSignup><br>    <enableCaptcha>false</enableCaptcha><br>  </securityRealm></p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2017/11/copycode.gif" alt="复制代码"></p>
 <p>  3）每个用户后都有1-2个图标，第一个是反选功能(删除当前已选择的权限，选择其他所有权限)，第二个是删除功能(删除该用户) <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2017/11/261511559426495.jpg"> 4）在Job中配置项目安全，如下图： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2017/11/261513123174395.jpg">  </p>
-<h2 id="二、遇到的问题"><a href="#二、遇到的问题" class="headerlink" title="二、遇到的问题"></a>二、遇到的问题</h2><p>由于授权出错，导致无法登录，具体可参考<a target="_blank" rel="noopener" href="http://www.cnblogs.com/yangxia-test/p/4363566.html%E6%93%8D%E4%BD%9C%E3%80%82">http://www.cnblogs.com/yangxia-test/p/4363566.html操作。</a></p>
+<h2 id="二、遇到的问题"><a href="#二、遇到的问题" class="headerlink" title="二、遇到的问题"></a>二、遇到的问题</h2><p>由于授权出错，导致无法登录，具体可参考<a href="http://www.cnblogs.com/yangxia-test/p/4363566.html%E6%93%8D%E4%BD%9C%E3%80%82">http://www.cnblogs.com/yangxia-test/p/4363566.html操作。</a></p>
 <p>最后给大家说说在配置文件里面怎么辨别使用是哪种权限控制模式 <authorizationStrategy>节点上有个class属性，这个属性控制着使用那种授权模式。  </p>
 <p>hudson.security.FullControlOnceLoggedInAuthorizationStrategy</p>
 <p>登录用户可以做任何事</p>
@@ -534,30 +534,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "jenkins 项目授权策略【转】" -->
-    var gitment = new Gitment({
-      id: "20171109231428",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "jenkins 项目授权策略【转】" -->
+  var giteement = new Giteement({
+    id: '20171109231428',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

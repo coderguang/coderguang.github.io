@@ -249,26 +249,26 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的get_allocator方法(27)</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/get_allocator/">http://www.cplusplus.com/reference/vector/vector/get_allocator/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/get_allocator/">http://www.cplusplus.com/reference/vector/vector/get_allocator/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-get-allocator"><a href="#std-vector-get-allocator" class="headerlink" title="std::vector::get_allocator"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::get_allocator</h1><ul>
+<h1 id="std-vector-get-allocator"><a href="#std-vector-get-allocator" class="headerlink" title="std::vector::get_allocator"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::get_allocator</h1><ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
 <p>allocator_type get_allocator() const noexcept;</p>
 <p>Get allocator</p>
-<p>Returns a copy of the allocator object associated with the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>.<br>返回vector的内存分配器。</p>
+<p>Returns a copy of the allocator object associated with the <a href="http://www.cplusplus.com/vector">vector</a>.<br>返回vector的内存分配器。</p>
 <p>//这个有人说我们初学者基本不会用到，我觉得也的确是，因此，现阶段我们就只是了解好了。  </p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
-<h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>The allocator.<br>返回值是一个内存分配器对象。<br>Member type allocator_type is the type of the allocator used by the container, defined in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> as an alias of its second template parameter (Alloc).  </p>
+<h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>The allocator.<br>返回值是一个内存分配器对象。<br>Member type allocator_type is the type of the allocator used by the container, defined in <a href="http://www.cplusplus.com/vector">vector</a> as an alias of its second template parameter (Alloc).  </p>
 <p>其类型由vector模版参数Alloc指定。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// vector::get_allocator</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line">  int * p;</span><br><span class="line">  unsigned int i;</span><br><span class="line"></span><br><span class="line">  // allocate an array with space for 5 elements using vector&#x27;s allocator:</span><br><span class="line">  p = myvector.get_allocator().allocate(5);</span><br><span class="line"></span><br><span class="line">  // construct values in-place on the array:</span><br><span class="line">  for (i=0; i&lt;5; i++) myvector.get_allocator().construct(&amp;p[i],i);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;The allocated array contains:&quot;;</span><br><span class="line">  for (i=0; i&lt;5; i++) std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; p[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  // destroy and deallocate:</span><br><span class="line">  for (i=0; i&lt;5; i++) myvector.get_allocator().destroy(&amp;p[i]);</span><br><span class="line">  myvector.get_allocator().deallocate(p,5);</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/get_allocator/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/get_allocator/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>The example shows an elaborate way to allocate memory for an array of ints using the same allocator used by the vector. Output:</p>
 <p>The allocated array contains: 0 1 2 3 4 </p>
 <p>这个例子详细说明了array分配内存的过程。</p>
@@ -277,12 +277,12 @@
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>No changes.  </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is accessed.容器将被访问。<br>No contained elements are accessed: concurrently accessing or modifying them is safe.<br>容器内的元素不会被访问。同时访问以及修改他们都是安全的。  </p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> this member function never throws exceptions.该方法不会i抛出异常。<br>Copying any instantiation of the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator">default allocator</a> is also guaranteed to never throw.复制任何实例化的默认构造器也不会抛出异常。  </p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> this member function never throws exceptions.该方法不会i抛出异常。<br>Copying any instantiation of the <a href="http://www.cplusplus.com/allocator">default allocator</a> is also guaranteed to never throw.复制任何实例化的默认构造器也不会抛出异常。  </p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-17</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38643007">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38643007">原文链接</a></p>
 
     
 
@@ -465,30 +465,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLvector中的get_allocator方法(27)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLvector中的get_allocator方法(27)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

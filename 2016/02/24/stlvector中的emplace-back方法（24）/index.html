@@ -250,19 +250,19 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的emplace_back方法（24）</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/emplace_back/">http://www.cplusplus.com/reference/vector/vector/emplace_back/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/emplace_back/">http://www.cplusplus.com/reference/vector/vector/emplace_back/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-emplace-back"><a href="#std-vector-emplace-back" class="headerlink" title="std::vector::emplace_back"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::emplace_back</h1><p>template &lt;class… Args&gt;<br>  void emplace_back (Args&amp;&amp;… args);</p>
+<h1 id="std-vector-emplace-back"><a href="#std-vector-emplace-back" class="headerlink" title="std::vector::emplace_back"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::emplace_back</h1><p>template &lt;class… Args&gt;<br>  void emplace_back (Args&amp;&amp;… args);</p>
 <p>Construct and insert element at the end</p>
-<p>Inserts a new element at the end of the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>, right after its current last element. This new element is constructed in place using <em>args</em> as the arguments for its constructor.  </p>
+<p>Inserts a new element at the end of the <a href="http://www.cplusplus.com/vector">vector</a>, right after its current last element. This new element is constructed in place using <em>args</em> as the arguments for its constructor.  </p>
 <p>在vector的结尾插入一个新的元素，位置为当前最后一个元素的右边，元素的值使用args作为参数传递给其构造函数构造。</p>
-<p>This effectively increases the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> by one, which causes an automatic reallocation of the allocated storage space if -and only if- the new vector <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> surpasses the current vector <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::capacity">capacity</a>.</p>
+<p>This effectively increases the container <a href="http://www.cplusplus.com/vector::size">size</a> by one, which causes an automatic reallocation of the allocated storage space if -and only if- the new vector <a href="http://www.cplusplus.com/vector::size">size</a> surpasses the current vector <a href="http://www.cplusplus.com/vector::capacity">capacity</a>.</p>
 <p>该方法可以快速有效率地在数组size范围内增长元素，除非当增长的元素个数大小超出了vector的ccapacity的时候才会发生重分配。  </p>
-<p>The element is constructed in-place by calling <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> with <em>args</em> forwarded.</p>
-<p>元素由调用<a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> 以及参数args构造。</p>
-<p>A similar member function exists, <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::push_back">push_back</a>, which either copies or moves an existing object into the container.</p>
+<p>The element is constructed in-place by calling <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> with <em>args</em> forwarded.</p>
+<p>元素由调用<a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> 以及参数args构造。</p>
+<p>A similar member function exists, <a href="http://www.cplusplus.com/vector::push_back">push_back</a>, which either copies or moves an existing object into the container.</p>
 <p>一个相似的方法是push_back，一样是通过拷贝或者移动一个已经存在（这也是两者最大的区别，push_back的参数对象必须是已经存在的对象）的对象到容器.</p>
 <p>例子:</p>
 <p>#include <iostream><br>#include <vector><br>using namespace std;<br>class text{<br>private:<br>string str;<br>public:<br>text(string s):str(s){<br>}<br>void show()const{<br>cout&lt;&lt;str&lt;&lt;endl;<br>}</p>
@@ -279,20 +279,20 @@
 <p>Arguments forwarded to construct the new element.</p>
 <p>用于构造新元素的参数。  </p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none.  </p>
-<p>If a reallocation happens, the storage is allocated using the container’s <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).</p>
+<p>If a reallocation happens, the storage is allocated using the container’s <a href="http://www.cplusplus.com/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).</p>
 <p>如果发生了重分配，将使用容器的分配器进行内存分配，这可能会抛出异常。（例如allocator这个默认的分配器在请求失败时会抛出bad_alloc异常）</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// vector::emplace_back</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector = &#123;10,20,30&#125;;</span><br><span class="line"></span><br><span class="line">  myvector.emplace_back (100);</span><br><span class="line">  myvector.emplace_back (200);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (auto&amp; x: myvector)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; x;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/emplace_back/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/emplace_back/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector contains: 10 20 30 100 200 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant (amortized time, reallocation may happen).  </p>
-<p>If a reallocation happens, the reallocation is itself up to linear in the entire <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a>.<br>如果发生重分配，将额外增加与整个数组大小线性相关的时间复杂度。  </p>
+<p>If a reallocation happens, the reallocation is itself up to linear in the entire <a href="http://www.cplusplus.com/vector::size">size</a>.<br>如果发生重分配，将额外增加与整个数组大小线性相关的时间复杂度。  </p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>If a reallocation happens, all iterators, pointers and references related to this container are invalidated.</p>
 <p>如果发生重分配，之前所获得的所有迭代器，指针以及引用都将失效。  </p>
-<p>Otherwise, only the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">end</a> iterator is invalidated, and all other iterators, pointers and references to elements are guaranteed to keep referring to the same elements they were referring to before the call.</p>
+<p>Otherwise, only the <a href="http://www.cplusplus.com/vector::end">end</a> iterator is invalidated, and all other iterators, pointers and references to elements are guaranteed to keep referring to the same elements they were referring to before the call.</p>
 <p>否则，只有end得到的迭代器将失效，其他的迭代器，指针以及引用依然有效。</p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is modified.  </p>
 <p>容器将被访问。</p>
@@ -306,13 +306,13 @@
 <p>如果发生重分配，并且元素的拷贝或者移动构造不会抛出异常，发生异常的规则也是一样的。  </p>
 <p>Otherwise, the container is guaranteed to end in a valid state (basic guarantee).</p>
 <p>否则，容器保证最后依旧有效  </p>
-<p>If <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments, it causes <em>undefined behavior</em>.</p>
-<p>如果<a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a>不支持该元素，将导致未知的行为。</p>
+<p>If <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments, it causes <em>undefined behavior</em>.</p>
+<p>如果<a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a>不支持该元素，将导致未知的行为。</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-17</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38636715">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38636715">原文链接</a></p>
 
     
 
@@ -495,30 +495,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLvector中的emplace_back方法（24）" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLvector中的emplace_back方法（24）" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

@@ -196,6 +196,13 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <script src="/lib/oauthcallback.browser.js"></script>
+  
+  <script>
+    Oauthcallback();
+  </script>
+
 
   
     <article id="post-fedora20安装chrome浏览器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -228,10 +235,10 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>fedora20安装chrome浏览器</p>
-<p>安装google-chrome浏览器。在/etc/yum/yum.repos.d下建立google-chrome.repo文件（可用gedit 命令），内容如下：<br>[google-chrome]<br>name=google-chrome<br>baseurl=<a target="_blank" rel="noopener" href="http://dl.google.com/linux/chrome/rpm/stable/x86/_64">http://dl.google.com/linux/chrome/rpm/stable/x86\_64</a><br>enabled=1<br>gpgcheck=1  </p>
+<p>安装google-chrome浏览器。在/etc/yum/yum.repos.d下建立google-chrome.repo文件（可用gedit 命令），内容如下：<br>[google-chrome]<br>name=google-chrome<br>baseurl=<a href="http://dl.google.com/linux/chrome/rpm/stable/x86/_64">http://dl.google.com/linux/chrome/rpm/stable/x86\_64</a><br>enabled=1<br>gpgcheck=1  </p>
 <p>＃sudo yum install google-chrome-stable<br>如果上面的命令运行过程报错 Error in PREIN scriptlet in rpm package google-chrome-stable-32.0.1700.77-1.x86_64  </p>
 <p>按照下面的命令执行<br>＃ sudo setenforce 0<br>＃ sudo yum install google-chrome-stable –nogpgcheck<br>＃ sudo setenforce 1</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38327039">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38327039">原文链接</a></p>
 
     
 
@@ -358,7 +365,7 @@
 <p>4. 切换到主进程中的子线程，注意：线程2为前面产生的子进程  </p>
 <p>(gdb) thread 3<br>[Switching to thread 3 (Thread 0xb7fe7b70 (LWP 3562))]#0  0x00110424 in __kernel_vsyscall ()<br>(gdb) cont<br>ProcessA: 3472 thread 3086911168 step3<br>ProcessA: 3472 thread 3086908272 step2<br>[Switching to Thread 0xb7fe7b70 (LWP 3562)]  </p>
 <p>Breakpoint 3, processAworker (arg=0x0) at test.c:50<br>(gdb) info threads<br>* 3 Thread 0xb7fe7b70 (LWP 3562)  processAworker (arg=0x0) at test.c:50<br>  2 Thread 0xb7fe86c0 (LWP 3475)  0x00110424 in ?? ()<br>  1 Thread 0xb7fe86c0 (LWP 3472)  0x00110424 in __kernel_vsyscall ()<br>(gdb) thread 1  </p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/46619275">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/46619275">原文链接</a></p>
 
     
 
@@ -454,7 +461,7 @@
 <p>更坑的是官网不能上！</p>
 <p>逼我开自由门么….</p>
 <p>果断暂时用MFC下的openGL用着先。</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/28757767">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/28757767">原文链接</a></p>
 
     
 
@@ -554,12 +561,12 @@
 <p>Author</p>
 <p>HDOJ</p>
 <p>Recommend</p>
-<p>We have carefully selected several similar problems for you:  <a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=1001">1001</a> <a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=1089">1089</a> <a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=1002">1002</a> <a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=1090">1090</a> <a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=1091">1091</a> </p>
+<p>We have carefully selected several similar problems for you:  <a href="http://acm.hdu.edu.cn/showproblem.php?pid=1001">1001</a> <a href="http://acm.hdu.edu.cn/showproblem.php?pid=1089">1089</a> <a href="http://acm.hdu.edu.cn/showproblem.php?pid=1002">1002</a> <a href="http://acm.hdu.edu.cn/showproblem.php?pid=1090">1090</a> <a href="http://acm.hdu.edu.cn/showproblem.php?pid=1091">1091</a> </p>
 <p>#include <iostream><br>using namespace std;<br>int main()<br>{<br>    int a,b;<br>    while(cin&gt;&gt;a&gt;&gt;b)//之前真不知道还能这样子连续输入的！<br>    cout&lt;&lt;a+b&lt;&lt;endl;<br>    return 0;<br>} </p>
 <p>心得：</p>
 <p>原来学下算法还真的是挺有用的啊，至少会开始关注效率的问题。</p>
 <p>能让自己学的更多！</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/23397363">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/23397363">原文链接</a></p>
 
     
 
@@ -659,7 +666,7 @@
 <p>int num;<br>cin&gt;&gt;num;<br>int i=1;<br>int count=num;</p>
 <p>while(num)//我只想说，格式是硬伤，没注意输出格式，愣是花多了半个多小时去调程序<br>{<br>string s1,s2;<br>cin&gt;&gt;s1&gt;&gt;s2;<br>cout&lt;&lt;”Case “&lt;&lt;i&lt;&lt;”:”&lt;&lt;endl;<br>cout&lt;&lt;s1&lt;&lt;” + “&lt;&lt;s2&lt;&lt;” = “&lt;&lt;sum(s1,s2)&lt;&lt;endl;//“ + ”前后是有空格的<br>if(i&lt;count)<br>cout&lt;&lt;endl;<br>num–;<br>i++;<br>//cout&lt;&lt;sum(s1,s2)&lt;&lt;endl;<br>}<br>}</p>
 <p>HDU要看清楚格式输出的要求，否则坑底你别叫！！！</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/24984615">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/24984615">原文链接</a></p>
 
     
 
@@ -754,7 +761,7 @@
 <p>}</p>
 <p>return 0;</p>
 <p>}</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/25382939">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/25382939">原文链接</a></p>
 
     
 
@@ -849,7 +856,7 @@
 <p>}</p>
 <p> }</p>
 <p>}</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/25684211">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/25684211">原文链接</a></p>
 
     
 
@@ -939,7 +946,7 @@
 <p>//一开始用递归，果断RTL<br>//后来发现其实这是一个结果循环的数列。<br>//因为f(n-1)的取值只可能是0–7，f(n-2)也是一样,<br>//因此f(n)一共有7*7=49种可能，因此，这个循环队列的最大长度为49<br>//并且肯定是从1,1开始的。因为f(0)=1,f(1)=1;</p>
 <p>#include <iostream><br>using namespace std;<br>int main()<br>{<br>int f[50];//因为该数列从f(1)开始，我这里为了使下标对应，也从0开始<br>int a,b;<br>long n;<br>f[0]=100;//给list[0]随便赋一个值,避免原来f[0]中可能是’\0’的情况<br>while(cin&gt;&gt;a&gt;&gt;b&gt;&gt;n&amp;&amp;a!=0&amp;&amp;b!=0&amp;&amp;n!=0)<br>{</p>
 <p>f[1]=1;<br>f[2]=1;<br>for(int i=3;i&lt;50;i++)//迭代求得循环数列<br>f[i]=(a*f[i-1]+b*f[i-2])%7;<br>cout&lt;&lt;f[n%49]&lt;&lt;endl;//这里就是求n在循环队列中对应位置的问题了<br>}<br>return 0;<br>}</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/26098311">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/26098311">原文链接</a></p>
 
     
 
@@ -1031,7 +1038,7 @@
 <p>坚持每天做几道题。</p>
 <p>都用C++解决。</p>
 <p>Love if!</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/23396915">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/23396915">原文链接</a></p>
 
     
 
@@ -1122,7 +1129,7 @@
 <p>#include <iostream><br>using namespace std;<br>long int Sum(int a)<br>{<br>     long int sum=0;<br>     for(int i=1;i&lt;=a;i++)<br>             sum+=i;<br>     return sum;<br>}<br>int main()<br>{<br>    int a,b;<br>    while(cin&gt;&gt;a)<br>    {<br>         cout&lt;&lt;Sum(a)&lt;&lt;endl&lt;&lt;endl;<br>         //cout&lt;&lt;Sum(b);<br>    }    </p>
 <p>} </p>
 <p>发现自己英文菜菜的，居然看错题了，还以为是两个数字一起输入的呢，真是郁闷。</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/23437591">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/23437591">原文链接</a></p>
 
     
 

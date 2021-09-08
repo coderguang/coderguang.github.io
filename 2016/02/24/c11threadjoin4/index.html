@@ -250,11 +250,11 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>C++11threadjoin(4)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/join/">http://www.cplusplus.com/reference/thread/thread/join/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/thread/thread/join/">http://www.cplusplus.com/reference/thread/thread/join/</a></p>
 <p>public member function</p>
 <thread>
 
-<h1 id="std-thread-join"><a href="#std-thread-join" class="headerlink" title="std::thread::join"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::join</h1><p>void join();</p>
+<h1 id="std-thread-join"><a href="#std-thread-join" class="headerlink" title="std::thread::join"></a>std::<a href="http://www.cplusplus.com/reference/thread/thread/">thread</a>::join</h1><p>void join();</p>
 <p>Join thread</p>
 <p>The function returns when the thread execution has completed.  </p>
 <p>当该线程执行完成后才返回。（即等待子线程执行完毕才继续执行主线程）</p>
@@ -267,7 +267,7 @@
 <p>加上t2.join()之后的执行结果：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013650_4344895871216.jpg">  </p>
 <p>可以看到，阻塞了主线程，等待t2执行完毕才继续执行main线程。</p>
-<p>After a call to this function, the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object becomes non-<em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em> and can be <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::~thread">destroyed</a></em> safely.  </p>
+<p>After a call to this function, the <a href="http://www.cplusplus.com/thread">thread</a> object becomes non-<em><a href="http://www.cplusplus.com/thread::joinable">joinable</a></em> and can be <em><a href="http://www.cplusplus.com/thread::~thread">destroyed</a></em> safely.  </p>
 <p>调用该函数后，子线程对象变成non-joinable以及可以安全地销毁。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none  </p>
@@ -275,34 +275,34 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// example for thread::join</span><br><span class="line">#include &lt;iostream&gt;       // std::cout</span><br><span class="line">#include &lt;thread&gt;         // std::thread, std::this_thread::sleep_for</span><br><span class="line">#include &lt;chrono&gt;         // std::chrono::seconds</span><br><span class="line"> </span><br><span class="line">void pause_thread(int n) </span><br><span class="line">&#123;</span><br><span class="line">  std::this_thread::sleep_for (std::chrono::seconds(n));</span><br><span class="line">  std::cout &lt;&lt; &quot;pause of &quot; &lt;&lt; n &lt;&lt; &quot; seconds ended\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">  std::cout &lt;&lt; &quot;Spawning 3 threads...\n&quot;;</span><br><span class="line">  std::thread t1 (pause_thread,1);</span><br><span class="line">  std::thread t2 (pause_thread,2);</span><br><span class="line">  std::thread t3 (pause_thread,3);</span><br><span class="line">  std::cout &lt;&lt; &quot;Done spawning threads. Now waiting for them to join:\n&quot;;</span><br><span class="line">  t1.join();</span><br><span class="line">  t2.join();</span><br><span class="line">  t3.join();</span><br><span class="line">  std::cout &lt;&lt; &quot;All threads joined!\n&quot;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/thread/thread/join/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/thread/thread/join/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output (after 3 seconds):  </p>
 <p>Spawning 3 threads…<br>Done spawning threads. Now waiting for them to join:<br>pause of 1 seconds ended<br>pause of 2 seconds ended<br>pause of 3 seconds ended<br>All threads joined! </p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The object is modified.<br>Note that any operations on the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object itself are not synchronized (unlike the operations within the thread it represents).  </p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>Basic guarantee:</strong> if an exception is thrown by this member function, the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is left in a valid state.  </p>
-<p>If the call fails, a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a> exception is thrown:  </p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The object is modified.<br>Note that any operations on the <a href="http://www.cplusplus.com/thread">thread</a> object itself are not synchronized (unlike the operations within the thread it represents).  </p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>Basic guarantee:</strong> if an exception is thrown by this member function, the <a href="http://www.cplusplus.com/thread">thread</a> object is left in a valid state.  </p>
+<p>If the call fails, a <a href="http://www.cplusplus.com/system_error">system_error</a> exception is thrown:  </p>
 <p>exception type</p>
 <p>error condition</p>
 <p>description</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/errc">errc::invalid_argument</a></p>
-<p>- The <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is not <em><a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread::joinable">joinable</a></em></p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/errc">errc::no_such_process</a></p>
-<p>- The <a target="_blank" rel="noopener" href="http://www.cplusplus.com/thread">thread</a> object is not valid</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/system_error">system_error</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/errc">errc::resource_deadlock_would_occur</a></p>
+<p><a href="http://www.cplusplus.com/system_error">system_error</a></p>
+<p><a href="http://www.cplusplus.com/errc">errc::invalid_argument</a></p>
+<p>- The <a href="http://www.cplusplus.com/thread">thread</a> object is not <em><a href="http://www.cplusplus.com/thread::joinable">joinable</a></em></p>
+<p><a href="http://www.cplusplus.com/system_error">system_error</a></p>
+<p><a href="http://www.cplusplus.com/errc">errc::no_such_process</a></p>
+<p>- The <a href="http://www.cplusplus.com/thread">thread</a> object is not valid</p>
+<p><a href="http://www.cplusplus.com/system_error">system_error</a></p>
+<p><a href="http://www.cplusplus.com/errc">errc::resource_deadlock_would_occur</a></p>
 <p>- The current thread is the same as the thread attempted to join, or<br>- A deadlock was detected (implementations may detect certain cases of deadlock).</p>
 <p>Note that if the thread represented by the object terminates with an uncaught exception, this cannot be caught by the current thread, and <code>[terminate()](http://www.cplusplus.com/terminate)</code> is automatically called.</p>
 <p>—————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#111;&#100;&#101;&#114;&#x67;&#x75;&#x61;&#110;&#x67;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;">&#x63;&#111;&#100;&#101;&#114;&#x67;&#x75;&#x61;&#110;&#x67;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#100;&#x65;&#114;&#103;&#117;&#97;&#x6e;&#103;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#99;&#111;&#100;&#x65;&#114;&#103;&#117;&#97;&#x6e;&#103;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></p>
 <p>2014-9-4</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39049475">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39049475">原文链接</a></p>
 
     
 
@@ -485,30 +485,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "C++11threadjoin(4)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "C++11threadjoin(4)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

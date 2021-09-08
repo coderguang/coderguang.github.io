@@ -196,6 +196,13 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <script src="/lib/oauthcallback.browser.js"></script>
+  
+  <script>
+    Oauthcallback();
+  </script>
+
 
   
     <article id="post-stlalgorithm算法remonveremove-if47" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -244,14 +251,14 @@ else
 <p>}</p>
 <p>运行截图：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013051_37893075972095.jpg"><br>可以看出来，it!=vi.end(),只是理论上的超尾迭代器。  </p>
-<p>下面内容来自：<a target="_blank" rel="noopener" href="http://blog.csdn.net/wangwenwen/article/details/7583986">http://blog.csdn.net/wangwenwen/article/details/7583986</a></p>
+<p>下面内容来自：<a href="http://blog.csdn.net/wangwenwen/article/details/7583986">http://blog.csdn.net/wangwenwen/article/details/7583986</a></p>
 <p>*******************************************************************************************</p>
 <h2 id="条款32：如果你真的想删除东西的话就在类似remove的算法后接上erase"><a href="#条款32：如果你真的想删除东西的话就在类似remove的算法后接上erase" class="headerlink" title="条款32：如果你真的想删除东西的话就在类似remove的算法后接上erase"></a>条款32：如果你真的想删除东西的话就在类似remove的算法后接上erase</h2><p>只有容器成员函数可以除去容器元素：如果你真的要删除东西的话，你应该在remove后面接上erase。</p>
-<p>你要erase的元素很容易识别。它们是从区间的“新逻辑终点”开始持续到区间真的终点的原来区间的元素。要除去那些元素，你要做的所有事情就是用那两个迭代器调用erase的区间形式（参见<a target="_blank" rel="noopener" href="http://blog.csdn.net/wangwenwen/article/details/7583986">条款5</a>）。因为remove本身很方便地返回了区间新逻辑终点的迭代器，这个调用很直截了当：</p>
+<p>你要erase的元素很容易识别。它们是从区间的“新逻辑终点”开始持续到区间真的终点的原来区间的元素。要除去那些元素，你要做的所有事情就是用那两个迭代器调用erase的区间形式（参见<a href="http://blog.csdn.net/wangwenwen/article/details/7583986">条款5</a>）。因为remove本身很方便地返回了区间新逻辑终点的迭代器，这个调用很直截了当：</p>
 <p>vector<int> v;// 正如从前<br>v.erase(remove(v.begin(), v.end(), 99), v.end());// _真的_删除所有<br>// 等于99的元素<br>cout &lt;&lt; v.size();// 现在返回7</p>
 <p>把remove的返回值作为erase区间形式第一个实参传递很常见，这是个惯用法。事实上，remove和erase是亲密联盟，这两个整合到list成员函数remove中。这是STL中唯一名叫remove又能从容器中除去元素的函数：</p>
 <p>list<int> li;// 建立一个list<br>// 放一些值进去<br>li.remove(99);// 除去所有等于99的元素：<br>// 真的删除元素，<br>// 所以它的大小可能改变了</p>
-<p>坦白地说，调用这个remove函数是一个STL中的矛盾。在关联容器中类似的函数叫erase，list的remove也可以叫做erase。但它没有，所以我们都必须习惯它。我们所处于的世界不是所有可能中最好的世界，但却是我们所处的。（附加一点，<a target="_blank" rel="noopener" href="http://blog.csdn.net/wangwenwen/article/details/7583986">条款44</a>指出，对于list，调用remove成员函数比应用erase-remove惯用法更高效。）</p>
+<p>坦白地说，调用这个remove函数是一个STL中的矛盾。在关联容器中类似的函数叫erase，list的remove也可以叫做erase。但它没有，所以我们都必须习惯它。我们所处于的世界不是所有可能中最好的世界，但却是我们所处的。（附加一点，<a href="http://blog.csdn.net/wangwenwen/article/details/7583986">条款44</a>指出，对于list，调用remove成员函数比应用erase-remove惯用法更高效。）</p>
 <p>一旦你知道了remove不能“真的”从一个容器中删除东西，和erase联合使用就变成理所当然了。你要记住的唯一其他的东西是remove不是唯一这种情况的算法。另外有两种“类似remove”的算法：remove_if和unique。</p>
 <p>remove和remove_if之间的相似性很直截了当。所以我不会细讲，但unique行为也像remove。它用来从一个区间删除东西（邻近的重复值）而不用访问持有区间元素的容器。结果，如果你真的要从容器中删除元素，你也必须成对调用unique和erase，unique在list中也类似于remove。正像list::remove真的删除东西（而且比erase-remove惯用法高效得多）。list::unique也真的删除邻近的重复值（也比erase-unique高效）。</p>
 <p>———————————————————————————————————————————————————</p>
@@ -272,13 +279,13 @@ else
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013052_33488818015476.jpg">  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#100;&#101;&#x72;&#103;&#117;&#x61;&#x6e;&#x67;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;">&#99;&#111;&#100;&#101;&#x72;&#103;&#117;&#x61;&#x6e;&#x67;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#x6f;&#x64;&#101;&#x72;&#103;&#117;&#x61;&#x6e;&#103;&#64;&#x67;&#109;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#109;">&#99;&#x6f;&#x64;&#101;&#x72;&#103;&#117;&#x61;&#x6e;&#103;&#64;&#x67;&#109;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#109;</a></p>
 <p>2014-9-25</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39545857">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39545857">原文链接</a></p>
 
     
 
@@ -393,13 +400,13 @@ cout&lt;&lt;&quot;\*(it-1)=&quot;&lt;&lt;\*(it-1)&lt;&lt;endl;
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013058_5470996350852.jpg">  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#111;&#100;&#101;&#114;&#x67;&#117;&#x61;&#x6e;&#103;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#111;&#100;&#101;&#114;&#x67;&#117;&#x61;&#x6e;&#103;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#101;&#x72;&#103;&#117;&#x61;&#110;&#103;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x63;&#111;&#x64;&#101;&#x72;&#103;&#117;&#x61;&#110;&#103;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
 <p>2014-9-25</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39546541">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39546541">原文链接</a></p>
 
     
 
@@ -519,13 +526,13 @@ cout&lt;&lt;&quot;\*(it-1)=&quot;&lt;&lt;\*(it-1)&lt;&lt;endl;
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013104_19213226086415.jpg">  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#x64;&#101;&#114;&#x67;&#x75;&#97;&#110;&#103;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;">&#99;&#x6f;&#x64;&#101;&#114;&#x67;&#x75;&#97;&#110;&#103;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#100;&#101;&#114;&#103;&#117;&#x61;&#110;&#103;&#x40;&#103;&#109;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;">&#99;&#111;&#100;&#101;&#114;&#103;&#117;&#x61;&#110;&#103;&#x40;&#103;&#109;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;</a></p>
 <p>2014-9-25</p>
 <p>于GDUT</p>
 <p>—————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39547057">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39547057">原文链接</a></p>
 
     
 
@@ -643,13 +650,13 @@ cout&lt;&lt;endl;
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013108_39689156188387.jpg">  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#101;&#114;&#x67;&#x75;&#97;&#x6e;&#x67;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#x6f;&#100;&#101;&#114;&#x67;&#x75;&#97;&#x6e;&#x67;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#100;&#x65;&#114;&#103;&#x75;&#x61;&#110;&#103;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#x6d;">&#99;&#111;&#100;&#x65;&#114;&#103;&#x75;&#x61;&#110;&#103;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#x6d;</a></p>
 <p>2014-9-25</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39547677">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39547677">原文链接</a></p>
 
     
 
@@ -774,13 +781,13 @@ cout&lt;&lt;endl;
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224012850_28531995863327.jpg">  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#x65;&#x72;&#x67;&#117;&#97;&#x6e;&#x67;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#x6f;&#100;&#x65;&#x72;&#x67;&#117;&#97;&#x6e;&#x67;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#x64;&#101;&#x72;&#x67;&#117;&#x61;&#110;&#103;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#109;">&#99;&#111;&#x64;&#101;&#x72;&#x67;&#117;&#x61;&#110;&#103;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#109;</a></p>
 <p>2014-9-26</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39575513">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39575513">原文链接</a></p>
 
     
 
@@ -905,13 +912,13 @@ cout&lt;&lt;endl;
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224012856_32534547134867.jpg">  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#x64;&#x65;&#x72;&#103;&#117;&#x61;&#110;&#x67;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#109;">&#99;&#x6f;&#x64;&#x65;&#x72;&#103;&#117;&#x61;&#110;&#x67;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#x65;&#x72;&#x67;&#117;&#x61;&#110;&#x67;&#64;&#x67;&#109;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#109;">&#x63;&#111;&#x64;&#x65;&#x72;&#x67;&#117;&#x61;&#110;&#x67;&#64;&#x67;&#109;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#109;</a></p>
 <p>2014-9-26</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39575787">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39575787">原文链接</a></p>
 
     
 
@@ -1061,13 +1068,13 @@ cout&lt;&lt;endl;
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224012903_52021349233244.jpg"><br>其中0是本来就有没有被覆盖的。更好的做法是使用for，然后利用set_intersection的返回值作为界限遍历。</p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#100;&#101;&#114;&#x67;&#x75;&#97;&#x6e;&#103;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109;">&#99;&#111;&#100;&#101;&#114;&#x67;&#x75;&#97;&#x6e;&#103;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#x64;&#101;&#114;&#x67;&#x75;&#x61;&#110;&#103;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">&#99;&#111;&#x64;&#101;&#114;&#x67;&#x75;&#x61;&#110;&#103;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <p>2014-9-26</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39576225">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39576225">原文链接</a></p>
 
     
 
@@ -1162,10 +1169,10 @@ cout&lt;&lt;endl;
 <p>该函数是计算两个集合的对称差。</p>
 <p>使用前序列应该已经有序。</p>
 <p>对称差的概念为：</p>
-<p><a target="_blank" rel="noopener" href="http://baike.baidu.com/view/26152.htm">集合论</a>中的数学术语，既两个集合的对称差是只属于其中一个集合，而不属于另一个集合的元素组成的集合。 集合论中的这个运算相当于布尔逻辑中的 XOR 运算。集合 A 和 B 的对称差通常表示为 AΔB。例如：集合 {1,2,3} 和 {3,4} 的对称差为 {1,2,4}。所有学生的集合和所有女性的集合的对称差为所有男性学生和所有女性非学生组成的集合。</p>
+<p><a href="http://baike.baidu.com/view/26152.htm">集合论</a>中的数学术语，既两个集合的对称差是只属于其中一个集合，而不属于另一个集合的元素组成的集合。 集合论中的这个运算相当于布尔逻辑中的 XOR 运算。集合 A 和 B 的对称差通常表示为 AΔB。例如：集合 {1,2,3} 和 {3,4} 的对称差为 {1,2,4}。所有学生的集合和所有女性的集合的对称差为所有男性学生和所有女性非学生组成的集合。</p>
 <p>表示符号一般为 △或⊕。</p>
-<p>对称差相当于两个相对补集的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/276957.htm">并集</a>，即：</p>
-<p><a target="_blank" rel="noopener" href="http://baike.baidu.com/picture/738857/738857/0/9f510fb30f2442a788b65f74d143ad4bd01302a2?fr=lemma&ct=single"><img src="F:\download\DyhBlogDownloader20151022\DyhBlogDownloader20151022\HTML\CSDN\roaylchen的博客\未分类\STLalgorithm算法set_symmetric_difference,set_union(54)\http://b.hiphotos.baidu.com/baike/s%3D220/sign=61cbb2fe95cad1c8d4bbfb254f3f67c4/9f510fb30f2442a788b65f74d143ad4bd01302a2.jpg" alt="对称差文氏图表示,红色区域表示对称差" title="对称差文氏图表示,红色区域表示对称差"></a></p>
+<p>对称差相当于两个相对补集的<a href="http://baike.baidu.com/view/276957.htm">并集</a>，即：</p>
+<p><a href="http://baike.baidu.com/picture/738857/738857/0/9f510fb30f2442a788b65f74d143ad4bd01302a2?fr=lemma&ct=single"><img src="F:\download\DyhBlogDownloader20151022\DyhBlogDownloader20151022\HTML\CSDN\roaylchen的博客\未分类\STLalgorithm算法set_symmetric_difference,set_union(54)\http://b.hiphotos.baidu.com/baike/s%3D220/sign=61cbb2fe95cad1c8d4bbfb254f3f67c4/9f510fb30f2442a788b65f74d143ad4bd01302a2.jpg" alt="对称差文氏图表示,红色区域表示对称差" title="对称差文氏图表示,红色区域表示对称差"></a></p>
 <p>对称差文氏图表示,红色区域表示对称差</p>
 <p>A Δ B = (A − B) ∪(B − A)</p>
 <p>也可以表示为两个集合的并集减去它们的交集：</p>
@@ -1237,13 +1244,13 @@ cout&lt;&lt;endl;
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224012932_166369710160861.jpg">  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#101;&#x72;&#103;&#117;&#x61;&#110;&#x67;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;">&#99;&#x6f;&#100;&#101;&#x72;&#103;&#117;&#x61;&#110;&#x67;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#101;&#x72;&#x67;&#117;&#x61;&#110;&#x67;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#99;&#x6f;&#100;&#101;&#x72;&#x67;&#117;&#x61;&#110;&#x67;&#x40;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a></p>
 <p>2014-9-26</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39576519">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39576519">原文链接</a></p>
 
     
 
@@ -1370,13 +1377,13 @@ cout&lt;&lt;endl;
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013201_38861026532252.jpg">  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#x65;&#x72;&#x67;&#x75;&#97;&#x6e;&#103;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x63;&#x6f;&#100;&#x65;&#x72;&#x67;&#x75;&#97;&#x6e;&#103;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#x64;&#101;&#x72;&#103;&#117;&#97;&#110;&#103;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;">&#x63;&#x6f;&#x64;&#101;&#x72;&#103;&#117;&#97;&#110;&#103;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;</a></p>
 <p>2014-9-22</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39478141">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39478141">原文链接</a></p>
 
     
 
@@ -1477,7 +1484,7 @@ cout&lt;&lt;endl;
 <p>默认使用operator&lt;进行排序。  </p>
 <p>稳定和不稳定，这对数值没有什么用，但对于多属性的对象就有用了。<br>如以下组合序列，按括号外的数排序，括号内是另一个属性，<br>1（1）， 3（2）， 5（3）， 5（4）， 7（5）， 9（6） ， 7（7）<br>稳定排序后<br>1（1）， 3（2）， 5（3）， 5（4）， 7（5）， 7（7） ， 9（6）<br>两个5和两个7的相对位置不变，</p>
 <p>不稳定排序后，可以是5（4）， 5（3）或7（7）， 7（5）</p>
-<p>感谢：<a target="_blank" rel="noopener" href="http://zhidao.baidu.com/link?url=wpPsrq1rg5IQioAZ%5C_afz4Qd5drgWSUfiw-GU1GcK%5C_ur3cwNlLCgzwVIR5q0sEdsmS%5C_H0ajKWM97wVsJcgK6uUuH-cl9%5C_ZZzE4wRdTMi1M7e">http://zhidao.baidu.com/link?url=wpPsrq1rg5IQioAZ\_afz4Qd5drgWSUfiw-GU1GcK\_ur3cwNlLCgzwVIR5q0sEdsmS\_H0ajKWM97wVsJcgK6uUuH-cl9\_ZZzE4wRdTMi1M7e</a>  </p>
+<p>感谢：<a href="http://zhidao.baidu.com/link?url=wpPsrq1rg5IQioAZ%5C_afz4Qd5drgWSUfiw-GU1GcK%5C_ur3cwNlLCgzwVIR5q0sEdsmS%5C_H0ajKWM97wVsJcgK6uUuH-cl9%5C_ZZzE4wRdTMi1M7e">http://zhidao.baidu.com/link?url=wpPsrq1rg5IQioAZ\_afz4Qd5drgWSUfiw-GU1GcK\_ur3cwNlLCgzwVIR5q0sEdsmS\_H0ajKWM97wVsJcgK6uUuH-cl9\_ZZzE4wRdTMi1M7e</a>  </p>
 <p>一个简单的例子：</p>
 <p>#include <iostream><br>#include <algorithm><br>#include <vector><br>using namespace std;<br>void msort()<br>{<br>    vector<int> vi{1,8,5,19,22,5,4};<br>    vector<int> v2{1,45,88,33,15,0,-8};<br>    cout&lt;&lt;”at first:”&lt;&lt;endl;<br>    cout&lt;&lt;”vi=”;<br>    for(int i:vi)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;<br>    cout&lt;&lt;”v2=”;<br>    for(int i:v2)<br>        cout&lt;&lt;i&lt;&lt;” “;<br>    cout&lt;&lt;endl;</p>
 <pre><code>sort(vi.begin(),vi.end());
@@ -1497,13 +1504,13 @@ cout&lt;&lt;endl;
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224012936_4316768794480.jpg">  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#x65;&#x72;&#103;&#117;&#x61;&#110;&#103;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#99;&#x6f;&#100;&#x65;&#x72;&#103;&#117;&#x61;&#110;&#103;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#100;&#x65;&#x72;&#x67;&#117;&#x61;&#x6e;&#103;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#99;&#111;&#100;&#x65;&#x72;&#x67;&#117;&#x61;&#x6e;&#103;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
 <p>2014-9-26</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39576929">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39576929">原文链接</a></p>
 
     
 

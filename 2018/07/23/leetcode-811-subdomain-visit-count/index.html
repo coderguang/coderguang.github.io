@@ -246,7 +246,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/subdomain-visit-count/description/">https://leetcode.com/problems/subdomain-visit-count/description/</a><br>class Solution {<br>public:<br>    void SplitString(const string&amp; s, vector&amp; v, const string&amp; c)<br>    {<br>    string::size_type pos1, pos2;<br>    pos2 = s.find(c);<br>    pos1 = 0;<br>    while(string::npos != pos2)<br>    {<br>        v.push_back(s.substr(pos1, pos2-pos1));</p>
+    <p>//url:<a href="https://leetcode.com/problems/subdomain-visit-count/description/">https://leetcode.com/problems/subdomain-visit-count/description/</a><br>class Solution {<br>public:<br>    void SplitString(const string&amp; s, vector&amp; v, const string&amp; c)<br>    {<br>    string::size_type pos1, pos2;<br>    pos2 = s.find(c);<br>    pos1 = 0;<br>    while(string::npos != pos2)<br>    {<br>        v.push_back(s.substr(pos1, pos2-pos1));</p>
 <pre><code>    pos1 = pos2 + c.size();
     pos2 = s.find(c, pos1);
 &#125;
@@ -470,30 +470,31 @@ vector subdomainVisits(vector&amp; cpdomains) &#123;
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "LeetCode---811. Subdomain Visit Count" -->
-    var gitment = new Gitment({
-      id: "20180723173346",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "LeetCode---811. Subdomain Visit Count" -->
+  var giteement = new Giteement({
+    id: '20180723173346',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

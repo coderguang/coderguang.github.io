@@ -251,11 +251,11 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的operator=方法（30）</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/unique/">http://www.cplusplus.com/reference/algorithm/unique/</a>  </p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/algorithm/unique/">http://www.cplusplus.com/reference/algorithm/unique/</a>  </p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-operator"><a href="#std-vector-operator" class="headerlink" title="std::vector::operator="></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::operator=</h1><ul>
+<h1 id="std-vector-operator"><a href="#std-vector-operator" class="headerlink" title="std::vector::operator="></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::operator=</h1><ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
@@ -266,7 +266,7 @@
 <p>initializer list (3)</p>
 <p>vector&amp; operator= (initializer_list&lt;value_type&gt; il);</p>
 <p>Assign content</p>
-<p>Assigns new contents to the container, replacing its current contents, and modifying its <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> accordingly.调整当前容器内容，替换当前内容，并调整当前容器的大小。  </p>
+<p>Assigns new contents to the container, replacing its current contents, and modifying its <a href="http://www.cplusplus.com/vector::size">size</a> accordingly.调整当前容器内容，替换当前内容，并调整当前容器的大小。  </p>
 <ul>
 <li></li>
 <li>  C++11</li>
@@ -274,7 +274,7 @@
 <p>The <em>copy assignment</em> (1) copies all the elements from <em>x</em> into the container (with <em>x</em> preserving its contents).<br>从x中依次复制其元素到该vector中，x中的元素依旧有效。  </p>
 <p>The <em>move assignment</em> (2) moves the elements of <em>x</em> into the container (<em>x</em> is left in an unspecified but valid state).<br>从x中移动其元素到该vector中，(x依旧有效但不指定是否离开？)  </p>
 <p>The <em>initializer list assignment</em> (3) copies the elements of <em>il</em> into the container.<br>从初始化列表中复制元素到容器中。  </p>
-<p>The container preserves its <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::get_allocator">current allocator</a>, except if the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits">allocator traits</a> indicate that <em>x</em>‘s allocator should <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits#types">propagate</a>. This <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::get_allocator">allocator</a> is used (through its <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits">traits</a>) to <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::allocate">allocate</a> and <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::deallocate">deallocate</a> storage if a reallocation happens, and to <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">construct</a> or <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::destroy">destroy</a> elements, if needed.<br>容器保持现有的内存分配器，除非分配器的特性指明了应该继承x的内存分配器，那么将使用其内存分配器去分配及释放内存，如果发生重分配，或者构造，析构需要的时候，就使用该分配器。  </p>
+<p>The container preserves its <a href="http://www.cplusplus.com/vector::get_allocator">current allocator</a>, except if the <a href="http://www.cplusplus.com/allocator_traits">allocator traits</a> indicate that <em>x</em>‘s allocator should <a href="http://www.cplusplus.com/allocator_traits#types">propagate</a>. This <a href="http://www.cplusplus.com/vector::get_allocator">allocator</a> is used (through its <a href="http://www.cplusplus.com/allocator_traits">traits</a>) to <a href="http://www.cplusplus.com/allocator_traits::allocate">allocate</a> and <a href="http://www.cplusplus.com/allocator_traits::deallocate">deallocate</a> storage if a reallocation happens, and to <a href="http://www.cplusplus.com/allocator_traits::construct">construct</a> or <a href="http://www.cplusplus.com/allocator_traits::destroy">destroy</a> elements, if needed.<br>容器保持现有的内存分配器，除非分配器的特性指明了应该继承x的内存分配器，那么将使用其内存分配器去分配及释放内存，如果发生重分配，或者构造，析构需要的时候，就使用该分配器。  </p>
 <p>相应例子及结果截图:</p>
 <p>（1）</p>
 <p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main()<br>{<br>vector<int> v1={1,2,3,4};<br>vector<int> v2={11,12,13,14};<br>cout&lt;&lt;”v1=”;<br>for_each(v1.begin(),v1.end(),[](const int &amp;m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;<br>cout&lt;&lt;”v2=”;<br>for_each(v2.begin(),v2.end(),[](const int &amp;m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;<br>v1=v2;<br>cout&lt;&lt;”after v1=v2:”&lt;&lt;endl;<br>cout&lt;&lt;”v1=”;<br>for_each(v1.begin(),v1.end(),[](const int &amp;m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;<br>cout&lt;&lt;”v2=”;<br>for_each(v2.begin(),v2.end(),[](const int &amp;m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;</p>
@@ -296,29 +296,29 @@
 <p>Any elements held in the container before the call are either <em>assigned to</em> or <em>destroyed</em>.  </p>
 <p>使用该函数之前其元素依旧存储。（？？）</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>x</p>
-<p>A <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> object of the same type (i.e., with the same template parameters, T and Alloc).</p>
+<p>A <a href="http://www.cplusplus.com/vector">vector</a> object of the same type (i.e., with the same template parameters, T and Alloc).</p>
 <p>一个和该vector相同类型（模版参数T和Alloc）的vector</p>
 <p>il</p>
-<p>An <a target="_blank" rel="noopener" href="http://www.cplusplus.com/initializer_list">initializer_list</a> object. The compiler will automatically construct such objects from <em>initializer list</em> declarators.</p>
-<p>一个初始化列表对象，编译器将自动从该对象中构造元素。<br>Member type value_type is the type of the elements in the container, defined in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> as an alias of its first template parameter (T).</p>
+<p>An <a href="http://www.cplusplus.com/initializer_list">initializer_list</a> object. The compiler will automatically construct such objects from <em>initializer list</em> declarators.</p>
+<p>一个初始化列表对象，编译器将自动从该对象中构造元素。<br>Member type value_type is the type of the elements in the container, defined in <a href="http://www.cplusplus.com/vector">vector</a> as an alias of its first template parameter (T).</p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>*this  </p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// vector assignment</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; foo (3,0);</span><br><span class="line">  std::vector&lt;int&gt; bar (5,0);</span><br><span class="line"></span><br><span class="line">  bar = foo;</span><br><span class="line">  foo = std::vector&lt;int&gt;();</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;Size of foo: &quot; &lt;&lt; int(foo.size()) &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">  std::cout &lt;&lt; &quot;Size of bar: &quot; &lt;&lt; int(bar.size()) &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/operator=/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/operator=/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>Size of foo: 0<br>Size of bar: 3 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a>.<br>和大小线性相关。  </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in <a href="http://www.cplusplus.com/vector::size">size</a>.<br>和大小线性相关。  </p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>All iterators, references and pointers related to this container before the call are invalidated.所以的迭代器，指针已经引用都将失效。  </p>
 <p>In the <em>move assignment</em>, iterators, pointers and references referring to elements in <em>x</em> are also invalidated.<br>在move assignment这种情况下，指向x的指针，迭代器，引用也将失效。  </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>All copied elements are accessed.复制的元素将被访问。<br>The <em>move assignment (2)</em> modifies <em>x</em>.在_move assignment (2)_ 中x将被修改.<br>The container and all its elements are modified.<br>容器及所有元素都将被修改。  </p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>Basic guarantee:</strong> if an exception is thrown, the container is in a valid state.如果抛出异常，容器依旧有效。<br>If <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments for the element constructions, or if value_type is not <a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_copy_assignable">copy assignable</a> (or <a target="_blank" rel="noopener" href="http://www.cplusplus.com/is_move_assignable">move assignable</a> for <em>(2)</em>), it causes <em>undefined behavior</em>.<br>如果内存分配器不支持元素的构造，或者值类型不支持复制赋值或者移动赋值（在(2)这种情况下）,会导致为定义的行为。  </p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>Basic guarantee:</strong> if an exception is thrown, the container is in a valid state.如果抛出异常，容器依旧有效。<br>If <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments for the element constructions, or if value_type is not <a href="http://www.cplusplus.com/is_copy_assignable">copy assignable</a> (or <a href="http://www.cplusplus.com/is_move_assignable">move assignable</a> for <em>(2)</em>), it causes <em>undefined behavior</em>.<br>如果内存分配器不支持元素的构造，或者值类型不支持复制赋值或者移动赋值（在(2)这种情况下）,会导致为定义的行为。  </p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-19</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38679129">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38679129">原文链接</a></p>
 
     
 
@@ -501,30 +501,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLvector中的operator=方法（30）" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLvector中的operator=方法（30）" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

@@ -248,7 +248,7 @@
     
     <p>STLvector的介绍(1)</p>
 <p>尝试下翻译STL里面的一些容易和算法。四级过了，六级刚考。顺便练练自己的英语水平，翻译的不好的地方请大神多多指教哈，方便我改正。</p>
-<p>原来均来自：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/">http://www.cplusplus.com/</a></p>
+<p>原来均来自：<a href="http://www.cplusplus.com/">http://www.cplusplus.com/</a></p>
 <p>template &lt; class T, class Alloc = allocator<T> &gt; class vector; // generic template<br>Vector<br>Vectors are sequence containers representing arrays that can change in size.</p>
 <p>Just like arrays, vectors use contiguous storage locations for their elements, which means that their elements can also be accessed using offsets on regular pointers   </p>
 <p>to its elements, and just as efficiently as in arrays. But unlike arrays, their size can change dynamically, with their storage being handled automatically by the   </p>
@@ -274,7 +274,7 @@
 <p>容器内容：<br>序列：<br>在顺序容器里面的元素都严格地排列在一个线性的序列里面。单个元素可以通过他们在序列中的位置直接访问。<br>动态数组<br>允许直接访问数组里面的任一元素，甚至是通过指针运算来访问，提供快速在序列尾部添加/删除元素的能力<br>分配器<br>容器使用分配器对象来动态地操控其存储所需。  </p>
 <p>模板参数：<br>T：<br>数组vector里面存放的元素类型，<br>只有T保证不会在移动时抛出异常，当重分配时实现会优化，使用移动元素来代替复制元素（C++11中的移动语义）。<br>Alloc:<br>内存分配器对象的类型，一般采用默认值。  </p>
 <p>//今天就先翻译着一点先。</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/32408253">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/32408253">原文链接</a></p>
 
     
 
@@ -457,30 +457,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLvector的介绍(1)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLvector的介绍(1)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

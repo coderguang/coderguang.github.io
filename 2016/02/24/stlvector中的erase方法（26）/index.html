@@ -252,17 +252,17 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的erase方法（26）</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/erase/">http://www.cplusplus.com/reference/vector/vector/erase/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/erase/">http://www.cplusplus.com/reference/vector/vector/erase/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-erase"><a href="#std-vector-erase" class="headerlink" title="std::vector::erase"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::erase</h1><ul>
+<h1 id="std-vector-erase"><a href="#std-vector-erase" class="headerlink" title="std::vector::erase"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::erase</h1><ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
 <p>iterator erase (const_iterator position);<br>iterator erase (const_iterator first, const_iterator last); </p>
 <p>Erase elements</p>
-<p>Removes from the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> either a single element (<em>position</em>) or a range of elements ([first,last)).</p>
+<p>Removes from the <a href="http://www.cplusplus.com/vector">vector</a> either a single element (<em>position</em>) or a range of elements ([first,last)).</p>
 <p>从vector中移除单一（position）或者是指定范围内（[first,last））的元素。</p>
 <p>指定单一位置例子:</p>
 <p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi={11,22,33};<br>cout&lt;&lt;”vector=”;<br>for_each(vi.begin(),vi.end(),[](int m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;<br>auto it=vi.begin();<br>vi.erase(it);<br>cout&lt;&lt;”after vi.erase(vi.begin()) vector=”;<br>for_each(vi.begin(),vi.end(),[](int m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;</p>
@@ -273,32 +273,32 @@
 <p>}</p>
 <p>结果截图:</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014920_2671238044655.jpg">  </p>
-<p>This effectively reduces the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> by the number of elements removed, which are destroyed.</p>
+<p>This effectively reduces the container <a href="http://www.cplusplus.com/vector::size">size</a> by the number of elements removed, which are destroyed.</p>
 <p>这个方法可以高效地删除固定数目的元素，这些元素将被销毁。</p>
-<p>Because vectors use an array as their underlying storage, erasing elements in positions other than the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">vector end</a> causes the container to relocate all the elements after the segment erased to their new positions. This is generally an inefficient operation compared to the one performed for the same operation by other kinds of sequence containers (such as <a target="_blank" rel="noopener" href="http://www.cplusplus.com/list">list</a> or <a target="_blank" rel="noopener" href="http://www.cplusplus.com/forward_list">forward_list</a>).</p>
+<p>Because vectors use an array as their underlying storage, erasing elements in positions other than the <a href="http://www.cplusplus.com/vector::end">vector end</a> causes the container to relocate all the elements after the segment erased to their new positions. This is generally an inefficient operation compared to the one performed for the same operation by other kinds of sequence containers (such as <a href="http://www.cplusplus.com/list">list</a> or <a href="http://www.cplusplus.com/forward_list">forward_list</a>).</p>
 <p>因为vector底层的存储是采用array，擦除指定位置的元素会造成容器其他的在被擦除后面的元素要重新迁移到新的位置。这通常会导致很大的开销（相对于另一个更好的序列解决方案，例如list,forward_list）。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>position</p>
-<p>Iterator pointing to a single element to be removed from the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>.  </p>
-<p>Member types iterator and const_iterator are <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types that point to elements.</p>
+<p>Iterator pointing to a single element to be removed from the <a href="http://www.cplusplus.com/vector">vector</a>.  </p>
+<p>Member types iterator and const_iterator are <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types that point to elements.</p>
 <p>一个指向要被擦除的元素的迭代器。</p>
 <p>类型为随机访问迭代器。</p>
 <p>first, last</p>
-<p>Iterators specifying a range within the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>] to be removed: [first,last). i.e., the range includes all the elements between <em>first</em> and <em>last</em>, including the element pointed by <em>first</em> but not the one pointed by <em>last</em>.  </p>
-<p>Member types iterator and const_iterator are <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types that point to elements。</p>
+<p>Iterators specifying a range within the <a href="http://www.cplusplus.com/vector">vector</a>] to be removed: [first,last). i.e., the range includes all the elements between <em>first</em> and <em>last</em>, including the element pointed by <em>first</em> but not the one pointed by <em>last</em>.  </p>
+<p>Member types iterator and const_iterator are <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types that point to elements。</p>
 <p>指示特定范围内将被移除元素位置的迭代器。该范围包括first到last之间的所有元素，包括first指向的元素，但不包括last指向的元素。</p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator pointing to the new location of the element that followed the last element erased by the function call. This is the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">container end</a> if the operation erased the last element in the sequence.</p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator pointing to the new location of the element that followed the last element erased by the function call. This is the <a href="http://www.cplusplus.com/vector::end">container end</a> if the operation erased the last element in the sequence.</p>
 <p>返回值为一个迭代器，其指向被擦除的最后一个元素的下一个位置的元素。</p>
 <p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi={11,22,33};<br>cout&lt;&lt;”vector=”;<br>for_each(vi.begin(),vi.end(),[](int m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;<br>auto it=vi.erase(vi.begin()+1);<br>cout&lt;&lt;”after erase(vi.begin()+1) /n return is “&lt;&lt;*it&lt;&lt;endl;</p>
 <p>}</p>
 <p>截图:</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014921_21376725601289.jpg"><br>如果被擦除的最后一个元素是整个序列的最后一个元素，那么返回的值为end()迭代器.</p>
-<p>Member type iterator is a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to elements.  </p>
+<p>Member type iterator is a <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to elements.  </p>
 <p>迭代器的类型为随机访问迭代器。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// erasing from vector</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line"></span><br><span class="line">  // set some values (from 1 to 10)</span><br><span class="line">  for (int i=1; i&lt;=10; i++) myvector.push_back(i);</span><br><span class="line"></span><br><span class="line">  // erase the 6th element</span><br><span class="line">  myvector.erase (myvector.begin()+5);</span><br><span class="line"></span><br><span class="line">  // erase the first 3 elements:</span><br><span class="line">  myvector.erase (myvector.begin(),myvector.begin()+3);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (unsigned i=0; i&lt;myvector.size(); ++i)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; myvector[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/erase/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/erase/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>myvector contains: 4 5 7 8 9 10 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear on the number of elements erased (destructions) plus the number of elements after the last element deleted (moving).</p>
@@ -321,10 +321,10 @@
 <p>结果截图：</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014922_2202869406379.jpg">  </p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-17</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38641813">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38641813">原文链接</a></p>
 
     
 
@@ -507,30 +507,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLvector中的erase方法（26）" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLvector中的erase方法（26）" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

@@ -283,7 +283,7 @@
 <h3 id="Makefile的模式匹配"><a href="#Makefile的模式匹配" class="headerlink" title="Makefile的模式匹配"></a>Makefile的模式匹配</h3><p>最后，再把Makefile的模式匹配应用上，就完成自动生成头文件依赖功能了：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%.d : %.c</span><br><span class="line">    @set -e; \</span><br><span class="line">    gcc -MM $@ &gt; $@.$$$$; \</span><br><span class="line">    sed &#x27;s,\($*\)\.o[ :]*,\1.o $@ : ,g&#x27; &lt; $@.$$$$ &gt; $@; \</span><br><span class="line">    rm -f $@.$$$$</span><br><span class="line"></span><br><span class="line">-include seq.d</span><br></pre></td></tr></table></figure>
 
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>&lt;跟我一起写Makefile&gt; by 陈晧 GNU make官方文档 <a target="_blank" rel="noopener" href="http://www.gnu.org/software/make/manual/make.html">http://www.gnu.org/software/make/manual/make.html</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>&lt;跟我一起写Makefile&gt; by 陈晧 GNU make官方文档 <a href="http://www.gnu.org/software/make/manual/make.html">http://www.gnu.org/software/make/manual/make.html</a></p>
 
     
 
@@ -470,30 +470,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "Makefile自动生成头文件依赖【转】" -->
-    var gitment = new Gitment({
-      id: "20170713204521",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "Makefile自动生成头文件依赖【转】" -->
+  var giteement = new Giteement({
+    id: '20170713204521',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

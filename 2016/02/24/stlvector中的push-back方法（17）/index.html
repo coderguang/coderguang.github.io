@@ -247,44 +247,44 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的push_back方法（17）</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/push_back/">http://www.cplusplus.com/reference/vector/vector/push_back/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/vector/vector/push_back/">http://www.cplusplus.com/reference/vector/vector/push_back/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-push-back"><a href="#std-vector-push-back" class="headerlink" title="std::vector::push_back"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::push_back</h1><ul>
+<h1 id="std-vector-push-back"><a href="#std-vector-push-back" class="headerlink" title="std::vector::push_back"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::push_back</h1><ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
 <p>void push_back (const value_type&amp; val);<br>void push_back (value_type&amp;&amp; val);</p>
 <p>Add element at the end</p>
-<p>Adds a new element at the end of the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a>, after its current last element. The content of <em>val</em> is copied (or moved) to the new element.<br>该函数将一个新的元素加到vector的最后面，位置为当前最后一个元素的下一个元素，新的元素的值是val的拷贝（或者是移动拷贝）.  </p>
-<p>This effectively increases the container <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> by one, which causes an automatic reallocation of the allocated storage space if -and only if- the new vector <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a> surpasses the current vector <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::capacity">capacity</a>.  </p>
+<p>Adds a new element at the end of the <a href="http://www.cplusplus.com/vector">vector</a>, after its current last element. The content of <em>val</em> is copied (or moved) to the new element.<br>该函数将一个新的元素加到vector的最后面，位置为当前最后一个元素的下一个元素，新的元素的值是val的拷贝（或者是移动拷贝）.  </p>
+<p>This effectively increases the container <a href="http://www.cplusplus.com/vector::size">size</a> by one, which causes an automatic reallocation of the allocated storage space if -and only if- the new vector <a href="http://www.cplusplus.com/vector::size">size</a> surpasses the current vector <a href="http://www.cplusplus.com/vector::capacity">capacity</a>.  </p>
 <p>该方法可以快速有效率地在数组size范围内增长元素，除非当增长的元素个数大小超出了vector的ccapacity的时候才会发生重分配。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>val</p>
-<p>Value to be copied (or moved) to the new element.<br>Member type value_type is the type of the elements in the container, defined in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> as an alias of its first template parameter (T).</p>
+<p>Value to be copied (or moved) to the new element.<br>Member type value_type is the type of the elements in the container, defined in <a href="http://www.cplusplus.com/vector">vector</a> as an alias of its first template parameter (T).</p>
 <p>参数</p>
 <p>新元素的值。</p>
 <p>类型由vector的模版参数指定。</p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none  </p>
-<p>If a reallocation happens, the storage is allocated using the container’s <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).<br>如果发生了重分配，将使用容器的分配器进行内存分配，这可能会抛出异常。（例如allocator这个默认的分配器在请求失败时会抛出bad_alloc异常）</p>
+<p>If a reallocation happens, the storage is allocated using the container’s <a href="http://www.cplusplus.com/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).<br>如果发生了重分配，将使用容器的分配器进行内存分配，这可能会抛出异常。（例如allocator这个默认的分配器在请求失败时会抛出bad_alloc异常）</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// vector::push_back</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line">  int myint;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;Please enter some integers (enter 0 to end):\n&quot;;</span><br><span class="line"></span><br><span class="line">  do &#123;</span><br><span class="line">    std::cin &gt;&gt; myint;</span><br><span class="line">    myvector.push_back (myint);</span><br><span class="line">  &#125; while (myint);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector stores &quot; &lt;&lt; int(myvector.size()) &lt;&lt; &quot; numbers.\n&quot;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/push_back/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/push_back/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>The example uses push_back to add a new element to the vector each time a new integer is read.这个例子里面，每当读取一个整数输入时，都使用push_back来将其加入到vector中。</p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant (amortized time, reallocation may happen).  </p>
-<p>If a reallocation happens, the reallocation is itself up to linear in the entire <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a>.<br>如果发生重分配，重分配过程是线性是时间复杂度。  </p>
-<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>If a reallocation happens, all iterators, pointers and references related to the container are invalidated.如果发生重分配，之前所获得的所有迭代器，指针以及引用都将失效。<br>Otherwise, only the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::end">end iterator</a> is invalidated, and all iterators, pointers and references to elements are guaranteed to keep referring to the same elements they were referring to before the call.<br>否则，只有超尾迭代器失效，之前所获得的其他迭代器仍然有效。</p>
+<p>If a reallocation happens, the reallocation is itself up to linear in the entire <a href="http://www.cplusplus.com/vector::size">size</a>.<br>如果发生重分配，重分配过程是线性是时间复杂度。  </p>
+<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>If a reallocation happens, all iterators, pointers and references related to the container are invalidated.如果发生重分配，之前所获得的所有迭代器，指针以及引用都将失效。<br>Otherwise, only the <a href="http://www.cplusplus.com/vector::end">end iterator</a> is invalidated, and all iterators, pointers and references to elements are guaranteed to keep referring to the same elements they were referring to before the call.<br>否则，只有超尾迭代器失效，之前所获得的其他迭代器仍然有效。</p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is modified.<br>If a reallocation happens, all contained elements are modified.<br>Otherwise, no existing element is accessed, and concurrently accessing or modifying them is safe.<br>容器将被修改。</p>
 <p>如果发生重分配，所有容器内元素都将被修改。</p>
 <p>否则，不会访问容器内元素，同时访问以及修改他们都是安全的。  </p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If no reallocations happen, there are no changes in the container in case of exception (strong guarantee).如果没有发生重分配，容器抛出异常的规则不变。<br>If a reallocation happens, the strong guarantee is also given if the type of the elements is either <em>copyable</em> or <em>no-throw moveable</em>.如果发生重分配，如果元素类型的复制构造器以及移动构造器不会抛出异常，那么规则也不变。<br>Otherwise, the container is guaranteed to end in a valid state (basic guarantee).<br>If <a target="_blank" rel="noopener" href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with <em>val</em> as argument, it causes <em>undefined behavior</em>.<br>否则，容器只保证在一个有效的状态下结束。（？？？）如果allocator_traits::construct不支持val(???)。将会导致为定义的行为。  </p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If no reallocations happen, there are no changes in the container in case of exception (strong guarantee).如果没有发生重分配，容器抛出异常的规则不变。<br>If a reallocation happens, the strong guarantee is also given if the type of the elements is either <em>copyable</em> or <em>no-throw moveable</em>.如果发生重分配，如果元素类型的复制构造器以及移动构造器不会抛出异常，那么规则也不变。<br>Otherwise, the container is guaranteed to end in a valid state (basic guarantee).<br>If <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with <em>val</em> as argument, it causes <em>undefined behavior</em>.<br>否则，容器只保证在一个有效的状态下结束。（？？？）如果allocator_traits::construct不支持val(???)。将会导致为定义的行为。  </p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-14</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38553845">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38553845">原文链接</a></p>
 
     
 
@@ -467,30 +467,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLvector中的push_back方法（17）" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLvector中的push_back方法（17）" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

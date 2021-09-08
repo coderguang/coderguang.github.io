@@ -254,7 +254,7 @@
 <p>。。。（中间代码省略）</p>
 <p>#endif</p>
 <p>在网上查找错误原因，找到如下帖子</p>
-<p><a target="_blank" rel="noopener" href="http://topic.csdn.net/u/20070810/09/f8381d20-10b4-4b08-8549-eaa70ceeb16a.html">http://topic.csdn.net/u/20070810/09/f8381d20-10b4-4b08-8549-eaa70ceeb16a.html</a></p>
+<p><a href="http://topic.csdn.net/u/20070810/09/f8381d20-10b4-4b08-8549-eaa70ceeb16a.html">http://topic.csdn.net/u/20070810/09/f8381d20-10b4-4b08-8549-eaa70ceeb16a.html</a></p>
 <p>原因拷贝如下：</p>
 <p>如果使用了预编译头…那么VC会在所有CPP文件里寻找 #include   “stdafx.h “ 在找到这行代码之前 VC忽略所有代码… 所以说.. 在.cpp文件中 动态调整包含stdafx.h 是不可能的事情.. #ifdef   _MFC_ #include   “stdafx.h “ #endif #ifdef   _MFC_直接被忽略…所以 endif有问题…. 解决办法     不使用预编译头, 当然你的想法也实现不了..</p>
 <p>-———————</p>
@@ -445,30 +445,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "fatalerrorC1020意外的#endif" -->
-    var gitment = new Gitment({
-      id: "20160224000000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "fatalerrorC1020意外的#endif" -->
+  var giteement = new Giteement({
+    id: '20160224000000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

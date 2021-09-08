@@ -196,6 +196,13 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <script src="/lib/oauthcallback.browser.js"></script>
+  
+  <script>
+    Oauthcallback();
+  </script>
+
 
   
     <article id="post-leetcode-905-sort-array-by-parity" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -227,7 +234,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/sort-array-by-parity/">https://leetcode.com/problems/sort-array-by-parity/</a></p>
+    <p>//url:<a href="https://leetcode.com/problems/sort-array-by-parity/">https://leetcode.com/problems/sort-array-by-parity/</a></p>
 <p>func sortArrayByParity(A []int) []int {<br>startIndex := 0<br>endIndex := len(A) - 1<br>for startIndex &lt; endIndex {<br>if 0 != A[startIndex]%2 {<br>for startIndex &lt; endIndex {<br>if 0 == A[endIndex]%2 {<br>fmt.Println(“startIndex=”, startIndex, “,endIndex=”, endIndex, “swap:”, A[startIndex], “,”, A[endIndex])<br>tmp := A[startIndex]<br>A[startIndex] = A[endIndex]<br>A[endIndex] = tmp<br>endIndex–<br>break<br>}<br>endIndex–<br>}<br>}<br>startIndex++<br>}<br>return A<br>}</p>
 
     
@@ -314,7 +321,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/unique-email-addresses/">https://leetcode.com/problems/unique-email-addresses/</a><br>第一次用golang写，感觉好不喜欢,这个的效率很低<br>solution 1:<br>func numUniqueEmails(emails []string) int {<br>dict := map[string]string{}<br>for _, value := range emails {<br>ignore := false<br>        meetFlag:=false<br>tmp := “”<br>for sIndex, sValue := range value {<br>switch sValue {<br>case ‘@’:<br>{<br>tmp += string(value[sIndex])<br>ignore = false<br>                    meetFlag=true<br>}<br>case ‘.’:<br>{<br>                    if meetFlag {<br>                        tmp += string(value[sIndex])<br>                    }else{<br>    continue<br>                    }<br>}<br>case ‘+’:<br>{<br>ignore = true<br>}<br>default:<br>{<br>if ignore {<br>continue<br>} else {<br>tmp += string(value[sIndex])<br>}<br>}<br>}<br>}<br>dict[tmp] = tmp<br>}<br>return len(dict)<br>}</p>
+    <p>//url:<a href="https://leetcode.com/problems/unique-email-addresses/">https://leetcode.com/problems/unique-email-addresses/</a><br>第一次用golang写，感觉好不喜欢,这个的效率很低<br>solution 1:<br>func numUniqueEmails(emails []string) int {<br>dict := map[string]string{}<br>for _, value := range emails {<br>ignore := false<br>        meetFlag:=false<br>tmp := “”<br>for sIndex, sValue := range value {<br>switch sValue {<br>case ‘@’:<br>{<br>tmp += string(value[sIndex])<br>ignore = false<br>                    meetFlag=true<br>}<br>case ‘.’:<br>{<br>                    if meetFlag {<br>                        tmp += string(value[sIndex])<br>                    }else{<br>    continue<br>                    }<br>}<br>case ‘+’:<br>{<br>ignore = true<br>}<br>default:<br>{<br>if ignore {<br>continue<br>} else {<br>tmp += string(value[sIndex])<br>}<br>}<br>}<br>}<br>dict[tmp] = tmp<br>}<br>return len(dict)<br>}</p>
 
     
 
@@ -744,7 +751,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/n-ary-tree-postorder-traversal/description/">https://leetcode.com/problems/n-ary-tree-postorder-traversal/description/</a></p>
+    <p>//url:<a href="https://leetcode.com/problems/n-ary-tree-postorder-traversal/description/">https://leetcode.com/problems/n-ary-tree-postorder-traversal/description/</a></p>
 <p>/*<br>// Definition for a Node.<br>class Node {<br>public:<br>    int val;<br>    vector children;</p>
 <pre><code>Node() &#123;&#125;
 
@@ -842,7 +849,7 @@ Node(int \_val, vector \_children) &#123;
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/max-consecutive-ones/description/">https://leetcode.com/problems/max-consecutive-ones/description/</a></p>
+    <p>//url:<a href="https://leetcode.com/problems/max-consecutive-ones/description/">https://leetcode.com/problems/max-consecutive-ones/description/</a></p>
 <p>class Solution {<br>public:<br>    int findMaxConsecutiveOnes(vector&amp; nums) {<br>        int maxCon=0;<br>        int curMax=0;<br>        for(int i=0;icurMax?maxCon:curMax;<br>            }else{<br>                curMax=0;<br>            }<br>        }<br>        return maxCon;<br>    }<br>};</p>
 
     
@@ -929,7 +936,7 @@ Node(int \_val, vector \_children) &#123;
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/invert-binary-tree/description/">https://leetcode.com/problems/invert-binary-tree/description/</a></p>
+    <p>//url:<a href="https://leetcode.com/problems/invert-binary-tree/description/">https://leetcode.com/problems/invert-binary-tree/description/</a></p>
 <p>/**<br> * Definition for a binary tree node.<br> * struct TreeNode {<br> *     int val;<br> *     TreeNode *left;<br> *     TreeNode *right;<br> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}<br> * };<br> */<br>class Solution {<br>public:<br>    TreeNode* invertTree(TreeNode* root) {<br>        if(!root)<br>            return NULL;<br>        TreeNode* left=root-&gt;left;<br>        root-&gt;left=root-&gt;right;<br>        root-&gt;right=left;<br>        invertTree(root-&gt;left);<br>        invertTree(root-&gt;right);<br>        return root;<br>    }<br>};</p>
 
     
@@ -1016,7 +1023,7 @@ Node(int \_val, vector \_children) &#123;
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>//url:<a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-depth-of-n-ary-tree/description/">https://leetcode.com/problems/maximum-depth-of-n-ary-tree/description/</a></p>
+    <p>//url:<a href="https://leetcode.com/problems/maximum-depth-of-n-ary-tree/description/">https://leetcode.com/problems/maximum-depth-of-n-ary-tree/description/</a></p>
 <p>/*<br>// Definition for a Node.<br>class Node {<br>public:<br>    int val;<br>    vector children;</p>
 <pre><code>Node() &#123;&#125;
 

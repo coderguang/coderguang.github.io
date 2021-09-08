@@ -250,11 +250,11 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvectorbool中的swap方法(4)</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector-bool/swap/">http://www.cplusplus.com/reference/vector/vector-bool/swap/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector-bool/swap/">http://www.cplusplus.com/reference/vector/vector-bool/swap/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-swap"><a href="#std-vector-swap" class="headerlink" title="std::vector::swap"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector-bool/">vector<bool></a>::swap</h1><ul>
+<h1 id="std-vector-swap"><a href="#std-vector-swap" class="headerlink" title="std::vector::swap"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector-bool/">vector<bool></a>::swap</h1><ul>
 <li>  C++98</li>
 <li>  C++11</li>
 </ul>
@@ -263,12 +263,12 @@
 <p>swap elements (2)</p>
 <p>static void swap (reference ref1, reference ref2) noexcept;</p>
 <p>Swap containers or elements</p>
-<p>The first signature is the same as described in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::swap">vector::swap</a> (see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::swap">vector::swap</a> for more info).</p>
+<p>The first signature is the same as described in <a href="http://www.cplusplus.com/vector::swap">vector::swap</a> (see <a href="http://www.cplusplus.com/vector::swap">vector::swap</a> for more info).</p>
 <p>第一个swap方法的签名和vector::swap是一样的。</p>
-<p>A static signature to swap individual elements (bits) is added on <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector%3Cbool%3E">vector<bool></a>.  </p>
+<p>A static signature to swap individual elements (bits) is added on <a href="http://www.cplusplus.com/vector%3Cbool%3E">vector<bool></a>.  </p>
 <p>另一个静态的swap方法交换个别的元素(bits)被添加到vector<bool>中</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>x</p>
-<p>Another <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector%3Cbool%3E">vector<bool></a> container. Sizes may differ.</p>
+<p>Another <a href="http://www.cplusplus.com/vector%3Cbool%3E">vector<bool></a> container. Sizes may differ.</p>
 <p>另一个vector<bool>容器，大小可能不同。</p>
 <p>例子：</p>
 <p><span style="color:#993399;">#include <iostream><br>#include <vector><br>using namespace std;<br>int main()<br>{<br>vector<bool> vb={true,false,false,true};<br>vector<bool> vb2{false,true};<br>cout&lt;&lt;”vb =”;<br>for(bool b:vb){<br>cout&lt;&lt;b&lt;&lt;” “;<br>}<br>cout&lt;&lt;endl;<br>cout&lt;&lt;”vb2=”;<br>for(bool b:vb2){<br>cout&lt;&lt;b&lt;&lt;” “;<br>}<br>cout&lt;&lt;endl;<br>cout&lt;&lt;”after swap:”&lt;&lt;endl;<br></span><span style="color:#ff0000;">vb.swap(vb2);</span><span style="color:#993399;"><br>cout&lt;&lt;”vb =”;<br>for(bool b:vb){<br>cout&lt;&lt;b&lt;&lt;” “;<br>}<br>cout&lt;&lt;endl;<br>cout&lt;&lt;”vb2=”;<br>for(bool b:vb2){<br>cout&lt;&lt;b&lt;&lt;” “;<br>}<br>cout&lt;&lt;endl;</p>
@@ -277,7 +277,7 @@
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014727_673808491325.jpg">  </p>
 <p>ref1, ref2</p>
 <p>References to elements.</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector%3Cbool%3E::reference">reference</a> is a member type that accesses individual elements while providing an interface that simulates a reference to bool(see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector%3Cbool%3E::reference">reference</a> for more info).</p>
+<p><a href="http://www.cplusplus.com/vector%3Cbool%3E::reference">reference</a> is a member type that accesses individual elements while providing an interface that simulates a reference to bool(see <a href="http://www.cplusplus.com/vector%3Cbool%3E::reference">reference</a> for more info).</p>
 <p>指向元素的引用。</p>
 <p>引用是一个成员类型，使用一个接口来模仿引用来访问单个的bool元素。</p>
 <p>例子：</p>
@@ -290,7 +290,7 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// vector&lt;bool&gt;::swap</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;bool&gt; foo;</span><br><span class="line">  std::vector&lt;bool&gt; bar;</span><br><span class="line"></span><br><span class="line">  foo.push_back(false);</span><br><span class="line">  foo.push_back(true);</span><br><span class="line">  foo.push_back(false);</span><br><span class="line"></span><br><span class="line">  bar.push_back(true);</span><br><span class="line">  bar.push_back(false);</span><br><span class="line"></span><br><span class="line">  foo.swap (foo[0], foo[1]);</span><br><span class="line">  bar.swap (bar.front(), bar.back());</span><br><span class="line"></span><br><span class="line">  foo.swap(bar);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; std::boolalpha;</span><br><span class="line">  std::cout &lt;&lt; &quot;foo contains:&quot;;</span><br><span class="line">  for (unsigned i=0; i&lt;foo.size(); i++) std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; foo[i];</span><br><span class="line">  std::cout &lt;&lt; &quot;\nbar contains:&quot;;</span><br><span class="line">  for (unsigned i=0; i&lt;bar.size(); i++) std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; bar[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector-bool/swap/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector-bool/swap/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>foo contains: false true<br>bar contains: true false false </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
@@ -298,13 +298,13 @@
 <p>在（1）中，所有的容器都被修改。</p>
 <p>For <em>(2)</em>, elements are modified: in bool vectors there are no guarantees on whether concurrently accessing other elements is safe.  </p>
 <p>在（2）中，元素被修改。在bool版本的vector中不保证同时访问他们的元素是否是安全的。</p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>For <em>(1)</em>, see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::swap">vector::swap</a>.  </p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>For <em>(1)</em>, see <a href="http://www.cplusplus.com/vector::swap">vector::swap</a>.  </p>
 <p>For <em>(2)</em>, it never throws exceptions (no-throw guarantee).</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-20</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38710701">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38710701">原文链接</a></p>
 
     
 
@@ -487,30 +487,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLvectorbool中的swap方法(4)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLvectorbool中的swap方法(4)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

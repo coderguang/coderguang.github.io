@@ -249,22 +249,22 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLvector中的shrink_to_fit方法(32)</p>
-<p>原文地址:<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/shrink_to_fit/">http://www.cplusplus.com/reference/vector/vector/shrink_to_fit/</a></p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/shrink_to_fit/">http://www.cplusplus.com/reference/vector/vector/shrink_to_fit/</a></p>
 <p>public member function</p>
 <vector>
 
-<h1 id="std-vector-shrink-to-fit"><a href="#std-vector-shrink-to-fit" class="headerlink" title="std::vector::shrink_to_fit"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::shrink_to_fit</h1><p>void shrink_to_fit();</p>
+<h1 id="std-vector-shrink-to-fit"><a href="#std-vector-shrink-to-fit" class="headerlink" title="std::vector::shrink_to_fit"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::shrink_to_fit</h1><p>void shrink_to_fit();</p>
 <p>Shrink to fit</p>
-<p>Requests the container to reduce its <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::capacity">capacity</a> to fit its <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a>.  </p>
+<p>Requests the container to reduce its <a href="http://www.cplusplus.com/vector::capacity">capacity</a> to fit its <a href="http://www.cplusplus.com/vector::size">size</a>.  </p>
 <p>请求容器降低其容量和size匹配。</p>
-<p>The request is non-binding, and the container implementation is free to optimize otherwise and leave the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector">vector</a> with a <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::capacity">capacity</a> greater than its <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">size</a>.  </p>
+<p>The request is non-binding, and the container implementation is free to optimize otherwise and leave the <a href="http://www.cplusplus.com/vector">vector</a> with a <a href="http://www.cplusplus.com/vector::capacity">capacity</a> greater than its <a href="http://www.cplusplus.com/vector::size">size</a>.  </p>
 <p>该请求不具有约束力，容器可以自由地去执行其他的优化方案（capacity可以大于size）。//我查了一下网上说是该方法由编译器决定是否真正释放多余的内存，该方法值是提出请求，是否要实现由编译器说了算。</p>
 <p>例子:</p>
 <p>// vector::shrink_to_fit<br>#include <iostream><br>#include <vector><br>using namespace std;<br>int main ()<br>{<br>  std::vector<int> myvector (100);<br>  std::cout &lt;&lt; “1. capacity of myvector: “ &lt;&lt; myvector.capacity() &lt;&lt; ‘\n’;<br>  cout&lt;&lt;”size=”&lt;&lt;myvector.size()&lt;&lt;endl;</p>
 <p>  myvector.resize(10);<br>  std::cout &lt;&lt; “2. capacity of myvector: “ &lt;&lt; myvector.capacity() &lt;&lt; ‘\n’;<br>     cout&lt;&lt;”size=”&lt;&lt;myvector.size()&lt;&lt;endl;<br>  myvector.shrink_to_fit();<br>  std::cout &lt;&lt; “3. capacity of myvector: “ &lt;&lt; myvector.capacity() &lt;&lt; ‘\n’;<br>  cout&lt;&lt;”size=”&lt;&lt;myvector.size()&lt;&lt;endl;<br>  return 0;<br>}</p>
 <p>结果截图:</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014806_20815725415151.jpg">  </p>
-<p>This may cause a reallocation, but has no effect on the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">vector size</a> and cannot alter its elements.</p>
+<p>This may cause a reallocation, but has no effect on the <a href="http://www.cplusplus.com/vector::size">vector size</a> and cannot alter its elements.</p>
 <p>这可能导致重分配，但不会影响其size以及不能改变其元素。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>none  </p>
@@ -272,10 +272,10 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// vector::shrink_to_fit</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector (100);</span><br><span class="line">  std::cout &lt;&lt; &quot;1. capacity of myvector: &quot; &lt;&lt; myvector.capacity() &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  myvector.resize(10);</span><br><span class="line">  std::cout &lt;&lt; &quot;2. capacity of myvector: &quot; &lt;&lt; myvector.capacity() &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  myvector.shrink_to_fit();</span><br><span class="line">  std::cout &lt;&lt; &quot;3. capacity of myvector: &quot; &lt;&lt; myvector.capacity() &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/vector/vector/shrink_to_fit/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/vector/vector/shrink_to_fit/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Possible output:  </p>
 <p>1. capacity of myvector: 100<br>2. capacity of myvector: 100<br>3. capacity of myvector: 10 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>At most, linear in <a target="_blank" rel="noopener" href="http://www.cplusplus.com/vector::size">container size</a>.  </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>At most, linear in <a href="http://www.cplusplus.com/vector::size">container size</a>.  </p>
 <p>与容器大小线性相关。</p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>If a reallocation happens, all iterators, pointers and references related to the container are invalidated.</p>
 <p>如果发生重分配，所有的迭代器，指针以及引用都将失效。</p>
@@ -292,10 +292,10 @@
 <p>Otherwise, if an exception is thrown, the container is left with a valid state (basic guarantee).</p>
 <p>否则，如果容器抛出异常，容器依旧承诺保持在有效状态。</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>2014-8-19</p>
 <p>于GDUT</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38685907">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38685907">原文链接</a></p>
 
     
 
@@ -478,30 +478,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLvector中的shrink_to_fit方法(32)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLvector中的shrink_to_fit方法(32)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

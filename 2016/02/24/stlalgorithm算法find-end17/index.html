@@ -249,7 +249,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLalgorithm算法find_end(17)</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/find/_end/">http://www.cplusplus.com/reference/algorithm/find\_end/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/algorithm/find/_end/">http://www.cplusplus.com/reference/algorithm/find\_end/</a></p>
 <p>function template</p>
 <algorithm>
 
@@ -293,7 +293,7 @@ cout&lt;&lt;&quot;\*(it2+1)=&quot;&lt;&lt;\*(it2+1)&lt;&lt;endl;
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013431_12018167916777.jpg">  </p>
 <p>The elements in both ranges are compared sequentially using <code>operator==</code> (or pred, in version <em>(2)</em>): A subsequence of<code>[first1,last1)</code> is considered a match only when this is <code>true</code> for <strong>all</strong> the elements of <code>[first2,last2)</code>.  </p>
 <p>使用operator==进行比较，只有在[first1,last1)范围中中匹配的元素满足 <code>[first2,last2)都相等时，才算是匹配了。</code></p>
-<p>This function returns the last of such occurrences. For an algorithm that returns the first instead, see <a target="_blank" rel="noopener" href="http://www.cplusplus.com/search">search</a>.  </p>
+<p>This function returns the last of such occurrences. For an algorithm that returns the first instead, see <a href="http://www.cplusplus.com/search">search</a>.  </p>
 <p>函数返回匹配出现的最后一次的位置。要返回第一次出现的位置，使用search.</p>
 <p>The behavior of this function template is equivalent to:  </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td></tr></table></figure>
@@ -301,9 +301,9 @@ cout&lt;&lt;&quot;\*(it2+1)=&quot;&lt;&lt;\*(it2+1)&lt;&lt;endl;
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class ForwardIterator1, class ForwardIterator2&gt;</span><br><span class="line">  ForwardIterator1 find_end (ForwardIterator1 first1, ForwardIterator1 last1,</span><br><span class="line">                             ForwardIterator2 first2, ForwardIterator2 last2)</span><br><span class="line">&#123;</span><br><span class="line">  if (first2==last2) return last1;  // specified in C++11</span><br><span class="line"></span><br><span class="line">  ForwardIterator1 ret = last1;</span><br><span class="line"></span><br><span class="line">  while (first1!=last1)</span><br><span class="line">  &#123;</span><br><span class="line">    ForwardIterator1 it1 = first1;</span><br><span class="line">    ForwardIterator2 it2 = first2;</span><br><span class="line">    while (*it1==*it2) &#123;    // or: while (pred(*it1,*it2)) for version (2)</span><br><span class="line">        ++it1; ++it2;</span><br><span class="line">        if (it2==last2) &#123; ret=first1; break; &#125;</span><br><span class="line">        if (it1==last1) return ret;</span><br><span class="line">    &#125;</span><br><span class="line">    ++first1;</span><br><span class="line">  &#125;</span><br><span class="line">  return ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first1, last1</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/ForwardIterator">Forward iterators</a> to the initial and final positions of the searched sequence. The range used is <code>[first1,last1)</code>, which contains all the elements between first1 and last1, including the element pointed by first1 but not the element pointed by last1.<br>要查找的范围。</p>
+<p><a href="http://www.cplusplus.com/ForwardIterator">Forward iterators</a> to the initial and final positions of the searched sequence. The range used is <code>[first1,last1)</code>, which contains all the elements between first1 and last1, including the element pointed by first1 but not the element pointed by last1.<br>要查找的范围。</p>
 <p>first2, last2</p>
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/ForwardIterator">Forward iterators</a> to the initial and final positions of the sequence to be searched for. The range used is<code>[first2,last2)</code>.<br>For <em>(1)</em>, the elements in both ranges shall be of types comparable using <code>operator==</code> (with the elements of the first range as left-hand side operands, and those of the second as right-hand side operands).<br>要匹配的范围。</p>
+<p><a href="http://www.cplusplus.com/ForwardIterator">Forward iterators</a> to the initial and final positions of the sequence to be searched for. The range used is<code>[first2,last2)</code>.<br>For <em>(1)</em>, the elements in both ranges shall be of types comparable using <code>operator==</code> (with the elements of the first range as left-hand side operands, and those of the second as right-hand side operands).<br>要匹配的范围。</p>
 <p>pred</p>
 <p>Binary function that accepts two elements as arguments (one of each of the two sequences, in the same order), and returns a value convertible to <code>bool</code>. The returned value indicates whether the elements are considered to match in the context of this function.<br>The function shall not modify any of its arguments.<br>This can either be a function pointer or a function object.<br>一个二元函数。</p>
 <h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator to the first element of the last occurrence of <code>[first2,last2)</code> in <code>[first1,last1)</code>.<br>If the sequence is not found, the function returns last1.<br>最后一次匹配出现的位置。返回匹配位置的首元素。<br>如果找不到匹配，就返回last1.  </p>
@@ -317,21 +317,21 @@ cout&lt;&lt;&quot;\*(it2+1)=&quot;&lt;&lt;\*(it2+1)&lt;&lt;endl;
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">// find_end example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::find_end</span><br><span class="line">#include &lt;vector&gt;       // std::vector</span><br><span class="line"></span><br><span class="line">bool myfunction (int i, int j) &#123;</span><br><span class="line">  return (i==j);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  int myints[] = &#123;1,2,3,4,5,1,2,3,4,5&#125;;</span><br><span class="line">  std::vector&lt;int&gt; haystack (myints,myints+10);</span><br><span class="line"></span><br><span class="line">  int needle1[] = &#123;1,2,3&#125;;</span><br><span class="line"></span><br><span class="line">  // using default comparison:</span><br><span class="line">  std::vector&lt;int&gt;::iterator it;</span><br><span class="line">  it = std::find_end (haystack.begin(), haystack.end(), needle1, needle1+3);</span><br><span class="line"></span><br><span class="line">  if (it!=haystack.end())</span><br><span class="line">    std::cout &lt;&lt; &quot;needle1 last found at position &quot; &lt;&lt; (it-haystack.begin()) &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  int needle2[] = &#123;4,5,1&#125;;</span><br><span class="line"></span><br><span class="line">  // using predicate comparison:</span><br><span class="line">  it = std::find_end (haystack.begin(), haystack.end(), needle2, needle2+3, myfunction);</span><br><span class="line"></span><br><span class="line">  if (it!=haystack.end())</span><br><span class="line">    std::cout &lt;&lt; &quot;needle2 last found at position &quot; &lt;&lt; (it-haystack.begin()) &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/find_end/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/algorithm/find_end/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>needle1 found at position 5<br>needle2 found at position 3 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Up to linear in <code>count2*(1+count1-count2)</code>, where countX is the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/distance">distance</a> between firstX and lastX: Compares elements until the last matching subsequence is found.  </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Up to linear in <code>count2*(1+count1-count2)</code>, where countX is the <a href="http://www.cplusplus.com/distance">distance</a> between firstX and lastX: Compares elements until the last matching subsequence is found.  </p>
 <h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>Some (or all) of the objects in both ranges are accessed (possibly more than once).  </p>
 <h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if any element comparison (or call to pred) throws or if any of the operations on iterators throws.<br>Note that invalid arguments cause <em>undefined behavior</em>.  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#100;&#101;&#114;&#x67;&#x75;&#x61;&#x6e;&#x67;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;">&#99;&#111;&#100;&#101;&#114;&#x67;&#x75;&#x61;&#x6e;&#x67;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#x63;&#111;&#100;&#101;&#x72;&#x67;&#x75;&#x61;&#110;&#103;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#x63;&#111;&#100;&#101;&#x72;&#x67;&#x75;&#x61;&#110;&#103;&#64;&#103;&#x6d;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;</a></p>
 <p>2014-9-12</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39205087">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39205087">原文链接</a></p>
 
     
 
@@ -514,30 +514,31 @@ cout&lt;&lt;&quot;\*(it2+1)=&quot;&lt;&lt;\*(it2+1)&lt;&lt;endl;
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLalgorithm算法find_end(17)" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLalgorithm算法find_end(17)" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 

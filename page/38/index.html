@@ -196,6 +196,13 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <script src="/lib/oauthcallback.browser.js"></script>
+  
+  <script>
+    Oauthcallback();
+  </script>
+
 
   
     <article id="post-笔试面试5实现c库函数strlen" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -243,13 +250,13 @@
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224012552_296128410102904.jpg">  </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#x64;&#x65;&#114;&#103;&#x75;&#x61;&#110;&#103;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;">&#x63;&#x6f;&#x64;&#x65;&#114;&#103;&#x75;&#x61;&#110;&#103;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#101;&#x72;&#x67;&#x75;&#97;&#110;&#x67;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;">&#99;&#x6f;&#100;&#101;&#x72;&#x67;&#x75;&#97;&#110;&#x67;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <p>2014-11-5</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/40833219">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/40833219">原文链接</a></p>
 
     
 
@@ -350,20 +357,20 @@
 <p>字符串常量是一对双引号括起来的字符序列。</p>
 <p>例如下面的是合法的字符串常量:</p>
 <p>“how do you do.”,”CHINA”,”a”,”$123.45”</p>
-<p><a target="_blank" rel="noopener" href="http://baike.baidu.com/view/87682.htm">存储</a>：字符串中的字符依次存储在内存中一块连续的区域内，并且把空字符‘ \0’自动附加到字符串的尾部作为字符串的结束标志。故字符个数为n的字符串在内存中应占（n+1）个<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/60408.htm">字节</a>。</p>
+<p><a href="http://baike.baidu.com/view/87682.htm">存储</a>：字符串中的字符依次存储在内存中一块连续的区域内，并且把空字符‘ \0’自动附加到字符串的尾部作为字符串的结束标志。故字符个数为n的字符串在内存中应占（n+1）个<a href="http://baike.baidu.com/view/60408.htm">字节</a>。</p>
 <p>可以输出字符串，例如：</p>
 <p>printf(“how do you do.”);</p>
-<p>在C语言中没有专门的字符串变量，如果想将一个字符串存放在变量中以便保存，必须使用字符<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/209670.htm">数组</a>，即用一个字符型数组来存放一个字符串，数组中每一个元素存放一个字符。例如“char a[10]=”love”.”</p>
+<p>在C语言中没有专门的字符串变量，如果想将一个字符串存放在变量中以便保存，必须使用字符<a href="http://baike.baidu.com/view/209670.htm">数组</a>，即用一个字符型数组来存放一个字符串，数组中每一个元素存放一个字符。例如“char a[10]=”love”.”</p>
 <p>在程序中，字符串常量会生成一个“指向字符的常量指针”。当一个字符串常量出现于一个表达式中时，表达式所使用的值就是这些字符所存储的地址，而不是这些字符本身。因此，你可以把字符串常量赋值给一个“指向字符 的指针”，例如：char *a = “123” ; a = “abc”;，后者指向这些字符所存储的地址。</p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#x64;&#x65;&#x72;&#103;&#x75;&#x61;&#x6e;&#103;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#99;&#111;&#x64;&#x65;&#x72;&#103;&#x75;&#x61;&#x6e;&#103;&#64;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#100;&#x65;&#114;&#x67;&#117;&#x61;&#x6e;&#103;&#64;&#x67;&#109;&#97;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#99;&#111;&#100;&#x65;&#114;&#x67;&#117;&#x61;&#x6e;&#103;&#64;&#x67;&#109;&#97;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></p>
 <p>2014-11-5</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/40834151">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/40834151">原文链接</a></p>
 
     
 
@@ -454,7 +461,7 @@
 <p> </p>
 <p>首先看下大小端的概念吧，我老是会有点乱… 来自百度百科的解释：  </p>
 <p>大端模式，是指数据的高位保存在内存的低地址中，而数据的低位保存在内存的高地址中，这样的存储模式有点儿类似于把数据当作字符串顺序处理：地址由小向大增加，而数据从高位往低位放；</p>
-<p>小端模式，是指数据的高位保存在内存的高<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/494802.htm">地址</a>中，而数据的低位保存在内存的低地址中，这种存储模式将地址的高低和<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/38752.htm">数据</a>位权有效地结合起来，高地址部分权值高，低地址部分权值低，和我们的逻辑方法一致。</p>
+<p>小端模式，是指数据的高位保存在内存的高<a href="http://baike.baidu.com/view/494802.htm">地址</a>中，而数据的低位保存在内存的低地址中，这种存储模式将地址的高低和<a href="http://baike.baidu.com/view/38752.htm">数据</a>位权有效地结合起来，高地址部分权值高，低地址部分权值低，和我们的逻辑方法一致。</p>
 <p>  简单来说，从内存地址增加的方向来说，大端就是先存放高序字节，小端就是先存放低序字节。   例如：0x0102 -——-&gt;内存增加的方向——&gt; 地址A——&gt;地址A+1 大端：01    02 小端：02      01  判断方法是利用union的一个特性，那就是里面的变量共享一段内存。 可以定义一个union. union Test{ short num;//2byte char c[sizeof(num)];//2byte } ; 然后存入一个0x0102或者其他数字到test.num中，因为共享内存的原因，可以访问c[1],c[2],查看里面的值来判断大小端。 一个实现是（参照unix网络编程中的一个例子）：  </p>
 <p>#include &lt;stdio.h&gt;<br>#include &lt;conio.h&gt;<br>union Test{<br>  short num;<br>  char c[sizeof(short)];<br>};<br>int main()<br>{<br> union Test t;//C++ 直接声明为Test t即可<br>    t.num=0x0102;<br>if(t.c[0]==1&amp;&amp;t.c[1]==2)<br>printf(“大端！\n”);<br>else if(t.c[0]==2&amp;&amp;t.c[1]==1)<br>printf(“小端！\n”);<br>else<br>printf(“未知！\n”);<br>getch();<br>return 0;</p>
 <p>}</p>
@@ -465,14 +472,14 @@
 <p>测试结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224012527_49631468339826.jpg">    </p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双</p>
-<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#101;&#114;&#103;&#117;&#x61;&#110;&#x67;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#x63;&#111;&#x64;&#101;&#114;&#103;&#117;&#x61;&#110;&#x67;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#x65;&#114;&#103;&#x75;&#x61;&#x6e;&#103;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;">&#99;&#x6f;&#100;&#x65;&#114;&#103;&#x75;&#x61;&#x6e;&#103;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <p>2014-11-6</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>   </p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/40869705">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/40869705">原文链接</a></p>
 
     
 
@@ -594,10 +601,10 @@
 <p>注意:编译的时候需要  -lrt   -lpthread 编译参数</p>
 <p>先运行服务器程序，然后可以打开多个客户端代码进行测试。</p>
 <p>文章作者：coderguang      email:  <a href="mailto:royalchen@royalchen.com" title="royalchen@royalchen.com">royalchen@royalchen.com</a></p>
-<p>博客链接：<a target="_blank" rel="noopener" href="http://blog.royalchen.com/" title="http://blog.royalchen.com">http://blog.royalchen.com</a></p>
+<p>博客链接：<a href="http://blog.royalchen.com/" title="http://blog.royalchen.com">http://blog.royalchen.com</a></p>
 <p>备注：自2015-03-25之后，如无特殊说明，文章均为coderguang原创，转载请注明出处，文章由coderguang保留所有权利。</p>
 <p>日期：2015-04-08</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/46508941">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/46508941">原文链接</a></p>
 
     
 
@@ -685,7 +692,7 @@
     
     <p>精彩育人小故事</p>
 <p> 向学生讲一个《鹌鹑和她的孩子们》的故事，作者是德国诗人布?瓦尔迪斯。<br> 一只鹌鹑在麦地中间筑巢。当她的孩子们渐渐长大，麦子变黄的时候，她对小鹌鹑们说道：“农夫收割麦子的日子快要到了。我现在出去给你们找食。我不在的时候，你们都给我待在巢里别动，小心点儿，别让任何人发现你们。如果那个农夫来了，你们留神他说的话，听他什么时候要割麦子。我们要见机而行。”说完，老鹌鹑便飞走了。<br> 不一会儿，农夫带着他的儿子来到了麦田，察看了一下麦子，然后对儿子说：“麦子成熟了，我们该收割了。我明天一早就去邻居那儿，同他们商量，请他们来帮助我们收割。”<br> 又过了一会儿，老鹌鹑噙着给孩子们的食物飞回来了，问他们是否听到点什么。一只小鹌鹑回答说：“那农夫同他的儿子来过了，他说：明天他要去请邻居来帮助割麦子。”<br> 老鹌鹑听后说：“别怕，这麦子还不会马上割的。因为那些邻居不会那么快就答应帮别人干活的。”<br> 第二天一大早，老鹌鹑又要外出觅食了，她对小鹌鹑们说： “留点神，那农夫准备什么时候割麦子，看是否能听到一些新的消息。” 那农夫又来了，对他的儿子说：“我看，谁也不会来了。这些邻居都靠不住。我要去同亲戚朋友谈谈，让他们明天来帮我们收割。这麦子再不割的话，就要烂了。”<br> 当老鹌鹑回家时，小鹌鹑们叽叽喳喳地说：“妈妈，快给我们<br>在别的地方筑一个新的巢吧!那农夫明天就要带他的亲戚朋友来割麦子了。”<br> 可是，老鹌鹑回答说：“亲爱的孩子们，那些亲戚朋友也不会马上到一个外乡的农田里来干活的，所以，你们注意听着农夫明天说的话!”<br>下一天早上，那农夫和他的儿子又来了，农夫非常伤心地朝麦田扫了一眼，说道：“我看，想靠别人的帮助都是不行的，不管是邻居，还是亲戚朋友。这庄稼今天是割不成了。两把锋利的镰刀已经摆在粮仓里了，明天一早我们两个就开镰。这麦子不能再耽搁了。”<br> 小鹌鹑马上就把这个新消息告诉了他们的妈妈。老鹌鹑听了说道：“瞧，这才是真正的收割时间。我们迁移的时候也到了，寻找别的住所去吧!亲爱的孩子们，起身吧!明天早上我们还待在这里的话，那么我们大家的生命恐怕就保不住了。”<br> 自己的事情要靠自己做；常言说得好：路在自己脚下。</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/46509321">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/46509321">原文链接</a></p>
 
     
 
@@ -780,7 +787,7 @@
 <p>TM的当初我没听，TM的现在搞得我都想哭了！</p>
 <p>哎，要是当初早点找到自己最想做的事情，努力一把，现在何苦弄的这么累呢！</p>
 <p>呵呵。</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/23946493">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/23946493">原文链接</a></p>
 
     
 
@@ -870,7 +877,7 @@
 <p>哪位的蜘蛛爬到我这里来了啊，吓了我一跳啊。</p>
 <p>STL突然多了6W访问，好神奇的蜘蛛。</p>
 <p>不是分独立IP么？</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/39430997">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/39430997">原文链接</a></p>
 
     
 
@@ -976,7 +983,7 @@
 <p> 遗憾大多来自等待。人人都有很多打算与愿望，要么实现，要么遗憾，这是现在的我，一个入殓师所理解的生活。愿世间少些遗憾，多些实现。</p>
 <p> 有花堪折直须折，莫待无花空折枝。与诸位共勉。</p>
 <p>季烁红，90后入殓师 </p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/46509273">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/46509273">原文链接</a></p>
 
     
 
@@ -1073,7 +1080,7 @@
 <p>好了，洗澡吧。</p>
 <p>-—2014/4/8  天下无双  </p>
 <p>-—于GDUT 西三543</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/23209761">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/23209761">原文链接</a></p>
 
     
 
@@ -1169,7 +1176,7 @@
 <p>try it!</p>
 <p>do it !</p>
 <p>from now on.</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/46509007">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/46509007">原文链接</a></p>
 
     
 

@@ -249,29 +249,29 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>STLarray的rend方法（17）</p>
-<p>原文地址：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/rend/">http://www.cplusplus.com/reference/array/array/rend/</a></p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/array/array/rend/">http://www.cplusplus.com/reference/array/array/rend/</a></p>
 <p>public member function</p>
 <array>
 
-<h1 id="std-array-rend"><a href="#std-array-rend" class="headerlink" title="std::array::rend"></a>std::<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/">array</a>::rend</h1><p> reverse_iterator rend() noexcept;<br>const_reverse_iterator rend() const noexcept;</p>
+<h1 id="std-array-rend"><a href="#std-array-rend" class="headerlink" title="std::array::rend"></a>std::<a href="http://www.cplusplus.com/reference/array/array/">array</a>::rend</h1><p> reverse_iterator rend() noexcept;<br>const_reverse_iterator rend() const noexcept;</p>
 <p>Return reverse iterator to reverse end</p>
-<p>Returns a <em>reverse iterator</em> pointing to the theoretical element preceding the first element in the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array">array</a> (which is considered its <em>reverse end</em>).  </p>
+<p>Returns a <em>reverse iterator</em> pointing to the theoretical element preceding the first element in the <a href="http://www.cplusplus.com/array">array</a> (which is considered its <em>reverse end</em>).  </p>
 <p>返回一个反向迭代器指向理论上存在于array容器第一个元素之前的元素。（这个元素被认为是反向的结尾）</p>
 <p>//今天突然发现用反向代替翻转更好0.0</p>
-<p>The range between <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array::rbegin">array::rbegin</a> and array::rend contains all the elements of the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array">array</a> (in reverse order).  </p>
+<p>The range between <a href="http://www.cplusplus.com/array::rbegin">array::rbegin</a> and array::rend contains all the elements of the <a href="http://www.cplusplus.com/array">array</a> (in reverse order).  </p>
 <p>范围rbegin和rend包括了array里面的所有元素（逆序）.</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
 <h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>A reverse iterator to the reverse end of the sequence.  </p>
 <p>返回值是一个反向迭代器指向序列的反向结尾。</p>
-<p>If the <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array">array</a> object is const-qualified, the function returns a const_iterator. Otherwise, it returns an iterator.  </p>
+<p>If the <a href="http://www.cplusplus.com/array">array</a> object is const-qualified, the function returns a const_iterator. Otherwise, it returns an iterator.  </p>
 <p>如果array对象是const,那么返回的是const迭代器。</p>
-<p>Member types reverse_iterator and const_reverse_iterator are reverse <a target="_blank" rel="noopener" href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types (pointing to an element and to a const element, respectively). See <a target="_blank" rel="noopener" href="http://www.cplusplus.com/array#types">vector member types</a>.  </p>
+<p>Member types reverse_iterator and const_reverse_iterator are reverse <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types (pointing to an element and to a const element, respectively). See <a href="http://www.cplusplus.com/array#types">vector member types</a>.  </p>
 <p>迭代器类型属于随机访问迭代器。</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// array::rbegin/rend</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;array&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::array&lt;int,4&gt; myarray = &#123;4, 26, 80, 14&#125; ;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myarray contains:&quot;;</span><br><span class="line">  for ( auto rit=myarray.rbegin() ; rit &lt; myarray.rend(); ++rit )</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *rit;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/array/array/rend/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/rend/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
 <p>14 80 26 4 </p>
 <p>Notice how the reverse iterator iterates through the array in a reverse way by increasing the iterator.  </p>
@@ -291,12 +291,12 @@
 <p>通过复制或者赋值获得的该迭代器副本也不会抛出异常。</p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#100;&#x65;&#x72;&#103;&#117;&#x61;&#110;&#103;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#99;&#111;&#100;&#x65;&#x72;&#103;&#117;&#x61;&#110;&#103;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
+<p>Email:<a href="mailto:&#x63;&#111;&#100;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#x67;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;">&#x63;&#111;&#100;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#x67;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;</a></p>
 <p>2014-8-30</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/qq844352155/article/details/38944541">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38944541">原文链接</a></p>
 
     
 
@@ -479,30 +479,31 @@
 
 
 
-
+  <div id="giteement-ctn"></div>
   
-  <div id="gitment-ctn"></div>
-  
-    <!-- 中文 -->
-    <link rel="stylesheet" href="/lib/gitment.css">
-    <script src="/lib/gitment.js"></script>
+    <link rel="stylesheet" href="/lib/default.css">
+    <script src="/lib/giteement.browser.js"></script>
   
   <script>
-    <!-- id: "STLarray的rend方法（17）" -->
-    var gitment = new Gitment({
-      id: "20160224080000",
-      owner: 'coderguang',
-      repo: 'coderguang.github.io',
-      oauth: {
-        client_id: '790bdfb522524451b7e7',
-        client_secret: 'f1dda402475a1ca7a9a0e3187740b1b6918c20e1',
-      },
-    })
-    gitment.render('gitment-ctn')
+  <!-- id: "STLarray的rend方法（17）" -->
+  var giteement = new Giteement({
+    id: '20160224080000',
+    owner: 'cpp000',
+    repo: 'royalchen_giteement',
+    backcall_uri: 'https://www.royalchen.com',
+    oauth_uri: 'https://cros.0cpp.com/gitee/https://gitee.com/oauth/token',
+    oauth: {
+      client_id: 'ab89faab5fd3d83df0e4cb2c65c6f7228e1f20b3800e5f579ac778477fe37e77',
+      client_secret: '91559c302bc4ee66235eb28f6a574a8c21ca35e2f48a5d9fab026476efa4d5af'
+    },
+  })
+  giteement.render('giteement-ctn')
   </script>
 
 
-  
+
+
+
 
 
 
