@@ -46,6 +46,16 @@
   
 
   
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?254f50fa221c994a16dcf2b15143cb15";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
 
   
     
@@ -239,11 +249,6 @@
 
   
   
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
 <a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04%EF%BC%8C%E6%B4%BE%E7%94%9F%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8/" class="archive-article-date">
         <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
 </a>
@@ -300,7 +305,7 @@
 <p>class A:public base<br>{<br>public:<br>int i;<br>A()<br>{<br>cout&lt;&lt;”A created!”&lt;&lt;endl;<br>}<br>~A()<br>{<br>cout&lt;&lt;”A destroyed!”&lt;&lt;endl;<br>}<br>void fun()<br>{<br>cout&lt;&lt;”A fun run”&lt;&lt;endl;<br>}<br>};</p>
 <p>测试代码：  </p>
 <p>int main()<br>{<br> A *a[2];<br>a[0]-&gt;fun();<br>cout&lt;&lt;endl&lt;&lt;a[0]-&gt;i&lt;&lt;endl;<br>}</p>
-<p>结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020203_11906585741427.jpg"> 可以看到，a[0]-&gt;i指向一个不确定的值！如果指定static const int i=1;那么，指向的必然就是1了。 今天就先测试这些最简单的吧，有点累了，多继承，虚基层明天再测试。 突然发现好像上次UC笔试做这道题的时候，析构的顺序似乎弄错了，郁闷。 还没收到面试信息，也还没有受到笔试挂了的通知，也不知道是个什么情况啊。 继续努力吧。 有时候，细节真的很重要！   —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#x40;&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#x68;&#101;&#110;&#x2e;&#99;&#x6f;&#x6d;">&#x72;&#111;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#x40;&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#x68;&#101;&#110;&#x2e;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020203_11906585741427.jpg"> 可以看到，a[0]-&gt;i指向一个不确定的值！如果指定static const int i=1;那么，指向的必然就是1了。 今天就先测试这些最简单的吧，有点累了，多继承，虚基层明天再测试。 突然发现好像上次UC笔试做这道题的时候，析构的顺序似乎弄错了，郁闷。 还没收到面试信息，也还没有受到笔试挂了的通知，也不知道是个什么情况啊。 继续努力吧。 有时候，细节真的很重要！   —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#97;&#108;&#99;&#x68;&#101;&#x6e;&#x40;&#114;&#x6f;&#121;&#x61;&#x6c;&#99;&#104;&#101;&#110;&#x2e;&#99;&#x6f;&#109;">&#x72;&#111;&#121;&#97;&#108;&#99;&#x68;&#101;&#x6e;&#x40;&#114;&#x6f;&#121;&#x61;&#x6c;&#99;&#104;&#101;&#110;&#x2e;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -544,19 +549,7 @@
 	</div>
 
 	
-		<script src="/lib/busuanzi.pure.js"></script>
-		
-			
 				
-					
-						<span id="busuanzi_container_site_pv" style="display:none">
-							本站总访问量<span id="busuanzi_value_site_pv"></span>次
-							<span class="post-meta-divider">|</span>
-						</span>
-						<span id="busuanzi_container_site_uv" style='display:none'>
-							本站访客数<span id="busuanzi_value_site_uv"></span>人
-						</span>
-						
 </footer>
 
     </div>

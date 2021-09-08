@@ -42,6 +42,16 @@
   
 
   
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?254f50fa221c994a16dcf2b15143cb15";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
 
   
     
@@ -273,7 +283,7 @@
 <p>b=a;//对象赋值<br>b.show();<br>*/<br>cout&lt;&lt;”this is c:”&lt;&lt;endl;<br>A c=a;//注意，这一个调用的也是复制构造函数，而不是赋值构造函数<br>//类似于声明的语句会调用复制构造函数，原因时A c=b;c当时还没创建，是不会调用operator=方法的。<br>c.show();</p>
 <p>}<br>}</p>
 <p>编译结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015832_19125377378188.jpg">   这说明了 A c=a;调用的不是赋值运算符而是复制构造函数。如何区分呢？ 一般来说，类似于声明的使用的是复制构造函数，类似于赋值的使用的是赋值运算符。 当然，C++11也允许显式默认和删除赋值运算符，规则和复制构造和默认构造一样。</p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#x61;&#108;&#99;&#104;&#101;&#110;&#x40;&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#104;&#101;&#110;&#x2e;&#99;&#x6f;&#109;">&#114;&#x6f;&#121;&#x61;&#108;&#99;&#104;&#101;&#110;&#x40;&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#104;&#101;&#110;&#x2e;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#121;&#97;&#108;&#99;&#104;&#101;&#x6e;&#x40;&#x72;&#111;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#99;&#x6f;&#109;">&#114;&#111;&#121;&#97;&#108;&#99;&#104;&#101;&#x6e;&#x40;&#x72;&#111;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -392,7 +402,7 @@
 <p>#include <iostream><br>#include <string><br>using namespace std;<br>template<class T><br>void printf(T t){<br>cout&lt;&lt;”I don’t know what it is!but I can show it –&gt;”&lt;&lt;t&lt;&lt;endl;<br>}</p>
 <p>int main(){<br>int a=10;<br>string s=”my name is jack!”;<br>printf(a);<br>printf(s);<br>system(“pause”);<br>}</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015544_9393598963230.jpg"> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#x68;&#x65;&#110;&#x40;&#x72;&#111;&#121;&#x61;&#108;&#99;&#104;&#x65;&#x6e;&#46;&#99;&#x6f;&#109;">&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#x68;&#x65;&#110;&#x40;&#x72;&#111;&#121;&#x61;&#108;&#99;&#104;&#x65;&#x6e;&#46;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#110;&#x40;&#x72;&#111;&#x79;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#46;&#99;&#x6f;&#109;">&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#110;&#x40;&#x72;&#111;&#x79;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#46;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -516,7 +526,7 @@
 <p>没有显式地删除add(char c)之前,运行结果为: <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015554_47001385708229.jpg">  可以看到char被转换为了int类型,这或许不是我们想要的. 因此我们可以手动删除这个重载方法.  </p>
 <p>#include <iostream><br>#include <string><br>using namespace std;<br>class base{<br>private:<br>int i;<br>string s;<br>protected:<br>int getI()const{return i;};<br>string getS()const{return s;};<br>public:<br>base(int ii,string ss):i(ii),s(ss){<br>}<br>virtual ~base(){<br>}<br>void add(int ii){<br>cout&lt;&lt;i&lt;&lt;”+”&lt;&lt;ii&lt;&lt;”=”&lt;&lt;i+ii&lt;&lt;endl;<br>}<br>void add(string ss){<br>cout&lt;&lt;s&lt;&lt;”+”&lt;&lt;ss&lt;&lt;”=”&lt;&lt;s+ss&lt;&lt;endl;<br>}<br>void add(char c)=delete<br>};</p>
 <p>这样,编译的时候就会报错了.类外的函数重载同样支持delete操作,这里就不演示了. <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015555_93388262913.jpg">  这个就是类里面的函数重载了. 需要注意的是继承的时候继承类中的重载有比较大的区别.请看下一篇博文. </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#97;&#108;&#99;&#104;&#x65;&#x6e;&#64;&#x72;&#111;&#121;&#97;&#108;&#x63;&#104;&#101;&#x6e;&#x2e;&#99;&#x6f;&#x6d;">&#x72;&#x6f;&#x79;&#97;&#108;&#99;&#104;&#x65;&#x6e;&#64;&#x72;&#111;&#121;&#97;&#108;&#x63;&#104;&#101;&#x6e;&#x2e;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#x61;&#108;&#99;&#x68;&#101;&#x6e;&#x40;&#x72;&#111;&#121;&#97;&#x6c;&#x63;&#x68;&#x65;&#110;&#46;&#99;&#111;&#x6d;">&#x72;&#111;&#121;&#x61;&#108;&#99;&#x68;&#101;&#x6e;&#x40;&#x72;&#111;&#121;&#97;&#x6c;&#x63;&#x68;&#x65;&#110;&#46;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -643,7 +653,7 @@
 <p>#include <iostream><br>#include <string><br>using namespace std;<br>class base{<br>public:<br>virtualvoid show(int i,string s){<br>cout&lt;&lt;i&lt;&lt;”+”&lt;&lt;s&lt;&lt;endl;<br>cout&lt;&lt;”This is base show!”&lt;&lt;endl;<br>}<br>virtual void show(){<br>cout&lt;&lt;”this is a void show”&lt;&lt;endl;<br>}<br>};<br>class dirved:public base{<br>public:<br>//using<br>using base::show;<br>virtual void show(int i,string s)override{<br>cout&lt;&lt;i&lt;&lt;”&amp;”&lt;&lt;s&lt;&lt;endl;<br>cout&lt;&lt;”This is dirved show!”&lt;&lt;endl;<br>}<br>};</p>
 <p>int main(){</p>
 <p>dirved d;<br>d.show(10,”show()”);<br>base &amp;ref=d;<br>ref.show(95.9,”ref show()”);<br>d.show();<br>}</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015615_45524108050840.jpg"> 这样就两全其美啦! —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#x68;&#x65;&#110;&#x40;&#x72;&#111;&#121;&#97;&#x6c;&#x63;&#104;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#x6d;">&#x72;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#x68;&#x65;&#110;&#x40;&#x72;&#111;&#121;&#97;&#x6c;&#x63;&#104;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015615_45524108050840.jpg"> 这样就两全其美啦! —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#97;&#x6c;&#x63;&#x68;&#x65;&#110;&#64;&#114;&#111;&#121;&#97;&#108;&#99;&#x68;&#x65;&#x6e;&#46;&#99;&#x6f;&#109;">&#114;&#x6f;&#x79;&#97;&#x6c;&#x63;&#x68;&#x65;&#110;&#64;&#114;&#111;&#121;&#97;&#108;&#99;&#x68;&#x65;&#x6e;&#46;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -754,7 +764,7 @@
 <p>};</p>
 <p>int main(){<br>{<br>B *b=new D();<br>delete b;<br>}<br>}</p>
 <p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015628_11927667918033.jpg"> 因此应该记得将析构函数声明为virtual,这样就永远不用担心析构函数调用链遭到破坏!  </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#97;&#x6c;&#99;&#104;&#101;&#x6e;&#x40;&#x72;&#111;&#x79;&#97;&#x6c;&#99;&#104;&#101;&#110;&#x2e;&#x63;&#111;&#x6d;">&#x72;&#x6f;&#121;&#97;&#x6c;&#99;&#104;&#101;&#x6e;&#x40;&#x72;&#111;&#x79;&#97;&#x6c;&#99;&#104;&#101;&#110;&#x2e;&#x63;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#97;&#x6c;&#99;&#104;&#101;&#110;&#x40;&#114;&#111;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#110;&#x2e;&#x63;&#x6f;&#109;">&#x72;&#x6f;&#x79;&#97;&#x6c;&#99;&#104;&#101;&#110;&#x40;&#114;&#111;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#110;&#x2e;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -863,7 +873,7 @@
 <p>Animal &amp;r1=a;<br>Animal &amp;r2=d1;<br>r1.speak();<br>r2.speak();<br>r1.eat();<br>r2.eat();<br>r1.run();<br>r2.run();</p>
 <p>return 0;</p>
 <p>}</p>
-<p>结果: <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015521_33286259760019.jpg">     —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#121;&#x61;&#108;&#99;&#x68;&#x65;&#110;&#64;&#114;&#x6f;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#109;">&#114;&#111;&#121;&#x61;&#108;&#99;&#x68;&#x65;&#110;&#64;&#114;&#x6f;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>结果: <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015521_33286259760019.jpg">     —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#x40;&#114;&#111;&#121;&#97;&#x6c;&#x63;&#104;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;">&#114;&#x6f;&#x79;&#x61;&#108;&#x63;&#104;&#x65;&#110;&#x40;&#114;&#111;&#121;&#97;&#x6c;&#x63;&#104;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -902,115 +912,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B026%EF%BC%8C%E8%99%9A%E5%87%BD%E6%95%B0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-c学习笔记29，引用变量（1）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B029%EF%BC%8C%E5%BC%95%E7%94%A8%E5%8F%98%E9%87%8F%EF%BC%881%EF%BC%89/" target="_blank">C++学习笔记29，引用变量（1）</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B029%EF%BC%8C%E5%BC%95%E7%94%A8%E5%8F%98%E9%87%8F%EF%BC%881%EF%BC%89/" class="archive-article-date">
-        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>引用变量在创建的时候就必须初始化。无法创建一个未被初始化的引用。</p>
-<p> </p>
-<p>#include <iostream><br>using namespace std;<br>int main()<br>{<br>    int x=10;<br>    int y=20;<br>    int &r1;<br>}</p>
-<p>编译结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015506_14614645906799.jpg"> 如果引用未被初始化，编译将报错。   <strong>修改引用：</strong> 引用总是指向初始化的那个变量，也就是说，引用一旦被创建并初始化之后就无法改变。这一规则有点让人迷惑。、 如果声明了一个引用的同时使用一个变量赋值了，那么这个引用就会一直指向这个变量。 在此后使用变量对引用赋值，被引用变量的值变为被赋值变量的值。而引用不会因此更新从而指向这个变量。 例子：  </p>
-<p>#include <iostream><br>using namespace std;<br>int main()<br>{<br>    int x=10;<br>    int y=20;<br>    cout&lt;&lt;”&amp;x=”&lt;&lt;&amp;x&lt;&lt;endl<br>        &lt;&lt;”&amp;y=”&lt;&lt;&amp;y&lt;&lt;endl;<br>    //初始化引用，r1指向x<br>    int &amp;r1=x;<br>    cout&lt;&lt;”&amp;r1=”&lt;&lt;&amp;r1&lt;&lt;”,r1=”&lt;&lt;r1&lt;&lt;endl;<br>    //这里只是改变了r1的值，并没有改变r1指向的引用<br>    r1=y;<br>    cout&lt;&lt;”&amp;r1=”&lt;&lt;&amp;r1&lt;&lt;”,r1=”&lt;&lt;r1&lt;&lt;endl;<br>    //更改引用也会更改原来的值<br>    r1=30;<br>    cout&lt;&lt;”&amp;r1=”&lt;&lt;&amp;r1&lt;&lt;”,r1=”&lt;&lt;r1&lt;&lt;endl;<br>    cout&lt;&lt;”finally  &amp;x=”&lt;&lt;&amp;x&lt;&lt;”,x=”&lt;&lt;x&lt;&lt;endl;</p>
-<pre><code>cout&lt;&lt;r1&lt;&lt;endl;
-cin.get();
-</code></pre>
-<p>}</p>
-<p>运行结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015508_26942637555391.jpg">  注意：对引用取地址的结果和对被引用的变量取地址的结果是相同的！  可以看出，改变的只是引用变量x的值，并没有改变引用的指向. 或许你试图想通过在给引用赋值的时候取y的地址，绕过这一限制，r1=&y; 但是这样编译会报错 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015509_40709447709653.jpg">  r1的实质是一个int型的引用，而&amp;y则是一个int的指针，两者不能转换。  无法创建未命名值（例如一个整型值11，实质上这就是一个右值）的引用，除非这是一个const值。  </p>
-<p>#include <iostream><br>using namespace std;<br>int main()<br>{<br>    int &amp;r1=11;<br>}</p>
-<p>编译结果：(rvalue是右值的意思，lvalue是左值，rightvalue,leftvalue) <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015511_26687608011251.jpg"> 这句语句意味着可以改变11的值，而这样做是没有意义的。 但是如果是const的引用，则可以运行。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015512_488426010009466.jpg">  </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#64;&#114;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#101;&#110;&#x2e;&#x63;&#111;&#x6d;">&#x72;&#x6f;&#x79;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#64;&#114;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#101;&#110;&#x2e;&#x63;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C-学习笔记//" class="article-tag-list-link color3">C++学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B029%EF%BC%8C%E5%BC%95%E7%94%A8%E5%8F%98%E9%87%8F%EF%BC%881%EF%BC%89/">展开全文 >></a>
     </p>
     
 
@@ -1083,7 +984,7 @@ cin.get();
 <p>//可以看出，union的长度即里面长度最大的成员的长度<br>cout&lt;&lt;”sizeof(unionOne)=”&lt;&lt;sizeof(unionOne)&lt;&lt;endl;//1<br>cout&lt;&lt;”sizeof(unionTwo)=”&lt;&lt;sizeof(unionTwo)&lt;&lt;endl;//4<br>cout&lt;&lt;”sizeof(unionThree)=”&lt;&lt;sizeof(unionThree)&lt;&lt;endl&lt;&lt;endl;//8</p>
 <p>cin.get();</p>
 <p>}</p>
-<p>测试结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020147_235842810393879.jpg">   二：在fedora20/linux  64bit下测试 gcc version=4.8.2 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020149_37444778930981.jpg">   可以看出，在Windows 32bit里面，指针是用4个字节来表示的，也就是4*8=32bit； 在linux 64bit里面，指针用8个字节表示，8*8=64，可以看出这里面的规律了吧。那么在16bit里面，是不是用16/8=2来表示的呢？ 这个留给你们自己去测试吧。   —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#64;&#x72;&#111;&#121;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;">&#x72;&#111;&#121;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#64;&#x72;&#111;&#121;&#x61;&#108;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>测试结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020147_235842810393879.jpg">   二：在fedora20/linux  64bit下测试 gcc version=4.8.2 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020149_37444778930981.jpg">   可以看出，在Windows 32bit里面，指针是用4个字节来表示的，也就是4*8=32bit； 在linux 64bit里面，指针用8个字节表示，8*8=64，可以看出这里面的规律了吧。那么在16bit里面，是不是用16/8=2来表示的呢？ 这个留给你们自己去测试吧。   —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#121;&#x61;&#108;&#x63;&#x68;&#101;&#110;&#x40;&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#99;&#x6f;&#x6d;">&#114;&#111;&#121;&#x61;&#108;&#x63;&#x68;&#101;&#110;&#x40;&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1151,6 +1052,115 @@ cin.get();
 
 
   
+    <article id="post-c学习笔记29，引用变量（1）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B029%EF%BC%8C%E5%BC%95%E7%94%A8%E5%8F%98%E9%87%8F%EF%BC%881%EF%BC%89/" target="_blank">C++学习笔记29，引用变量（1）</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B029%EF%BC%8C%E5%BC%95%E7%94%A8%E5%8F%98%E9%87%8F%EF%BC%881%EF%BC%89/" class="archive-article-date">
+        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>引用变量在创建的时候就必须初始化。无法创建一个未被初始化的引用。</p>
+<p> </p>
+<p>#include <iostream><br>using namespace std;<br>int main()<br>{<br>    int x=10;<br>    int y=20;<br>    int &r1;<br>}</p>
+<p>编译结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015506_14614645906799.jpg"> 如果引用未被初始化，编译将报错。   <strong>修改引用：</strong> 引用总是指向初始化的那个变量，也就是说，引用一旦被创建并初始化之后就无法改变。这一规则有点让人迷惑。、 如果声明了一个引用的同时使用一个变量赋值了，那么这个引用就会一直指向这个变量。 在此后使用变量对引用赋值，被引用变量的值变为被赋值变量的值。而引用不会因此更新从而指向这个变量。 例子：  </p>
+<p>#include <iostream><br>using namespace std;<br>int main()<br>{<br>    int x=10;<br>    int y=20;<br>    cout&lt;&lt;”&amp;x=”&lt;&lt;&amp;x&lt;&lt;endl<br>        &lt;&lt;”&amp;y=”&lt;&lt;&amp;y&lt;&lt;endl;<br>    //初始化引用，r1指向x<br>    int &amp;r1=x;<br>    cout&lt;&lt;”&amp;r1=”&lt;&lt;&amp;r1&lt;&lt;”,r1=”&lt;&lt;r1&lt;&lt;endl;<br>    //这里只是改变了r1的值，并没有改变r1指向的引用<br>    r1=y;<br>    cout&lt;&lt;”&amp;r1=”&lt;&lt;&amp;r1&lt;&lt;”,r1=”&lt;&lt;r1&lt;&lt;endl;<br>    //更改引用也会更改原来的值<br>    r1=30;<br>    cout&lt;&lt;”&amp;r1=”&lt;&lt;&amp;r1&lt;&lt;”,r1=”&lt;&lt;r1&lt;&lt;endl;<br>    cout&lt;&lt;”finally  &amp;x=”&lt;&lt;&amp;x&lt;&lt;”,x=”&lt;&lt;x&lt;&lt;endl;</p>
+<pre><code>cout&lt;&lt;r1&lt;&lt;endl;
+cin.get();
+</code></pre>
+<p>}</p>
+<p>运行结果： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015508_26942637555391.jpg">  注意：对引用取地址的结果和对被引用的变量取地址的结果是相同的！  可以看出，改变的只是引用变量x的值，并没有改变引用的指向. 或许你试图想通过在给引用赋值的时候取y的地址，绕过这一限制，r1=&y; 但是这样编译会报错 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015509_40709447709653.jpg">  r1的实质是一个int型的引用，而&amp;y则是一个int的指针，两者不能转换。  无法创建未命名值（例如一个整型值11，实质上这就是一个右值）的引用，除非这是一个const值。  </p>
+<p>#include <iostream><br>using namespace std;<br>int main()<br>{<br>    int &amp;r1=11;<br>}</p>
+<p>编译结果：(rvalue是右值的意思，lvalue是左值，rightvalue,leftvalue) <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015511_26687608011251.jpg"> 这句语句意味着可以改变11的值，而这样做是没有意义的。 但是如果是const的引用，则可以运行。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015512_488426010009466.jpg">  </p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#x68;&#x65;&#110;&#64;&#x72;&#111;&#x79;&#x61;&#x6c;&#x63;&#104;&#x65;&#110;&#46;&#99;&#x6f;&#x6d;">&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#x68;&#x65;&#110;&#64;&#x72;&#111;&#x79;&#x61;&#x6c;&#x63;&#104;&#x65;&#110;&#46;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C-学习笔记//" class="article-tag-list-link color3">C++学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B029%EF%BC%8C%E5%BC%95%E7%94%A8%E5%8F%98%E9%87%8F%EF%BC%881%EF%BC%89/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-c学习笔记30，指针的引用（2）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1188,7 +1198,7 @@ cin.get();
 <p>#include <iostream><br>using namespace std;<br>int main(){<br>    int x=10;<br>    int y=20;<br>    int z=30;<br>    int* ptx=&x;<br>    int* ptz=&z;<br>    //指针的引用,声明从右往左看，rtp与&amp;结合，<br>    //剩余的符号和左边结合<br>    //引用一旦创建，不能改变其指向，只能改变其值<br>    int* &amp;rtp=ptx;<br>    ptx=&y;<br>    //ptx的值改变了，rtp的值也相对改变了<br>    //但其指向不变<br>    rtp=ptz;<br>    //rtp的值改变了，ptx的值也相对改变了<br>    //但rtp指向不变</p>
 <p>}</p>
 <p>单步运行截图：（看ptx和rtp的值） <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015422_222218310052820.jpg">  <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015424_39929696847850.jpg"> <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015425_27548409526000.jpg"> <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015427_3783378296242.jpg"> 可以看到，rtp一直指向0x22fed8,而这个地址，正是&amp;ptx的地址，从这里可以看出，引用一旦创建其指向不可改变，能改变的只是其值（ptx的值）！ 这就是指针的引用，指向引用的指针请看下一篇博文！ </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#x40;&#114;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#99;&#111;&#109;">&#114;&#111;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#x40;&#114;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#121;&#97;&#108;&#99;&#x68;&#x65;&#x6e;&#x40;&#x72;&#111;&#x79;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;">&#114;&#111;&#121;&#97;&#108;&#99;&#x68;&#x65;&#x6e;&#x40;&#x72;&#111;&#x79;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1293,7 +1303,7 @@ cin.get();
 <p>#include <iostream><br>using namespace std;<br>int main(){<br>    int x=10;<br>    int y=20;<br>    int &amp;rtx=x;<br>    //不要写成了int&amp; *ptrx=&rtx;<br>    //因为rtx的本质是一个int<br>    int *ptrx=&rtx;<br>    *ptrx=15;<br>    ptrx=&y;<br>    rtx=y;<br>    cin.get();</p>
 <p>}</p>
 <p>依次单步执行：（注意rtx值的变化和ptrx的变化） <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015438_41729076349764.jpg"> 初始化引用rtx之后,rtx指向了x,其地址和&amp;x一致。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015441_36890786282637.jpg"> 执行int *ptrx=&rtx;之后，初始化了ptrx,也是指向x; <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015443_12042625653561.jpg"> *ptrx=15;这一句执行后的结果 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015444_31961085693424.jpg"> 可以看到，改变的依旧是其值，其指向依旧没有改变，同时x的值也会随之改变。 执行ptrx=&amp;y之后 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015446_43117919445617.jpg"> 可以看到ptrx的指向改变了，这是肯定的，但是rtx的指向并没有改变。 执行 rtx=y之后，是否指向会改变呢？答案是肯定的，不会！ <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015447_38390558724605.jpg"> 改变的依旧是rtx所指向的值！这就是指向引用的指针。  </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#x40;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#104;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#109;">&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#x40;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#104;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#64;&#114;&#111;&#x79;&#x61;&#108;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#109;">&#114;&#111;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#64;&#114;&#111;&#x79;&#x61;&#108;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1394,19 +1404,7 @@ cin.get();
 	</div>
 
 	
-		<script src="/lib/busuanzi.pure.js"></script>
-		
-			
 				
-					
-						<span id="busuanzi_container_site_pv" style="display:none">
-							本站总访问量<span id="busuanzi_value_site_pv"></span>次
-							<span class="post-meta-divider">|</span>
-						</span>
-						<span id="busuanzi_container_site_uv" style='display:none'>
-							本站访客数<span id="busuanzi_value_site_uv"></span>人
-						</span>
-						
 </footer>
 
     </div>

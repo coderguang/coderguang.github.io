@@ -40,6 +40,16 @@
   
 
   
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?254f50fa221c994a16dcf2b15143cb15";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
 
   
     
@@ -233,11 +243,6 @@
 
   
   
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
 <a href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%8892/" class="archive-article-date">
         <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
 </a>
@@ -280,7 +285,7 @@
 <p>void strcount(const string &amp;str)<br>{<br>static int total=0;<br>int count=str.length();//直接调用函数<br>cout&lt;&lt;”\n”&lt;&lt;str&lt;&lt;” contains”&lt;&lt;endl;<br>/*int i=0;<br>while(str[i]!=’\0’)<br>{<br>i++;<br>count++;<br>}*/</p>
 <p>total+=count;<br>cout&lt;&lt;count&lt;&lt;”  characters\n”;<br>cout&lt;&lt;total&lt;&lt;” total”&lt;&lt;endl;<br>}</p>
 <p>  这道题我主要是卡在了如何读取空格的问题上，一开始我是想直接cin&gt;&gt;input,然后碰到空格的时候,就直接input=input+” “; 但是似乎总会有点问题，最后找到了getline输入格式， 发现对输入输出这一块还不是很多透彻，还需继续努力！   ———————————————————————————————————————————————————————————————————————————— next为多余变量，已改正，感谢   wuyalu123   提醒。 ————-2014.9.4 ————————————————————————————————————————————————————————————————————————————</p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#101;&#x6e;&#64;&#114;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#109;">&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#101;&#x6e;&#64;&#114;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#104;&#101;&#110;&#64;&#x72;&#111;&#121;&#x61;&#x6c;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#x6f;&#109;">&#114;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#104;&#101;&#110;&#64;&#x72;&#111;&#121;&#x61;&#x6c;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -513,19 +518,7 @@
 	</div>
 
 	
-		<script src="/lib/busuanzi.pure.js"></script>
-		
-			
 				
-					
-						<span id="busuanzi_container_site_pv" style="display:none">
-							本站总访问量<span id="busuanzi_value_site_pv"></span>次
-							<span class="post-meta-divider">|</span>
-						</span>
-						<span id="busuanzi_container_site_uv" style='display:none'>
-							本站访客数<span id="busuanzi_value_site_uv"></span>人
-						</span>
-						
 </footer>
 
     </div>

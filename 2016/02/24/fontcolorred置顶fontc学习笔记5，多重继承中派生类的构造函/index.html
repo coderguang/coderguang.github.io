@@ -50,6 +50,16 @@
   
 
   
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?254f50fa221c994a16dcf2b15143cb15";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	
 
   
     
@@ -243,11 +253,6 @@
 
   
   
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
 <a href="/2016/02/24/fontcolorred%E7%BD%AE%E9%A1%B6fontc%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05%EF%BC%8C%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF%E4%B8%AD%E6%B4%BE%E7%94%9F%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD/" class="archive-article-date">
         <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
 </a>
@@ -320,7 +325,7 @@
 <p>};<br>int main()<br>{</p>
 <p>D d;</p>
 <p>}</p>
-<p>这里只有A是虚继承base,B,C都不是虚继承，但是在D里面，刚好相反，看看结果如何 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020140_9413408682675.jpg"> 说实在的，输出是这样我是没有想到的。 base created!   //这个base是哪一个调用的呢？ base created! B created! base created! C created!  后来我再这样测试一下我就知道是为什么了。 令A，B，C均不虚继承与base，但是D继承与A,并且虚继承B，C,看结果  <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020141_29638708233114.jpg">   因此可以看出，上一次的第一个base是因为A而调用的base，也就是说，编译器是先检测上一层继承关系(A,B,C)中，哪一个是虚继承于再上一层的类(base)，如果有，则优先调用该虚继承与base的类(也就是A)的基类的（也就是base）构造函数,然后再调用D中虚继承的类的构造函数(B,C)，最后才调用A自己的构造函数，这里有点复杂，还是上一次测试的例子： base created!   //这个base是因为A是虚继承与base时调用的，但是调用完之后并不直接调用A (A created!)<br>base created!   //这个是调用B时调用的base<br>B created!<br>base created!   //这个是调用C时i调用的base<br>C created! A created!    //最后才调用A created!  因此，可以发现，如果你不想该类(例如A)在被继承的时候防止派生类（D）多次创建该类(A)的基类（base）的多个对象，那么，就应该将该类声明为virtual 继承基类(base),vitual的作用是对下一层次的派生类起作用，对该类(A)并不起特别作用(但是该类（D）会优先调用虚继承类（B,C）的构造函数)。  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#x61;&#108;&#x63;&#104;&#x65;&#x6e;&#x40;&#114;&#111;&#x79;&#97;&#x6c;&#99;&#104;&#x65;&#x6e;&#x2e;&#99;&#111;&#x6d;">&#x72;&#x6f;&#121;&#x61;&#108;&#x63;&#104;&#x65;&#x6e;&#x40;&#114;&#111;&#x79;&#97;&#x6c;&#99;&#104;&#x65;&#x6e;&#x2e;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>这里只有A是虚继承base,B,C都不是虚继承，但是在D里面，刚好相反，看看结果如何 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020140_9413408682675.jpg"> 说实在的，输出是这样我是没有想到的。 base created!   //这个base是哪一个调用的呢？ base created! B created! base created! C created!  后来我再这样测试一下我就知道是为什么了。 令A，B，C均不虚继承与base，但是D继承与A,并且虚继承B，C,看结果  <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020141_29638708233114.jpg">   因此可以看出，上一次的第一个base是因为A而调用的base，也就是说，编译器是先检测上一层继承关系(A,B,C)中，哪一个是虚继承于再上一层的类(base)，如果有，则优先调用该虚继承与base的类(也就是A)的基类的（也就是base）构造函数,然后再调用D中虚继承的类的构造函数(B,C)，最后才调用A自己的构造函数，这里有点复杂，还是上一次测试的例子： base created!   //这个base是因为A是虚继承与base时调用的，但是调用完之后并不直接调用A (A created!)<br>base created!   //这个是调用B时调用的base<br>B created!<br>base created!   //这个是调用C时i调用的base<br>C created! A created!    //最后才调用A created!  因此，可以发现，如果你不想该类(例如A)在被继承的时候防止派生类（D）多次创建该类(A)的基类（base）的多个对象，那么，就应该将该类声明为virtual 继承基类(base),vitual的作用是对下一层次的派生类起作用，对该类(A)并不起特别作用(但是该类（D）会优先调用虚继承类（B,C）的构造函数)。  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#110;&#x40;&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#101;&#110;&#x2e;&#99;&#111;&#109;">&#x72;&#111;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#110;&#x40;&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#101;&#110;&#x2e;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -564,19 +569,7 @@
 	</div>
 
 	
-		<script src="/lib/busuanzi.pure.js"></script>
-		
-			
 				
-					
-						<span id="busuanzi_container_site_pv" style="display:none">
-							本站总访问量<span id="busuanzi_value_site_pv"></span>次
-							<span class="post-meta-divider">|</span>
-						</span>
-						<span id="busuanzi_container_site_uv" style='display:none'>
-							本站访客数<span id="busuanzi_value_site_uv"></span>人
-						</span>
-						
 </footer>
 
     </div>
