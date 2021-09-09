@@ -241,6 +241,108 @@
 
 
   
+    <article id="post-leetcode-559-maximum-depth-of-n-ary-tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2018/08/03/leetcode-559-maximum-depth-of-n-ary-tree/" target="_blank">LeetCode---559. Maximum Depth of N-ary Tree</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2018/08/03/leetcode-559-maximum-depth-of-n-ary-tree/" class="archive-article-date">
+        <time datetime="2018-08-03T10:11:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>//url:<a href="https://leetcode.com/problems/maximum-depth-of-n-ary-tree/description/">https://leetcode.com/problems/maximum-depth-of-n-ary-tree/description/</a></p>
+<p>/*<br>// Definition for a Node.<br>class Node {<br>public:<br>    int val;<br>    vector children;</p>
+<pre><code>Node() &#123;&#125;
+
+Node(int \_val, vector \_children) &#123;
+    val = \_val;
+    children = \_children;
+&#125;
+</code></pre>
+<p>};<br>*/<br>class Solution {<br>public:<br>    void getDepth(Node* root,int &amp;depth,int level){<br>        if(!root)<br>            return;<br>        level++;<br>        depth=depth&gt;level?depth:level;<br>        for(int i=0;ichildren.size();i++)<br>            getDepth(root-&gt;children[i],depth,level);<br>    }</p>
+<pre><code>int maxDepth(Node\* root) &#123;
+    int max=0;
+    getDepth(root,max,0);
+    return max;
+&#125;
+</code></pre>
+<p>};</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ACM学习//" class="article-tag-list-link color1">ACM学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2018/08/03/leetcode-559-maximum-depth-of-n-ary-tree/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-leetcode-292-nim-game" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1068,96 +1170,9 @@ void reverseString(string&amp; s) &#123;
 
 
   
-    <article id="post-leetcode-344-reverse-string" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2018/07/23/leetcode-344-reverse-string/" target="_blank">LeetCode---344. Reverse String</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2018/07/23/leetcode-344-reverse-string/" class="archive-article-date">
-        <time datetime="2018-07-23T10:26:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>//url:<a href="https://leetcode.com/problems/reverse-string/description/">https://leetcode.com/problems/reverse-string/description/</a></p>
-<p>class Solution {<br>public:<br>    string reverseString(string s) {<br>        int size=s.length();<br>        for(int i=0;i</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ACM学习//" class="article-tag-list-link color1">ACM学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2018/07/23/leetcode-344-reverse-string/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 

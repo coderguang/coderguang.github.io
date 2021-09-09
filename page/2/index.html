@@ -241,6 +241,103 @@
 
 
   
+    <article id="post-go-获取指定目录下的所有文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/03/07/go-%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6/" target="_blank">go 获取指定目录下的所有文件</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/03/07/go-%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6/" class="archive-article-date">
+        <time datetime="2019-03-07T13:07:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-07</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>网上找了不少例子，貌似都有一点点问题，后来挑了个靠谱点的，修改之后就可以用了，二话不说，直接上代码和截图。 这里只是会获取文件，文件夹是不会打印出来的。</p>
+<p>//获取指定目录下的所有文件,包含子目录下的文件<br>func GetAllFiles(dirPath string) (files []string, err error) {<br>var dirs []string<br>dir, err := ioutil.ReadDir(dirPath)</p>
+<p>if err != nil {<br>return nil, err<br>}<br>PthSep := string(os.PathSeparator)<br>//suffix = strings.ToUpper(suffix) //忽略后缀匹配的大小写</p>
+<p>for _, fi := range dir {</p>
+<p>if fi.IsDir() {<br>dirs = append(dirs, dirPath+PthSep+fi.Name())<br>newfiles, _ := GetAllFiles(dirPath + PthSep + fi.Name())<br>files = append(files, newfiles…)<br>} else {<br>files = append(files, dirPath+PthSep+fi.Name())<br>}</p>
+<p>}</p>
+<p>return files, nil<br>}</p>
+<p>func main() {<br>fmt.Println(“test build”)</p>
+<p>files, err := sg_fileUtil.GetAllFiles(“.”)</p>
+<p>if err != nil {<br>panic(err)<br>}</p>
+<p>for i, _ := range files {<br>fmt.Println(files[i])<br>}</p>
+<p>time.Sleep(time.Duration(10) * time.Second)<br>fmt.Println(“test complete”)<br>}</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/go//" class="article-tag-list-link color3">go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/03/07/go-%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-leetcode-905-sort-array-by-parity" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1030,111 +1127,9 @@ Node(int \_val, vector \_children) &#123;
 
 
   
-    <article id="post-leetcode-559-maximum-depth-of-n-ary-tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2018/08/03/leetcode-559-maximum-depth-of-n-ary-tree/" target="_blank">LeetCode---559. Maximum Depth of N-ary Tree</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2018/08/03/leetcode-559-maximum-depth-of-n-ary-tree/" class="archive-article-date">
-        <time datetime="2018-08-03T10:11:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>//url:<a href="https://leetcode.com/problems/maximum-depth-of-n-ary-tree/description/">https://leetcode.com/problems/maximum-depth-of-n-ary-tree/description/</a></p>
-<p>/*<br>// Definition for a Node.<br>class Node {<br>public:<br>    int val;<br>    vector children;</p>
-<pre><code>Node() &#123;&#125;
-
-Node(int \_val, vector \_children) &#123;
-    val = \_val;
-    children = \_children;
-&#125;
-</code></pre>
-<p>};<br>*/<br>class Solution {<br>public:<br>    void getDepth(Node* root,int &amp;depth,int level){<br>        if(!root)<br>            return;<br>        level++;<br>        depth=depth&gt;level?depth:level;<br>        for(int i=0;ichildren.size();i++)<br>            getDepth(root-&gt;children[i],depth,level);<br>    }</p>
-<pre><code>int maxDepth(Node\* root) &#123;
-    int max=0;
-    getDepth(root,max,0);
-    return max;
-&#125;
-</code></pre>
-<p>};</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ACM学习//" class="article-tag-list-link color1">ACM学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2018/08/03/leetcode-559-maximum-depth-of-n-ary-tree/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 

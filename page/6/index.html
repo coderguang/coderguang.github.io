@@ -241,6 +241,92 @@
 
 
   
+    <article id="post-leetcode-657-judge-route-circle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2018/07/20/leetcode-657-judge-route-circle/" target="_blank">LeetCode---657. Judge Route Circle</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2018/07/20/leetcode-657-judge-route-circle/" class="archive-article-date">
+        <time datetime="2018-07-20T09:51:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-20</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>//url:<a href="https://leetcode.com/problems/judge-route-circle/description/">https://leetcode.com/problems/judge-route-circle/description/</a><br>class Solution {<br>public:<br>    bool judgeCircle(string moves) {<br>        int x=0;<br>        int y=0;<br>        for(int i=0;i</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ACM学习//" class="article-tag-list-link color1">ACM学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2018/07/20/leetcode-657-judge-route-circle/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-leetcode-832-flipping-an-image" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1307,128 +1393,9 @@
 
 
   
-    <article id="post-如何解决mongodb内存过大问题【转】" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2018/01/24/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3mongodb%E5%86%85%E5%AD%98%E8%BF%87%E5%A4%A7%E9%97%AE%E9%A2%98%E3%80%90%E8%BD%AC%E3%80%91/" target="_blank">如何解决Mongodb内存过大问题【转】</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2018/01/24/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3mongodb%E5%86%85%E5%AD%98%E8%BF%87%E5%A4%A7%E9%97%AE%E9%A2%98%E3%80%90%E8%BD%AC%E3%80%91/" class="archive-article-date">
-        <time datetime="2018-01-24T02:09:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>原文链接：<a href="http://blog.csdn.net/wn/_hello/article/details/50956969">http://blog.csdn.net/wn\_hello/article/details/50956969</a> 一、MongoDB的数据库文件主要有3种： [1]journal 日志文件 跟一些传统数据库不同，MongoDB的日志文件只是用来在系统出现宕机时候恢复尚未来得及同步到硬盘的内存数据。日志文件会存放在一个分开的目录下面。启动时候MongoDB会自动预先创建3个每个为1G的日志文件（初始为空）。除非你真的有持续海量数据并发写入，一般来说3个G已经足够。   [2]namespace 表名文件dbname.ns 这个文件用来存储整个数据库的集合以及索引的名字。这个文件不大，默认16M，可以存储24000个集合或者索引名以及那些集合和索引在数据文件中得具体位置。通过这个文件MongoDB可以知道从哪里去开始寻找或插入集合的数据或者索引数据。   [3]data 数据及索引文件dbname.0, dbname.1,… dbname.n MongoDB的数据以及索引都存放在一个或者多个MongoDB数据文件里。第一个数据文件会以“数据库名.0”命名，如 my-db.0。这个文件默认大小是64M，在接近用完这个64M之前，MongoDB 会提前生成下一个数据文件如my-db.1。数据文件的大小会2倍递增。第二个数据文件的大小为128M，第三个为256M。一直到了2G以后就会停止，一直按这个2G这个大小增加新的文件。   二、在执行db.stats()命令后，得到数据库大小，主要参数为dataSize、storageSize以及fileSize。 [1] dataSize dataSize是最接近真实数据大小的一个参数。你可以用来检查你的数据有多少。这个大小包括了数据库（或者集合）的每条记录的总和。注意每条记录除了BSON文档外还有header及padding这些额外开销。所以实际大小会比真正数据所占空间会稍大。   [2] storageSize 这个参数等于数据库或者某个集合所有用到的Data Extents的总和。注意这个数字会大于dataSize因为Extent里面会有一些删除文档之后留下来的碎片（deleted）。如果有新插入的文档小于或等于碎片的大小，MongoDB会重新利用这个碎片来存储新的文档。不过在这之前这些碎片将一直会被保留在那里占用空间。由于这个原因，你删除文档的时候这个参数不会变小。   [3] fileSize 这个参数只在数据库上有效，指的是实际文件系统中用到的文件的大小。它包括所有的数据Extents的总和，索引Extent的总和，以及一些未被分配的空间。之前提到MongoDB会对数据库文件创建时候进行预分配，例如最小就是64M，哪怕你只有几百个KB的数据。所以这个参数可能会比实际的数据大小会大不少。 这些额外未用空间是用来保证MongoDB可以在新的数据写入时候快速的分配新的Extent，避免引起磁盘空间分配引起的延迟。   三、内存过大解决方案 （1）减小预分配文件的大小</p>
-<p><strong>[html]</strong> <a href="http://blog.csdn.net/wn_hello/article/details/50956969#" title="view plain">view plain</a> <a href="http://blog.csdn.net/wn_hello/article/details/50956969#" title="copy">copy</a></p>
-<ol>
-<li> #mongo</li>
-<li> &gt;use admin</li>
-<li> &gt;db.shutdownServer()</li>
-<li> Ctrl+c</li>
-<li><h1 id="mongod-–config-etc-mongodb-conf-–smallfiles"><a href="#mongod-–config-etc-mongodb-conf-–smallfiles" class="headerlink" title="mongod –config /etc/mongodb.conf –smallfiles"></a>mongod –config /etc/mongodb.conf –smallfiles</h1></li>
-<li> #mongo</li>
-<li> &gt;use dbname</li>
-<li> &gt;db.repairDatabase()</li>
-</ol>
-<p>  （2）将数据库导入导出</p>
-<p><strong>[plain]</strong> <a href="http://blog.csdn.net/wn_hello/article/details/50956969#" title="view plain">view plain</a> <a href="http://blog.csdn.net/wn_hello/article/details/50956969#" title="copy">copy</a></p>
-<ol>
-<li> #mongodump -d databasename</li>
-<li> #echo ‘db.dropDatabase()’  mongo databasename</li>
-<li> #mongorestore dump/databasename</li>
-</ol>
-<p>（3）禁用预分配机制（可能会导致性能降低）</p>
-<p><strong>[plain]</strong> <a href="http://blog.csdn.net/wn_hello/article/details/50956969#" title="view plain">view plain</a> <a href="http://blog.csdn.net/wn_hello/article/details/50956969#" title="copy">copy</a></p>
-<ol>
-<li> #mongo</li>
-<li> &gt;use admin</li>
-<li> &gt;db.shutdownServer()</li>
-<li> Ctrl+c</li>
-<li><h1 id="vi-etc-mongodb-conf"><a href="#vi-etc-mongodb-conf" class="headerlink" title="vi /etc/mongodb.conf"></a>vi /etc/mongodb.conf</h1></li>
-<li> 在最后添加「noprealloc = true」</li>
-<li><h1 id="mongod-–config-etc-mongodb-conf"><a href="#mongod-–config-etc-mongodb-conf" class="headerlink" title="mongod –config /etc/mongodb.conf"></a>mongod –config /etc/mongodb.conf</h1></li>
-<li> #mongo</li>
-<li> &gt;use dbname</li>
-<li> &gt;db.repairDatabase()</li>
-</ol>
-<p>  参考链接： <a href="http://stackoverflow.com/questions/2966687/reducing-mongodb-database-file-size">http://stackoverflow.com/questions/2966687/reducing-mongodb-database-file-size</a> <a href="http://stackoverflow.com/questions/7147739/mongodb-avoid-excessive-disk-space">http://stackoverflow.com/questions/7147739/mongodb-avoid-excessive-disk-space</a> <a href="http://huoding.com/2011/08/19/107">http://huoding.com/2011/08/19/107</a> <a href="http://281816327.blog.51cto.com/907015/1598460">http://281816327.blog.51cto.com/907015/1598460</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据库使用//" class="article-tag-list-link color1">数据库使用</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2018/01/24/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3mongodb%E5%86%85%E5%AD%98%E8%BF%87%E5%A4%A7%E9%97%AE%E9%A2%98%E3%80%90%E8%BD%AC%E3%80%91/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
     </nav>
   
 

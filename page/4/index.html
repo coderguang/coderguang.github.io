@@ -241,6 +241,93 @@
 
 
   
+    <article id="post-leetcode-344-reverse-string" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2018/07/23/leetcode-344-reverse-string/" target="_blank">LeetCode---344. Reverse String</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2018/07/23/leetcode-344-reverse-string/" class="archive-article-date">
+        <time datetime="2018-07-23T10:26:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>//url:<a href="https://leetcode.com/problems/reverse-string/description/">https://leetcode.com/problems/reverse-string/description/</a></p>
+<p>class Solution {<br>public:<br>    string reverseString(string s) {<br>        int size=s.length();<br>        for(int i=0;i</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ACM学习//" class="article-tag-list-link color1">ACM学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2018/07/23/leetcode-344-reverse-string/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-leetcode-868-binary-gap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1065,96 +1152,9 @@ vector subdomainVisits(vector&amp; cpdomains) &#123;
 
 
   
-    <article id="post-leetcode-682-baseball-game" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2018/07/23/leetcode-682-baseball-game/" target="_blank">LeetCode---682. Baseball Game</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2018/07/23/leetcode-682-baseball-game/" class="archive-article-date">
-        <time datetime="2018-07-23T06:30:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>//url:<a href="https://leetcode.com/problems/baseball-game/description/">https://leetcode.com/problems/baseball-game/description/</a></p>
-<p>class Solution {<br>public:<br>    int calPoints(vector&amp; ops) {<br>        int result[1000];<br>        int index=0;<br>        int size=ops.size();<br>        for(int i=0;i0)<br>                            index–;<br>                    }<br>                else if(“D”==ops[i])<br>                    {<br>                        if(index&gt;0){<br>                            result[index]=result[index-1]*2;<br>                            index++;<br>                        }<br>                    }<br>                else if(“+”==ops[i])<br>                    {<br>                        if(index&gt;=1){<br>                            result[index]=result[index-1]+result[index-2];<br>                        }else if(index&gt;0){<br>                            result[index]=result[index-1];<br>                        }<br>                        index++;<br>                    }<br>                 else<br>                    {<br>                        result[index]=atoi(ops[i].c_str());<br>                        index++;<br>                    }<br>        }<br>        int sum=0;<br>        for(int i=0;i</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ACM学习//" class="article-tag-list-link color1">ACM学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2018/07/23/leetcode-682-baseball-game/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 

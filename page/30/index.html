@@ -241,6 +241,131 @@
 
 
   
+    <article id="post-stlvector中的front方法4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84front%E6%96%B9%E6%B3%954/" target="_blank">STLvector中的front方法(4)</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84front%E6%96%B9%E6%B3%954/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>STLvector中的front方法(4)</p>
+<p>public member function</p>
+<vector>
+
+<h1 id="std-vector-front"><a href="#std-vector-front" class="headerlink" title="std::vector::front"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::front</h1><p> reference front();<br>const_reference front() const; </p>
+<p>Access first element</p>
+<p>访问第一个元素</p>
+<p>Returns a reference to the first element in the <a href="http://www.cplusplus.com/vector">vector</a>.</p>
+<p>返回第一个元素的引用。</p>
+<p>Unlike member <a href="http://www.cplusplus.com/vector::begin">vector::begin</a>, which returns an iterator to this same element, this function returns a direct reference.</p>
+<p>和begin不一样，begin是返回一个迭代器，而front是返回一个直接引用。</p>
+<p>Calling this function on an <a href="http://www.cplusplus.com/vector::empty">empty</a> container causes undefined behavior.</p>
+<p>对一个空的容器调用该方法将会导致不可预料的结果。</p>
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>A reference to the first element in the <a href="http://www.cplusplus.com/vector">vector</a> container.</p>
+<p>一个指向该vector容器中第一个元素的引用.</p>
+<p>If the <a href="http://www.cplusplus.com/vector">vector</a> object is const-qualified, the function returns a const_reference. Otherwise, it returns a reference.</p>
+<p>如果该vector是const属性的，那么返回值也将是const属性的，否则，就是返回一个普通的iterator。  </p>
+<p>Member types reference and const_reference are the reference types to the elements of the container (see <a href="http://www.cplusplus.com/vector#types">vector member types</a>).  </p>
+<p>返回值的类型都是模版元素定义的类型。即元素类型。</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// vector::front</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line"></span><br><span class="line">  myvector.push_back(78);</span><br><span class="line">  myvector.push_back(16);</span><br><span class="line"></span><br><span class="line">  // now front equals 78, and back 16</span><br><span class="line"></span><br><span class="line">  myvector.front() -= myvector.back();</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector.front() is now &quot; &lt;&lt; myvector.front() &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://www.cplusplus.com/reference/vector/vector/front/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p>Output:  </p>
+<p>myvector.front() is now 62 </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
+<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>No changes.<br>调用该方法不会使其他迭代器失效。  </p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is accessed (neither the const nor the non-const versions modify the container).</p>
+<p>容器可以被访问（该操作不会修改容器内容）</p>
+<p>The reference returned can be used to access or modify elements. Concurrently accessing or modifying different elements is safe.  </p>
+<p>该引用可以用来访问或者是修改元素，并且他们都是安全的。</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the container is not <a href="http://www.cplusplus.com/vector::empty">empty</a>, the function never throws exceptions (no-throw guarantee).</p>
+<p>如果容器非空，该方法不会抛出异常。</p>
+<p>Otherwise, it causes <em>undefined behavior</em>.</p>
+<p>否则，会导致未知的行为！</p>
+<p>//翻译的不好的地方麻烦大家指出来以便修改，谢谢。</p>
+<p>//转载请注明出处<a href="http://blog.csdn.net/qq844352155/article/details/38458047">http://blog.csdn.net/qq844352155/article/details/38458047</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38458047">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL容器//" class="article-tag-list-link color1">STL容器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84front%E6%96%B9%E6%B3%954/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-stlvector中的get-allocator方法27" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1486,149 +1611,9 @@
 
 
   
-    <article id="post-stlvector中的reserve方法（15）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84reserve%E6%96%B9%E6%B3%95%EF%BC%8815%EF%BC%89/" target="_blank">STLvector中的reserve()方法（15）</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84reserve%E6%96%B9%E6%B3%95%EF%BC%8815%EF%BC%89/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>STLvector中的reserve()方法（15）</p>
-<p>原文地址：<a href="http://www.cplusplus.com/reference/vector/vector/reserve/">http://www.cplusplus.com/reference/vector/vector/reserve/</a></p>
-<p>public member function</p>
-<vector>
-
-<h1 id="std-vector-reserve"><a href="#std-vector-reserve" class="headerlink" title="std::vector::reserve"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::reserve</h1><p>void reserve (size_type n);</p>
-<p>Request a change in capacity</p>
-<p>Request that the <a href="http://www.cplusplus.com/vector::capacity">vector capacity</a> be at least enough to contain <em>n</em> elements.  </p>
-<p>要求vector的容量至少能够容纳n个元素。</p>
-<p>If <em>n</em> is greater than the current <a href="http://www.cplusplus.com/vector::capacity">vector capacity</a>, the function causes the container to reallocate its storage increasing its <a href="http://www.cplusplus.com/vector::capacity">capacity</a> to <em>n</em> (or greater).  </p>
-<p>如果n比现在的capacity大，那么这个函数会使容器重新分配其空间使其容量达到n（或者更大）</p>
-<p>In all other cases, the function call does not cause a reallocation and the <a href="http://www.cplusplus.com/vector::capacity">vector capacity</a> is not affected.</p>
-<p>在其他情况下，该方法不会导致重分配的情况发生，并且其容量不会受到影响。</p>
-<p>This function has no effect on the <a href="http://www.cplusplus.com/vector::size">vector size</a> and cannot alter its elements.  </p>
-<p>该方法不会影响数组的大小，也不会修改其元素。</p>
-<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>n</p>
-<p>Minimum <a href="http://www.cplusplus.com/vector::capacity">capacity</a> for the <a href="http://www.cplusplus.com/vector">vector</a>.<br>Note that the resulting <a href="http://www.cplusplus.com/vector::capacity">vector capacity</a> may be equal or greater than <em>n</em>.<br>Member type size_type is an unsigned integral type.</p>
-<p>参数:</p>
-<p>n</p>
-<p>vector的最小容量。</p>
-<p>要注意capacity可能等于也可能大于n</p>
-<p>n为一个无符号整型</p>
-<h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>none  </p>
-<p>无返回值</p>
-<p>If the size requested is greater than the maximum size (<a href="http://www.cplusplus.com/vector::max_size">vector::max_size</a>), a <a href="http://www.cplusplus.com/length_error">length_error</a> exception is thrown.  </p>
-<p>如果要求的大小比max_size获得的值更大，那么将会抛出一个length_error异常.</p>
-<p>If case of reallocation, the storage is allocated using the container’s <a href="http://www.cplusplus.com/vector::get_allocator">allocator</a>, which may throw exceptions on failure (for the default <a href="http://www.cplusplus.com/allocator">allocator</a>, bad_alloc is thrown if the allocation request does not succeed).</p>
-<p>如果该方法导致了重分配，那么分配将使用容器自带的分配器，这有可能在分配失败的时候导致异常（例如默认的分配器，在请求分配失败的时候会抛出bad_alloc异常）。</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">// vector::reserve</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt;::size_type sz;</span><br><span class="line"></span><br><span class="line">  std::vector&lt;int&gt; foo;</span><br><span class="line">  sz = foo.capacity();</span><br><span class="line">  std::cout &lt;&lt; &quot;making foo grow:\n&quot;;</span><br><span class="line">  for (int i=0; i&lt;100; ++i) &#123;</span><br><span class="line">    foo.push_back(i);</span><br><span class="line">    if (sz!=foo.capacity()) &#123;</span><br><span class="line">      sz = foo.capacity();</span><br><span class="line">      std::cout &lt;&lt; &quot;capacity changed: &quot; &lt;&lt; sz &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  std::vector&lt;int&gt; bar;</span><br><span class="line">  sz = bar.capacity();</span><br><span class="line">  bar.reserve(100);   // this is the only difference with foo above</span><br><span class="line">  std::cout &lt;&lt; &quot;making bar grow:\n&quot;;</span><br><span class="line">  for (int i=0; i&lt;100; ++i) &#123;</span><br><span class="line">    bar.push_back(i);</span><br><span class="line">    if (sz!=bar.capacity()) &#123;</span><br><span class="line">      sz = bar.capacity();</span><br><span class="line">      std::cout &lt;&lt; &quot;capacity changed: &quot; &lt;&lt; sz &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="http://www.cplusplus.com/reference/vector/vector/reserve/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
-<p>Possible output:  </p>
-<p> making foo grow:<br>capacity changed: 1<br>capacity changed: 2<br>capacity changed: 4<br>capacity changed: 8<br>capacity changed: 16<br>capacity changed: 32<br>capacity changed: 64<br>capacity changed: 128<br>making bar grow:<br>capacity changed: 100 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>If a reallocation happens, linear in <a href="http://www.cplusplus.com/vector::size">vector size</a> at most.</p>
-<p>复杂度</p>
-<p>如果重分配发生，时间或者空间复杂度为线性复杂度。  </p>
-<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>If a reallocation happens, all iterators, pointers and references related to the container are invalidated.</p>
-<p>一旦发生重分配，那么之前所获得的所有的迭代器以及引用都将失效！</p>
-<p>Otherwise, they all keep referring to the same elements they were referring to before the call.</p>
-<p>如果不发生重分配，那么都有效。</p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>If a reallocation happens, the container and all its contained elements are modified.<br>Otherwise, the container is accessed, but not the contained elements: concurrently accessing or modifying them is safe.  </p>
-<p>一旦发生重分配，那么容器以及其内的所有元素都将被修改（存储位置）。</p>
-<p>否则，容器将被访问，但其内元素不会被访问，修改以及访问他们都是安全的。</p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If no reallocations happen or if the type of the elements has either a non-throwing move constructor or a copy constructor, there are no changes in the container in case of exception (strong guarantee).</p>
-<p>如果不发生重分配或者元素类型的移动构造函数以及复制构造器都不会抛出异常，，那么容器发生异常的规则不变。</p>
-<p>Otherwise, the container is guaranteed to end in a valid state (basic guarantee).  </p>
-<p>The function throws <a href="http://www.cplusplus.com/length_error">length_error</a> if <em>n</em> is greater than <a href="http://www.cplusplus.com/vector::max_size">max_size</a>.</p>
-<p>此外，容器必须保证其结尾是一个有效的状态（这句翻译的好像不太好）,当n大于max_size的时候，该方法会抛出一个length_error异常。</p>
-<p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
-<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
-<p>2014-8-12</p>
-<p>于GDUT</p>
-<p><a href="http://blog.csdn.net/qq844352155/article/details/38518787">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL容器//" class="article-tag-list-link color1">STL容器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84reserve%E6%96%B9%E6%B3%95%EF%BC%8815%EF%BC%89/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/29/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="page-number current">30</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/31/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/29/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="page-number current">30</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/31/">Next &amp;raquo;</a>
     </nav>
   
 

@@ -241,6 +241,113 @@
 
 
   
+    <article id="post-cprimerplus第六版课后编程题答案113" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88113/" target="_blank">C++ primer plus第六版课后编程题答案11.3</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88113/" class="archive-article-date">
+        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>   </p>
+<p>那两个函数我就弄上来了，都是和11.1一样的 main113.cpp</p>
+<p>#include <iostream><br>#include <fstream><br>#include <cstdio><br>#include <ctime><br>//#include <vector><br>#include “vector.h”<br>using namespace std;<br>using  namespace VECTOR;<br>void main113()<br>{<br>int MaxStep=-999;<br>int MinStep=999;<br>int sumS=0;<br>int avg=0;<br>int num;<br>cout&lt;&lt;”Enter the number:”&lt;&lt;endl;<br>cin&gt;&gt;num;<br>srand(time(0));<br>double direction;<br>Vector step;<br>Vector result(0.0,0.0);<br>unsigned long steps=0;<br>double target;//要走的距离<br>double dstep;//每一步的距离<br>cout&lt;&lt;”Enter step length:(q to quit:)”;<br>int number=num;<br>while(cin&gt;&gt;target&amp;&amp;number–)<br>{<br>cout&lt;&lt;”Enter step length:”;<br>if(!(cin&gt;&gt;dstep))<br>break;<br>int i=0;<br>while(result.magval()&lt;target)<br>{<br>direction=rand()%360;<br>step.reset(dstep,direction,Vector::POL);<br>result=result+step;<br>steps++;<br>}<br>sumS+=steps;<br>if(steps&gt;MaxStep)<br>MaxStep=steps;<br>if(steps&lt;MinStep)<br>MinStep=steps;</p>
+<p>cout&lt;&lt;”After “&lt;&lt;steps&lt;&lt;” steps ,the subject “<br>&lt;&lt;” has the following location:”&lt;&lt;endl;</p>
+<p>result.polar_mode();<br>cout&lt;&lt;”Average outward distance per step=”<br>&lt;&lt;result.magval()/steps&lt;&lt;endl;<br>steps=0;<br>result.reset(0.0,0.0);<br>cout&lt;&lt;”Enter target distance (q to quit):”;</p>
+<p>}<br>cout&lt;&lt;”Max:”&lt;&lt;MaxStep&lt;&lt;endl;<br>cout&lt;&lt;”Min:”&lt;&lt;MinStep&lt;&lt;endl;<br>cout&lt;&lt;”avg:”&lt;&lt;sumS/num&lt;&lt;endl;</p>
+<p>cin.get();</p>
+<p>cin.clear();<br>while(cin.get()!=’\n’)<br>continue;</p>
+<p>}</p>
+<p> </p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#97;&#x6c;&#x63;&#x68;&#x65;&#110;&#x40;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#104;&#x65;&#x6e;&#46;&#x63;&#x6f;&#x6d;">&#x72;&#111;&#x79;&#97;&#x6c;&#x63;&#x68;&#x65;&#110;&#x40;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#104;&#x65;&#x6e;&#46;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C++ primer plus</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C-primer-plus-课后编程题答案//" class="article-tag-list-link color3">C++primer plus 课后编程题答案</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88113/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cprimerplus第六版课后编程题答案114" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -282,7 +389,7 @@
 <p>cin.get();</p>
 <p>}</p>
 <p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#101;&#110;&#x40;&#x72;&#x6f;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#110;&#46;&#x63;&#111;&#109;">&#114;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#101;&#110;&#x40;&#x72;&#x6f;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#110;&#46;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#104;&#101;&#110;&#x40;&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#x6d;">&#x72;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#104;&#101;&#110;&#x40;&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -389,7 +496,7 @@
 <p>#include <iostream><br>#include “stonewt.h”<br>using namespace std;<br>void main115()<br>{<br>Stonewth s1;<br>Stonewth s2(10,5);<br>Stonewth s3(1.5);<br>//cout&lt;&lt;s2&lt;&lt;endl;<br>s2.setMode(STONE);<br>s3.setMode(STONE);<br>//cout&lt;&lt;s2&lt;&lt;endl;<br>//cout&lt;&lt;s1&lt;&lt;endl;<br>//cout&lt;&lt;s2&lt;&lt;endl;<br>//cout&lt;&lt;s3&lt;&lt;endl;<br>Stonewth s4=s2-s3;<br>cout&lt;&lt;s4&lt;&lt;endl;<br>cin.get();</p>
 <p>}</p>
 <p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#97;&#108;&#99;&#x68;&#x65;&#x6e;&#x40;&#114;&#111;&#121;&#97;&#108;&#99;&#104;&#101;&#x6e;&#46;&#x63;&#x6f;&#x6d;">&#114;&#x6f;&#x79;&#97;&#108;&#99;&#x68;&#x65;&#x6e;&#x40;&#114;&#111;&#121;&#97;&#108;&#99;&#104;&#101;&#x6e;&#46;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#97;&#108;&#x63;&#104;&#101;&#110;&#x40;&#114;&#111;&#121;&#x61;&#108;&#99;&#x68;&#101;&#110;&#x2e;&#x63;&#111;&#109;">&#x72;&#111;&#x79;&#97;&#108;&#x63;&#104;&#101;&#110;&#x40;&#114;&#111;&#121;&#x61;&#108;&#99;&#x68;&#101;&#110;&#x2e;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -497,7 +604,7 @@
 <p>cout&lt;&lt;”max=”&lt;&lt;max&lt;&lt;”   min=”&lt;&lt;min&lt;&lt;endl;<br>cin.get();<br>cin.get();</p>
 <p>}</p>
 <p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#97;&#108;&#99;&#x68;&#x65;&#110;&#x40;&#114;&#111;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#x6e;&#x2e;&#99;&#111;&#109;">&#x72;&#x6f;&#121;&#97;&#108;&#99;&#x68;&#x65;&#110;&#x40;&#114;&#111;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#x6e;&#x2e;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#x61;&#x6c;&#99;&#104;&#x65;&#110;&#x40;&#x72;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#x65;&#110;&#x2e;&#x63;&#111;&#109;">&#x72;&#x6f;&#x79;&#x61;&#x6c;&#99;&#104;&#x65;&#110;&#x40;&#x72;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#x65;&#110;&#x2e;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -602,7 +709,7 @@
 <p>cout&lt;&lt;”Done!\n”;<br>cin.get();<br>cin.get();</p>
 <p>}</p>
 <p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#x65;&#110;&#64;&#114;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;">&#x72;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#x65;&#110;&#64;&#114;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#97;&#x6c;&#99;&#x68;&#x65;&#110;&#x40;&#114;&#x6f;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#46;&#99;&#x6f;&#109;">&#x72;&#111;&#121;&#97;&#x6c;&#99;&#x68;&#x65;&#110;&#x40;&#114;&#x6f;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#46;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -711,7 +818,7 @@
 <p>cin.get();</p>
 <p>}</p>
 <p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#x61;&#x6c;&#99;&#104;&#101;&#x6e;&#64;&#114;&#111;&#121;&#97;&#x6c;&#99;&#104;&#x65;&#x6e;&#46;&#x63;&#x6f;&#109;">&#x72;&#111;&#x79;&#x61;&#x6c;&#99;&#104;&#101;&#x6e;&#64;&#114;&#111;&#121;&#97;&#x6c;&#99;&#104;&#x65;&#x6e;&#46;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#110;&#64;&#x72;&#111;&#121;&#97;&#108;&#x63;&#104;&#101;&#110;&#x2e;&#99;&#x6f;&#x6d;">&#x72;&#111;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#110;&#64;&#x72;&#111;&#121;&#97;&#108;&#x63;&#104;&#101;&#110;&#x2e;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -823,7 +930,7 @@
 <p>}<br>cin.get();</p>
 <p>}</p>
 <p>有点困，全世界晚安</p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#97;&#108;&#x63;&#104;&#101;&#x6e;&#x40;&#114;&#111;&#x79;&#97;&#108;&#99;&#x68;&#x65;&#110;&#46;&#x63;&#111;&#109;">&#114;&#111;&#x79;&#97;&#108;&#x63;&#104;&#101;&#x6e;&#x40;&#114;&#111;&#x79;&#97;&#108;&#99;&#x68;&#x65;&#110;&#46;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#121;&#97;&#x6c;&#99;&#x68;&#101;&#x6e;&#x40;&#114;&#111;&#121;&#x61;&#108;&#x63;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#111;&#109;">&#114;&#111;&#121;&#97;&#x6c;&#99;&#x68;&#101;&#x6e;&#x40;&#114;&#111;&#121;&#x61;&#108;&#x63;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -928,7 +1035,7 @@
 <p>main123.cpp</p>
 <p>#include <iostream><br>#include “Stock.cpp”<br>using namespace std;<br>const int STKS=4;<br>void main123()<br>{<br>Stock stocks[STKS]={<br>Stock(“NanoSmart”,12,20.0),<br>Stock(“Boffo Object”,200,2.0),<br>Stock(“Monolithic obelisk”,130,3.25),<br>Stock(“Fleep Enterprises”,60,6.5),<br>};<br>cout&lt;&lt;”Stock holdings”&lt;&lt;endl;<br>int st;<br>for(st=0;st&lt;STKS;st++)<br>cout&lt;&lt;stocks[st];<br>const Stock *top=&amp;stocks[0];<br>for(st=1;st&lt;STKS;st++)<br>//top=&amp;(top-&gt;topval(stocks[st]));//为何只能用&amp;而不能用*<br>top=&amp;top-&gt;topval(stocks[st]);//top是一个指向对象的指针，<br>//哦，我知道了，top的确是一个指针，因此才要&amp;，你仔细想想，为什么呢？看我上一条语句的括号<br>cout&lt;&lt;*top;       //cout&lt;&lt;top;top是一个指针，应该使用*top<br>//&amp;top-&gt;update(3.0);//怎么这一句就不行了呢？<br>//return 0;<br>}</p>
 <p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#97;&#108;&#x63;&#104;&#x65;&#110;&#x40;&#114;&#x6f;&#121;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#109;">&#114;&#x6f;&#x79;&#97;&#108;&#x63;&#104;&#x65;&#110;&#x40;&#114;&#x6f;&#121;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#110;&#64;&#x72;&#111;&#121;&#x61;&#108;&#x63;&#x68;&#101;&#110;&#x2e;&#x63;&#x6f;&#x6d;">&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#104;&#101;&#110;&#64;&#x72;&#111;&#121;&#x61;&#108;&#x63;&#x68;&#101;&#110;&#x2e;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1033,7 +1140,7 @@
 <p>#include <iostream><br>#include “Stack.cpp”<br>using namespace std;<br>void main124()<br>{<br>Stack s;<br>Item it[20]={0};<br>for(int i=0;i&lt;11;i++)<br>{<br>it[i]=i+1;<br>s.push(it[i]);<br>}<br>//s.push(it[10]);<br>//s.pop(it[0]);<br>cout&lt;&lt;s;<br>Stack s1(s);<br>cout&lt;&lt;”s1=”&lt;&lt;s1;<br>Stack s2=s;<br>cout&lt;&lt;s;<br>cin.get();</p>
 <p>}</p>
 <p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#x65;&#110;&#x40;&#x72;&#x6f;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;">&#114;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#x65;&#110;&#x40;&#x72;&#x6f;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#97;&#108;&#99;&#x68;&#101;&#110;&#64;&#114;&#x6f;&#x79;&#97;&#x6c;&#x63;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;">&#x72;&#111;&#121;&#97;&#108;&#99;&#x68;&#101;&#110;&#64;&#114;&#x6f;&#x79;&#97;&#x6c;&#x63;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1144,7 +1251,7 @@
 <p>if(wait_time&gt;0)//正在处理业务的处理时间-1，因为过了一分钟<br>wait_time–;//话说这wait_time是谁设置了？一直=0？<br>//wait_time=temp.ptime()这里随机设置了wait-time<br>sum_line+=line.queuecount();//sum_line又是神马东东？？<br>//sum_line是队伍总长度，每分钟计算一次队伍长度<br>}</p>
 <p>if(customers&gt;0)<br>{<br>cout&lt;&lt;”customers accepted:”&lt;&lt;customers&lt;&lt;endl;<br>cout&lt;&lt;”customers served:”&lt;&lt;served&lt;&lt;endl;<br>cout&lt;&lt;”turnaways:”&lt;&lt;turnaways&lt;&lt;endl;<br>cout&lt;&lt;”average queue size:”;<br>cout.precision(2);<br>cout.setf(ios_base::fixed,ios_base::floatfield);<br>cout&lt;&lt;(double)sum_line/cyclelimit&lt;&lt;endl;<br>cout&lt;&lt;”average wait time:”&lt;&lt;(double)line_wait/served&lt;&lt;”  minutes”&lt;&lt;endl;<br>}<br>else<br>cout&lt;&lt;”No coustomer!”&lt;&lt;endl;<br>cout&lt;&lt;”Done!”&lt;&lt;endl;<br>system(“pause”);<br>}</p>
 <p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#97;&#108;&#99;&#104;&#101;&#110;&#x40;&#x72;&#x6f;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;">&#114;&#111;&#x79;&#97;&#108;&#99;&#104;&#101;&#110;&#x40;&#x72;&#x6f;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#97;&#108;&#99;&#104;&#x65;&#110;&#x40;&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#x6e;&#46;&#99;&#111;&#109;">&#x72;&#x6f;&#x79;&#97;&#108;&#99;&#104;&#x65;&#110;&#x40;&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#x6e;&#46;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1212,118 +1319,9 @@
 
 
   
-    <article id="post-cprimerplus第六版课后编程题答案126" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88126/" target="_blank">C++ primer plus第六版课后编程题答案12.6</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88126/" class="archive-article-date">
-        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>   </p>
-<p>myQueue,cpp不变 main126.cpp</p>
-<p>#include <iostream><br>#include “myQueue.cpp”<br>#include <cstdlib><br>#include <ctime><br>using namespace std;<br>static const int MIN_PER_HR=60;<br>bool newCustomer(double x)//每隔x次，rand()/RAND_max会有一次值&lt;1<br>{<br>return rand()*x/RAND_MAX&lt;1;<br>}<br>void main126()<br>{<br>srand(time(0));//初始化rand();<br>cout&lt;&lt;”Case Study:Bank of Heather Automatic Teller”&lt;&lt;endl;<br>cout&lt;&lt;”Enter maximum size of queue:”;<br>int qs;<br>cin&gt;&gt;qs;<br>Queue line(qs);<br>Queue line2(qs);//视为同样大小的队列</p>
-<p>cout&lt;&lt;”Enter the number of simulation hours:”;<br>int hours;<br>cin&gt;&gt;hours;<br>long cyclelimit=MIN_PER_HR*hours;//循环的分钟数</p>
-<p>cout&lt;&lt;”Enter the average number of customers per hour:”;//一个小时来的人数<br>double perhour;<br>cin&gt;&gt;perhour;<br>double min_per_cust;<br>min_per_cust=MIN_PER_HR/perhour;//平均多少分钟来一个人</p>
-<p>Item temp;<br>long turnaways=0;<br>long customers=0;<br>//long served=0;<br>long served=0;<br>long sum_line=0;<br>int wait_time=0;<br>int wait_time2=0;//等待时间要+1个<br>long line_wait=0;</p>
-<p>for(int cycle=0;cycle&lt;cyclelimit;cycle++)//cycle每循环一次，代表过了一分钟<br>{<br>//line.s();<br>if(newCustomer(min_per_cust))<br>{<br>if(line.isFull()&amp;&amp;line2.isFull())//当两个队列都满了的时候才拒绝服务<br>turnaways++;//拒绝服务？？？//恩,应该就是拒绝服务的人数<br>else<br>{<br>customers++;//队列人数//应该是顾客人数+1而不是队列人数+1<br>temp.set(cycle);//cycle是到达时间<br>if(line.queuecount()&gt;=line2.queuecount())<br>line2.enQueue(temp);<br>else<br>line.enQueue(temp);//这里的items++才是队列人数+1<br>//cout&lt;&lt;”after insert “&lt;&lt;line;//test</p>
-<p>}</p>
-<p>}<br>if(wait_time&lt;=0&amp;&amp;!line.isEmpty())//队列1中有用户处理完了业务<br>{<br>line.deQueue(temp);<br>//cout&lt;&lt;”after the delete”&lt;&lt;line;//test<br>wait_time=temp.ptime();//wait_time是该客户处理业务所用时间<br>line_wait+=cycle-temp.when();//cycle-temp.when();是该客户一共在队列中等了多久<br>//一开始wait_time初始化是0，然后进入这里之后，又重新设置了使其=processtime<br>//line_wait是该队列一共等了多久？？哦，应该是所有客户的等待时间<br>//line_wait是客户等待总时间<br>served++;//服务人数+1<br>}<br>if(wait_time2&lt;=0&amp;&amp;!line2.isEmpty())//队列1中有用户处理完了业务<br>{<br>line2.deQueue(temp);<br>wait_time2=temp.ptime();//wait_time是该客户处理业务所用时间<br>line_wait+=cycle-temp.when();//cycle-temp.when();是该客户一共在队列中等了多久<br>served++;//服务人数+1<br>}</p>
-<p>if(wait_time&gt;0)//队列1正在处理业务的处理时间-1，因为过了一分钟<br>wait_time–;<br>if(wait_time2&gt;0)//队列2正在处理业务的处理时间-1，因为过了一分钟<br>wait_time2–;<br>//wait_time=temp.ptime()这里随机设置了wait-time<br>sum_line+=line.queuecount()+line2.queuecount();//sum_line又是神马东东？？<br>//sum_line是队伍总长度，每分钟计算一次队伍长度<br>}</p>
-<p>if(customers&gt;0)<br>{<br>cout&lt;&lt;”customers accepted:”&lt;&lt;customers&lt;&lt;endl;<br>cout&lt;&lt;”customers served:”&lt;&lt;served&lt;&lt;endl;<br>cout&lt;&lt;”turnaways:”&lt;&lt;turnaways&lt;&lt;endl;<br>cout&lt;&lt;”average queue size:”;<br>cout.precision(2);<br>cout.setf(ios_base::fixed,ios_base::floatfield);<br>cout&lt;&lt;(double)sum_line/cyclelimit&lt;&lt;endl;<br>cout&lt;&lt;”average wait time:”&lt;&lt;(double)line_wait/served&lt;&lt;”  minutes”&lt;&lt;endl;<br>}//我机器上面是18人最接近1分钟，队列长度10,时间100<br>else<br>cout&lt;&lt;”No coustomer!”&lt;&lt;endl;<br>cout&lt;&lt;”Done!”&lt;&lt;endl;<br>system(“pause”);<br>}</p>
-<p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#97;&#x6c;&#x63;&#104;&#x65;&#110;&#x40;&#x72;&#111;&#121;&#97;&#108;&#99;&#x68;&#101;&#x6e;&#46;&#x63;&#x6f;&#x6d;">&#x72;&#111;&#121;&#97;&#x6c;&#x63;&#104;&#x65;&#110;&#x40;&#x72;&#111;&#121;&#97;&#108;&#99;&#x68;&#101;&#x6e;&#46;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C++ primer plus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C-primer-plus-课后编程题答案//" class="article-tag-list-link color3">C++primer plus 课后编程题答案</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88126/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/41/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/41/">41</a><span class="page-number current">42</span><a class="page-number" href="/page/43/">43</a><a class="page-number" href="/page/44/">44</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/43/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/41/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/41/">41</a><span class="page-number current">42</span><a class="page-number" href="/page/43/">43</a><a class="page-number" href="/page/44/">44</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/43/">Next &amp;raquo;</a>
     </nav>
   
 

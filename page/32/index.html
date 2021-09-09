@@ -241,6 +241,230 @@
 
 
   
+    <article id="post-stlvector的构造函数和析构函数2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/stlvector%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B02/" target="_blank">STLvector的构造函数和析构函数(2)</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/stlvector%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B02/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>STLvector的构造函数和析构函数(2)</p>
+<p>原文来自：<a href="http://www.cplusplus.com/reference/vector/vector/vector/">点击打开链接</a></p>
+<p>译文:</p>
+<p>public member function</p>
+<p>vector的构造器：这里我只翻译C++11的，C++98的就不翻译了。</p>
+<p>构造器原型：</p>
+<vector>
+
+<h1 id="std-vector-vector"><a href="#std-vector-vector" class="headerlink" title="std::vector::vector"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::vector</h1><ul>
+<li>  C++98</li>
+<li>  C++11</li>
+</ul>
+<p>default (1)</p>
+<p>explicit vector (const allocator_type&amp; alloc = allocator_type());</p>
+<p>fill (2)</p>
+<p>explicit vector (size_type n);<br>         vector (size_type n, const value_type&amp; val,<br>                 const allocator_type&amp; alloc = allocator_type());</p>
+<p>range (3)</p>
+<p>template <class InputIterator><br>  vector (InputIterator first, InputIterator last,<br>          const allocator_type&amp; alloc = allocator_type());</p>
+<p>copy (4)</p>
+<p>vector (const vector&amp; x);<br>vector (const vector&amp; x, const allocator_type&amp; alloc);</p>
+<p>move (5)</p>
+<p>vector (vector&amp;&amp; x);<br>vector (vector&amp;&amp; x, const allocator_type&amp; alloc);</p>
+<p>initializer list (6)</p>
+<p>vector (initializer_list&lt;value_type&gt; il,<br>       const allocator_type&amp; alloc = allocator_type());</p>
+<p>Construct vector</p>
+<p>Constructs a <a href="http://www.cplusplus.com/vector">vector</a>, initializing its contents depending on the constructor version used:  </p>
+<ul>
+<li>  C++98</li>
+<li>C++11</li>
+</ul>
+<p>(1) empty container constructor (default constructor)</p>
+<p>原型：explicit vector (const allocator_type&amp; alloc = allocator_type());</p>
+<p>Constructs an <a href="http://www.cplusplus.com/vector::empty">empty</a> container, with no elements</p>
+<p>空参数构造器，默认的构造器</p>
+<p>例子：vector<int> vi;</p>
+<p>(2) fill constructor</p>
+<p>原型：</p>
+<p>explicit vector (size_type n);<br>         vector (size_type n, const value_type&amp; val,<br>                 const allocator_type&amp; alloc = allocator_type());</p>
+<p>Constructs a container with <em>n</em> elements. Each element is a copy of <em>val</em> (if provided).</p>
+<p>声明一个有n个元素的构造器，如果提供了初始值，则每一个元素的值都是那个提供的值</p>
+<p>例子：</p>
+<p>vector<int> vi(10);//声明一个拥有10个int元素的vector；</p>
+<p>vector<int> vi(10,55);//声明一个拥有10个int元素的vector，每一个元素的值都是55；</p>
+<p>(3) range constructor</p>
+<p>原型：</p>
+<p>template <class InputIterator><br>  vector (InputIterator first, InputIterator last,<br>          const allocator_type&amp; alloc = allocator_type());</p>
+<p>Constructs a container with as many elements as the range [first,last), with each element <em>emplace-constructed</em> from its corresponding element in that range, in the same order.</p>
+<p>构造一个容器能存放与[first，lase)区间的元素数目一样的vector,存放的元素的值以及位置和[first,lase)中完全一样，方向也要一致；</p>
+<p>例子：</p>
+<p>vector<int> v1={10,20,30,40};//v1中存放的数组为{10,20,30,40};</p>
+<p>vector<int> v2(v1.begin(),v1.end());//v2相当于从v1.begin()开始，一直对应复制v1里面的每一个元素，直到迭代器为v1.end();</p>
+<p>(4) copy constructor (and copying with allocator)</p>
+<p>原型：</p>
+<p>vector (const vector&amp; x);<br>vector (const vector&amp; x, const allocator_type&amp; alloc);</p>
+<p>Constructs a container with a copy of each of the elements in <em>x</em>, in the same order.</p>
+<p>复制构造函数，逐个复制x中的每一个元素，存放到本数组中，方向一致。</p>
+<p>例子：</p>
+<p>vector<int> v1={10,20,30,40};//v1中存放的数组为{10,20,30,40};</p>
+<p>vector<int> v2(v1);//复制v1中所有元素，存放到v2中，</p>
+<p>(5) move constructor (and moving with allocator)</p>
+<p>原型：</p>
+<p>vector (vector&amp;&amp; x);<br>vector (vector&amp;&amp; x, const allocator_type&amp; alloc);</p>
+<p>Constructs a container that acquires the elements of <em>x</em>.<br>If <em>alloc</em> is specified and is different from <em>x</em>‘s allocator, the elements are moved. Otherwise, no elements are constructed (their ownership is directly transferred).<br><em>x</em> is left in an unspecified but valid state.</p>
+<p>//本条不是按原意翻译，只是为了更好地说明</p>
+<p>移动构造函数。（使用C++11中的移动语义实现）//不知移动语义为何物的可以google一下</p>
+<p>将右值引用中x的所有元素移动到新的vector中，以避免代价昂贵的复制。</p>
+<p>//原意</p>
+<p>如果新的分配器和x的分配器不一样，那么将移动x里面的元素到新的vector，如果分配器是一样的，那么将直接转换其所有权</p>
+<p>例子：(例子有点难举，)</p>
+<p>vector<int> v2(参数是一个右值引用（比如一个临时变量）)</p>
+<p>(6) initializer list constructor</p>
+<p>原型：</p>
+<p>vector (initializer_list&lt;value_type&gt; il,<br>       const allocator_type&amp; alloc = allocator_type());</p>
+<p>Constructs a container with a copy of each of the elements in <em>il</em>, in the same order.</p>
+<p>初始化列表构造器，从初始化列表il中复制每一个元素，放到vector中，方向一致。</p>
+<p>例子：</p>
+<p>vector<int> v1({10,20,30,40});//v1的值为{10,20,30,40}</p>
+<p>The container keeps an internal copy of <em>alloc</em>, which is used to allocate and deallocate storage for its elements, and to construct and destroy them (as specified by its <a href="http://www.cplusplus.com/allocator_traits">allocator_traits</a>).<br>//这段可能不怎么正确，但意思是差不多的<br>  容器分配器使用元素内置的分配器创建容器里面的元素，析构时也是一样，例如如果里面元素是int，那么分配器也是使用int的分配器</p>
+<p>The copy constructor <em>(4, first signature)</em> creates a container that keeps and uses a copy of the allocator returned by calling the appropriate <a href="http://www.cplusplus.com/allocator_traits::select_on_container_copy_construction">selected_on_container_copy_construction</a> trait on <em>x</em>‘s allocator.<br>复制构造函数(第4种)创建一个使用和x一样的分配器。<br>The move constructor <em>(5, first signature)</em> acquires <em>x</em>‘s allocator.All elements are <em>copied</em>, <em>moved</em> or otherwise <em>constructed</em> by calling <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> with the appropriate arguments.<br>移动构造函数（第5种）如果使用x的分配器，那么将是所有权的转移，如果是其他的分配器，那么将移动原来的元素。  </p>
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>参数说明：</p>
+<p>alloc</p>
+<p>Allocator object.<br>The container keeps and uses an internal copy of this allocator.<br>分配器对象<br>容器使用并保持一个内在的复制分配器。  </p>
+<p>Member type allocator_type is the internal allocator type used by the container, defined in <a href="http://www.cplusplus.com/vector">vector</a> as an alias of its second template parameter (Alloc).<br>allocator_type是一种容器使用的内在的分配器类型，作为vector模板参数里面的第二个参数。  </p>
+<p>If allocator_type is an instantiation of the default <a href="http://www.cplusplus.com/allocator">allocator</a> (which has no state), this is not relevant.</p>
+<p>//这句不太会翻译<br>如果allocator_type是默认的实例化分配器(没有状态),这是不相关的。  </p>
+<p>n</p>
+<p>Initial container size (i.e., the number of elements in the container at construction).<br>Member type size_type is an unsigned integral type.<br>容器最初的大小，（即最开始容器存放的元素数目）<br>n是一个无符号整形类型。</p>
+<p>val</p>
+<p>Value to fill the container with. Each of the <em>n</em> elements in the container will be initialized to a copy of this value.<br>Member type value_type is the type of the elements in the container, defined in <a href="http://www.cplusplus.com/vector">vector</a> as an alias of its first template parameter (T).</p>
+<p>容器初始化时里面每一个元素的初始化值。</p>
+<p>val的值类型必须和模板参数里面的参数《T》一致</p>
+<p>first, last</p>
+<p><a href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial and final positions in a range. The range used is [first,last), which includes all the elements between _first_ and _last_, including the element pointed by _first_ but not the element pointed by_last_.<br>The function template argument InputIterator shall be an <a href="http://www.cplusplus.com/InputIterator">input iterator</a> type that points to elements of a type from which value_type objects can be constructed.</p>
+<p>输入迭代器开始和结束的范围。这是一个开区间的范围[first,last),包括first–end里面的所有元素，包括first，但是不包括last</p>
+<p>x</p>
+<p>Another <a href="http://www.cplusplus.com/vector">vector</a> object of the same type (with the same class template arguments T and Alloc), whose contents are either copied or acquired.  </p>
+<p>另一个同类型（T和Alloc）vector数组的名称</p>
+<p>il</p>
+<p>An <a href="http://www.cplusplus.com/initializer_list">initializer_list</a> object.<br>These objects are automatically constructed from <em>initializer list</em> declarators.<br>Member type value_type is the type of the elements in the container, defined in <a href="http://www.cplusplus.com/vector">vector</a> as an alias of its first template parameter (T).</p>
+<p>一个初始化列表对象。</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// constructing vectors</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  unsigned int i;</span><br><span class="line"></span><br><span class="line">  // constructors used in the same order as described above:</span><br><span class="line">  std::vector&lt;int&gt; first;                                // empty vector of ints</span><br><span class="line">  std::vector&lt;int&gt; second (4,100);                       // four ints with value 100</span><br><span class="line">  std::vector&lt;int&gt; third (second.begin(),second.end());  // iterating through second</span><br><span class="line">  std::vector&lt;int&gt; fourth (third);                       // a copy of third</span><br><span class="line"></span><br><span class="line">  // the iterator constructor can also be used to construct from arrays:</span><br><span class="line">  int myints[] = &#123;16,2,77,29&#125;;</span><br><span class="line">  std::vector&lt;int&gt; fifth (myints, myints + sizeof(myints) / sizeof(int) );</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;The contents of fifth are:&quot;;</span><br><span class="line">  for (std::vector&lt;int&gt;::iterator it = fifth.begin(); it != fifth.end(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://www.cplusplus.com/reference/vector/vector/vector/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p>Output:  </p>
+<p>The contents of fifth are: 16 2 77 29 </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant for the <em>default constructor (1)</em>, and for the <em>move constructors (5)</em> (unless <em>alloc</em> is different from <em>x</em>‘s allocator).除了默认的构造器和移动构造器<br>For all other cases, linear in the resulting container <a href="http://www.cplusplus.com/vector::size">size</a>.其他的情况下，生成容器都在线性时间内。<br>Additionally, if InputIterator in the <em>range constructor (3)</em> is not at least of a <a href="http://www.cplusplus.com/ForwardIterator">forward iterator</a> category (i.e., it is just an <a href="http://www.cplusplus.com/InputIterator">input iterator</a>), the new capacity cannot be determined beforehand and the construction incurs in additional logarithmic complexity in <a href="http://www.cplusplus.com/vector::size">size</a> (reallocations while growing).  </p>
+<p>//翻译可能不太准确</p>
+<p>此外，如果输入构造器至少不属于前向迭代器，那么新的容量不能事先确定并且当增长时重分配容量将在对数时间内完成。</p>
+<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>The <em>move constructors</em> (5), invalidate all iterators, pointers and references related to <em>x</em> if the elements are moved.<br>迭代器的有效性：</p>
+<p>除了移动构造函数，任何指向以及引用的x的迭代器，在元素移动时都将失效。  </p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>All copied elements are accessed.<br>The <em>move constructors (5)</em> modify <em>x</em>.  </p>
+<p>数据争用：</p>
+<p>所有元素复制访问。</p>
+<p>移动复制构造函数除外。</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>Strong guarantee:</strong> no effects in case an exception is thrown.<br>If <a href="http://www.cplusplus.com/allocator_traits::construct">allocator_traits::construct</a> is not supported with the appropriate arguments for the element constructions, or if the range specified by [first,last) is not valid, it causes <em>undefined behavior</em>.  </p>
+<p>异常安全性：</p>
+<p>强有力的保证。没有异常被抛出。</p>
+<p>如果分配器不支持元素的默认的构造函数（合适的参数构造函数），或者是超出了范围的迭代器，都将导致不确定的行为。</p>
+<p>public member function</p>
+<vector>
+
+<h1 id="std-vector-vector-1"><a href="#std-vector-vector-1" class="headerlink" title="std::vector::~vector"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::~vector</h1><p>析构函数</p>
+<p>~vector();</p>
+<p>Vector destructor</p>
+<p>Destroys the container object.  </p>
+<ul>
+<li>  C++98</li>
+<li>  C++11</li>
+</ul>
+<p>This calls <a href="http://www.cplusplus.com/allocator_traits::destroy">allocator_traits::destroy</a> on each of the contained elements, and deallocates all the storage <a href="http://www.cplusplus.com/vector::capacity">capacity</a>allocated by the <a href="http://www.cplusplus.com/vector">vector</a> using its <a href="http://www.cplusplus.com/list::get_allocator">allocator</a>.<br>使用元素自带的析构函数析构里面的每一个元素。  </p>
+<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear in <a href="http://www.cplusplus.com/vector::size">vector::size</a> (destructors).  </p>
+<h3 id="Iterator-validity-1"><a href="#Iterator-validity-1" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>All iterators, pointers and references are invalidated.  </p>
+<h3 id="Data-races-1"><a href="#Data-races-1" class="headerlink" title="Data races"></a>Data races</h3><p>The container and all its elements are modified.  </p>
+<h3 id="Exception-safety-1"><a href="#Exception-safety-1" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> never throws exceptions.  </p>
+<p>//翻译不一定很正确，只能保证大意正确，请多体谅。</p>
+<p>.</p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/32939893">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL容器//" class="article-tag-list-link color1">STL容器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/stlvector%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B02/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-stl中的assign方法（19）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -890,6 +1114,97 @@
 
 
   
+    <article id="post-voidglutinitwindowpositionintxinty设置初始窗口的位置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/voidglutinitwindowpositionintxinty%E8%AE%BE%E7%BD%AE%E5%88%9D%E5%A7%8B%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BD%8D%E7%BD%AE/" target="_blank">voidglutInitWindowPosition(intx,inty)设置初始窗口的位置</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/voidglutinitwindowpositionintxinty%E8%AE%BE%E7%BD%AE%E5%88%9D%E5%A7%8B%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BD%8D%E7%BD%AE/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>voidglutInitWindowPosition(intx,inty)设置初始窗口的位置</p>
+<p>void glutInitWindowPosition(int x, int y);  </p>
+<p>设置初始窗口的位置(窗口左上角相对于桌面坐标(x,y))</p>
+<p>坐标(0,0)是指屏幕左上角的位置.</p>
+<p>x,y单位均为像素.</p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/28611453">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/计算机图形相关//" class="article-tag-list-link color3">计算机图形相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/voidglutinitwindowpositionintxinty%E8%AE%BE%E7%BD%AE%E5%88%9D%E5%A7%8B%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BD%8D%E7%BD%AE/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-voidglutinitintargccharargvglut初始化api（1）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -959,97 +1274,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2016/02/24/voidglutinitintargccharargvglut%E5%88%9D%E5%A7%8B%E5%8C%96api%EF%BC%881%EF%BC%89/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-voidglutinitwindowpositionintxinty设置初始窗口的位置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/voidglutinitwindowpositionintxinty%E8%AE%BE%E7%BD%AE%E5%88%9D%E5%A7%8B%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BD%8D%E7%BD%AE/" target="_blank">voidglutInitWindowPosition(intx,inty)设置初始窗口的位置</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/voidglutinitwindowpositionintxinty%E8%AE%BE%E7%BD%AE%E5%88%9D%E5%A7%8B%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BD%8D%E7%BD%AE/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>voidglutInitWindowPosition(intx,inty)设置初始窗口的位置</p>
-<p>void glutInitWindowPosition(int x, int y);  </p>
-<p>设置初始窗口的位置(窗口左上角相对于桌面坐标(x,y))</p>
-<p>坐标(0,0)是指屏幕左上角的位置.</p>
-<p>x,y单位均为像素.</p>
-<p><a href="http://blog.csdn.net/qq844352155/article/details/28611453">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机图形相关//" class="article-tag-list-link color3">计算机图形相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/voidglutinitwindowpositionintxinty%E8%AE%BE%E7%BD%AE%E5%88%9D%E5%A7%8B%E7%AA%97%E5%8F%A3%E7%9A%84%E4%BD%8D%E7%BD%AE/">展开全文 >></a>
     </p>
     
 
@@ -1259,107 +1483,9 @@
 
 
   
-    <article id="post-vs2012errorc1083无法打开包括文件cppnosuchfileordirectory" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/vs2012errorc1083%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E5%8C%85%E6%8B%AC%E6%96%87%E4%BB%B6cppnosuchfileordirectory/" target="_blank">VS2012errorC1083无法打开包括文件“cpp”Nosuchfileordirectory</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/vs2012errorc1083%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E5%8C%85%E6%8B%AC%E6%96%87%E4%BB%B6cppnosuchfileordirectory/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>VS2012errorC1083无法打开包括文件“cpp”Nosuchfileordirectory</p>
-<p>今天碰到一个坑爹问题：</p>
-<p>编译一个程序的时候，出现了：</p>
-<p>错误 1 error C1083: 无法打开包括文件:“emp.cpp”: No such file or directorye:\c++\number17\emp\main176.cpp 21</p>
-<p>这个问题！！！！！！</p>
-<p>可是emp.cpp这个根本是没有问题的啊</p>
-<p>还是我以前写的一个cpp文件，完全可以使用啊！</p>
-<p>但是就是编译不通过，什么都试过了！</p>
-<p>最后还是在网上找到了答案！</p>
-<p>根目录！！！！！！</p>
-<p>对，我复制cpp到解决方案是没有用的，因为根目录下面没有该文件！</p>
-<p>所以，把文件拷到对应的根目录就行了！！</p>
-<p><a href="http://blog.csdn.net/qq844352155/article/details/24736899">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C-C//" class="article-tag-list-link color1">C/C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/vs2012errorc1083%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E5%8C%85%E6%8B%AC%E6%96%87%E4%BB%B6cppnosuchfileordirectory/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/31/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="page-number" href="/page/31/">31</a><span class="page-number current">32</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/33/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/31/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="page-number" href="/page/31/">31</a><span class="page-number current">32</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/33/">Next &amp;raquo;</a>
     </nav>
   
 

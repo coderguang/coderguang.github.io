@@ -241,6 +241,97 @@
 
 
   
+    <article id="post-hodj1001sumproblemc解法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/hodj1001sumproblemc%E8%A7%A3%E6%B3%95/" target="_blank">HODJ 1001 Sum Problem C++解法</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/hodj1001sumproblemc%E8%A7%A3%E6%B3%95/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>HODJ1001SumProblemC++解法</p>
+<p>1001</p>
+<p>#include <iostream><br>using namespace std;<br>long int Sum(int a)<br>{<br>     long int sum=0;<br>     for(int i=1;i&lt;=a;i++)<br>             sum+=i;<br>     return sum;<br>}<br>int main()<br>{<br>    int a,b;<br>    while(cin&gt;&gt;a)<br>    {<br>         cout&lt;&lt;Sum(a)&lt;&lt;endl&lt;&lt;endl;<br>         //cout&lt;&lt;Sum(b);<br>    }    </p>
+<p>} </p>
+<p>发现自己英文菜菜的，居然看错题了，还以为是两个数字一起输入的呢，真是郁闷。</p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/23437591">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ACM学习//" class="article-tag-list-link color1">ACM学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/hodj1001sumproblemc%E8%A7%A3%E6%B3%95/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-iynhiwbs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1180,116 +1271,9 @@
 
 
   
-    <article id="post-opengl函数glvertex指定顶点的值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/opengl%E5%87%BD%E6%95%B0glvertex%E6%8C%87%E5%AE%9A%E9%A1%B6%E7%82%B9%E7%9A%84%E5%80%BC/" target="_blank">openGL函数glVertex指定顶点的值</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/opengl%E5%87%BD%E6%95%B0glvertex%E6%8C%87%E5%AE%9A%E9%A1%B6%E7%82%B9%E7%9A%84%E5%80%BC/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>openGL函数glVertex指定顶点的值</p>
-<p>在OpenGL中指定顶点<br>由以上的讨论可以知道，“点”是一切的基础。<br>如何指定一个点呢？OpenGL提供了一系列函数。它们都以glVertex开头，后面跟一个数字和1~2个字母。例如：<br>glVertex2d<br>glVertex2f<br>glVertex3f<br>glVertex3fv<br>等等。  </p>
-<p>数字表示参数的个数，2表示有两个参数，3表示三个，4表示四个（我知道有点罗嗦~）。</p>
-<p>同时，2代表的是二维坐标，3代表三维坐标，以此类推。</p>
-<p>字母表示参数的类型，s表示16位整数（OpenGL中将这个类型定义为GLshort），<br> i表示32位整数（OpenGL中将这个类型定义为GLint和GLsizei），<br> f表示32位浮点数（OpenGL中将这个类型定义为GLfloat和GLclampf），<br> d表示64位浮点数（OpenGL中将这个类型定义为GLdouble和GLclampd）。<br> v表示传递的几个参数将使用指针的方式，见下面的例子。<br>这些函数除了参数的类型和个数不同以外，功能是相同的。例如，以下五个代码段的功能是等效的：<br>（一）glVertex2i(1, 3);<br>（二）glVertex2f(1.0f, 3.0f);<br>（三）glVertex3f(1.0f, 3.0f, 0.0f);<br>（四）glVertex4f(1.0f, 3.0f, 0.0f, 1.0f);<br>（五）GLfloat VertexArr3[] = {1.0f, 3.0f, 0.0f};<br> glVertex3fv(VertexArr3);  </p>
-<p>以后我们将用glVertex*来表示这一系列函数。</p>
-<p>关于里面的参数1,1.0之类的.</p>
-<p>经过测试,暂时的发现就是:如果是f的话:</p>
-<p>例如glVertex2f(0.5,0.5),那么代表的是当前窗口中心点左上区坐标的中心点,(1.0,1.0)则代表的是右上角的坐标.看例子:</p>
-<p>#include &lt;GL/glut.h&gt;<br>#define mPoint 1</p>
-<p>void d1(){<br>glClear(GL_COLOR_BUFFER_BIT);<br>//用这个方法将背景换乘绿色<br>glColor3f(0.0,1.0,0.0);<br>glBegin(GL_POLYGON);<br>glVertex2f(-mPoint,-mPoint);<br>glVertex2f(-mPoint,mPoint);<br>glVertex2f(mPoint,mPoint);<br>glVertex2f(mPoint,-mPoint);<br>glEnd();<br>glColor3f(1.0,0.0,0.0);<br>glPointSize(10);<br>glBegin(GL_POINTS);<br>glVertex2f(0.5,0.5);<br>//glVertex2i(1.0,1.0);<br>glEnd();<br>glFlush();</p>
-<p>}</p>
-<p>int main(int argc,char **argv)<br>{<br>glutInit(&amp;argc,argv);<br>//glutSizeWindow(500,500);<br>glutCreateWindow(“hello!”);<br>glutDisplayFunc(d1);<br>glutMainLoop();</p>
-<p>}</p>
-<p>图如下:</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015737_23062515981643.jpg">  </p>
-<p>换成1.0,1.0之后</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015739_28320586520505.jpg">  </p>
-<p>可以看到,右上角有一个小点.</p>
-<p>i的情况也是一样,1就代表了整个窗口.超过了1就出了当前窗口的可是范围.</p>
-<p>注意：OpenGL的很多函数都是采用这样的形式，一个相同的前缀再加上参数说明标记，这一点会随着学习的深入而有更多的体会。</p>
-<p><a href="http://blog.csdn.net/qq844352155/article/details/28465919">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机图形相关//" class="article-tag-list-link color3">计算机图形相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/opengl%E5%87%BD%E6%95%B0glvertex%E6%8C%87%E5%AE%9A%E9%A1%B6%E7%82%B9%E7%9A%84%E5%80%BC/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/16/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/54/">54</a><a class="extend next" rel="next" href="/page/18/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/16/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/18/">Next &amp;raquo;</a>
     </nav>
   
 
