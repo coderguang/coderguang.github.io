@@ -293,7 +293,7 @@
 <p>protected:<br>string str;<br>void showStr(){<br>cout&lt;&lt;”str=”&lt;&lt;str&lt;&lt;endl;<br>}<br>void showProtected(){<br>cout&lt;&lt;”this is protected!”&lt;&lt;endl;<br>}<br>};<br>//保护继承<br>class B:protected A<br>{<br>public:<br>B(int i,int j,string s):A(i,j,s){</p>
 <p>}<br>/*<br>void showMethod(){<br>A::showPublic();<br>A::showPrivate();<br>A::showProtected();<br>}<br>void showAttr()<br>{<br>cout&lt;&lt;A::k&lt;&lt;endl;<br>cout&lt;&lt;A::i&lt;&lt;endl;<br>cout&lt;&lt;A::str&lt;&lt;endl;<br>}<br>*/<br>};<br>int main()<br>{<br>B b(1,2,”hello”);<br>/*<br>b.showMethod();<br>b.showAttr();<br>*/<br>b.showPublic();<br>b.showProtected();<br>b.showPrivate();</p>
 <p>}</p>
-<p>编译结果为： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015941_28350698044542.jpg">  可以看到，基类的public成员也不能直接访问了！而在public继承中，时可以在类外直接访问基类的public成员的！ 这是为什么？原因是使用保护继承时，基类的公有成员和保护成员都会变成派生类的保护成员。这就是保护继承和公有继承的最主要区别。貌似其他的木有区别0.0。  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#x6e;&#x40;&#114;&#111;&#121;&#97;&#x6c;&#x63;&#x68;&#101;&#x6e;&#46;&#x63;&#x6f;&#x6d;">&#114;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#x65;&#x6e;&#x40;&#114;&#111;&#121;&#97;&#x6c;&#x63;&#x68;&#101;&#x6e;&#46;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>编译结果为： <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015941_28350698044542.jpg">  可以看到，基类的public成员也不能直接访问了！而在public继承中，时可以在类外直接访问基类的public成员的！ 这是为什么？原因是使用保护继承时，基类的公有成员和保护成员都会变成派生类的保护成员。这就是保护继承和公有继承的最主要区别。貌似其他的木有区别0.0。  —————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#64;&#x72;&#x6f;&#x79;&#97;&#x6c;&#x63;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#109;">&#114;&#x6f;&#121;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#64;&#x72;&#x6f;&#x79;&#97;&#x6c;&#x63;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -527,6 +527,8 @@
 							2021 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
+								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
+									target="_blank">粤ICP备15021275号-2</a>
 			</div>
 			<div class="footer-right">
 				

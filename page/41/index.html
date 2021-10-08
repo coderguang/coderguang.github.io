@@ -241,118 +241,6 @@
 
 
   
-    <article id="post-cprimerplus第六版课后编程题答案102" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88102/" target="_blank">C++ primer plus第六版课后编程题答案10.2</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88102/" class="archive-article-date">
-        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p> </p>
-<p>Person.h</p>
-<p>#ifndef Person_H_<br>#define Person_H_<br>#include <string><br>using namespace std;<br>class Person{<br>private:<br>static const int LIMIT=25;<br>string lname;<br>char fname[LIMIT];<br>public:<br>Person(){lname=”default”;fname[0]=’\0’;}<br>Person(const string &amp;ln,const char *fn=”Heyyou”);<br>~Person();<br>void show()const;<br>void FormalShow()const;</p>
-<p>};<br>#endif</p>
-<p>Person.cpp</p>
-<p>#include <iostream><br>#include “Person.h”<br>#include <string><br>#include <cctype><br>using namespace std;<br>/*<br>Person::Person()<br>{<br>}*/<br>Person::Person(const string &amp;ln,const char*fn)//不要写成const char*fn=”Heyyou”<br>{//会发生重定义参数错误<br>cout&lt;&lt;”\n\nln address:”&lt;&lt;&amp;ln&lt;&lt;endl;<br>lname=ln;<br>cout&lt;&lt;”lname address:”&lt;&lt;&amp;lname&lt;&lt;endl;<br>int i=0;<br>for(;i&lt;LIMIT&amp;&amp;fn[i]!=’\0’;i++)<br>fname[i]=fn[i];<br>fname[i]=’\0’;<br>}<br>Person::~Person()<br>{}</p>
-<p>void Person::show()const<br>{<br>cout&lt;&lt;”\nlname1:”&lt;&lt;lname&lt;&lt;endl;<br>cout&lt;&lt;”lname address:”&lt;&lt;&amp;lname&lt;&lt;endl;<br>cout&lt;&lt;”fname1:”&lt;&lt;fname&lt;&lt;endl;<br>//showChar(fname);<br>}<br>void Person::FormalShow()const<br>{</p>
-<p>cout&lt;&lt;”\nlname address:”&lt;&lt;&amp;lname&lt;&lt;endl;<br>cout&lt;&lt;”fname2:”&lt;&lt;fname&lt;&lt;endl;<br>cout&lt;&lt;”lname2:”&lt;&lt;lname&lt;&lt;endl;<br>}</p>
-<p>void showChar(const char fn[])<br>{<br>for(int i=0;fn[i]!=’\0’;i++)<br>cout&lt;&lt;fn[i];</p>
-<p>}</p>
-<p>main102.cpp</p>
-<p>#include <iostream><br>#include “Person.h”<br>using namespace std;<br>void main102()<br>{<br>Person p;<br>p.show();<br>p.FormalShow();</p>
-<p>Person p1(“Smythe”);<br>p1.show();<br>p1.FormalShow();<br>Person p2(“Dimwiddy”,”Sam”);<br>p2.show();<br>p2.FormalShow();<br>cin.get();</p>
-<p>}</p>
-<p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#x65;&#x6e;&#x40;&#x72;&#111;&#121;&#97;&#x6c;&#x63;&#104;&#x65;&#x6e;&#46;&#99;&#x6f;&#x6d;">&#114;&#x6f;&#121;&#x61;&#108;&#x63;&#x68;&#x65;&#x6e;&#x40;&#x72;&#111;&#121;&#97;&#x6c;&#x63;&#104;&#x65;&#x6e;&#46;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C++ primer plus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C-primer-plus-课后编程题答案//" class="article-tag-list-link color3">C++primer plus 课后编程题答案</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88102/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-cprimerplus第六版课后编程题答案103" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -393,7 +281,7 @@
 <p>#include <iostream><br>#include “golf.h”<br>using namespace std;<br>void main103()<br>{</p>
 <p>Golf g1;//不要写成了Golf::Golf 使用文件不用域运算符<br>g1.show();<br>Golf g2(“myname1”,100);<br>g2.show();<br>cin.get();</p>
 <p>}</p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#121;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#64;&#114;&#111;&#121;&#97;&#108;&#x63;&#104;&#101;&#110;&#46;&#99;&#111;&#109;">&#114;&#111;&#121;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#64;&#114;&#111;&#121;&#97;&#108;&#x63;&#104;&#101;&#110;&#46;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#121;&#97;&#108;&#99;&#x68;&#101;&#x6e;&#64;&#x72;&#x6f;&#121;&#x61;&#108;&#99;&#x68;&#101;&#x6e;&#46;&#x63;&#111;&#109;">&#114;&#111;&#121;&#97;&#108;&#99;&#x68;&#101;&#x6e;&#64;&#x72;&#x6f;&#121;&#x61;&#108;&#99;&#x68;&#101;&#x6e;&#46;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -501,7 +389,7 @@
 <p>system(“pause”);</p>
 <p>}</p>
 <p>     </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#64;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#104;&#x65;&#110;&#x2e;&#x63;&#x6f;&#109;">&#114;&#111;&#x79;&#97;&#x6c;&#x63;&#104;&#101;&#x6e;&#64;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#104;&#x65;&#110;&#x2e;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#97;&#x6c;&#x63;&#x68;&#x65;&#x6e;&#x40;&#114;&#x6f;&#x79;&#x61;&#x6c;&#99;&#104;&#x65;&#x6e;&#x2e;&#99;&#111;&#109;">&#x72;&#111;&#121;&#97;&#x6c;&#x63;&#x68;&#x65;&#x6e;&#x40;&#114;&#x6f;&#x79;&#x61;&#x6c;&#99;&#104;&#x65;&#x6e;&#x2e;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -608,7 +496,7 @@
 <p>using namespace std;<br>void main105()<br>{<br>static int total=0;<br>Stack sc;<br>customer c[5]={<br>{“I”,10},<br>{“II”,20},<br>{“III”,40},<br>{“IV”,50},<br>{“V”,60}<br>};<br>customer s[10];//用于存储pop出来的customer<br>for(int i=0;i&lt;5;i++)<br>{<br>sc.push(c[i]);<br>cout&lt;&lt;”now push “&lt;&lt;c[i].fullname&lt;&lt;”  payment is “&lt;&lt;c[i].payment&lt;&lt;endl;<br>}<br>for(int i=0;i&lt;5;i++)<br>{<br>sc.push(c[i]);<br>cout&lt;&lt;”now push “&lt;&lt;c[i].fullname&lt;&lt;”  payment is “&lt;&lt;c[i].payment&lt;&lt;endl;<br>}<br>sc.push(c[3]);<br>for(int i=0;i&lt;10;i++)<br>{<br>sc.pop(s[i]);<br>total+=s[i].payment;<br>cout&lt;&lt;”total=”&lt;&lt;total&lt;&lt;endl;<br>}<br>sc.pop(s[1]);<br>cin.get();</p>
 <p>}</p>
 <p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#97;&#x6c;&#99;&#104;&#x65;&#110;&#64;&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#104;&#x65;&#x6e;&#x2e;&#x63;&#111;&#109;">&#x72;&#111;&#x79;&#97;&#x6c;&#99;&#104;&#x65;&#110;&#64;&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#104;&#x65;&#x6e;&#x2e;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#x61;&#108;&#x63;&#104;&#101;&#110;&#64;&#x72;&#111;&#121;&#97;&#x6c;&#99;&#104;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;">&#114;&#x6f;&#x79;&#x61;&#108;&#x63;&#104;&#101;&#110;&#64;&#x72;&#111;&#121;&#97;&#x6c;&#99;&#104;&#x65;&#x6e;&#x2e;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -676,6 +564,245 @@
 
 
   
+    <article id="post-cnet程序设计教程实验指导（清华大学江红，余青松-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/cnet%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%95%99%E7%A8%8B%E5%AE%9E%E9%AA%8C%E6%8C%87%E5%AF%BC%EF%BC%88%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%B1%9F%E7%BA%A2%EF%BC%8C%E4%BD%99%E9%9D%92%E6%9D%BE-3/" target="_blank">C#NET程序设计教程实验指导（清华大学江红，余青松）实验源码第六章</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/cnet%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%95%99%E7%A8%8B%E5%AE%9E%E9%AA%8C%E6%8C%87%E5%AF%BC%EF%BC%88%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%B1%9F%E7%BA%A2%EF%BC%8C%E4%BD%99%E9%9D%92%E6%9D%BE-3/" class="archive-article-date">
+        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>6.1</p>
+<p>using System;<br>using System.Collections.Generic;<br>using System.Linq;<br>using System.Text;</p>
+<p>namespace c6._1<br>{<br>    public struct myDate<br>    {<br>        public int year;<br>        public int month;<br>        public int day;<br>        public myDate(int y, int m, int d)<br>        {<br>            //必须全部赋值<br>            year = y;<br>            month = m;<br>            day = d;<br>        }<br>        public void DisplayWeek()<br>        {<br>            Console.WriteLine(“星期为：{0}”, new DateTime(year, month, day).DayOfWeek);<br>        }<br>        public void DisplayData()<br>        {<br>            Console.WriteLine(“日期为:{0}/{1}/{2}”,year,month,day);<br>        }</p>
+<pre><code>&#125;
+
+class Program
+&#123;
+    static void Main(string\[\] args)
+    &#123;
+        Console.Write(&quot;请输入年:&quot;);
+        int y = int.Parse(Console.ReadLine());
+        Console.Write(&quot;请输入月:&quot;);
+        int m= int.Parse(Console.ReadLine());
+        Console.Write(&quot;请输入日:&quot;);
+        int d = int.Parse(Console.ReadLine());
+
+        myDate d1 = new myDate(y, m, d);
+        d1.DisplayData();
+        d1.DisplayWeek();
+
+        Console.ReadKey();
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>6.2</p>
+<p>using System;<br>using System.Collections.Generic;<br>using System.Linq;<br>using System.Text;</p>
+<p>namespace c6._2<br>{<br>    public struct StudentGrade {<br>        public string name;<br>        public double score;<br>        public StudentGrade(string n, double s)<br>        {<br>            name = n;<br>            score = s;<br>        }<br>        public void Display() {<br>            Console.WriteLine(“名字:{0} ,成绩:{1}”, name, score);<br>        }</p>
+<pre><code>&#125;
+
+class Program
+&#123;
+    static void Main(string\[\] args)
+    &#123;
+        //结构体初始化列表
+        StudentGrade\[\] stu =
+        &#123;
+            new StudentGrade(&quot;张三&quot;,100),
+            new StudentGrade(&quot;李四&quot;,50),
+            new StudentGrade(&quot;王五&quot;,40),
+            new StudentGrade(&quot;赵六&quot;,60)
+        &#125;;
+        double sum = 0;
+        foreach(StudentGrade s in stu)
+        &#123;
+            s.Display();
+            sum += s.score;
+        &#125;
+        Console.WriteLine(&quot;平均分:&#123;0&#125;&quot;, sum / stu.Length);
+        Console.ReadKey();
+
+
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>6.3</p>
+<p>using System;<br>using System.Collections.Generic;<br>using System.Linq;<br>using System.Text;</p>
+<p>namespace c6._3<br>{<br>    public struct Point {<br>        public int x;<br>        public int y;<br>        public Point(int a,int b)<br>        {<br>            x=a;<br>            y=b;<br>        }<br>    }<br>    /*<br>    public struct Triangle<br>    {<br>        Point a;<br>        Point b;<br>        Point c;<br>        public Triangle(Point x,Point y,Point z){<br>            a = x;<br>            b = y;<br>            c = z;</p>
+<pre><code>    &#125;
+
+&#125;
+\*/
+
+class Program
+&#123;
+    static void Main(string\[\] args)
+    &#123;
+        Point a = new Point();
+        Console.WriteLine(&quot;平面坐标点1：x=&#123;0&#125;,y=&#123;1&#125;&quot;, a.x, a.y);
+        Point b = new Point(10, 12);
+        Console.WriteLine(&quot;平面坐标点2：x=&#123;0&#125;,y=&#123;1&#125;&quot;, b.x, b.y);
+        Point c;
+        c.x = 22;
+        c.y=3;
+        Console.WriteLine(&quot;平面坐标点3：x=&#123;0&#125;,y=&#123;1&#125;&quot;, c.x, c.y);
+
+        double side1 = Math.Sqrt(Math.Pow(a.x - b.x, 2) + Math.Pow(a.y - b.y, 2));
+        double side2 = Math.Sqrt(Math.Pow(a.x - c.x, 2) + Math.Pow(a.y - c.y, 2));
+        double side3 = Math.Sqrt(Math.Pow(b.x - c.x, 2) + Math.Pow(b.y - c.y, 2));
+        if (side1 + side2 &gt; side3 &amp;&amp; side1 + side3 &gt; side2 &amp;&amp; side2 + side3 &gt; side1)
+        &#123;
+            double h = (side1 + side2 + side3) / 2;
+            double area = Math.Sqrt(h \* (h - side1) \* (h - side2) \* (h - side3));
+            Console.WriteLine(&quot;三角形的面积:&#123;0&#125;&quot;, area);
+
+        &#125;
+        else//两点重叠才不能构成三角形
+            Console.WriteLine(&quot;不能构成三角形&quot;);
+
+        Console.ReadKey();
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>6.4</p>
+<p>using System;<br>using System.Collections.Generic;<br>using System.Linq;<br>using System.Text;</p>
+<p>namespace c6._4<br>{<br>    class Program<br>    {<br>        static void Main(string[] args)<br>        {<br>            Console.ForegroundColor = ConsoleColor.Cyan;<br>            Console.WriteLine(“前景色为Cyan”);<br>            Console.ResetColor();<br>            Console.WriteLine(“重置前景色”);<br>            Console.BackgroundColor = ConsoleColor.Red;<br>            Console.WriteLine(“背景色”);<br>            Console.ReadKey();</p>
+<pre><code>    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>6.5</p>
+<p>using System;<br>using System.Collections.Generic;<br>using System.Linq;<br>using System.Text;</p>
+<p>namespace c6._5<br>{<br>    class Program<br>    {<br>        //指明从1开始<br>        enum Days { Monday = 1, Tuesday, Wednesday, Thursday, Firday = 5, Saturday, Sunday };</p>
+<pre><code>    static void Main(string\[\] args)
+    &#123;
+        Console.WriteLine(&quot;输入一个数字：1--7&quot;);
+        while (true)
+        &#123;
+            try
+            &#123;
+                int d = int.Parse(Console.ReadLine());
+                if (d &gt; 7  d &lt; 1)
+                    Console.WriteLine(&quot;输入的数字不对&quot;);
+                else
+                    Console.WriteLine(&quot;&#123;0&#125;对应于&#123;1&#125;&quot;, d, (Days)d);
+            &#125;
+            catch (FormatException e)
+            &#123;
+                Console.WriteLine(e.Message);
+                break;
+            &#125;
+        &#125;
+        Console.ReadKey();
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>6.6</p>
+<p>using System;<br>using System.Collections.Generic;<br>using System.Linq;<br>using System.Text;</p>
+<p>namespace c6._6<br>{<br>    class Program<br>    {<br>        enum Days { Saturday, Sunday, Monday, Tuesday, Wednesday, Thursday, Firday };<br>        [FlagsAttribute]//指示枚举作为一组位域处理<br>            //枚举值是有限制的<br>        enum Colors { Red = 1, Green = 2, Blue = 8, Yello = 16 };<br>        static void Main(string[] args)<br>        {<br>            //typeof用于获取类型<br>            Type weekdays = typeof(Days);<br>            Console.WriteLine(“一周七天—-对应枚举类型Days中的值：”);<br>            //Enum.GetNames检索指定枚举类型中常数名称的数组<br>            foreach (string s in Enum.GetNames(weekdays))//真是神奇的c#啊<br>                Console.WriteLine(“{0,-11}={1}”, s, Enum.Format(weekdays, Enum.Parse(weekdays, s), “d”));<br>            Colors mcolor = Colors.Red  Colors.Blue  Colors.Yello;<br>            Console.WriteLine(“\n枚举变量mcolors存放如下颜色组合：{0}”, mcolor);<br>            Console.ReadKey();<br>        }</p>
+<pre><code>&#125;
+</code></pre>
+<p>}</p>
+<p>6.7</p>
+<p>using System;<br>using System.Collections.Generic;<br>using System.Linq;<br>using System.Text;</p>
+<p>namespace c6._7<br>{<br>    class Program<br>    {<br>        enum Colors {Red,Blue,White,Black};<br>        static void Main(string[] args)<br>        {<br>            Console.WriteLine(“4种颜色的球中取出3个不同色的球所有取法：”);<br>            int count = 0;<br>            for(int i=0;i&lt;4;i++)<br>                for(int j=0;j&lt;4;j++)<br>                    for (int k = 0; k &lt; 4; k++)<br>                    {<br>                        if (i != j &amp;&amp; i != k &amp;&amp; k != j)<br>                        {<br>                            Console.WriteLine(“{0}\t{1}\t{2}\t”, (Colors)i, (Colors)j, (Colors)k);<br>                            count++;<br>                        }<br>                    }<br>            Console.WriteLine(“一共有{0}取法”,count);<br>            Console.ReadKey();</p>
+<pre><code>    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#111;&#x79;&#97;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x40;&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#104;&#101;&#110;&#46;&#99;&#111;&#109;">&#114;&#111;&#x79;&#97;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x40;&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#104;&#101;&#110;&#46;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C//" class="article-tag-list-link color3">C#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/cnet%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%95%99%E7%A8%8B%E5%AE%9E%E9%AA%8C%E6%8C%87%E5%AF%BC%EF%BC%88%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%B1%9F%E7%BA%A2%EF%BC%8C%E4%BD%99%E9%9D%92%E6%9D%BE-3/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cprimerplus第六版课后编程题答案106" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -713,7 +840,7 @@
 <p>system(“pause”);</p>
 <p>}</p>
 <p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#97;&#x6c;&#99;&#104;&#x65;&#110;&#64;&#114;&#x6f;&#x79;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#46;&#x63;&#x6f;&#109;">&#114;&#x6f;&#x79;&#97;&#x6c;&#99;&#104;&#x65;&#110;&#64;&#114;&#x6f;&#x79;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#46;&#x63;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#97;&#108;&#x63;&#104;&#101;&#x6e;&#64;&#x72;&#111;&#x79;&#97;&#x6c;&#x63;&#x68;&#x65;&#110;&#x2e;&#99;&#111;&#x6d;">&#x72;&#111;&#x79;&#97;&#108;&#x63;&#104;&#101;&#x6e;&#64;&#x72;&#111;&#x79;&#97;&#x6c;&#x63;&#x68;&#x65;&#110;&#x2e;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -820,7 +947,7 @@
 <p>cin.get();</p>
 <p>}</p>
 <p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#97;&#108;&#99;&#x68;&#x65;&#110;&#64;&#114;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#x2e;&#99;&#111;&#x6d;">&#x72;&#111;&#x79;&#97;&#108;&#99;&#x68;&#x65;&#110;&#64;&#114;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#x2e;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#97;&#x6c;&#99;&#104;&#x65;&#110;&#64;&#114;&#111;&#121;&#x61;&#108;&#99;&#104;&#101;&#x6e;&#46;&#99;&#x6f;&#x6d;">&#x72;&#x6f;&#x79;&#97;&#x6c;&#99;&#104;&#x65;&#110;&#64;&#114;&#111;&#121;&#x61;&#108;&#99;&#104;&#101;&#x6e;&#46;&#99;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -930,7 +1057,7 @@
 <p>cin.get();</p>
 <p>}</p>
 <p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#97;&#108;&#99;&#x68;&#101;&#x6e;&#64;&#x72;&#111;&#121;&#97;&#x6c;&#x63;&#104;&#101;&#110;&#46;&#x63;&#x6f;&#x6d;">&#114;&#x6f;&#x79;&#97;&#108;&#99;&#x68;&#101;&#x6e;&#64;&#x72;&#111;&#121;&#97;&#x6c;&#x63;&#104;&#101;&#110;&#46;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#x61;&#x6c;&#99;&#104;&#x65;&#110;&#x40;&#114;&#111;&#x79;&#97;&#108;&#x63;&#104;&#x65;&#110;&#x2e;&#99;&#111;&#x6d;">&#114;&#x6f;&#121;&#x61;&#x6c;&#99;&#104;&#x65;&#110;&#x40;&#114;&#111;&#x79;&#97;&#108;&#x63;&#104;&#x65;&#110;&#x2e;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1039,7 +1166,7 @@
 <p>错误提示：</p>
 <p>错误 3 error LNK2019: 无法解析的外部符号 “public: void __thiscall List<int>::add(int const &amp;)” (?add@?$List@H@@QAEXABH@Z)，该符号在函数 “void __cdecl main108(void)” (?main108@@YAXXZ) 中被引用 E:\C++\number10\number10\main108.obj number10 错误 5 error LNK2019: 无法解析的外部符号 “public: __thiscall List<int>::List<int>(void)” (??0?$List@H@@QAE@XZ)，该符号在函数 “void __cdecl main108(void)” (?main108@@YAXXZ) 中被引用 E:\C++\number10\number10\main108.obj number10</p>
 <p>…..</p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#97;&#x6c;&#99;&#104;&#101;&#x6e;&#64;&#x72;&#111;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#99;&#111;&#x6d;">&#114;&#x6f;&#121;&#97;&#x6c;&#99;&#104;&#101;&#x6e;&#64;&#x72;&#111;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#64;&#x72;&#x6f;&#x79;&#97;&#x6c;&#x63;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#109;">&#x72;&#111;&#x79;&#x61;&#108;&#x63;&#x68;&#101;&#x6e;&#64;&#x72;&#x6f;&#x79;&#97;&#x6c;&#x63;&#x68;&#101;&#110;&#x2e;&#99;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1278,7 +1405,7 @@ fin.close();
 <p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
 <p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
 <p>author:天下无双</p>
-<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#x65;&#114;&#103;&#117;&#97;&#110;&#x67;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#x63;&#111;&#x64;&#x65;&#114;&#103;&#117;&#97;&#110;&#x67;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#101;&#114;&#x67;&#117;&#x61;&#x6e;&#103;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#x6f;&#100;&#101;&#114;&#x67;&#117;&#x61;&#x6e;&#103;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></p>
 <p>2014-9-22</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -1309,7 +1436,7 @@ fin.close();
 <p>}<br>fin&lt;&lt;”Bye!\n”;<br>cin.clear();<br>while(cin.get()!=’\n’)<br>continue;<br>//cin.get();</p>
 <p>fin.close();</p>
 <p>}</span></p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#97;&#x6c;&#99;&#104;&#101;&#x6e;&#64;&#x72;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#x68;&#x65;&#110;&#46;&#x63;&#111;&#109;">&#x72;&#x6f;&#x79;&#97;&#x6c;&#99;&#104;&#101;&#x6e;&#64;&#x72;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#x68;&#x65;&#110;&#46;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x40;&#114;&#111;&#x79;&#x61;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#x63;&#111;&#109;">&#x72;&#x6f;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x40;&#114;&#111;&#x79;&#x61;&#x6c;&#x63;&#104;&#101;&#x6e;&#46;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1435,7 +1562,7 @@ fin.close();
 <p>fin.close();<br>cin.get();<br>return 0;</p>
 <p>}</p>
 <p>不要喋喋不休地问为什么，因为有时候并不是弄错了，编译器也是个坑！  </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#101;&#110;&#64;&#x72;&#111;&#x79;&#97;&#x6c;&#x63;&#x68;&#x65;&#110;&#46;&#99;&#111;&#x6d;">&#x72;&#x6f;&#x79;&#x61;&#108;&#99;&#104;&#101;&#110;&#64;&#x72;&#111;&#x79;&#97;&#x6c;&#x63;&#x68;&#x65;&#110;&#46;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x40;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#x2e;&#x63;&#111;&#x6d;">&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x40;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#x2e;&#x63;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
 
     
 
@@ -1522,6 +1649,8 @@ fin.close();
 							2021 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
+								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
+									target="_blank">粤ICP备15021275号-2</a>
 			</div>
 			<div class="footer-right">
 				

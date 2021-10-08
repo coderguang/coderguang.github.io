@@ -241,7 +241,7 @@
 
 
   
-    <article id="post-stlarray的begin方法（4）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-stlarray的back方法（3）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -249,7 +249,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2016/02/24/stlarray%E7%9A%84begin%E6%96%B9%E6%B3%95%EF%BC%884%EF%BC%89/" target="_blank">STLarray的begin方法（4）</a>
+	  <a class="article-title" href="/2016/02/24/stlarray%E7%9A%84back%E6%96%B9%E6%B3%95%EF%BC%883%EF%BC%89/" target="_blank">STLarray的back方法（3）</a>
   
     </h1>
   
@@ -257,7 +257,7 @@
 
   
   
-<a href="/2016/02/24/stlarray%E7%9A%84begin%E6%96%B9%E6%B3%95%EF%BC%884%EF%BC%89/" class="archive-article-date">
+<a href="/2016/02/24/stlarray%E7%9A%84back%E6%96%B9%E6%B3%95%EF%BC%883%EF%BC%89/" class="archive-article-date">
         <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
 </a>
 
@@ -270,52 +270,52 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>STLarray的begin方法（4）</p>
-<p>原文地址：<a href="http://www.cplusplus.com/reference/array/array/begin/">http://www.cplusplus.com/reference/array/array/begin/</a></p>
+    <p>STLarray的back方法（3）</p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/array/array/back/">http://www.cplusplus.com/reference/array/array/back/</a></p>
 <p>public member function</p>
 <array>
 
-<h1 id="std-array-begin"><a href="#std-array-begin" class="headerlink" title="std::array::begin"></a>std::<a href="http://www.cplusplus.com/reference/array/array/">array</a>::begin</h1><p> iterator begin() noexcept;<br>const_iterator begin() const noexcept;</p>
-<p>Return iterator to beginning</p>
-<p>Returns an iterator pointing to the first element in the array container.  </p>
-<p>返回一个指向array容器第一个元素的iterator.</p>
-<p>Notice that, unlike member <a href="http://www.cplusplus.com/array::front">array::front</a>, which returns a reference to the first element, this function returns a <em>random access iterator</em> pointing to it.  </p>
-<p>注意和array::front不同，front是返回一个指向第一个元素的引用，这个函数是返回一个指向第一个元素的随机访问迭代器。</p>
-<p>In zero-sized arrays, this function returns the same as <a href="http://www.cplusplus.com/array::end">array::end</a>, but the returned iterator should not be dereferenced.  </p>
-<p>如果array大小为0，该函数的返回值和end是一样的，但是他们都不应该被解除引用。</p>
+<h1 id="std-array-back"><a href="#std-array-back" class="headerlink" title="std::array::back"></a>std::<a href="http://www.cplusplus.com/reference/array/array/">array</a>::back</h1><p> reference back();<br>const_reference back() const;</p>
+<p>Access last element</p>
+<p>Returns a reference to the last element in the array container.  </p>
+<p>返回容器最后一个元素的引用。</p>
+<p>Unlike member <a href="http://www.cplusplus.com/array::end">array::end</a>, which returns an iterator just past this element, this function returns a direct reference.  </p>
+<p>不像array::end，end是返回一个超尾迭代器，该方法返回一个直接的引用。</p>
+<p>Calling this function on an <a href="http://www.cplusplus.com/array::empty">empty</a> container causes undefined behavior.  </p>
+<p>如果对一个空的容器调用方法会导致未定义的行为。</p>
 <p>例子：</p>
-<p>#include <iostream><br>#include <array><br>using namespace std;<br>void end1(){<br>    array&lt;double,0&gt; ad;<br>    auto ib=ad.begin();<br>    cout&lt;&lt;”ad.begin()=”&lt;&lt;*ib&lt;&lt;endl;<br>}</p>
-<p>运行结果：</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014133_45390816767830.jpg">  </p>
+<p>#include <iostream><br>#include <array><br>using namespace std;<br>void back1(){<br>    array&lt;double,5&gt; ad;<br>    double &amp;r=ad.back();<br>    cout&lt;&lt;”ad.back()=”&lt;&lt;r&lt;&lt;endl;<br>}</p>
+<p>运行截图：</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014128_183633510228711.jpg"><br>可以看到，得到的值是一个错误的值。</p>
 <h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
-<h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>An iterator to the beginning of the sequence.  </p>
-<p>返回一个指向第一个元素的迭代器。</p>
-<p>If the <a href="http://www.cplusplus.com/array">array</a> object is const-qualified, the function returns a const_iterator. Otherwise, it returns an iterator.  </p>
-<p>如果array对象是const属性，那么返回一个const_itertor,否则，返回一个普通的iterator.</p>
-<p>Member types iterator and const_iterator are <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types (pointing to an element and to a const element, respectively).</p>
-<p>iterator和const_iterator都是随机访问迭代器。</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>A reference to the last element in the array.  </p>
+<p>返回一个指向array最后一个元素的一个引用。</p>
+<p>If the <a href="http://www.cplusplus.com/array">array</a> object is const-qualified, the function returns a const_reference. Otherwise, it returns a reference.  </p>
+<p>如果array对象是const属性，那么返回的引用也具有const属性，否则，返回一个普通的引用。</p>
+<p>Member types reference and const_reference are the reference types to the elements of the <a href="http://www.cplusplus.com/array">array</a> (see <a href="http://www.cplusplus.com/array#types">array member types</a>).</p>
+<p>reference以及constreference都是指向元素类型的引用。  </p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// array::begin example</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;array&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::array&lt;int,5&gt; myarray = &#123; 2, 16, 77, 34, 50 &#125;;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myarray contains:&quot;;</span><br><span class="line">  for ( auto it = myarray.begin(); it != myarray.end(); ++it )</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// array::back</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;array&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::array&lt;int,3&gt; myarray = &#123;5, 19, 77&#125;;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;front is: &quot; &lt;&lt; myarray.front() &lt;&lt; std::endl;   // 5</span><br><span class="line">  std::cout &lt;&lt; &quot;back is: &quot; &lt;&lt; myarray.back() &lt;&lt; std::endl;     // 77</span><br><span class="line"></span><br><span class="line">  myarray.back() = 50;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myarray now contains:&quot;;</span><br><span class="line">  for ( int&amp; x : myarray ) std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; x;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a href="http://www.cplusplus.com/reference/array/array/begin/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p><a href="http://www.cplusplus.com/reference/array/array/back/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
 <p>Output:  </p>
-<p>myarray contains: 2 16 77 34 50 </p>
+<p>front is: 5<br>back is: 77<br>myarray now contains: 5 19 50 </p>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
 <h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>No changes.  </p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>No contained elements are accessed by the call, but the iterator returned can be used to access or modify elements. Concurrently accessing or modifying different elements is safe.  </p>
-<p>容器的元素不会被访问，但是返回的迭代器可以被用来访问以及修改元素，并且这些操作都是安全的。</p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> this member function never throws exceptions.</p>
-<p><strong>该成员方法不会抛出异常。</strong></p>
-<p>The copy construction or assignment of the returned iterator is also guaranteed to never throw.</p>
-<p>通过复制构造器以及赋值构造获得的该iterator也保证不会抛出异常。</p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The reference returned can be used to access or modify elements. Concurrently accessing or modifying different elements is safe.</p>
+<p>返回的引用可以用来访问以及修改元素，并且这些操作都是安全的。  </p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the container is not <a href="http://www.cplusplus.com/array::empty">empty</a>, the function never throws exceptions (no-throw guarantee).  </p>
+<p>Otherwise, it causes <em>undefined behavior</em>.</p>
+<p>如果容器非空，该方法不会抛出异常。</p>
+<p>否则，将导致未定义的行为。</p>
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
 <p>2014-8-26</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
-<p><a href="http://blog.csdn.net/qq844352155/article/details/38852287">原文链接</a></p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38852207">原文链接</a></p>
 
     
 
@@ -342,7 +342,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlarray%E7%9A%84begin%E6%96%B9%E6%B3%95%EF%BC%884%EF%BC%89/">展开全文 >></a>
+      <a class="article-more-a" href="/2016/02/24/stlarray%E7%9A%84back%E6%96%B9%E6%B3%95%EF%BC%883%EF%BC%89/">展开全文 >></a>
     </p>
     
 
@@ -433,7 +433,7 @@
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#x64;&#101;&#114;&#103;&#x75;&#97;&#x6e;&#103;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#99;&#111;&#x64;&#101;&#114;&#103;&#x75;&#97;&#x6e;&#103;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#x64;&#x65;&#114;&#103;&#117;&#x61;&#x6e;&#x67;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;">&#x63;&#x6f;&#x64;&#x65;&#114;&#103;&#117;&#x61;&#x6e;&#x67;&#x40;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#99;&#111;&#109;</a></p>
 <p>2014-8-26</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -553,7 +553,7 @@
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#x64;&#101;&#x72;&#103;&#117;&#97;&#110;&#x67;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#99;&#x6f;&#x64;&#101;&#x72;&#103;&#117;&#97;&#110;&#x67;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#x64;&#101;&#114;&#x67;&#117;&#x61;&#x6e;&#x67;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;">&#99;&#111;&#x64;&#101;&#114;&#x67;&#117;&#x61;&#x6e;&#x67;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;</a></p>
 <p>2014-8-27</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -680,7 +680,7 @@
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#111;&#100;&#101;&#114;&#x67;&#x75;&#97;&#x6e;&#x67;&#x40;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#111;&#100;&#101;&#114;&#x67;&#x75;&#97;&#x6e;&#x67;&#x40;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#x64;&#x65;&#x72;&#x67;&#x75;&#97;&#110;&#x67;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;">&#99;&#111;&#x64;&#x65;&#x72;&#x67;&#x75;&#97;&#110;&#x67;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#109;</a></p>
 <p>2014-8-27</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -806,7 +806,7 @@
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#x64;&#101;&#x72;&#x67;&#117;&#97;&#x6e;&#x67;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#x6f;&#x64;&#101;&#x72;&#x67;&#117;&#97;&#x6e;&#x67;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#x64;&#x65;&#x72;&#x67;&#117;&#97;&#x6e;&#x67;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;">&#x63;&#x6f;&#x64;&#x65;&#x72;&#x67;&#117;&#97;&#x6e;&#x67;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;</a></p>
 <p>2014-8-27</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -933,7 +933,7 @@
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#x64;&#101;&#x72;&#x67;&#x75;&#97;&#110;&#x67;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#99;&#x6f;&#x64;&#101;&#x72;&#x67;&#x75;&#97;&#110;&#x67;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a></p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#101;&#x72;&#103;&#x75;&#97;&#x6e;&#103;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#99;&#111;&#109;">&#x63;&#x6f;&#100;&#101;&#x72;&#103;&#x75;&#97;&#x6e;&#103;&#x40;&#103;&#109;&#x61;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
 <p>2014-8-27</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -1055,7 +1055,7 @@
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#111;&#x64;&#x65;&#114;&#103;&#117;&#97;&#x6e;&#103;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x63;&#111;&#x64;&#x65;&#114;&#103;&#117;&#97;&#x6e;&#103;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#101;&#114;&#103;&#117;&#x61;&#110;&#x67;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#x63;&#x6f;&#100;&#101;&#114;&#103;&#117;&#x61;&#110;&#x67;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a></p>
 <p>2014-8-27</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -1178,7 +1178,7 @@
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#111;&#100;&#x65;&#x72;&#x67;&#117;&#x61;&#x6e;&#103;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#99;&#111;&#100;&#x65;&#x72;&#x67;&#117;&#x61;&#x6e;&#103;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#x63;&#x6f;&#x64;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#x67;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x63;&#x6f;&#x64;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#x67;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
 <p>2014-8-30</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -1309,7 +1309,7 @@
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#x6f;&#100;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#103;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#x63;&#x6f;&#100;&#101;&#114;&#x67;&#117;&#97;&#x6e;&#103;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#x64;&#x65;&#x72;&#x67;&#x75;&#97;&#x6e;&#103;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#99;&#111;&#x64;&#x65;&#x72;&#x67;&#x75;&#97;&#x6e;&#103;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a></p>
 <p>2014-8-30</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -1440,7 +1440,7 @@
 <p>——————————————————————————————————————————————————————————————————</p>
 <p>//总结的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
 <p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a><br>author:天下无双  </p>
-<p>Email:<a href="mailto:&#x63;&#111;&#100;&#x65;&#114;&#x67;&#117;&#97;&#110;&#103;&#x40;&#x67;&#109;&#97;&#105;&#108;&#46;&#x63;&#111;&#109;">&#x63;&#111;&#100;&#x65;&#114;&#x67;&#117;&#97;&#110;&#103;&#x40;&#x67;&#109;&#97;&#105;&#108;&#46;&#x63;&#111;&#109;</a></p>
+<p>Email:<a href="mailto:&#99;&#111;&#100;&#101;&#x72;&#103;&#x75;&#97;&#110;&#103;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#99;&#111;&#100;&#101;&#x72;&#103;&#x75;&#97;&#110;&#103;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a></p>
 <p>2014-8-30</p>
 <p>于GDUT</p>
 <p>——————————————————————————————————————————————————————————————————</p>
@@ -1520,6 +1520,8 @@
 							2021 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
+								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
+									target="_blank">粤ICP备15021275号-2</a>
 			</div>
 			<div class="footer-right">
 				
