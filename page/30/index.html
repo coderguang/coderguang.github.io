@@ -241,6 +241,165 @@
 
 
   
+    <article id="post-stlvector中的erase方法（26）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84erase%E6%96%B9%E6%B3%95%EF%BC%8826%EF%BC%89/" target="_blank">STLvector中的erase方法（26）</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84erase%E6%96%B9%E6%B3%95%EF%BC%8826%EF%BC%89/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>STLvector中的erase方法（26）</p>
+<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/erase/">http://www.cplusplus.com/reference/vector/vector/erase/</a></p>
+<p>public member function</p>
+<vector>
+
+<h1 id="std-vector-erase"><a href="#std-vector-erase" class="headerlink" title="std::vector::erase"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::erase</h1><ul>
+<li>  C++98</li>
+<li>  C++11</li>
+</ul>
+<p>iterator erase (const_iterator position);<br>iterator erase (const_iterator first, const_iterator last); </p>
+<p>Erase elements</p>
+<p>Removes from the <a href="http://www.cplusplus.com/vector">vector</a> either a single element (<em>position</em>) or a range of elements ([first,last)).</p>
+<p>从vector中移除单一（position）或者是指定范围内（[first,last））的元素。</p>
+<p>指定单一位置例子:</p>
+<p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi={11,22,33};<br>cout&lt;&lt;”vector=”;<br>for_each(vi.begin(),vi.end(),[](int m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;<br>auto it=vi.begin();<br>vi.erase(it);<br>cout&lt;&lt;”after vi.erase(vi.begin()) vector=”;<br>for_each(vi.begin(),vi.end(),[](int m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;</p>
+<p>}</p>
+<p>结果截图:</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014919_6075978959359.jpg"><br>指定范围例子:</p>
+<p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi={11,22,33};<br>cout&lt;&lt;”vector=”;<br>for_each(vi.begin(),vi.end(),[](int m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;<br>auto it=vi.begin();<br>vi.erase(it,vi.end());<br>cout&lt;&lt;”after vi.erase(vi.begin(),vi.end()) vector=”;<br>for_each(vi.begin(),vi.end(),[](int m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;</p>
+<p>}</p>
+<p>结果截图:</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014920_2671238044655.jpg">  </p>
+<p>This effectively reduces the container <a href="http://www.cplusplus.com/vector::size">size</a> by the number of elements removed, which are destroyed.</p>
+<p>这个方法可以高效地删除固定数目的元素，这些元素将被销毁。</p>
+<p>Because vectors use an array as their underlying storage, erasing elements in positions other than the <a href="http://www.cplusplus.com/vector::end">vector end</a> causes the container to relocate all the elements after the segment erased to their new positions. This is generally an inefficient operation compared to the one performed for the same operation by other kinds of sequence containers (such as <a href="http://www.cplusplus.com/list">list</a> or <a href="http://www.cplusplus.com/forward_list">forward_list</a>).</p>
+<p>因为vector底层的存储是采用array，擦除指定位置的元素会造成容器其他的在被擦除后面的元素要重新迁移到新的位置。这通常会导致很大的开销（相对于另一个更好的序列解决方案，例如list,forward_list）。</p>
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>position</p>
+<p>Iterator pointing to a single element to be removed from the <a href="http://www.cplusplus.com/vector">vector</a>.  </p>
+<p>Member types iterator and const_iterator are <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types that point to elements.</p>
+<p>一个指向要被擦除的元素的迭代器。</p>
+<p>类型为随机访问迭代器。</p>
+<p>first, last</p>
+<p>Iterators specifying a range within the <a href="http://www.cplusplus.com/vector">vector</a>] to be removed: [first,last). i.e., the range includes all the elements between <em>first</em> and <em>last</em>, including the element pointed by <em>first</em> but not the one pointed by <em>last</em>.  </p>
+<p>Member types iterator and const_iterator are <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types that point to elements。</p>
+<p>指示特定范围内将被移除元素位置的迭代器。该范围包括first到last之间的所有元素，包括first指向的元素，但不包括last指向的元素。</p>
+<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p>An iterator pointing to the new location of the element that followed the last element erased by the function call. This is the <a href="http://www.cplusplus.com/vector::end">container end</a> if the operation erased the last element in the sequence.</p>
+<p>返回值为一个迭代器，其指向被擦除的最后一个元素的下一个位置的元素。</p>
+<p>#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi={11,22,33};<br>cout&lt;&lt;”vector=”;<br>for_each(vi.begin(),vi.end(),[](int m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;<br>auto it=vi.erase(vi.begin()+1);<br>cout&lt;&lt;”after erase(vi.begin()+1) /n return is “&lt;&lt;*it&lt;&lt;endl;</p>
+<p>}</p>
+<p>截图:</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014921_21376725601289.jpg"><br>如果被擦除的最后一个元素是整个序列的最后一个元素，那么返回的值为end()迭代器.</p>
+<p>Member type iterator is a <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to elements.  </p>
+<p>迭代器的类型为随机访问迭代器。</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// erasing from vector</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector;</span><br><span class="line"></span><br><span class="line">  // set some values (from 1 to 10)</span><br><span class="line">  for (int i=1; i&lt;=10; i++) myvector.push_back(i);</span><br><span class="line"></span><br><span class="line">  // erase the 6th element</span><br><span class="line">  myvector.erase (myvector.begin()+5);</span><br><span class="line"></span><br><span class="line">  // erase the first 3 elements:</span><br><span class="line">  myvector.erase (myvector.begin(),myvector.begin()+3);</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (unsigned i=0; i&lt;myvector.size(); ++i)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; myvector[i];</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://www.cplusplus.com/reference/vector/vector/erase/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p>Output:  </p>
+<p>myvector contains: 4 5 7 8 9 10 </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Linear on the number of elements erased (destructions) plus the number of elements after the last element deleted (moving).</p>
+<p>与被擦除元素（析构）的数目加上被擦除元素后面的元素（移动）的数目线性相关。</p>
+<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>Iterators, pointers and references pointing to <em>position</em> (or <em>first</em>) and beyond are invalidated, with all iterators, pointers and references to elements before <em>position</em> (or <em>first</em>) are guaranteed to keep referring to the same elements they were referring to before the call.</p>
+<p>指向被擦除位置以及其后面位置的迭代器，指针以及引用都将失效，被擦除元素前面的迭代器，指针以及引用依然有效。</p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is modified.</p>
+<p>容器将被修改。</p>
+<p>None of the elements before <em>position</em> (or <em>first</em>) is accessed, and concurrently accessing or modifying them is safe.</p>
+<p>position位置之前的元素不会被访问，同时访问以及修改他们都是安全的。</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the removed elements include the last element in the container, no exceptions are thrown (no-throw guarantee).</p>
+<p>如果被擦除的元素包括容器的最后一个元素，不会抛出异常。</p>
+<p>Otherwise, the container is guaranteed to end in a valid state (basic guarantee).  </p>
+<p>An invalid <em>position</em> or range causes <em>undefined behavior</em>.</p>
+<p>否则，容器只保证最后保持在有效状态。</p>
+<p>一个无效的位置或者范围将导致未知的行为。</p>
+<p>例子:</p>
+<p><span style="color:#993399;">#include <iostream><br>#include <vector><br>#include <algorithm><br>using namespace std;<br>int main(int argc,char **argv)<br>{<br>vector<int> vi={11,22,33};<br>cout&lt;&lt;”vector=”;<br>for_each(vi.begin(),vi.end(),[](int m){cout&lt;&lt;m&lt;&lt;” “;});<br>cout&lt;&lt;endl;<br>auto it=vi.erase(vi.end()+1);<br>//if(it==vi.end())<br>//cout&lt;&lt;”it==vi.end()”&lt;&lt;endl;<br>cout&lt;&lt;”after erase(vi.end()) \n return is “&lt;&lt;*it&lt;&lt;endl;</p>
+<p>}</span></p>
+<p>结果截图：</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224014922_2202869406379.jpg">  </p>
+<p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>2014-8-17</p>
+<p>于GDUT</p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38641813">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL容器//" class="article-tag-list-link color1">STL容器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84erase%E6%96%B9%E6%B3%95%EF%BC%8826%EF%BC%89/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-stlvector中的front方法4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1476,141 +1635,6 @@
 
 
   
-    <article id="post-stlvector中的rend方法（10）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84rend%E6%96%B9%E6%B3%95%EF%BC%8810%EF%BC%89/" target="_blank">STLvector中的rend方法（10）</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84rend%E6%96%B9%E6%B3%95%EF%BC%8810%EF%BC%89/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>STLvector中的rend方法（10）</p>
-<p>原文地址:<a href="http://www.cplusplus.com/reference/vector/vector/rend/">http://www.cplusplus.com/reference/vector/vector/rend/</a></p>
-<p>其实rend和end的区别和rbegin和begin的区别几乎是一样的。</p>
-<p>public member function</p>
-<vector>
-
-<h1 id="std-vector-rend"><a href="#std-vector-rend" class="headerlink" title="std::vector::rend"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::rend</h1><ul>
-<li>  C++98</li>
-<li>  C++11</li>
-</ul>
-<p> reverse_iterator rend() noexcept;<br>const_reverse_iterator rend() const noexcept; </p>
-<p>Return reverse iterator to reverse end</p>
-<p>Returns a <em>reverse iterator</em> pointing to the theoretical element preceding the first element in the <a href="http://www.cplusplus.com/vector">vector</a> (which is considered its <em>reverse end</em>).  </p>
-<p>返回一个反向的迭代器指向假设中存在于vector第一个元素前面一个位置的元素(这个元素被认为是反转后的尾部)</p>
-<p>The range between <a href="http://www.cplusplus.com/vector::rbegin">vector::rbegin</a> and vector::rend contains all the elements of the <a href="http://www.cplusplus.com/vector">vector</a> (in reverse order).  </p>
-<p>范围rbegin和rend之间就包含了vector（倒序）的所有元素。</p>
-<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>none  </p>
-<h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>A reverse iterator to the <em>reverse end</em> of the sequence container.  </p>
-<p>一个反向迭代器指向一个序列倒序的超尾。</p>
-<p>If the <a href="http://www.cplusplus.com/vector">vector</a> object is const-qualified, the function returns a const_reverse_iterator. Otherwise, it returns a reverse_iterator.  </p>
-<p>如果vector对象本身具有const属性，那么该函数返回的将是const_reverse_itertor.</p>
-<p>否则，返回一个普通的reverse_iterator.</p>
-<p>Member types reverse_iterator and const_reverse_iterator are reverse <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> types (pointing to an element and to a const element, respectively). See <a href="http://www.cplusplus.com/vector#types">vector member types</a>.<br>返回迭代器类型为随机访问迭代器。  </p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// vector::rbegin/rend</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector (5);  // 5 default-constructed ints</span><br><span class="line"></span><br><span class="line">  std::vector&lt;int&gt;::reverse_iterator rit = myvector.rbegin();</span><br><span class="line"></span><br><span class="line">  int i=0;</span><br><span class="line">  for (rit = myvector.rbegin(); rit!= myvector.rend(); ++rit)</span><br><span class="line">    *rit = ++i;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line">  for (std::vector&lt;int&gt;::iterator it = myvector.begin(); it != myvector.end(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="http://www.cplusplus.com/reference/vector/vector/rend/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
-<p>Output:  </p>
-<p>5 4 3 2 1 </p>
-<p>我个人测试的例子：</p>
-<p>#include <iostream><br>#include <vector><br>#include <iterator><br>#include &lt;initializer_list&gt;<br>using namespace std;<br>int main()<br>{<br>vector<int> vi({10,20,30,40});<br>cout&lt;&lt;”Reverse vector:”&lt;&lt;endl;<br>for(auto it=vi.rbegin();it!=vi.rend();++it)<br>cout&lt;&lt;*it&lt;&lt;endl;<br>auto it2=vi.rend();<br>cout&lt;&lt;”This is values of rend():”&lt;&lt;*it2&lt;&lt;endl;<br>it2++;<br>cout&lt;&lt;”This is values of rend()++:”&lt;&lt;*it2&lt;&lt;endl;<br>auto it3=vi.rend();<br>it3–;<br>cout&lt;&lt;”This is values of rend()–:”&lt;&lt;*it3&lt;&lt;endl;  </p>
-<p>}  </p>
-<p>运行结果：</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015040_9478779975796.jpg">  </p>
-<p>可以看到，如果对rend()返回的迭代器直接解除引用，得到的将是默认的0，只有对其进行递减操作（因为rend()已经是倒序的结尾，要想取得其他元素的值，应该递减）</p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
-<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>No changes.  </p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is accessed (neither the const nor the non-const versions modify the container).</p>
-<p>容器将被访问。（不管是const还是不是，该方法都不会修改容器）</p>
-<p>No contained elements are accessed by the call, but the iterator returned can be used to access or modify elements. Concurrently accessing or modifying different elements is safe.<br>该方法不会访问容器里的元素，但是返回的这个iterator可以用来访问元素，并且用他们来访问或者是修改不同的元素都是安全的。  </p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> this member function never throws exceptions.  </p>
-<p>The copy construction or assignment of the returned iterator is also guaranteed to never throw.</p>
-<p>该方法不会抛出异常。</p>
-<p>利用复制构造函数或者赋值运算得到该iterator的拷贝也不会抛出异常。</p>
-<p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
-<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
-<p>2014-8-12</p>
-<p>于GDUT</p>
-<p><a href="http://blog.csdn.net/qq844352155/article/details/38515303">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL容器//" class="article-tag-list-link color1">STL容器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84rend%E6%96%B9%E6%B3%95%EF%BC%8810%EF%BC%89/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/29/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="page-number current">30</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/31/">Next &amp;raquo;</a>
@@ -1627,7 +1651,7 @@
 			<div class="footer-left">
 				&copy; 
 					2015-
-							2021 <a href="http://www.royalchen.com/" target="_blank">
+							2022 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
 								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
@@ -1742,6 +1766,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">一点小心情</a>
               </li>
             
             <div class="clearfix"></div>

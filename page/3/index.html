@@ -241,6 +241,93 @@
 
 
   
+    <article id="post-leetcode-226-invert-binary-tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2018/08/03/leetcode-226-invert-binary-tree/" target="_blank">LeetCode---226. Invert Binary Tree</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2018/08/03/leetcode-226-invert-binary-tree/" class="archive-article-date">
+        <time datetime="2018-08-03T10:31:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>//url:<a href="https://leetcode.com/problems/invert-binary-tree/description/">https://leetcode.com/problems/invert-binary-tree/description/</a></p>
+<p>/**<br> * Definition for a binary tree node.<br> * struct TreeNode {<br> *     int val;<br> *     TreeNode *left;<br> *     TreeNode *right;<br> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}<br> * };<br> */<br>class Solution {<br>public:<br>    TreeNode* invertTree(TreeNode* root) {<br>        if(!root)<br>            return NULL;<br>        TreeNode* left=root-&gt;left;<br>        root-&gt;left=root-&gt;right;<br>        root-&gt;right=left;<br>        invertTree(root-&gt;left);<br>        invertTree(root-&gt;right);<br>        return root;<br>    }<br>};</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ACM学习//" class="article-tag-list-link color1">ACM学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2018/08/03/leetcode-226-invert-binary-tree/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-leetcode-559-maximum-depth-of-n-ary-tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1084,92 +1171,6 @@ void reverseString(string&amp; s) &#123;
 
 
   
-    <article id="post-什么鬼～" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2018/07/24/%E4%BB%80%E4%B9%88%E9%AC%BC%EF%BD%9E/" target="_blank">什么鬼～</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2018/07/24/%E4%BB%80%E4%B9%88%E9%AC%BC%EF%BD%9E/" class="archive-article-date">
-        <time datetime="2018-07-24T08:05:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>用了多年的梯子突然用不了了，除了贸易战，疫苗和汇率，大天朝又发生了什么大事吗。。。 google上不了就算了，github也不给上了？ 最近学了个新句子，如果问题解决不了，那就解决提出问题的人，我朝果然牛B，奶粉、疫苗啥的，过阵子自然就消停了，一如过往的各种热点事件，大事化小，小事化无，实在没办法，招个临时工咯，还有多少人记得红蓝绿幼儿园什么的呢，感觉现在民愤不少了，还是之前一直有？只是最近半年没那么忙所以才关注到？还是翻墙多了，被美帝洗脑了？ 古人云，以史为镜，可以知兴衰，一个连历史都不敢公开的政党，唉，突然想到我朝非常坚定的几个同盟，朝鲜、伊朗，都是些什么国家啊，果然一丘之貉？ 坑。。。</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/一点小吐槽//" class="article-tag-list-link color1">一点小吐槽</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2018/07/24/%E4%BB%80%E4%B9%88%E9%AC%BC%EF%BD%9E/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -1186,7 +1187,7 @@ void reverseString(string&amp; s) &#123;
 			<div class="footer-left">
 				&copy; 
 					2015-
-							2021 <a href="http://www.royalchen.com/" target="_blank">
+							2022 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
 								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
@@ -1301,6 +1302,10 @@ void reverseString(string&amp; s) &#123;
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">一点小心情</a>
               </li>
             
             <div class="clearfix"></div>

@@ -241,6 +241,145 @@
 
 
   
+    <article id="post-cprimerplus第六版课后编程题答案145" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88145/" target="_blank">C++ primer plus第六版课后编程题答案14.5</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88145/" class="archive-article-date">
+        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p> </p>
+<p>emp.cpp</p>
+<p>#include <iostream><br>#include <string><br>using namespace std;<br>static void eatLine()<br>{<br>while(cin.get()!=’\n’)<br>continue;<br>};<br>class emp<br>{<br>private:<br>string fname;<br>string lname;<br>string job;<br>public:<br>emp(){<br>fname=”fdefault”;<br>lname=”ldefault”;<br>job=”jdefault”;<br>}<br>emp(const string &amp;fn,const string &amp;ln,const string &amp;j){<br>fname=fn;<br>lname=ln;<br>job=j;<br>}<br>virtual void speciality()const=0<br>{<br>cout&lt;&lt;”this is emp:”&lt;&lt;endl;<br>}<br>virtual void showAll()const<br>{<br>speciality();//用于区分<br>cout&lt;&lt;”fullname:”&lt;&lt;fname&lt;&lt;”     lastname:”&lt;&lt;lname&lt;&lt;endl;<br>}<br>virtual void setAll()<br>{<br>speciality();<br>cout&lt;&lt;”Please enter the fullname:”&lt;&lt;endl;<br>string ffname;<br>getline(cin,ffname);<br>eatLine();<br>cout&lt;&lt;”Please enter the lastname:”&lt;&lt;endl;<br>string llname;<br>getline(cin,llname);<br>eatLine();<br>}<br>friend ostream&amp;operator&lt;&lt;(ostream &amp;os,const emp &amp;e)<br>{<br>e.showAll();//调用成员函数搞定<br>return os;<br>}<br>virtual ~emp(){}<br>};</p>
+<p>class employee:public emp<br>{<br>public:<br>employee(){};<br>employee(const string &amp;fn,const string &amp;ln,const string &amp;j):emp(fn,ln,j){};<br>virtual void speciality()const<br>{<br>cout&lt;&lt;”this is employee:”&lt;&lt;endl;<br>}<br>virtual void setAll()<br>{<br>emp::setAll();<br>}<br>virtual void showAll()const<br>{<br>//speciality();//这里无需调用，因为上一层已经调用过<br>emp::showAll();<br>}<br>};</p>
+<p>class manager:virtual public emp<br>{<br>private:<br>int inchargeof;<br>protected:<br>int InChargeOf()const{return inchargeof;};<br>int &amp;InChargeOf(){return inchargeof;};<br>public:<br>manager(){};<br>manager(const string &amp;fn,const string &amp;ln,const string &amp;j,int c=0):emp(fn,ln,j),inchargeof(c){};<br>manager(const emp &amp;e,int ico):emp(e),inchargeof(ico){};<br>manager(const manager &amp;m):emp(m){<br>inchargeof=m.inchargeof;<br>}<br>virtual void speciality()const<br>{<br>cout&lt;&lt;”This is manager:”&lt;&lt;endl;<br>}<br>virtual void showAll()const{<br>emp::showAll();<br>cout&lt;&lt;”inchargeof:”&lt;&lt;inchargeof&lt;&lt;endl;</p>
+<p>};<br>virtual void setAll()<br>{<br>emp::setAll();<br>cout&lt;&lt;”Enter the inchargeof:”;<br>//int n;<br>cin&gt;&gt;inchargeof;<br>eatLine();<br>}<br>};</p>
+<p>class fink:virtual public emp<br>{<br>private:<br>string reportsto;<br>protected:<br>const string ReportsTo()const {return reportsto;};<br>string &amp;ReportsTo(){return reportsto;};<br>public:<br>fink(){};<br>fink(const string &amp;fn,const string &amp;ln,const string &amp;j,const string &amp;rpo):emp(fn,ln,j),reportsto(rpo){}<br>fink(const emp &amp;e,const string &amp;rpo):emp(e),reportsto(rpo){}<br>fink(const fink &amp;e):emp(e)<br>{<br>reportsto=e.reportsto;<br>}<br>virtual void speciality()const<br>{<br>cout&lt;&lt;”this is fink:”&lt;&lt;endl;<br>}<br>virtual void showAll()const<br>{<br>emp::showAll();<br>cout&lt;&lt;”Reportsto:”&lt;&lt;reportsto&lt;&lt;endl;<br>}<br>virtual void setAll()<br>{<br>emp::setAll();<br>cout&lt;&lt;”Enter the reportsto:”;<br>//int n;<br>getline(cin,reportsto);<br>eatLine();<br>eatLine();<br>}<br>};</p>
+<p>class highfink:public manager,public fink<br>{<br>public:<br>highfink(){};<br>highfink(const string &amp;fn,const string &amp;ln,const string &amp;j,const string &amp;rpo,int ico)<br>:emp(fn,ln,j),manager(fn,ln,j,ico),fink(fn,ln,j,rpo){}<br>highfink(const emp &amp;e,const string &amp;rpo,int ico)<br>:emp(e),manager(e,ico),fink(e,rpo){}//注意这个构造是怎么构造的<br>highfink(const fink &amp;f,int ico)<br>:emp(f),fink(f),manager(f,ico){}//这样行不行呢？<br>highfink(const manager &amp;m,const string &amp;rpo)<br>:emp(m),manager(m),fink(m,rpo){}</p>
+<p>highfink(const highfink &amp;h)<br>:emp(h),manager(h),fink(h){}//这样可否？？</p>
+<p>virtual void speciality()const//const必须与emp一致，否则会隐藏原来的,而不是重载<br>{<br>cout&lt;&lt;”This is highfink:”&lt;&lt;endl;<br>}<br>virtual void showAll()const//注意大小写不要写错了<br>{<br>//out&lt;&lt;”here is !”&lt;&lt;endl;<br>emp::showAll();<br>manager::showAll();<br>fink::showAll();<br>}<br>virtual void setAll()<br>{<br>manager::setAll();<br>fink::setAll();<br>}<br>};</p>
+<p>main145.cpp</p>
+<p>#include <iostream><br>#include “emp.cpp”<br>using namespace std;<br>void main145()<br>{<br>/*<br>employee em(“Trip”,”Harris”,”Thumper”);<br>cout&lt;&lt;em&lt;&lt;endl;<br>em.showAll();</p>
+<p>manager ma(“Amorphia”,”Spindragon”,”Nuancer”,5);<br>//cout&lt;&lt;ma&lt;&lt;endl;<br>//ma.showAll();</p>
+<p>fink fi(“Matt”,”Oggs”,”Olier”,”Juno Barr”);<br>//cout&lt;&lt;fi&lt;&lt;endl;<br>//fi.showAll();</p>
+<p>//highfink hf(ma,”Curly kew”);<br>highfink hf(fi,50);<br>hf.showAll();//这个似乎有点问题<br>//直接跳到了manager那里的showAll()，什么情况？//原来是我的show大小没注意<br>//格式你们自己搞<br>*/</p>
+<p>cout&lt;&lt;”Press a key for next phase:”&lt;&lt;endl;<br>cin.get();<br>//懒得写了，吃饭去<br>highfink hf2;<br>hf2.setAll();</p>
+<p>cout&lt;&lt;”Using an emp *point to it :”&lt;&lt;endl;</p>
+<p>hf2.showAll();</p>
+<p>cin.get();</p>
+<p>}</p>
+<p>  ————————————————————–分界线———————————————– 第17章有道题要用这个，于是回去发现了bug所在，新的在这里 ee.cpp</p>
+<p>#include <iostream><br>#include <string><br>#include <fstream><br>using namespace std;<br>static enum{Emp,Employee,Manager,Fink,Highfink};<br>//不能写成小写的emp，否则在main175中无法创建对应的对象<br>static void eatLine()<br>{<br>while(cin.get()!=’\n’)<br>continue;<br>};<br>class emp<br>{<br>private:</p>
+<p>string fname;<br>string lname;<br>string job;<br>public:<br>emp(){<br>fname=”fdefault”;<br>lname=”ldefault”;<br>job=”jdefault”;<br>}<br>emp(const string &amp;fn,const string &amp;ln,const string &amp;j){<br>fname=fn;<br>lname=ln;<br>job=j;<br>}</p>
+<p>virtual void Data(ofstream &amp;fout){//标记<br>fout&lt;&lt;Emp&lt;&lt;endl;<br>};<br>virtual void save(ofstream &amp;fout){<br>Data(fout);<br>fout&lt;&lt;fname&lt;&lt;endl;<br>fout&lt;&lt;lname&lt;&lt;endl;<br>fout&lt;&lt;job&lt;&lt;endl;</p>
+<p>};//保存到文本<br>//读取文本<br>virtual void getall(ifstream &amp;fin)<br>{<br>fin&gt;&gt;fname&gt;&gt;lname&gt;&gt;job;<br>}</p>
+<p>virtual void speciality()const=0<br>{<br>cout&lt;&lt;”this is emp:”&lt;&lt;endl;<br>}<br>virtual void showAll()const<br>{<br>speciality();//用于区分<br>cout&lt;&lt;”fullname:”&lt;&lt;fname&lt;&lt;”     lastname:”&lt;&lt;lname&lt;&lt;”  job:”&lt;&lt;job&lt;&lt;endl;<br>}<br>virtual void setAll()<br>{<br>//eatLine();//清除前面的输入<br>speciality();<br>cout&lt;&lt;”\nPlease enter the fullname:”;<br>//string ffname;//应该直接赋值给fname<br>//getline(cin,fname);<br>//eatLine();<br>cin&gt;&gt;fname;<br>cout&lt;&lt;”\nPlease enter the lastname:”;<br>//string llname;<br>//getline(cin,lname);<br>cin&gt;&gt;lname;<br>cout&lt;&lt;”\nPlease enter the job:”;<br>//string llname;<br>//getline(cin,job);<br>cin&gt;&gt;job;<br>//eatLine();<br>}<br>friend ostream&amp;operator&lt;&lt;(ostream &amp;os,const emp &amp;e)<br>{<br>e.showAll();//调用成员函数搞定<br>return os;<br>}<br>virtual ~emp(){}<br>};</p>
+<p>class employee:public emp<br>{<br>public:<br>employee(){};<br>employee(const string &amp;fn,const string &amp;ln,const string &amp;j):emp(fn,ln,j){};<br>virtual void speciality()const<br>{<br>cout&lt;&lt;”this is employee:”&lt;&lt;endl;<br>}<br>virtual void setAll()<br>{<br>emp::setAll();<br>}<br>virtual void showAll()const<br>{<br>//speciality();//这里无需调用，因为上一层已经调用过<br>emp::showAll();<br>}<br>virtual void Data(ofstream &amp;fout){//标记<br>fout&lt;&lt;Employee&lt;&lt;endl;<br>};<br>virtual void save(ofstream &amp;fout){<br>emp::save(fout);//没有新元素<br>};//保存到文本<br>virtual void getall(ifstream &amp;fin)<br>{<br>emp::getall(fin);<br>//fin&gt;&gt;fname&gt;&gt;lname&gt;&gt;job;<br>}</p>
+<p>};</p>
+<p>class manager:virtual public emp<br>{<br>private:<br>int inchargeof;<br>protected:<br>int InChargeOf()const{return inchargeof;};<br>int &amp;InChargeOf(){return inchargeof;};<br>void setI(int i)//设置inchargeof<br>{<br>inchargeof=i;<br>}<br>public:<br>manager(){};<br>manager(const string &amp;fn,const string &amp;ln,const string &amp;j,int c=0):emp(fn,ln,j),inchargeof(c){};<br>manager(const emp &amp;e,int ico):emp(e),inchargeof(ico){};<br>manager(const manager &amp;m):emp(m){<br>inchargeof=m.inchargeof;<br>}<br>virtual void speciality()const<br>{<br>cout&lt;&lt;”This is manager:”&lt;&lt;endl;<br>}<br>virtual void showAll()const{<br>emp::showAll();<br>cout&lt;&lt;”inchargeof:”&lt;&lt;inchargeof&lt;&lt;endl;</p>
+<p>};<br>virtual void setAll()<br>{<br>emp::setAll();<br>cout&lt;&lt;”Enter the inchargeof:”;<br>//int n;<br>cin&gt;&gt;inchargeof;<br>eatLine();<br>}<br>virtual void Data(ofstream &amp;fout){//标记<br>fout&lt;&lt;Manager&lt;&lt;endl;<br>};<br>virtual void save(ofstream &amp;fout){<br>emp::save(fout);<br>fout&lt;&lt;inchargeof&lt;&lt;endl;</p>
+<p>};//保存到文本<br>virtual void getall(ifstream &amp;fin)<br>{<br>emp::getall(fin);<br>fin&gt;&gt;inchargeof;<br>//fin&gt;&gt;fname&gt;&gt;lname&gt;&gt;job;<br>}<br>};</p>
+<p>class fink:virtual public emp<br>{<br>private:<br>string reportsto;<br>protected:<br>const string ReportsTo()const {return reportsto;};<br>string &amp;ReportsTo(){return reportsto;};<br>void setRe(string str)<br>{<br>reportsto=str;<br>}<br>public:<br>fink(){};<br>fink(const string &amp;fn,const string &amp;ln,const string &amp;j,const string &amp;rpo):emp(fn,ln,j),reportsto(rpo){}<br>fink(const emp &amp;e,const string &amp;rpo):emp(e),reportsto(rpo){}<br>fink(const fink &amp;e):emp(e)<br>{<br>reportsto=e.reportsto;<br>}<br>virtual void speciality()const<br>{<br>cout&lt;&lt;”this is fink:”&lt;&lt;endl;<br>}<br>virtual void showAll()const<br>{<br>emp::showAll();<br>cout&lt;&lt;”Reportsto:”&lt;&lt;reportsto&lt;&lt;endl;<br>}<br>virtual void setAll()<br>{<br>emp::setAll();<br>cout&lt;&lt;”Enter the reportsto:”;<br>//int n;<br>//getline(cin,reportsto);<br>cin&gt;&gt;reportsto;<br>eatLine();<br>//eatLine();<br>}</p>
+<p>virtual void Data(ofstream &amp;fout){//标记<br>fout&lt;&lt;Fink&lt;&lt;endl;<br>};<br>virtual void save(ofstream &amp;fout)<br>{<br>emp::save(fout);<br>fout&lt;&lt;reportsto&lt;&lt;endl;<br>};//保存到文本<br>virtual void getall(ifstream &amp;fin)<br>{<br>emp::getall(fin);<br>fin&gt;&gt;reportsto;<br>}</p>
+<p>};</p>
+<p>class highfink:public manager,public fink<br>{<br>public:</p>
+<p>highfink(){};<br>highfink(const string &amp;fn,const string &amp;ln,const string &amp;j,const string &amp;rpo,int ico)<br>:emp(fn,ln,j),manager(fn,ln,j,ico),fink(fn,ln,j,rpo){}<br>highfink(const emp &amp;e,const string &amp;rpo,int ico)<br>:emp(e),manager(e,ico),fink(e,rpo){}//注意这个构造是怎么构造的<br>highfink(const fink &amp;f,int ico)<br>:emp(f),fink(f),manager(f,ico){}//这样行不行呢？</p>
+<p>highfink(const manager &amp;m,const string &amp;rpo)<br>:emp(m),manager(m),fink(m,rpo){}</p>
+<p>highfink(const highfink &amp;h)<br>:emp(h),manager(h),fink(h){}//这样可否？？</p>
+<p>virtual void speciality()const//const必须与emp一致，否则会隐藏原来的,而不是重载<br>{<br>cout&lt;&lt;”This is highfink:”&lt;&lt;endl;<br>}<br>virtual void showAll()const//注意大小写不要写错了<br>{<br>//out&lt;&lt;”here is !”&lt;&lt;endl;<br>emp::showAll();<br>cout&lt;&lt;”Inchargeof:”&lt;&lt;InChargeOf()&lt;&lt;”   “;<br>cout&lt;&lt;”Reportsto:”&lt;&lt;ReportsTo()&lt;&lt;endl;<br>/*manager::showAll();<br>fink::showAll();*/<br>}<br>virtual void setAll()<br>{<br>emp::setAll();<br>cout&lt;&lt;”Enter the inchargeof:”;<br>int incharge;<br>cin&gt;&gt;incharge;<br>cin.get();//吃掉\n<br>setI(incharge);<br>cout&lt;&lt;”Enter the reportsto:”;<br>string res;<br>cin&gt;&gt;res;<br>setRe(res);<br>/*<br>manager::setAll();<br>fink::setAll();*/<br>}<br>virtual void getall(ifstream &amp;fin)<br>{<br>emp::getall(fin);</p>
+<p>}</p>
+<p>virtual void Data(ofstream &amp;fout){//标记<br>fout&lt;&lt;Highfink&lt;&lt;endl;<br>};<br>virtual void save(ofstream &amp;fout){//要特殊处理<br>emp::save(fout);<br>//Data(fout);<br>int n=InChargeOf();<br>fout&lt;&lt;n&lt;&lt;endl;<br>string str=ReportsTo();<br>fout&lt;&lt;str&lt;&lt;endl;<br>};//保存到文本</p>
+<p>};</p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#64;&#114;&#x6f;&#121;&#97;&#108;&#99;&#104;&#101;&#110;&#46;&#99;&#x6f;&#109;">&#114;&#x6f;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#64;&#114;&#x6f;&#121;&#97;&#108;&#99;&#104;&#101;&#110;&#46;&#99;&#x6f;&#109;</a> ———————————————————————————————————————————————————</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C++ primer plus</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C-primer-plus-课后编程题答案//" class="article-tag-list-link color3">C++primer plus 课后编程题答案</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88145/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cprimerplus第六版课后编程题答案151" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1225,106 +1364,6 @@
 
 
   
-    <article id="post-cprimerplus第六版课后编程题答案166" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88166/" target="_blank">C++ primer plus第六版课后编程题答案16.6</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88166/" class="archive-article-date">
-        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p> </p>
-<p>main166.cpp queue的说明请看：<a href="http://www.360doc.com/content/13/0912/17/3373961/_314003806.shtml">http://www.360doc.com/content/13/0912/17/3373961\_314003806.shtml</a></p>
-<p>#include <iostream><br>#include <queue><br>#include <cstdlib><br>#include <ctime><br>using namespace std;<br>//我懒得分开多个了，直接从前面的复制过来了<br>class Customer<br>{<br>private:<br>    long arrive;<br>    int processtime;<br>public:<br>    Customer(){arrive=processtime=0;};<br>    void set(long when){<br>        processtime=rand()%3+1;<br>        arrive=when;<br>    }<br>    long when()const{<br>        return arrive;<br>    }<br>    int ptime()<br>    {<br>        return processtime;<br>    }<br>    friend ostream&amp;operator&lt;&lt;(ostream &amp;os,const Customer &amp;c)//用于检测<br>    {<br>        static int j=0;<br>        os&lt;&lt;j++&lt;&lt;”  arrive:”&lt;&lt;c.arrive&lt;&lt;”    need time:”&lt;&lt;c.processtime&lt;&lt;endl;<br>        return os;<br>    }<br>};  </p>
-<p>typedef Customer Item;  </p>
-<p>const int MIN_PER_HR=60;<br>bool newCustomer(double x)//每隔x次，rand()/RAND_max会有一次值&lt;1<br>{<br>return rand()*x/RAND_MAX&lt;1;<br>}<br>void main166()<br>{<br>srand(time(0));//初始化rand();<br>cout&lt;&lt;”Case Study:Bank of Heather Automatic Teller”&lt;&lt;endl;<br>cout&lt;&lt;”Enter maximum size of queue:”;<br>int qs;<br>cin&gt;&gt;qs;<br>queue<Item> line;//queue模板没有大小一说</p>
-<p>cout&lt;&lt;”Enter the number of simulation hours:”;<br>int hours;<br>cin&gt;&gt;hours;<br>long cyclelimit=MIN_PER_HR*hours;//循环的分钟数</p>
-<p>cout&lt;&lt;”Enter the average number of customers per hour:”;//一个小时来的人数<br>double perhour;<br>cin&gt;&gt;perhour;<br>double min_per_cust;<br>min_per_cust=MIN_PER_HR/perhour;//平均多少分钟来一个人</p>
-<p>Item temp;<br>long turnaways=0;<br>long customers=0;<br>//long served=0;<br>long served=0;<br>long sum_line=0;<br>int wait_time=0;<br>long line_wait=0;</p>
-<p>for(int cycle=0;cycle&lt;cyclelimit;cycle++)//cycle每循环一次，代表过了一分钟<br>{<br>//line.s();<br>if(newCustomer(min_per_cust))<br>{<br>if(line.size()==qs)//这样就代表满了<br>turnaways++;//拒绝服务？？？//恩,应该就是拒绝服务的人数<br>else<br>{<br>customers++;//队列人数//应该是顾客人数+1而不是队列人数+1<br>temp.set(cycle);//cycle是到达时间<br>line.push(temp);//入队列</p>
-<p>}</p>
-<p>}<br>if(wait_time&lt;=0&amp;&amp;line.size()!=0)//用户处理完了业务<br>{<br>line.pop();//出队列，不会返回值<br>//cout&lt;&lt;”after the delete”&lt;&lt;line;//test<br>wait_time=temp.ptime();//wait_time是该客户处理业务所用时间<br>line_wait+=cycle-temp.when();//cycle-temp.when();是该客户一共在队列中等了多久<br>//一开始wait_time初始化是0，然后进入这里之后，又重新设置了使其=processtime<br>//line_wait是该队列一共等了多久？？哦，应该是所有客户的等待时间<br>//line_wait是客户等待总时间<br>served++;//服务人数+1<br>}</p>
-<p>if(wait_time&gt;0)//正在处理业务的处理时间-1，因为过了一分钟<br>wait_time–;//话说这wait_time是谁设置了？一直=0？<br>//wait_time=temp.ptime()这里随机设置了wait-time<br>sum_line+=line.size();//sum_line又是神马东东？？<br>//sum_line是队伍总长度，每分钟计算一次队伍长度<br>}</p>
-<p>if(customers&gt;0)<br>{<br>cout&lt;&lt;”customers accepted:”&lt;&lt;customers&lt;&lt;endl;<br>cout&lt;&lt;”customers served:”&lt;&lt;served&lt;&lt;endl;<br>cout&lt;&lt;”turnaways:”&lt;&lt;turnaways&lt;&lt;endl;<br>cout&lt;&lt;”average queue size:”;<br>cout.precision(2);<br>cout.setf(ios_base::fixed,ios_base::floatfield);<br>cout&lt;&lt;(double)sum_line/cyclelimit&lt;&lt;endl;<br>cout&lt;&lt;”average wait time:”&lt;&lt;(double)line_wait/served&lt;&lt;”  minutes”&lt;&lt;endl;<br>}//我机器上面是18人最接近1分钟，队列长度10,时间100<br>else<br>cout&lt;&lt;”No coustomer!”&lt;&lt;endl;<br>cout&lt;&lt;”Done!”&lt;&lt;endl;<br>system(“pause”);<br>}</p>
-<p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#111;&#121;&#97;&#108;&#99;&#104;&#x65;&#x6e;&#x40;&#114;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x2e;&#x63;&#111;&#109;">&#x72;&#111;&#121;&#97;&#108;&#99;&#104;&#x65;&#x6e;&#x40;&#114;&#x6f;&#x79;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x2e;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C-primer-plus-课后编程题答案//" class="article-tag-list-link color3">C++primer plus 课后编程题答案</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88166/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/43/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="page-number" href="/page/43/">43</a><span class="page-number current">44</span><a class="page-number" href="/page/45/">45</a><a class="page-number" href="/page/46/">46</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/45/">Next &amp;raquo;</a>
@@ -1341,7 +1380,7 @@
 			<div class="footer-left">
 				&copy; 
 					2015-
-							2021 <a href="http://www.royalchen.com/" target="_blank">
+							2022 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
 								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
@@ -1456,6 +1495,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">一点小心情</a>
               </li>
             
             <div class="clearfix"></div>

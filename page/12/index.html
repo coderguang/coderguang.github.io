@@ -241,6 +241,101 @@
 
 
   
+    <article id="post-【转】centos7网络配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/04/10/%E3%80%90%E8%BD%AC%E3%80%91centos7%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" target="_blank">【转】Centos7网络配置</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/04/10/%E3%80%90%E8%BD%AC%E3%80%91centos7%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+        <time datetime="2016-04-09T16:58:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-10</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>一. 查看网络地址：  </p>
+<p>centos7取消了ifconfig命令，使用ip addr命令查看IP地址</p>
+<p>二.配置网络</p>
+<p>用VirtualBox安装的CentOS7,安装完成后，发现无法上网，于是到网上查了一下，经过以下几步即可上网。</p>
+<p>1.找到以太网卡配置文件ifcfg-enp**文件，过面的数字好像是随机生成的。</p>
+<p><img src="http://www.centoscn.com/uploads/allimg/141012/1-141012235950M6.png"> 2. 使用Root打开并编辑些文件，将onboot的”no”改为“yes”，然后重启网络。 <img src="http://www.centoscn.com/uploads/allimg/141013/1-14101300000T07.png"> 最后输入:wq 保存并退出，再重启一下network： 3.重启网络命令 # service network restart 这样再启动系统时，网络也会自动启动。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/unix//" class="article-tag-list-link color5">unix</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/unix/软件管理//" class="article-tag-list-link color5">软件管理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/04/10/%E3%80%90%E8%BD%AC%E3%80%91centos7%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-【转】windows-server2008-r2-设置允许多个人远程连接桌面" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1103,96 +1198,6 @@
 
 
   
-    <article id="post-20144月金山wps笔试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/20144%E6%9C%88%E9%87%91%E5%B1%B1wps%E7%AC%94%E8%AF%95/" target="_blank">2014 4月金山WPS笔试</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/20144%E6%9C%88%E9%87%91%E5%B1%B1wps%E7%AC%94%E8%AF%95/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p> </p>
-<p>20144月金山WPS笔试</p>
-<p> </p>
-<p>今晚去参加了金山的笔试。 一开始还以为选C++的人不会很多。 我去啊，一去到，好多人，一整个大教室都快满人了。 还好我算是去的比较早的了。还拿到了一个位置。   金山还是挺不错的，对于我这类还没有实力进去腾讯阿狸百度这种大公司的程序猿来说。   还是说说笔试吧。 10道选择，三道大题。 考得都是比较基础的，主要是考你对模板已经文件读这一方面。 毕竟是招进去做WPS的。   自己做的还算不错吧，最后一道大题因为最后时间差不多了，也就只写了思想算了。 估计能拿到面试机会吧。 不过那么多人，也说不定。 坐等通知吧，继续努力！   像我们这种屌丝程序员，再不努力，屎都没得吃！ 这是我们班一个大神说的。   其实说的还是挺对的，只不过我并不这么想。 我相信，只要一步一个脚印，总会达到我想要的地方！ 我不怕我比别人晚成功两年，我只怕我会因为不能早日成功而放弃了为成功而做的努力！   这是我第一次参加宣讲会和参加笔试，感觉还是不错的。 就是回来的时候有点累。   晚安！</p>
-<p><a href="http://blog.csdn.net/qq844352155/article/details/23972983">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/一点小心情//" class="article-tag-list-link color1">一点小心情</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/20144%E6%9C%88%E9%87%91%E5%B1%B1wps%E7%AC%94%E8%AF%95/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/11/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/13/">Next &amp;raquo;</a>
@@ -1209,7 +1214,7 @@
 			<div class="footer-left">
 				&copy; 
 					2015-
-							2021 <a href="http://www.royalchen.com/" target="_blank">
+							2022 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
 								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
@@ -1324,6 +1329,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">一点小心情</a>
               </li>
             
             <div class="clearfix"></div>

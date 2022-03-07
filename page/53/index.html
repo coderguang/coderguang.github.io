@@ -241,6 +241,126 @@
 
 
   
+    <article id="post-c学习笔记8，const在函数方面的使用（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08%EF%BC%8Cconst%E5%9C%A8%E5%87%BD%E6%95%B0%E6%96%B9%E9%9D%A2%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank">C++学习笔记8，const在函数方面的使用（二）</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08%EF%BC%8Cconst%E5%9C%A8%E5%87%BD%E6%95%B0%E6%96%B9%E9%9D%A2%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
+        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p> </p>
+<p> </p>
+<p>const在函数中也有很大的作用。 4.const修饰传入参数。      函数传入参数声明为const，以指明使用这种参数仅仅是为了效率的原因，而不是想让调用函数能够修改该传入参数的值。同理，将对象指针参数或引用参数声明为const，函数将不修改由这个参数所指的对象。  例如：  </p>
+<p>#include <iostream><br>using namespace std;<br>//void change(const ing &amp;a)也是一样的<br>void change(const int *a)//修饰传入的指针类型参数或者是引用型参数<br>{//该函数体内不能修改*a的值<br>cout&lt;&lt;”in change() a=”&lt;&lt;*a&lt;&lt;endl;<br>*a=*a+10;//invalid<br>}<br>int main()<br>{<br>int i=10;<br>int *p=&i;<br>change(p);<br>cout&lt;&lt;”in main() p=”&lt;&lt;*p&lt;&lt;endl;<br>}</p>
+<p>编译结果：  <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020109_25646618518422.jpg">  5.修饰返回值的引用或者是修饰返回值为指针类型的指针  </p>
+<p>#include <iostream><br>using namespace std;<br>const int&amp; Max(const int &amp;a,const int &amp;b)<br>{</p>
+<pre><code>    //return a+5;//invalid
+</code></pre>
+<p>if(a&gt;b)<br>return a;<br>else<br>return b;<br>}<br>int main()<br>{<br>int a=2;<br>int b=5;<br>int c;<br>c=Max(a,b);<br>cout&lt;&lt;c&lt;&lt;endl;</p>
+<p>}</p>
+<p>//return a+5;//是不可行的，因为a+5实际上是一个临时的int变量。</p>
+<p>6.类的成员函数中const的使用  1):作为修饰的传入参数效果和上面4是一样的。  2):修饰返回对象的引用与5原理也是一样的，而且更为重要。  3):在成员函数的最后加上const修饰代表该函数不修改任何该对象的成语属性。  例如：  </p>
+<p>#include <iostream><br>using namespace std;</p>
+<p>class A<br>{<br>private:<br>int num;<br>public:<br>A(int i):num(i){<br>}<br>void setNum(int i)<br>{<br>num=i;<br>}<br>int Max(const A &amp;b)const  //const代表该函数不改变该调用对象的任何成员函数<br>{<br>      //this-&gt;num+=10;<br>//setNum(100); 也是不允许的，因为setNum()修改了该调用对象的num属性<br>if(this-&gt;num&gt;b.num)<br> return this-&gt;num;<br>else<br>  return b.num;<br>}<br>};<br>int main()<br>{<br>A a(10);<br>A b(5);<br>   int max=a.Max(b);<br>cout&lt;&lt;max&lt;&lt;endl;</p>
+<p>}</p>
+<p>  需要注意的是，在用const修饰类的成员属性的时候，const只是代表了只读属性，而不是一个常量。</p>
+<p>#include <iostream><br>using namespace std;<br>class A<br>{<br>private:<br>const int SIZE=5;<br>int arr[SIZE];//这里会编译错误</p>
+<p>};</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020112_32651119185417.jpg"> 还有一点就是，如果成员属性被const修饰，只能在声明的通过就进行初始化，或者是利用初始化器的方式初始化，而不能在构造函数体内初始化，这一点我会在以后的构造函数初始化内容里面说明。    </p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#104;&#101;&#110;&#64;&#x72;&#x6f;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;">&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#104;&#101;&#110;&#64;&#x72;&#x6f;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C-学习笔记//" class="article-tag-list-link color3">C++学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08%EF%BC%8Cconst%E5%9C%A8%E5%87%BD%E6%95%B0%E6%96%B9%E9%9D%A2%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-c学习笔记9，堆栈与堆的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1368,105 +1488,6 @@
 
 
   
-    <article id="post-关于cprimerplus第六版课后编程题答案18章的说明" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/%E5%85%B3%E4%BA%8Ecprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%8818%E7%AB%A0%E7%9A%84%E8%AF%B4%E6%98%8E/" target="_blank">关于“C++ primer plus第六版课后编程题答案”18章的说明</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/%E5%85%B3%E4%BA%8Ecprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%8818%E7%AB%A0%E7%9A%84%E8%AF%B4%E6%98%8E/" class="archive-article-date">
-        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p> </p>
-<p>由于编译器对C++新标准支持不太好，因此18章那四道题我就不写了。 如果谁写出来了运行过没有问题的，可以发给我，我发上博客，署上你的名字，因为有时候我怕有人过来我这里想找最后一章的答案却失望而归。 如果发现我以前的代码有BUG，也欢迎和我讨论，一起完善这份答案。 开始写这个博客是因为我在网上找答案的时候很多时候都找不到，而且找到的不一定都行。 很多新手有时候会因为找不到答案而有所灰心，因此为了纪念一下这段日子，同时帮助到一些人，写了这个博客。 从3.15开始看C++ primer plus 到现在的5.2,本来我以为大半个月就能搞定的了。 谁知道要用一个半月，哎，计划跟不上变化啊。 从这本书里我学到了很多的C++基础知识，对一些朦胧的概念也清楚了很多。 对C++的新标准也有所了解。 感谢这一个半月的拼搏，感谢自己。 一个一个脚本往前走，总会走到你想到的地方。 下一步，数据结构和算法。 因为，算法和数据结构才是一个程序的灵魂和心脏。 All  is  well.  </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x40;&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#110;&#46;&#x63;&#111;&#109;">&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x40;&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#110;&#46;&#x63;&#111;&#109;</a> ———————————————————————————————————————————————————</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C++ primer plus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C-primer-plus-课后编程题答案//" class="article-tag-list-link color3">C++primer plus 课后编程题答案</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/%E5%85%B3%E4%BA%8Ecprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%8818%E7%AB%A0%E7%9A%84%E8%AF%B4%E6%98%8E/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/52/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/52/">52</a><span class="page-number current">53</span><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/54/">Next &amp;raquo;</a>
@@ -1483,7 +1504,7 @@
 			<div class="footer-left">
 				&copy; 
 					2015-
-							2021 <a href="http://www.royalchen.com/" target="_blank">
+							2022 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
 								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
@@ -1598,6 +1619,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">一点小心情</a>
               </li>
             
             <div class="clearfix"></div>

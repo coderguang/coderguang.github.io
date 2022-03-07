@@ -241,6 +241,117 @@
 
 
   
+    <article id="post-git-和-svn-之间的五个基本区别【转】" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2017/09/29/git-%E5%92%8C-svn-%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%94%E4%B8%AA%E5%9F%BA%E6%9C%AC%E5%8C%BA%E5%88%AB%E3%80%90%E8%BD%AC%E3%80%91/" target="_blank">Git 和 SVN 之间的五个基本区别【转】</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2017/09/29/git-%E5%92%8C-svn-%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%94%E4%B8%AA%E5%9F%BA%E6%9C%AC%E5%8C%BA%E5%88%AB%E3%80%90%E8%BD%AC%E3%80%91/" class="archive-article-date">
+        <time datetime="2017-09-29T03:47:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>英文原文：<a href="http://boxysystems.com/index.php/5-fundamental-differences-between-git-svn/">5 Fundamental differences between GIT &amp; SVN</a>，编译：<a href="http://www.aqee.net/5-fundamental-differences-between-git-svn/">外刊IT评论</a></p>
+<p>如果你在读这篇文章，说明你跟大多数开发者一样对<a href="http://git-scm.com/">GIT</a>感兴趣，如果你还没有机会来试一试GIT，我想现在你就要了解它了。</p>
+<p><a href="http://git-scm.com/">GIT</a>不仅仅是个版本控制系统，它也是个内容管理系统(CMS),工作管理系统等。如果你是一个具有使用SVN背景的人，你需要做一定的思想转换，来适应GIT提供的一些概念和特征。所以，这篇文章的主要目的就是通过介绍GIT能做什么、它和<a href="http://subversion.tigris.org/">SVN</a>在深层次上究竟有什么不同来帮助你认识它。</p>
+<p>那好，这就开始吧…</p>
+<p><strong>1.GIT是分布式的，SVN不是：</strong></p>
+<p>这是GIT和其它非分布式的版本控制系统，例如SVN，CVS等，最核心的区别。如果你能理解这个概念，那么你就已经上手一半了。需要做一点声明，GIT并不是目前第一个或唯一的分布式版本控制系统。还有一些系统，例如<a href="http://www.bitkeeper.com/">Bitkeeper</a>, <a href="http://mercurial.selenic.com/">Mercurial</a>等，也是运行在分布式模式上的。但GIT在这方面做的更好，而且有更多强大的功能特征。</p>
+<p>GIT跟SVN一样有自己的集中式版本库或服务器。但，GIT更倾向于被使用于分布式模式，也就是每个开发人员从中心版本库/服务器上chect out代码后会在自己的机器上克隆一个自己的版本库。可以这样说，如果你被困在一个不能连接网络的地方时，就像在飞机上，地下室，电梯里等，你仍然能够提交文件，查看历史版本记录，创建项目分支，等。对一些人来说，这好像没多大用处，但当你突然遇到没有网络的环境时，这个将解决你的大麻烦。</p>
+<p>同样，这种分布式的操作模式对于开源软件社区的开发来说也是个巨大的恩赐，你不必再像以前那样做出补丁包，通过email方式发送出去，你只需要创建一个分支，向项目团队发送一个推请求。这能让你的代码保持最新，而且不会在传输过程中丢失。<a href="http://www.github.com/">GitHub.com</a>就是一个这样的优秀案例。</p>
+<p>有些谣言传出来说subversion将来的版本也会基于分布式模式。但至少目前还看不出来。</p>
+<p><strong>2.GIT把内容按元数据方式存储，而SVN是按文件：</strong></p>
+<p>所有的资源控制系统都是把文件的元信息隐藏在一个类似.svn,.cvs等的文件夹里。如果你把.git目录的体积大小跟.svn比较，你会发现它们差距很大。因为,.git目录是处于你的机器上的一个克隆版的版本库，它拥有中心版本库上所有的东西，例如标签，分支，版本记录等。</p>
+<p><strong>3.GIT分支和SVN的分支不同：</strong></p>
+<p>分支在SVN中一点不特别，就是版本库中的另外的一个目录。如果你想知道是否合并了一个分支，你需要手工运行像这样的命令_<a href="http://jan.baresovi.cz/dr/en/subversion-mergeinfo">svn propget svn:mergeinfo</a>_，来确认代码是否被合并。感谢Ben同学指出这个特征。所以，经常会发生有些分支被遗漏的情况。</p>
+<p>然而，处理GIT的分支却是相当的简单和有趣。你可以从同一个工作目录下快速的在几个分支间切换。你很容易发现未被合并的分支，你能简单而快捷的合并这些文件。</p>
+<p><a href="https://raw.githubusercontent.com/coderguang/img/master/hexo/2017/09/Git-branch-management-strategy1.png"><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2017/09/Git-branch-management-strategy1.png" alt="Git logo" title="Git logo 2"></a></p>
+<p><strong>4.GIT没有一个全局的版本号，而SVN有：</strong></p>
+<p>目前为止这是跟SVN相比GIT缺少的最大的一个特征。你也知道，SVN的版本号实际是任何一个相应时间的源代码快照。我认为它是从CVS进化到SVN的最大的一个突破。因为GIT和SVN从概念上就不同，我不知道GIT里是什么特征与之对应。如果你有任何的线索，请在评论里奉献出来与大家共享。</p>
+<p><em>更新：有些读者指出，我们可以使用GIT的SHA-1来唯一的标识一个代码快照。这个并不能完全的代替SVN里容易阅读的数字版本号。但，用途应该是相同的。</em></p>
+<p><strong>5.GIT的内容完整性要优于SVN：</strong></p>
+<p>GIT的内容存储使用的是<a href="http://en.wikipedia.org/wiki/SHA-1">SHA-1</a>哈希算法。这能确保代码内容的完整性，确保在遇到磁盘故障和网络问题时降低对版本库的破坏。这里有一个很好的关于GIT内容完整性的讨论 –<a href="http://stackoverflow.com/questions/964331/git-file-integrity">http://stackoverflow.com/questions/964331/git-file-integrity</a></p>
+<p>GIT和SVN之间只有这五处不同吗？当然不是。我想这5个只是<strong>“最基本的”</strong>和<strong>“最吸引人”</strong>的，我只想到这5点。如果你发现有比这5点更有趣的，请共享出来，欢迎。</p>
+<p>原址：<a href="http://blog.jobbole.com/31444/">http://blog.jobbole.com/31444/</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/unix//" class="article-tag-list-link color5">unix</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/unix/软件管理//" class="article-tag-list-link color5">软件管理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2017/09/29/git-%E5%92%8C-svn-%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%94%E4%B8%AA%E5%9F%BA%E6%9C%AC%E5%8C%BA%E5%88%AB%E3%80%90%E8%BD%AC%E3%80%91/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-第一次打麻醉" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1168,92 +1279,6 @@
 
 
   
-    <article id="post-浅谈怎样加快c代码的编译速度【转】" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2017/03/27/%E6%B5%85%E8%B0%88%E6%80%8E%E6%A0%B7%E5%8A%A0%E5%BF%ABc%E4%BB%A3%E7%A0%81%E7%9A%84%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6%E3%80%90%E8%BD%AC%E3%80%91/" target="_blank">浅谈怎样加快C++代码的编译速度【转】</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2017/03/27/%E6%B5%85%E8%B0%88%E6%80%8E%E6%A0%B7%E5%8A%A0%E5%BF%ABc%E4%BB%A3%E7%A0%81%E7%9A%84%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6%E3%80%90%E8%BD%AC%E3%80%91/" class="archive-article-date">
-        <time datetime="2017-03-27T15:43:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>**C++**代码一直以其运行时的高性能高调面对世人， 但是说起编译速度，却只有低调的份了。比如我现在工作的源代码，哪怕使用Incredibuild调动近百台机子，一个完整的build也需要四个小时，恐怖！！！虽然平时开发一般不需要在本地做完整的build，但编译几个相关的工程就够你等上好一段时间的了（老外管这个叫monkey around，相当形象）。想想若干年在一台单核2.8GHZ上工作时的场景 - 面前放本书，一点build按钮，就低头读一会书~~~往事不堪回首。 可以想象，如果不加以重视，编译速度极有可能会成为开发过程中的一个瓶颈。那么，为什么C++它就编译的这么慢呢？ 我想最重要的一个原因应该是C++基本的”头文件-源文件”的编译模型： 1.每个源文件作为一个编译单元，可能会包含上百甚至上千个头文件，而在每一个编译单元，这些头文件都会被从硬盘读进来一遍，然后被解析一遍。 2.每个编译单元都会产生一个obj文件，然后所以这些obj文件会被link到一起，并且这个过程很难并行。 这里，问题在于无数头文件的重复load与解析，以及密集的磁盘操作。 下面从各个角度给出一些加快编译速度的做法，主要还是针对上面提出的这个关键问题。 <strong>一、代码角度</strong> <strong>1、在头文件中使用前置声明，而不是直接包含头文件。</strong> 不要以为你只是多加了一个头文件，由于头文件的”被包含”特性，这种效果可能会被无限放大。所以，要尽一切可能使头文件精简。很多时候前置申明某个namespace中的类会比较痛苦，而直接include会方便很多，千万要抵制住这种诱惑；类的成员，函数参数等也尽量用引用，指针，为前置声明创造条件。 <strong>2、使用Pimpl模式</strong> Pimpl全称为Private Implementation。传统的C++的类的接口与实现是混淆在一起的，而Pimpl这种做法使得类的接口与实现得以完全分离。如此，只要类的公共接口保持不变，对类实现的修改始终只需编译该cpp；同时，该类提供给外界的头文件也会精简许多。 <strong>3、高度模块化</strong> 模块化就是低耦合，就是尽可能的减少相互依赖。这里其实有两个层面的意思。一是文件与文件之间，一个头文件的变化，尽量不要引起其他文件的重新编译；二是工程与工程之间，对一个工程的修改，尽量不要引起太多其他工程的编译。这就要求头文件，或者工程的内容一定要单一，不要什么东西都往里面塞，从而引起不必要的依赖。这也可以说是内聚性吧。 以头文件为例，不要把两个不相关的类，或者没什么联系的宏定义放到一个头文件里。内容要尽量单一，从而不会使包含他们的文件包含了不需要的内容。记得我们曾经做过这么一个事，把代码中最”hot”的那些头文件找出来，然后分成多个独立的小文件，效果相当可观。 其实我们去年做过的refactoring，把众多DLL分离成UI与Core两个部分，也是有着相同的效果的 - 提高开发效率。 <strong>4、删除冗余的头文件</strong> 一些代码经过上十年的开发与维护，经手的人无数，很有可能出现包含了没用的头文件，或重复包含的现象，去掉这些冗余的include是相当必要的。当然，这主要是针对cpp的，因为对于一个头文件，其中的某个include是否冗余很难界定，得看是否在最终的编译单元中用到了，而这样又可能出现在一个编译单元用到了，而在另外一个编译单元中没用到的情况。 之前曾写过一个Perl脚本用来自动去除这些冗余的头文件，在某个工程中竟然去掉多达了5000多个的include。 <strong>5、特别注意inline和template</strong> 这是C++中两种比较”先进”的机制，但是它们却又强制我们在头文件中包含实现，这对增加头文件的内容，从而减慢编译速度有着很大的贡献。使用之前，权衡一下。 <strong>二、综合技巧</strong> <strong>1、预编译头文件（PCH）</strong> 把一些常用但不常改动的头文件放在预编译头文件中。这样，至少在单个工程中你不需要在每个编译单元里一遍又一遍的load与解析同一个头文件了。 <strong>2、Unity Build</strong> Unity Build做法很简单，把所有的cpp包含到一个cpp中(all.cpp) ,然后只编译all.cpp。这样我们就只有一个编译单元，这意味着不需要重复load与解析同一个头文件了，同时因为只产生一个obj文件，在链接的时候也不需要那么密集的磁盘操作了,估计能有10x的提高，看看这个视频感受一下其做法与速度吧。 <strong>3、ccache</strong> compiler cache, 通过cache上一次编译的结果，使rebuild在保持结果相同的情况下，极大的提高速度。我们知道如果是build，系统会对比源代码与目标代码的时间来决定是否要重新编译某个文件，这个方法其实并不完全可靠(比如从svn上拿了上个版本的代码)，而ccache判断的原则则是文件的内容，相对来讲要可靠的多。 很可惜的是，Visual Studio现在还不支持这个功能 - 其实完全可以加一个新的命令，比如cache build，介于build与rebuild之间，这样，rebuild就可以基本不用了。 <strong>4、不要有太多的Additional Include Directories</strong> 编译器定位你include的头文件，是根据你提供的include directories进行搜索的。可以想象，如果你提供了100个包含目录，而某个头文件是在第100个目录下，定位它的过程是非常痛苦的。组织好你的包含目录，并尽量保持简洁。 <strong>三、编译资源</strong> 要提高速度，要么减少任务，要么加派人手，前面两个方面讲得都是减少任务，而事实上，在提高编译速度这块，加派人手还是有着非常重要的作用的。 <strong>1、并行编译</strong> 买个4核的，或者8核的cpu，每次一build，就是8个文件并行着编，那速度，看着都爽。 要是你们老板不同意，让他读读这篇文章：Hardware is Cheap, Programmers are Expensive <strong>2、更好的磁盘</strong> 我们知道，编译速度慢很大一部分原因是磁盘操作，那么除了尽可能的减少磁盘操作，我们还可以做的就是加快磁盘速度。比如上面8个核一块工作的时候，磁盘极有可能成为最大的瓶颈。买个15000转的磁盘，或者SSD，或者RAID0的，总之，越快越好。 <strong>3、分布式编译</strong> 一台机子的性能始终是有限的，利用网络中空闲的cpu资源，以及专门用来编译的build server来帮助你编译才能从根本上解决我们编译速度的问题，想想原来要build 1个多小时工程的在2分钟内就能搞定，你就知道你一定不能没有它 - Incredibuild。 <strong>4、并行，其实还可以这么做。</strong> 这是一个比较极端的情况，如果你用了Incredibuild，对最终的编译速度还是不满意，怎么办？其实只要跳出思维的框架，编译速度还是可以有质的飞跃的 - 前提是你有足够多的机器： 假设你有solution A和solution B，B依赖于A，所以必须在A之后Build B。其中A，B Build各需要1个小时，那么总共要2个小时。可是B一定要在A之后build吗？跳出这个思维框架，你就有了下述方案： ◦同时开始build A和B 。 ◦A的build成功，这里虽然B的build失败了，但都只是失败在最后的link上。 ◦重新link B中的project。 这样，通过让A的build与B的编译并行，最后link一下B中的project，整个编译速度应该能够控制在1个小时15分钟之内。 原文链接：<a href="http://www.debuggingnow.com/blog/2010/01/how-to-improve-build-performance-of-cpp-code.html">http://www.debuggingnow.com/blog/2010/01/how-to-improve-build-performance-of-cpp-code.html</a> 希望本文能给你帮助。</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C-C//" class="article-tag-list-link color1">C/C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2017/03/27/%E6%B5%85%E8%B0%88%E6%80%8E%E6%A0%B7%E5%8A%A0%E5%BF%ABc%E4%BB%A3%E7%A0%81%E7%9A%84%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6%E3%80%90%E8%BD%AC%E3%80%91/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
@@ -1270,7 +1295,7 @@
 			<div class="footer-left">
 				&copy; 
 					2015-
-							2021 <a href="http://www.royalchen.com/" target="_blank">
+							2022 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
 								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
@@ -1385,6 +1410,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">一点小心情</a>
               </li>
             
             <div class="clearfix"></div>

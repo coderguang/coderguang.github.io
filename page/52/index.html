@@ -241,6 +241,111 @@
 
 
   
+    <article id="post-c学习笔记31，指向引用的指针（3）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B031%EF%BC%8C%E6%8C%87%E5%90%91%E5%BC%95%E7%94%A8%E7%9A%84%E6%8C%87%E9%92%88%EF%BC%883%EF%BC%89/" target="_blank">C++学习笔记31，指向引用的指针（3）</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B031%EF%BC%8C%E6%8C%87%E5%90%91%E5%BC%95%E7%94%A8%E7%9A%84%E6%8C%87%E9%92%88%EF%BC%883%EF%BC%89/" class="archive-article-date">
+        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>我们来看一个简单的指向引用的指针的例子。</p>
+<p>#include <iostream><br>using namespace std;<br>int main(){<br>    int x=10;<br>    int y=20;<br>    int &amp;rtx=x;<br>    //不要写成了int&amp; *ptrx=&rtx;<br>    //因为rtx的本质是一个int<br>    int *ptrx=&rtx;<br>    *ptrx=15;<br>    ptrx=&y;<br>    rtx=y;<br>    cin.get();</p>
+<p>}</p>
+<p>依次单步执行：（注意rtx值的变化和ptrx的变化） <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015438_41729076349764.jpg"> 初始化引用rtx之后,rtx指向了x,其地址和&amp;x一致。 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015441_36890786282637.jpg"> 执行int *ptrx=&rtx;之后，初始化了ptrx,也是指向x; <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015443_12042625653561.jpg"> *ptrx=15;这一句执行后的结果 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015444_31961085693424.jpg"> 可以看到，改变的依旧是其值，其指向依旧没有改变，同时x的值也会随之改变。 执行ptrx=&amp;y之后 <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015446_43117919445617.jpg"> 可以看到ptrx的指向改变了，这是肯定的，但是rtx的指向并没有改变。 执行 rtx=y之后，是否指向会改变呢？答案是肯定的，不会！ <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015447_38390558724605.jpg"> 改变的依旧是rtx所指向的值！这就是指向引用的指针。  </p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#110;&#x40;&#x72;&#111;&#x79;&#97;&#108;&#99;&#104;&#101;&#x6e;&#x2e;&#99;&#111;&#x6d;">&#114;&#x6f;&#x79;&#97;&#x6c;&#99;&#x68;&#x65;&#110;&#x40;&#x72;&#111;&#x79;&#97;&#108;&#99;&#104;&#101;&#x6e;&#x2e;&#99;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C-学习笔记//" class="article-tag-list-link color3">C++学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B031%EF%BC%8C%E6%8C%87%E5%90%91%E5%BC%95%E7%94%A8%E7%9A%84%E6%8C%87%E9%92%88%EF%BC%883%EF%BC%89/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-c学习笔记30，指针的引用（2）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1260,126 +1365,6 @@ cout<<"pos2="<<pos2<<endl;
 
 
   
-    <article id="post-c学习笔记8，const在函数方面的使用（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08%EF%BC%8Cconst%E5%9C%A8%E5%87%BD%E6%95%B0%E6%96%B9%E9%9D%A2%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank">C++学习笔记8，const在函数方面的使用（二）</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08%EF%BC%8Cconst%E5%9C%A8%E5%87%BD%E6%95%B0%E6%96%B9%E9%9D%A2%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
-        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p> </p>
-<p> </p>
-<p>const在函数中也有很大的作用。 4.const修饰传入参数。      函数传入参数声明为const，以指明使用这种参数仅仅是为了效率的原因，而不是想让调用函数能够修改该传入参数的值。同理，将对象指针参数或引用参数声明为const，函数将不修改由这个参数所指的对象。  例如：  </p>
-<p>#include <iostream><br>using namespace std;<br>//void change(const ing &amp;a)也是一样的<br>void change(const int *a)//修饰传入的指针类型参数或者是引用型参数<br>{//该函数体内不能修改*a的值<br>cout&lt;&lt;”in change() a=”&lt;&lt;*a&lt;&lt;endl;<br>*a=*a+10;//invalid<br>}<br>int main()<br>{<br>int i=10;<br>int *p=&i;<br>change(p);<br>cout&lt;&lt;”in main() p=”&lt;&lt;*p&lt;&lt;endl;<br>}</p>
-<p>编译结果：  <img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020109_25646618518422.jpg">  5.修饰返回值的引用或者是修饰返回值为指针类型的指针  </p>
-<p>#include <iostream><br>using namespace std;<br>const int&amp; Max(const int &amp;a,const int &amp;b)<br>{</p>
-<pre><code>    //return a+5;//invalid
-</code></pre>
-<p>if(a&gt;b)<br>return a;<br>else<br>return b;<br>}<br>int main()<br>{<br>int a=2;<br>int b=5;<br>int c;<br>c=Max(a,b);<br>cout&lt;&lt;c&lt;&lt;endl;</p>
-<p>}</p>
-<p>//return a+5;//是不可行的，因为a+5实际上是一个临时的int变量。</p>
-<p>6.类的成员函数中const的使用  1):作为修饰的传入参数效果和上面4是一样的。  2):修饰返回对象的引用与5原理也是一样的，而且更为重要。  3):在成员函数的最后加上const修饰代表该函数不修改任何该对象的成语属性。  例如：  </p>
-<p>#include <iostream><br>using namespace std;</p>
-<p>class A<br>{<br>private:<br>int num;<br>public:<br>A(int i):num(i){<br>}<br>void setNum(int i)<br>{<br>num=i;<br>}<br>int Max(const A &amp;b)const  //const代表该函数不改变该调用对象的任何成员函数<br>{<br>      //this-&gt;num+=10;<br>//setNum(100); 也是不允许的，因为setNum()修改了该调用对象的num属性<br>if(this-&gt;num&gt;b.num)<br> return this-&gt;num;<br>else<br>  return b.num;<br>}<br>};<br>int main()<br>{<br>A a(10);<br>A b(5);<br>   int max=a.Max(b);<br>cout&lt;&lt;max&lt;&lt;endl;</p>
-<p>}</p>
-<p>  需要注意的是，在用const修饰类的成员属性的时候，const只是代表了只读属性，而不是一个常量。</p>
-<p>#include <iostream><br>using namespace std;<br>class A<br>{<br>private:<br>const int SIZE=5;<br>int arr[SIZE];//这里会编译错误</p>
-<p>};</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224020112_32651119185417.jpg"> 还有一点就是，如果成员属性被const修饰，只能在声明的通过就进行初始化，或者是利用初始化器的方式初始化，而不能在构造函数体内初始化，这一点我会在以后的构造函数初始化内容里面说明。    </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#104;&#101;&#110;&#64;&#x72;&#x6f;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;">&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#104;&#101;&#110;&#64;&#x72;&#x6f;&#121;&#x61;&#x6c;&#99;&#x68;&#x65;&#x6e;&#x2e;&#x63;&#x6f;&#x6d;</a> ———————————————————————————————————————————————————</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C-学习笔记//" class="article-tag-list-link color3">C++学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/c%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B08%EF%BC%8Cconst%E5%9C%A8%E5%87%BD%E6%95%B0%E6%96%B9%E9%9D%A2%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%BA%8C%EF%BC%89/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/51/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/50/">50</a><a class="page-number" href="/page/51/">51</a><span class="page-number current">52</span><a class="page-number" href="/page/53/">53</a><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/53/">Next &amp;raquo;</a>
@@ -1396,7 +1381,7 @@ cout<<"pos2="<<pos2<<endl;
 			<div class="footer-left">
 				&copy; 
 					2015-
-							2021 <a href="http://www.royalchen.com/" target="_blank">
+							2022 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
 								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
@@ -1511,6 +1496,10 @@ cout<<"pos2="<<pos2<<endl;
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">一点小心情</a>
               </li>
             
             <div class="clearfix"></div>

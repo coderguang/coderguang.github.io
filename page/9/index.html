@@ -241,6 +241,92 @@
 
 
   
+    <article id="post-浅谈怎样加快c代码的编译速度【转】" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2017/03/27/%E6%B5%85%E8%B0%88%E6%80%8E%E6%A0%B7%E5%8A%A0%E5%BF%ABc%E4%BB%A3%E7%A0%81%E7%9A%84%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6%E3%80%90%E8%BD%AC%E3%80%91/" target="_blank">浅谈怎样加快C++代码的编译速度【转】</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2017/03/27/%E6%B5%85%E8%B0%88%E6%80%8E%E6%A0%B7%E5%8A%A0%E5%BF%ABc%E4%BB%A3%E7%A0%81%E7%9A%84%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6%E3%80%90%E8%BD%AC%E3%80%91/" class="archive-article-date">
+        <time datetime="2017-03-27T15:43:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>**C++**代码一直以其运行时的高性能高调面对世人， 但是说起编译速度，却只有低调的份了。比如我现在工作的源代码，哪怕使用Incredibuild调动近百台机子，一个完整的build也需要四个小时，恐怖！！！虽然平时开发一般不需要在本地做完整的build，但编译几个相关的工程就够你等上好一段时间的了（老外管这个叫monkey around，相当形象）。想想若干年在一台单核2.8GHZ上工作时的场景 - 面前放本书，一点build按钮，就低头读一会书~~~往事不堪回首。 可以想象，如果不加以重视，编译速度极有可能会成为开发过程中的一个瓶颈。那么，为什么C++它就编译的这么慢呢？ 我想最重要的一个原因应该是C++基本的”头文件-源文件”的编译模型： 1.每个源文件作为一个编译单元，可能会包含上百甚至上千个头文件，而在每一个编译单元，这些头文件都会被从硬盘读进来一遍，然后被解析一遍。 2.每个编译单元都会产生一个obj文件，然后所以这些obj文件会被link到一起，并且这个过程很难并行。 这里，问题在于无数头文件的重复load与解析，以及密集的磁盘操作。 下面从各个角度给出一些加快编译速度的做法，主要还是针对上面提出的这个关键问题。 <strong>一、代码角度</strong> <strong>1、在头文件中使用前置声明，而不是直接包含头文件。</strong> 不要以为你只是多加了一个头文件，由于头文件的”被包含”特性，这种效果可能会被无限放大。所以，要尽一切可能使头文件精简。很多时候前置申明某个namespace中的类会比较痛苦，而直接include会方便很多，千万要抵制住这种诱惑；类的成员，函数参数等也尽量用引用，指针，为前置声明创造条件。 <strong>2、使用Pimpl模式</strong> Pimpl全称为Private Implementation。传统的C++的类的接口与实现是混淆在一起的，而Pimpl这种做法使得类的接口与实现得以完全分离。如此，只要类的公共接口保持不变，对类实现的修改始终只需编译该cpp；同时，该类提供给外界的头文件也会精简许多。 <strong>3、高度模块化</strong> 模块化就是低耦合，就是尽可能的减少相互依赖。这里其实有两个层面的意思。一是文件与文件之间，一个头文件的变化，尽量不要引起其他文件的重新编译；二是工程与工程之间，对一个工程的修改，尽量不要引起太多其他工程的编译。这就要求头文件，或者工程的内容一定要单一，不要什么东西都往里面塞，从而引起不必要的依赖。这也可以说是内聚性吧。 以头文件为例，不要把两个不相关的类，或者没什么联系的宏定义放到一个头文件里。内容要尽量单一，从而不会使包含他们的文件包含了不需要的内容。记得我们曾经做过这么一个事，把代码中最”hot”的那些头文件找出来，然后分成多个独立的小文件，效果相当可观。 其实我们去年做过的refactoring，把众多DLL分离成UI与Core两个部分，也是有着相同的效果的 - 提高开发效率。 <strong>4、删除冗余的头文件</strong> 一些代码经过上十年的开发与维护，经手的人无数，很有可能出现包含了没用的头文件，或重复包含的现象，去掉这些冗余的include是相当必要的。当然，这主要是针对cpp的，因为对于一个头文件，其中的某个include是否冗余很难界定，得看是否在最终的编译单元中用到了，而这样又可能出现在一个编译单元用到了，而在另外一个编译单元中没用到的情况。 之前曾写过一个Perl脚本用来自动去除这些冗余的头文件，在某个工程中竟然去掉多达了5000多个的include。 <strong>5、特别注意inline和template</strong> 这是C++中两种比较”先进”的机制，但是它们却又强制我们在头文件中包含实现，这对增加头文件的内容，从而减慢编译速度有着很大的贡献。使用之前，权衡一下。 <strong>二、综合技巧</strong> <strong>1、预编译头文件（PCH）</strong> 把一些常用但不常改动的头文件放在预编译头文件中。这样，至少在单个工程中你不需要在每个编译单元里一遍又一遍的load与解析同一个头文件了。 <strong>2、Unity Build</strong> Unity Build做法很简单，把所有的cpp包含到一个cpp中(all.cpp) ,然后只编译all.cpp。这样我们就只有一个编译单元，这意味着不需要重复load与解析同一个头文件了，同时因为只产生一个obj文件，在链接的时候也不需要那么密集的磁盘操作了,估计能有10x的提高，看看这个视频感受一下其做法与速度吧。 <strong>3、ccache</strong> compiler cache, 通过cache上一次编译的结果，使rebuild在保持结果相同的情况下，极大的提高速度。我们知道如果是build，系统会对比源代码与目标代码的时间来决定是否要重新编译某个文件，这个方法其实并不完全可靠(比如从svn上拿了上个版本的代码)，而ccache判断的原则则是文件的内容，相对来讲要可靠的多。 很可惜的是，Visual Studio现在还不支持这个功能 - 其实完全可以加一个新的命令，比如cache build，介于build与rebuild之间，这样，rebuild就可以基本不用了。 <strong>4、不要有太多的Additional Include Directories</strong> 编译器定位你include的头文件，是根据你提供的include directories进行搜索的。可以想象，如果你提供了100个包含目录，而某个头文件是在第100个目录下，定位它的过程是非常痛苦的。组织好你的包含目录，并尽量保持简洁。 <strong>三、编译资源</strong> 要提高速度，要么减少任务，要么加派人手，前面两个方面讲得都是减少任务，而事实上，在提高编译速度这块，加派人手还是有着非常重要的作用的。 <strong>1、并行编译</strong> 买个4核的，或者8核的cpu，每次一build，就是8个文件并行着编，那速度，看着都爽。 要是你们老板不同意，让他读读这篇文章：Hardware is Cheap, Programmers are Expensive <strong>2、更好的磁盘</strong> 我们知道，编译速度慢很大一部分原因是磁盘操作，那么除了尽可能的减少磁盘操作，我们还可以做的就是加快磁盘速度。比如上面8个核一块工作的时候，磁盘极有可能成为最大的瓶颈。买个15000转的磁盘，或者SSD，或者RAID0的，总之，越快越好。 <strong>3、分布式编译</strong> 一台机子的性能始终是有限的，利用网络中空闲的cpu资源，以及专门用来编译的build server来帮助你编译才能从根本上解决我们编译速度的问题，想想原来要build 1个多小时工程的在2分钟内就能搞定，你就知道你一定不能没有它 - Incredibuild。 <strong>4、并行，其实还可以这么做。</strong> 这是一个比较极端的情况，如果你用了Incredibuild，对最终的编译速度还是不满意，怎么办？其实只要跳出思维的框架，编译速度还是可以有质的飞跃的 - 前提是你有足够多的机器： 假设你有solution A和solution B，B依赖于A，所以必须在A之后Build B。其中A，B Build各需要1个小时，那么总共要2个小时。可是B一定要在A之后build吗？跳出这个思维框架，你就有了下述方案： ◦同时开始build A和B 。 ◦A的build成功，这里虽然B的build失败了，但都只是失败在最后的link上。 ◦重新link B中的project。 这样，通过让A的build与B的编译并行，最后link一下B中的project，整个编译速度应该能够控制在1个小时15分钟之内。 原文链接：<a href="http://www.debuggingnow.com/blog/2010/01/how-to-improve-build-performance-of-cpp-code.html">http://www.debuggingnow.com/blog/2010/01/how-to-improve-build-performance-of-cpp-code.html</a> 希望本文能给你帮助。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C-C//" class="article-tag-list-link color1">C/C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2017/03/27/%E6%B5%85%E8%B0%88%E6%80%8E%E6%A0%B7%E5%8A%A0%E5%BF%ABc%E4%BB%A3%E7%A0%81%E7%9A%84%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6%E3%80%90%E8%BD%AC%E3%80%91/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-为什么越努力就越焦虑，为什么努力不能带来快乐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1022,99 +1108,6 @@
 
 
   
-    <article id="post-《转》wordpress安全警报：利用xmlrpc-php进行暴力破解攻击" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/12/27/%E3%80%8A%E8%BD%AC%E3%80%8Bwordpress%E5%AE%89%E5%85%A8%E8%AD%A6%E6%8A%A5%EF%BC%9A%E5%88%A9%E7%94%A8xmlrpc-php%E8%BF%9B%E8%A1%8C%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E6%94%BB%E5%87%BB/" target="_blank">《转》WordPress安全警报：利用xmlrpc.php进行暴力破解攻击</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/12/27/%E3%80%8A%E8%BD%AC%E3%80%8Bwordpress%E5%AE%89%E5%85%A8%E8%AD%A6%E6%8A%A5%EF%BC%9A%E5%88%A9%E7%94%A8xmlrpc-php%E8%BF%9B%E8%A1%8C%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E6%94%BB%E5%87%BB/" class="archive-article-date">
-        <time datetime="2016-12-27T14:14:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-27</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><strong>情况描述</strong>：2014/03/13，Wooyun 乌云平台就报道<a href="http://drops.wooyun.org/news/1062" title="超过16W的WordPress网站被用来做DDoS攻击">《超过16W的WordPress网站被用来做DDoS攻击》</a> 其中罪魁祸首就是 xmlrpc.php 文件中的 pingback 功能； 2014/07/23，Freebuf 又报道<a href="http://www.freebuf.com/articles/web/38861.html" title="利用xmlrpc.php对WordPress进行暴力破解攻击">《利用xmlrpc.php对WordPress进行暴力破解攻击》</a>，指出虽然 WordPress 的正常登陆端口做了防暴力破解，但是可以通过 xmlrpc.php POST 到以下数据：</p>
-<blockquote>
-<?xml version=”1.0″ encoding=”iso-8859-1″?><p><methodCall> <methodName>wp.getUsersBlogs</methodName> <params> <param><value>username</value></param> <param><value>password</value></param> </params></methodCall></p>
-</blockquote>
-<p>几乎同时，小T站点也监测到针对xmlrpc.php的攻击： <a href="http://tzh.in/wp-content/uploads/2014/07/20140726174648.jpg"><img src="http://tzh.in/wp-content/uploads/2014/07/20140726174648.jpg" alt="20140726174648"></a>   由于可以直接获取管理员账号密码，危险性极高，已经被大规模应用到针对 WordPress 的攻击之中，所以建议各位 WordPress 站长立即采取措施。 <strong>解决办法：</strong> 方法一：安装 <strong><a href="http://wordpress.org/plugins/login-security-solution/">Login Security Solutin</a></strong> 插件，通过此插件设置密码尝试的次数。 <strong>P.S.：如果需要长时间在编辑器中写文章的童鞋，建议关闭 Login Security Solutin 中的 Idle Timeout 选项，将它设置为 0，这样就不会在默认的 15 分钟后被踢出后台，要求重新登陆了。</strong> 方法二：彻底关闭 XML-RPC 功能。如果没有使用 Word、Windows Live Writer 写博客的习惯，可以彻底关闭 XML-RPC，以绝后患。 在主题 functions.php 添加如下代码：（<strong>记得要在 &lt;?php 之后</strong>）</p>
-<blockquote>
-<p>add_filter(‘xmlrpc_enabled’, ‘__return_false’);</p>
-</blockquote>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/网站部署//" class="article-tag-list-link color5">网站部署</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/12/27/%E3%80%8A%E8%BD%AC%E3%80%8Bwordpress%E5%AE%89%E5%85%A8%E8%AD%A6%E6%8A%A5%EF%BC%9A%E5%88%A9%E7%94%A8xmlrpc-php%E8%BF%9B%E8%A1%8C%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E6%94%BB%E5%87%BB/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/10/">Next &amp;raquo;</a>
@@ -1131,7 +1124,7 @@
 			<div class="footer-left">
 				&copy; 
 					2015-
-							2021 <a href="http://www.royalchen.com/" target="_blank">
+							2022 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
 								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
@@ -1246,6 +1239,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">一点小心情</a>
               </li>
             
             <div class="clearfix"></div>

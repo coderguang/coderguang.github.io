@@ -241,6 +241,99 @@
 
 
   
+    <article id="post-《转》wordpress安全警报：利用xmlrpc-php进行暴力破解攻击" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/12/27/%E3%80%8A%E8%BD%AC%E3%80%8Bwordpress%E5%AE%89%E5%85%A8%E8%AD%A6%E6%8A%A5%EF%BC%9A%E5%88%A9%E7%94%A8xmlrpc-php%E8%BF%9B%E8%A1%8C%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E6%94%BB%E5%87%BB/" target="_blank">《转》WordPress安全警报：利用xmlrpc.php进行暴力破解攻击</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/12/27/%E3%80%8A%E8%BD%AC%E3%80%8Bwordpress%E5%AE%89%E5%85%A8%E8%AD%A6%E6%8A%A5%EF%BC%9A%E5%88%A9%E7%94%A8xmlrpc-php%E8%BF%9B%E8%A1%8C%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E6%94%BB%E5%87%BB/" class="archive-article-date">
+        <time datetime="2016-12-27T14:14:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-27</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><strong>情况描述</strong>：2014/03/13，Wooyun 乌云平台就报道<a href="http://drops.wooyun.org/news/1062" title="超过16W的WordPress网站被用来做DDoS攻击">《超过16W的WordPress网站被用来做DDoS攻击》</a> 其中罪魁祸首就是 xmlrpc.php 文件中的 pingback 功能； 2014/07/23，Freebuf 又报道<a href="http://www.freebuf.com/articles/web/38861.html" title="利用xmlrpc.php对WordPress进行暴力破解攻击">《利用xmlrpc.php对WordPress进行暴力破解攻击》</a>，指出虽然 WordPress 的正常登陆端口做了防暴力破解，但是可以通过 xmlrpc.php POST 到以下数据：</p>
+<blockquote>
+<?xml version=”1.0″ encoding=”iso-8859-1″?><p><methodCall> <methodName>wp.getUsersBlogs</methodName> <params> <param><value>username</value></param> <param><value>password</value></param> </params></methodCall></p>
+</blockquote>
+<p>几乎同时，小T站点也监测到针对xmlrpc.php的攻击： <a href="http://tzh.in/wp-content/uploads/2014/07/20140726174648.jpg"><img src="http://tzh.in/wp-content/uploads/2014/07/20140726174648.jpg" alt="20140726174648"></a>   由于可以直接获取管理员账号密码，危险性极高，已经被大规模应用到针对 WordPress 的攻击之中，所以建议各位 WordPress 站长立即采取措施。 <strong>解决办法：</strong> 方法一：安装 <strong><a href="http://wordpress.org/plugins/login-security-solution/">Login Security Solutin</a></strong> 插件，通过此插件设置密码尝试的次数。 <strong>P.S.：如果需要长时间在编辑器中写文章的童鞋，建议关闭 Login Security Solutin 中的 Idle Timeout 选项，将它设置为 0，这样就不会在默认的 15 分钟后被踢出后台，要求重新登陆了。</strong> 方法二：彻底关闭 XML-RPC 功能。如果没有使用 Word、Windows Live Writer 写博客的习惯，可以彻底关闭 XML-RPC，以绝后患。 在主题 functions.php 添加如下代码：（<strong>记得要在 &lt;?php 之后</strong>）</p>
+<blockquote>
+<p>add_filter(‘xmlrpc_enabled’, ‘__return_false’);</p>
+</blockquote>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/网站部署//" class="article-tag-list-link color5">网站部署</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/12/27/%E3%80%8A%E8%BD%AC%E3%80%8Bwordpress%E5%AE%89%E5%85%A8%E8%AD%A6%E6%8A%A5%EF%BC%9A%E5%88%A9%E7%94%A8xmlrpc-php%E8%BF%9B%E8%A1%8C%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E6%94%BB%E5%87%BB/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-感冒了-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1131,103 +1224,6 @@
 
 
   
-    <article id="post-莫名其妙嗓子炸了" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/08/23/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E5%97%93%E5%AD%90%E7%82%B8%E4%BA%86/" target="_blank">莫名其妙嗓子炸了</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/08/23/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E5%97%93%E5%AD%90%E7%82%B8%E4%BA%86/" class="archive-article-date">
-        <time datetime="2016-08-23T02:07:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>昨天下午茶吃了一串冰冻的龙眼，莫名其妙的嗓子炸了。 估计是周末的时候去游了两个小时泳，有点小感冒了。 有点坑爹。</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">心情</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/一点小吐槽//" class="article-tag-list-link color1">一点小吐槽</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/08/23/%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E5%97%93%E5%AD%90%E7%82%B8%E4%BA%86/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
@@ -1244,7 +1240,7 @@
 			<div class="footer-left">
 				&copy; 
 					2015-
-							2021 <a href="http://www.royalchen.com/" target="_blank">
+							2022 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
 								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
@@ -1359,6 +1355,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">一点小心情</a>
               </li>
             
             <div class="clearfix"></div>

@@ -241,6 +241,120 @@
 
 
   
+    <article id="post-stlvector的介绍1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/stlvector%E7%9A%84%E4%BB%8B%E7%BB%8D1/" target="_blank">STLvector的介绍(1)</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/stlvector%E7%9A%84%E4%BB%8B%E7%BB%8D1/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>STLvector的介绍(1)</p>
+<p>尝试下翻译STL里面的一些容易和算法。四级过了，六级刚考。顺便练练自己的英语水平，翻译的不好的地方请大神多多指教哈，方便我改正。</p>
+<p>原来均来自：<a href="http://www.cplusplus.com/">http://www.cplusplus.com/</a></p>
+<p>template &lt; class T, class Alloc = allocator<T> &gt; class vector; // generic template<br>Vector<br>Vectors are sequence containers representing arrays that can change in size.</p>
+<p>Just like arrays, vectors use contiguous storage locations for their elements, which means that their elements can also be accessed using offsets on regular pointers   </p>
+<p>to its elements, and just as efficiently as in arrays. But unlike arrays, their size can change dynamically, with their storage being handled automatically by the   </p>
+<p>container.  </p>
+<p>Internally, vectors use a dynamically allocated array to store their elements. This array may need to be reallocated in order to grow in size when new elements are   </p>
+<p>inserted, which implies allocating a new array and moving all elements to it. This is a relatively expensive task in terms of processing time, and thus, vectors do not   </p>
+<p>reallocate each time an element is added to the container.  </p>
+<p>Instead, vector containers may allocate some extra storage to accommodate for possible growth, and thus the container may have an actual capacity greater than the   </p>
+<p>storage strictly needed to contain its elements (i.e., its size). Libraries can implement different strategies for growth to balance between memory usage and   </p>
+<p>reallocations, but in any case, reallocations should only happen at logarithmically growing intervals of size so that the insertion of individual elements at the end   </p>
+<p>of the vector can be provided with amortized constant time complexity (see push_back).  </p>
+<p>Therefore, compared to arrays, vectors consume more memory in exchange for the ability to manage storage and grow dynamically in an efficient way.  </p>
+<p>Compared to the other dynamic sequence containers (deques, lists and forward_lists), vectors are very efficient accessing its elements (just like arrays) and   </p>
+<p>relatively efficient adding or removing elements from its end. For operations that involve inserting or removing elements at positions other than the end, they perform   </p>
+<p>worse than the others, and have less consistent iterators and references than lists and forward_lists.  </p>
+<p>译文：<br>容器：Vector<br>原型：<br>template &lt; class T, class Alloc = allocator<T> &gt; class vector;   </p>
+<p>描述：vector是一种顺序容器，其行为类似于大小可以改变的array数组。  </p>
+<p>跟array一样，vector使用连续的存储单元来存储里面的元素。这意味着vector可以使用正常的指针的偏移量来访问其元素。它跟array一样的高效，但是不同于array的是，vector的大小可以动态地改变，存储他们元素的空间可以自动地进行伸缩。  </p>
+<p>从内部来讲，vector动态地分派空间已存储array里面的元素，当新的元素插入时，这个array需要重新分配空间大小以容纳这个新的元素，这意味着要重新创建一个新的array并且把原来array里面的所有元素都移动到新的array里面。这将花费昂贵的时间代价来完成这项任务，所以，vector并不是每加入一个新的元素就重新分配一次空间。  </p>
+<p>作为一种解决方案，vector会在一开始就分配比所需空间更多的空间以适应可能的增长，因此，vector会拥有大于所需空间的实际空间（例如，vector实际上只需要存储2个元素，但是会分配5个元素的实际空间）。函数库可以使用不同的策略在内存使用以及重新分配之间达到一个平衡。但不论如何，重分配应该完成在对数时间内，这样，在vector尾部插入单个的元素所需的时间为摊还常量时间。  </p>
+<p>因此，相比较array,vector消耗更多的内存作为交换以实现高效的动态增长。  </p>
+<p>相比于其他的动态顺序容器(deques,lists,forward_lists),vector可以非常高效地访问其元素(像array一样高效)以及在尾部增加和删除元素也是相当高效。但是当在尾部以外的位置插入和删除时，它的表现不如其他如list或者是forward_lists容器，并且这会令迭代器以及引用失效。</p>
+<p>容器内容：<br>序列：<br>在顺序容器里面的元素都严格地排列在一个线性的序列里面。单个元素可以通过他们在序列中的位置直接访问。<br>动态数组<br>允许直接访问数组里面的任一元素，甚至是通过指针运算来访问，提供快速在序列尾部添加/删除元素的能力<br>分配器<br>容器使用分配器对象来动态地操控其存储所需。  </p>
+<p>模板参数：<br>T：<br>数组vector里面存放的元素类型，<br>只有T保证不会在移动时抛出异常，当重分配时实现会优化，使用移动元素来代替复制元素（C++11中的移动语义）。<br>Alloc:<br>内存分配器对象的类型，一般采用默认值。  </p>
+<p>//今天就先翻译着一点先。</p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/32408253">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL算法//" class="article-tag-list-link color1">STL算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/stlvector%E7%9A%84%E4%BB%8B%E7%BB%8D1/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-stlvector的构造函数和析构函数2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1392,97 +1506,6 @@
 
 
   
-    <article id="post-voidglutinitwindowsizeintwidthintheight设置初始窗口的大小" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/voidglutinitwindowsizeintwidthintheight%E8%AE%BE%E7%BD%AE%E5%88%9D%E5%A7%8B%E7%AA%97%E5%8F%A3%E7%9A%84%E5%A4%A7%E5%B0%8F/" target="_blank">voidglutInitWindowSize(int width,in theight)设置初始窗口的大小</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/voidglutinitwindowsizeintwidthintheight%E8%AE%BE%E7%BD%AE%E5%88%9D%E5%A7%8B%E7%AA%97%E5%8F%A3%E7%9A%84%E5%A4%A7%E5%B0%8F/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>voidglutInitWindowSize(intwidth,intheight)设置初始窗口的大小</p>
-<p>void glutInitWindowSize(int width, int height);  </p>
-<p>设置初始窗口的大小</p>
-<p>width:宽度,单位是像素</p>
-<p>height:高度,单位也是像素</p>
-<p><a href="http://blog.csdn.net/qq844352155/article/details/28611339">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/计算机图形相关//" class="article-tag-list-link color3">计算机图形相关</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/voidglutinitwindowsizeintwidthintheight%E8%AE%BE%E7%BD%AE%E5%88%9D%E5%A7%8B%E7%AA%97%E5%8F%A3%E7%9A%84%E5%A4%A7%E5%B0%8F/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/31/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="page-number" href="/page/31/">31</a><span class="page-number current">32</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/33/">Next &amp;raquo;</a>
@@ -1499,7 +1522,7 @@
 			<div class="footer-left">
 				&copy; 
 					2015-
-							2021 <a href="http://www.royalchen.com/" target="_blank">
+							2022 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
 								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
@@ -1614,6 +1637,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">一点小心情</a>
               </li>
             
             <div class="clearfix"></div>

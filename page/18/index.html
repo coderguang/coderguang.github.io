@@ -241,6 +241,135 @@
 
 
   
+    <article id="post-opengl函数glcolor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/opengl%E5%87%BD%E6%95%B0glcolor/" target="_blank">OpenGL函数glColor</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/opengl%E5%87%BD%E6%95%B0glcolor/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>OpenGL函数glColor</p>
+<p><strong>OpenGL函数思考-glColor</strong></p>
+<p><strong>函数原型:</strong></p>
+<p><strong>这部分来源于:老帅,感谢作者.</strong></p>
+<p> <strong>glColor3b</strong>,<strong>glColor3d</strong>,<strong>glColor3f</strong>,<strong>glColor3i</strong>,<strong>glColor3s</strong>,<strong>glColor3ub</strong>,<strong>glColor3ui</strong>,<strong>glColor3us</strong>,<strong>glColor4b</strong>,<strong>glColor4d</strong>,<strong>glColor4f</strong>,<strong>glColor4i</strong>,<strong>glColor4s</strong>,<strong>glColor4ub</strong>,<strong>glColor4ui</strong>,<strong>glColor4us</strong>,<strong>glColor3bv</strong>,<strong>glColor3dv</strong>,<strong>glColor3fv</strong>,<strong>glColor3iv</strong>,<strong>glColor3sv</strong>,<strong>glColor3ubv</strong>,<strong>glColor3uiv</strong>,<strong>glColor3usv</strong>,<strong>glColor4bv</strong>,<strong>glColor4dv</strong>,<strong>glColor4fv</strong>,<strong>glColor4iv</strong>,<strong>glColor4sv</strong>,<strong>glColor4ubv</strong>,<strong>glColor4uiv</strong>,<strong>glColor4usv</strong></p>
+<p> 例子：<strong>void <strong>glColor3f</strong>(GLfloat_red_, GLfloat_green_,GLfloat <em>blue</em>)</strong></p>
+<p><strong>函数说明</strong>:</p>
+<p> 设置当前颜色。如下例子</p>
+<p>例1：绘制一个平滑过度填充色的三角形和一个平面着色的四边形</p>
+<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224015655_37539268695610.gif"></p>
+<p> glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT);  // 根据glClearColor和glClearDepth指定的值清除颜色和深度缓存<br>  glLoadIdentity();                                     // 重置当前指定的矩阵为单位矩阵</p>
+<p> ……………………………………三角形…………………………………….</p>
+<p> //当您调用glLoadIdentity()之后，您实际上将当前点移到了屏幕中心，<br>  //X坐标轴从左至右，Y坐标轴从下至上，Z坐标轴从里至外。<br>  //OpenGL屏幕中心的坐标值是X和Y轴上的0.0f点。<br>  //中心左面的坐标值是负值，右面是正值。移向屏幕顶端是正值，移向屏幕底端是负值。移入屏幕深处是负值，移出屏幕则是正值。<br>  glTranslatef(-1.5,0.0,-6.0); // 左移 1.5 单位，并移入屏幕 6.0</p>
+<p> //glEnd()出现后，三角形将被填充。因为每个顶点有不同的颜色，因此看起来颜色从每个角喷出，并刚好在三角形的中心汇合，<br>  //三种颜色相互混合，这就是平滑着色<br>  glBegin(GL_TRIANGLES); // 绘制三角形（逆时针画出来的三角形才是正面朝着我们的）<br>    glColor3f(1.0,0.0,0.0);     // 设置当前色为红色<br>    glVertex3f(-1.0,-1.0, 0.0); // 左下顶点（//glVertex 的第一个参数是X坐标，然后依次是Y坐标和Z坐标）<br>    glColor3f(0.0,1.0,0.0);     // 设置当前色为绿色<br>    glVertex3f( 1.0,-1.0, 0.0); // 右下顶点<br>    glColor3f(0.0,0.0,1.0);     // 设置当前色为蓝色<br>    glVertex3f( 0.0, 1.0, 0.0); // 上顶点<br>  glEnd(); // 三角形绘制结束</p>
+<p> ……………………………………正方形…………………………………….</p>
+<p> //在屏幕的左半部分画完三角形后，我们要移到右半部分来画正方形。<br>  //这次右移，所以X坐标值为正值。因为前面左移了1.5个单位，<br>  //这次要先向右移回屏幕中心(1.5个单位)，再向右移动1.5个单位。总共要向右移3.0个单位。<br>  glTranslatef(3.0,0.0,0.0); // 右移3单位</p>
+<p> glColor3f(0.5,0.5,1.0); // 一次性将当前色设置为蓝色<br>  glBegin(GL_QUADS);      // 绘制正方形（逆时针画出来的正方形才是正面朝着我们的）<br>    glVertex3f(-1.0,-1.0, 0.0); // 左下<br>    glVertex3f( 1.0,-1.0, 0.0); // 右下<br>    glVertex3f( 1.0, 1.0, 0.0); // 右上<br>    glVertex3f(-1.0, 1.0, 0.0); // 左上<br>  glEnd(); // 正方形绘制结束</p>
+<p>这部分来源于:<a href="http://blog.csdn.net/jcy8126/article/details/8241097">http://blog.csdn.net/jcy8126/article/details/8241097</a></p>
+<p>里面的参数为:</p>
+<p>0.0  – &gt;  不使用颜色成分；</p>
+<p>1.0  – &gt;  使用颜色的最大值</p>
+<p>具体的有：</p>
+<p><strong>[cpp]</strong> <a href="http://blog.csdn.net/jcy8126/article/details/8241097#" title="view plain">view plain</a><a href="http://blog.csdn.net/jcy8126/article/details/8241097#" title="copy">copy</a></p>
+<ol>
+<li> glColor3f(0.0, 0.0, 0.0);  –&gt; 黑色 </li>
+<li> glColor3f(1.0, 0.0, 0.0);  –&gt; 红色 </li>
+<li> glColor3f(0.0, 1.0, 0.0);  –&gt; 绿色 </li>
+<li> glColor3f(0.0, 0.0, 1.0);  –&gt; 蓝色 </li>
+<li> glColor3f(1.0, 1.0, 0.0);  –&gt; 黄色 </li>
+<li> glColor3f(1.0, 0.0, 1.0);  –&gt; 品红色 </li>
+<li> glColor3f(0.0, 1.0, 1.0);  –&gt; 青色 </li>
+<li>glColor3f(1.0, 1.0, 1.0);  –&gt; 白色 </li>
+</ol>
+<p>需要注意的是，如果在glBegin()与glEnd()函数之间多次连续调用颜色函数，那么，只会显示出最后一次的颜色，例如：</p>
+<p><strong>[cpp]</strong> <a href="http://blog.csdn.net/jcy8126/article/details/8241097#" title="view plain">view plain</a><a href="http://blog.csdn.net/jcy8126/article/details/8241097#" title="copy">copy</a></p>
+<ol>
+<li> glBegin(GL_POINTS) </li>
+<li>  glColor3f(0.0, 1.0,  0.0);  //绿色 </li>
+<li>  glColor3f(1.0, 1.0,  0.0);  //黄色 </li>
+<li>  glVertex(0.25, 0.75, 0.0); </li>
+<li> glEnd(); </li>
+</ol>
+<p>那么，画出来的这条线只是黄色的。</p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/28611019">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/计算机图形相关//" class="article-tag-list-link color3">计算机图形相关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/opengl%E5%87%BD%E6%95%B0glcolor/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-opengl函数glvertex指定顶点的值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1421,154 +1550,6 @@
 
 
   
-    <article id="post-stlalgorithm算法any-of译文及使用（3）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95any-of%E8%AF%91%E6%96%87%E5%8F%8A%E4%BD%BF%E7%94%A8%EF%BC%883%EF%BC%89/" target="_blank">STLalgorithm算法any_of译文及使用（3）</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95any-of%E8%AF%91%E6%96%87%E5%8F%8A%E4%BD%BF%E7%94%A8%EF%BC%883%EF%BC%89/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>STLalgorithm算法any_of译文及使用（3）</p>
-<p>原文地址：<a href="http://www.cplusplus.com/reference/algorithm/any/_of/">http://www.cplusplus.com/reference/algorithm/any\_of/</a></p>
-<p>function template</p>
-<algorithm>
-
-<h1 id="std-any-of"><a href="#std-any-of" class="headerlink" title="std::any_of"></a>std::any_of</h1><p>template &lt;class InputIterator, class UnaryPredicate&gt;<br>  bool any_of (InputIterator first, InputIterator last, UnaryPredicate pred);</p>
-<p>Test if any element in range fulfills condition</p>
-<p>Returns <code>true</code> if pred returns <code>true</code> for any of the elements in the range <code>[first,last)</code>, and <code>false</code> otherwise.  </p>
-<p>如果范围内任一元素使pred返回true,则返回true,否则返回false.</p>
-<p>例子：</p>
-<p>#include <iostream><br>#include <algorithm><br>using namespace std;<br>bool isGreat(int i){<br>if(i&gt;=5){<br>cout&lt;&lt;i&lt;&lt;”&gt;=5”&lt;&lt;” ,match!”&lt;&lt;endl;<br>return true;<br>}<br>else{<br>cout&lt;&lt;i&lt;&lt;”&lt;5”&lt;&lt;” ,mismatch!”&lt;&lt;endl;<br>return false;<br>}<br>}<br>int main()<br>{<br>vector<int> vi{0,1,2,3,4,5,6};<br>if(any_of(vi.begin(),vi.end(),isGreat))<br>cout&lt;&lt;”Yes,some elements in vi  &gt;=5 “&lt;&lt;endl;<br>else<br>cout&lt;&lt;”no,all elements in vi didn’t &gt;=1 “&lt;&lt;endl;</p>
-<p>cout&lt;&lt;endl;<br>int ar[5]={10,20,30,40,50};<br>if(any_of(ar,ar+5,[](int i){return i%10;}))<br>cout&lt;&lt;”some in ar can %10!=0”&lt;&lt;endl;<br>else<br>cout&lt;&lt;”all %10=0!”&lt;&lt;endl;</p>
-<p>}</p>
-<p>运行截图：</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013906_10310669562095.jpg">  </p>
-<p>If <code>[first,last)</code> is an empty range, the function returns <code>false</code>.</p>
-<p>如果范围为空，则返回false.(因为没有任一匹配)</p>
-<p>例子：</p>
-<p>#include <iostream><br>#include <algorithm><br>using namespace std;<br>bool isGreat(int i){<br>if(i&gt;=5){<br>cout&lt;&lt;i&lt;&lt;”&gt;=5”&lt;&lt;” ,match!”&lt;&lt;endl;<br>return true;<br>}<br>else{<br>cout&lt;&lt;i&lt;&lt;”&lt;5”&lt;&lt;” ,mismatch!”&lt;&lt;endl;<br>return false;<br>}<br>}<br>int main()<br>{<br>vector<int> vi{0,1,2,3,4,5,6};<br>if(any_of(vi.begin(),vi.begin(),isGreat))<br>cout&lt;&lt;”emptiy=true “&lt;&lt;endl;<br>else<br>cout&lt;&lt;”emptiy=false “&lt;&lt;endl;</p>
-<p>}</p>
-<p><img src="https://raw.githubusercontent.com/coderguang/img/master/hexo/2016/02/20160224013907_48042196525124.jpg">  </p>
-<p>The behavior of this function template is equivalent to:</p>
-<p>行为类似以下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class InputIterator, class UnaryPredicate&gt;</span><br><span class="line">  bool any_of (InputIterator first, InputIterator last, UnaryPredicate pred)</span><br><span class="line">&#123;</span><br><span class="line">  while (first!=last) &#123;</span><br><span class="line">    if (pred(*first)) return true;</span><br><span class="line">    ++first;</span><br><span class="line">  &#125;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>first, last</p>
-<p><a href="http://www.cplusplus.com/InputIterator">Input iterators</a> to the initial and final positions in a sequence. The range used is <code>[first,last)</code>, which contains all theelements between first and last, including the element pointed by first but not the element pointed by last.</p>
-<p>标示序列范围的输入迭代器。包含了first,last之间的所有元素，包括first指向的元素，但不包括last.  </p>
-<p>pred</p>
-<p>Unary function that accepts an element in the range as argument and returns a value convertible to <code>bool</code>. The value returned indicates whether the element fulfills the condition checked by this function.<br>The function shall not modify its argument.  </p>
-<p>This can either be a function pointer or a function object.</p>
-<p>一个接受一个元素类型参数并返回一个bool值的一元函数。</p>
-<p>可以是一个指针或者函数对象。</p>
-<h3 id="Return-value"><a href="#Return-value" class="headerlink" title="Return value"></a>Return value</h3><p><code>true</code> if pred returns <code>true</code> for any of the elements in the range <code>[first,last)</code>, and <code>false</code> otherwise.  </p>
-<p>如果任一的元素对pred的返回值是true，那么返回true,否则返回false.  </p>
-<p>If <code>[first,last)</code> is an empty range, the function returns <code>false</code>.  </p>
-<p>如果范围为空，则返回false.</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// any_of example</span><br><span class="line">#include &lt;iostream&gt;     // std::cout</span><br><span class="line">#include &lt;algorithm&gt;    // std::any_of</span><br><span class="line">#include &lt;array&gt;        // std::array</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">  std::array&lt;int,7&gt; foo = &#123;0,1,-1,3,-3,5,-5&#125;;</span><br><span class="line"></span><br><span class="line">  if ( std::any_of(foo.begin(), foo.end(), [](int i)&#123;return i&lt;0;&#125;) )</span><br><span class="line">    std::cout &lt;&lt; &quot;There are negative elements in the range.\n&quot;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="http://www.cplusplus.com/reference/algorithm/any_of/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
-<p>Output:  </p>
-<p>There are negative elements in the range. </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Up to linear in the <a href="http://www.cplusplus.com/distance">distance</a> between first and last: Calls pred for each element until a match is found.  </p>
-<p>和first,last之间的距离线性相关，对每个元素调用pred直到一个匹配的值。  </p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>Some (or all) of the objects in the range <code>[first,last)</code> are accessed (once at most).  </p>
-<p>最少一个元素被访问。</p>
-<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>Throws if either pred or an operation on an iterator throws.  </p>
-<p>Note that invalid parameters cause <em>undefined behavior</em>.</p>
-<p>如果pred或者操作迭代器会抛出异常就会抛出异常。</p>
-<p>无效的参数导致未定义的行为。</p>
-<p>——————————————————————————————————————————————————————————————————</p>
-<p>//写的错误或者不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
-<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
-<p>author:天下无双  </p>
-<p>Email:<a href="mailto:&#99;&#x6f;&#100;&#101;&#x72;&#103;&#117;&#97;&#110;&#x67;&#x40;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#99;&#x6f;&#100;&#101;&#x72;&#103;&#117;&#97;&#110;&#x67;&#x40;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a></p>
-<p>2014-9-1</p>
-<p>于GDUT</p>
-<p>——————————————————————————————————————————————————————————————————</p>
-<p><a href="http://blog.csdn.net/qq844352155/article/details/38982619">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL算法//" class="article-tag-list-link color1">STL算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlalgorithm%E7%AE%97%E6%B3%95any-of%E8%AF%91%E6%96%87%E5%8F%8A%E4%BD%BF%E7%94%A8%EF%BC%883%EF%BC%89/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/17/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/19/">Next &amp;raquo;</a>
@@ -1585,7 +1566,7 @@
 			<div class="footer-left">
 				&copy; 
 					2015-
-							2021 <a href="http://www.royalchen.com/" target="_blank">
+							2022 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
 								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
@@ -1700,6 +1681,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">一点小心情</a>
               </li>
             
             <div class="clearfix"></div>

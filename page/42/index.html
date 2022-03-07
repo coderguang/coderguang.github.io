@@ -241,6 +241,132 @@
 
 
   
+    <article id="post-cprimerplus第六版课后编程题答案112绝世大坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88112%E7%BB%9D%E4%B8%96%E5%A4%A7%E5%9D%91/" target="_blank">C++ primer plus第六版课后编程题答案11.2绝世大坑</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88112%E7%BB%9D%E4%B8%96%E5%A4%A7%E5%9D%91/" class="archive-article-date">
+        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>   </p>
+<p>调了两小时友元函数过不了，重新建一个项目马上就行了 VS真坑！ vector112.h</p>
+<p>#ifndef VECTOR112_H_<br>#define VECTOR112_H_<br>#include <iostream><br>namespace VECTOR112<br>{<br>//class Vector112;<br>//std::ostream&amp;operator&lt;&lt;(std::ostream &amp;os,const Vector112 &amp;v);</p>
+<p>class Vector112{<br>public:<br>enum Mode{RECT,POL};<br>private:<br>double x;<br>double y;<br>Mode mode;</p>
+<p>//void set_mag();<br>//void set_ang();<br>void set_x(double mag,double ang);//改成接收一个mag,然后设置x<br>void set_y(double mag,double ang);<br>public:<br>Vector112();<br>Vector112(double n1,double n2,Mode form=RECT);<br>void reset(double n1,double n2,Mode form=RECT);<br>~Vector112();<br>double xval()const {return x;};<br>double yval()const{return y;};<br>double magval()const;//这里开始改了<br>double angval()const;//必须用const限定，否则重载&lt;&lt;会出错<br>void polar_mode();<br>void rect_mode();</p>
+<p>Vector112 operator+(const Vector112 &amp;b)const;<br>Vector112 operator-(const Vector112 &amp;b)const;<br>Vector112 operator-()const;<br>Vector112 operator*(double n)const;</p>
+<p>friend Vector112 operator*(double n,const Vector112 &amp;v);<br>//friend std::ostream&amp;operator&lt;&lt;(std::ostream &amp;os,const Vector112 &amp;v);<br>friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os,const Vector112 &amp;v);<br>};<br>};<br>#endif</p>
+<p>vector112.cpp</p>
+<p>#include “vector112.h”<br>#include <cmath><br>//using namespace std;<br>//using namespace VECTOR112;<br>using std::sqrt;<br>using std::sin;<br>using std::cos;<br>using std::atan;<br>using std::atan2;<br>using std::cout;</p>
+<p>namespace VECTOR112{<br>const double Rad_to_deg=45.0/atan(1.0);</p>
+<p>void Vector112::set_x(double mag,double ang)//改成接收mag,ang<br>{<br>x=mag*cos(ang);//设置x<br>}<br>void Vector112::set_y(double mag,double ang)<br>{<br>y=mag*sin(ang);<br>}</p>
+<p>Vector112::Vector112()<br>{<br>x=y=0.0;<br>mode=RECT;<br>}<br>Vector112::Vector112(double n1,double n2,Mode form)<br>{<br>mode=form;<br>if(form==RECT)<br>{<br>x=n1;<br>y=n2;<br>}<br>else if(form==POL)<br>{<br>set_x(n1,n2);<br>set_y(n1,n2);<br>}<br>else<br>{<br>cout&lt;&lt;”Incorrect 3rd argument to Vector()–”;<br>cout&lt;&lt;”vector set to 0\n”;<br>x=y=0.0;<br>mode=RECT;<br>}</p>
+<p>}</p>
+<p>void Vector112::reset(double n1,double n2,Mode form)//重置值<br>{<br>mode=form;<br>if(form==RECT)<br>{<br>x=n1;<br>y=n2;<br>}<br>else if(form==POL)<br>{<br>set_x(n1,n2);<br>set_y(n1,n2);<br>}<br>else<br>{<br>cout&lt;&lt;”Incorrect 3rd argument to Vector()–”;<br>cout&lt;&lt;”vector set to 0\n”;<br>x=y=0.0;<br>mode=RECT;<br>}</p>
+<p>}</p>
+<p>double Vector112::magval()const<br>{<br>return sqrt(x*x+y*y);//计算公式看书本的set_mag<br>}<br>double Vector112::angval()const//计算公式看书本的set_ang<br>{<br>if(x==0.0&amp;&amp;y==0.0)<br>return 0.0;<br>else<br>return atan2(y,x);<br>}</p>
+<p>void Vector112::polar_mode()<br>{<br>mode=POL;//直接将状态改了？？？<br>}</p>
+<p>void Vector112::rect_mode()<br>{<br>mode=RECT;//x,y不变的啊！<br>}</p>
+<p>Vector112::~Vector112()<br>{};</p>
+<p>Vector112  Vector112::operator+(const Vector112 &amp;v)const<br>{<br>return Vector112(x+v.x,y+v.y);<br>}<br>Vector112  Vector112::operator-(const Vector112 &amp;v)const<br>{<br>return Vector112(x-v.x,y-v.y);<br>}</p>
+<p>Vector112  Vector112::operator-()const<br>{<br>return Vector112(-x,-y);<br>}</p>
+<p>Vector112  Vector112::operator*(double n)const<br>{<br>return Vector112(x*n,y*n);<br>}<br>//friend methods</p>
+<p>Vector112 operator*(double n,const Vector112 &amp;v)<br>{<br>return v*n;<br>}<br>//不知为何，在上一个项目里面编译这个友元函数总是报错<br>//说无法访问v.mode中的mode，以及v.x中的x<br>//可能是上个项目太多东西了，obj有点混<br>std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os,const Vector112 &amp;v)<br>{<br>if(v.mode==Vector112::RECT)//必须用Vector::<br>os&lt;&lt;”(x,y)=(“&lt;&lt;v.x&lt;&lt;”,”&lt;&lt;v.y&lt;&lt;”)”;<br>else if(v.mode==Vector112::POL)<br>{<br>os&lt;&lt;”(m,a)=(“&lt;&lt;v.magval()&lt;&lt;”,”&lt;&lt;v.angval()*Rad_to_deg&lt;&lt;”)”;<br>}<br>else<br>os&lt;&lt;”Vector object mode is invalid!”;<br>return os;<br>}<br>};</p>
+<p>main.cpp</p>
+<p>#include <iostream><br>#include <fstream><br>#include <cstdio><br>#include <ctime><br>//#include <vector><br>#include “vector112.h”<br>using namespace std;<br>using  namespace VECTOR112;<br>int main()<br>{<br>ofstream fin;<br>//fin.open(“111.txt”);//打开文件<br>//if(fin.fail())<br>//cout&lt;&lt;”open fali!”&lt;&lt;endl;<br>//else<br>//cout&lt;&lt;”Sucess!”&lt;&lt;endl;<br>//fin&lt;&lt;”111”;<br>srand(time(0));<br>double direction;<br>Vector112 step;<br>Vector112 result(0.0,0.0);<br>unsigned long steps=0;<br>double target;//要走的距离<br>double dstep;//每一步的距离<br>cout&lt;&lt;”Enter step length:(q to quit:)”;<br>while(cin&gt;&gt;target)<br>{<br>cout&lt;&lt;”Enter step length:”;<br>if(!(cin&gt;&gt;dstep))<br>break;<br>int i=0;<br>while(result.magval()&lt;target)<br>{<br>//fin&lt;&lt;i&lt;&lt;” (x,y)= “&lt;&lt;”(“;//1<br>//fin&lt;&lt;”the “&lt;&lt;i++&lt;&lt;” input is”&lt;&lt;endl;//test<br>//fin&lt;&lt;”\n”&lt;&lt;i++&lt;&lt;”  “;<br>//result.show(fin);//2<br>//fin&lt;&lt;” “&lt;&lt;endl;//1+2+3<br>direction=rand()%360;<br>step.reset(dstep,direction,Vector112::POL);<br>result=result+step;<br>steps++;<br>}<br>cout&lt;&lt;”After “&lt;&lt;steps&lt;&lt;” steps ,the subject “<br>&lt;&lt;” has the following location:”&lt;&lt;endl;<br>//fin&lt;&lt;”After “&lt;&lt;steps&lt;&lt;” steps ,the subject “<br>//&lt;&lt;” has the following location:”&lt;&lt;endl;<br>//fin&lt;&lt;result;<br>result.polar_mode();<br>//cout&lt;&lt;” or \n”&lt;&lt;result&lt;&lt;endl;<br>//fin&lt;&lt;” or \n”;<br>//fin&lt;&lt;result&lt;&lt;endl;<br>cout&lt;&lt;”Average outward distance per step=”<br>&lt;&lt;result.magval()/steps&lt;&lt;endl;<br>//fin&lt;&lt;”Average outward distance per step=”<br>//&lt;&lt;result.magval()/steps&lt;&lt;endl;<br>steps=0;<br>result.reset(0.0,0.0);<br>cout&lt;&lt;”Enter target distance (q to quit):”;</p>
+<p>}<br>//fin&lt;&lt;”Bye!\n”;<br>cin.clear();<br>while(cin.get()!=’\n’)<br>continue;<br>//cin.get();</p>
+<p>fin.close();<br>cin.get();<br>return 0;</p>
+<p>}</p>
+<p>不要喋喋不休地问为什么，因为有时候并不是弄错了，编译器也是个坑！  </p>
+<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x40;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#x2e;&#x63;&#111;&#x6d;">&#x72;&#x6f;&#121;&#x61;&#x6c;&#x63;&#x68;&#101;&#x6e;&#x40;&#114;&#111;&#x79;&#x61;&#x6c;&#99;&#x68;&#101;&#x6e;&#x2e;&#x63;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C++ primer plus</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C-primer-plus-课后编程题答案//" class="article-tag-list-link color3">C++primer plus 课后编程题答案</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88112%E7%BB%9D%E4%B8%96%E5%A4%A7%E5%9D%91/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cprimerplus第六版课后编程题答案113" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1208,117 +1334,6 @@
 
 
   
-    <article id="post-cprimerplus第六版课后编程题答案125" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88125/" target="_blank">C++ primer plus第六版课后编程题答案12.5</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88125/" class="archive-article-date">
-        <time datetime="2016-02-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>myQueue.cpp</p>
-<p>#include <iostream><br>using namespace std;<br>class Customer<br>{<br>private:<br>long arrive;<br>int processtime;<br>public:<br>Customer(){arrive=processtime=0;};<br>void set(long when){<br>processtime=rand()%3+1;<br>arrive=when;<br>}<br>long when()const{<br>return arrive;<br>}<br>int ptime()<br>{<br>return processtime;<br>}<br>friend ostream&amp;operator&lt;&lt;(ostream &amp;os,const Customer &amp;c)//用于检测<br>{<br>static int j=0;<br>os&lt;&lt;j++&lt;&lt;”  arrive:”&lt;&lt;c.arrive&lt;&lt;”    need time:”&lt;&lt;c.processtime&lt;&lt;endl;<br>return os;<br>}<br>};</p>
-<p>typedef Customer Item;<br>class Queue{<br>struct Node{<br>Item items;<br>struct Node *next;<br>};<br>enum {Q_SIZE=10};<br>Node *front;<br>Node *rear;<br>int items;//当前队列人数<br>const int qsize;//队列最大值？const??一次性？？<br>Queue(const Queue &amp;q):qsize(0){ };<br>Queue &amp;operator=(const Queue &amp;q){return *this;};//???真看不太懂啊<br>public:<br>int s()<br>{return items;};<br>Queue(int qs=Q_SIZE):qsize(qs)<br>{<br>front=rear=nullptr;<br>items=0;<br>}<br>~Queue()<br>{<br>Node *temp;<br>while(front!=nullptr)<br>{<br>temp=front;<br>front=front-&gt;next;<br>delete temp;<br>}<br>}<br>bool isEmpty()const<br>{<br>  return items==0;<br>}<br>bool isFull()const<br>{<br>return items==qsize;//qsize是这一个队列的最大长度<br>}<br>int queuecount()const<br>{<br>return items;<br>}<br>bool enQueue(const Item &amp;it)<br>{<br>if(isFull())<br>//cout&lt;&lt;”The queue is full!”&lt;&lt;endl;<br>return false;<br>Node *add=new Node;<br>add-&gt;items=it;<br>add-&gt;next=nullptr;//这一句？？//为后面作准备<br>items++;<br>if(front==nullptr)//如果在头部插入<br>{<br>front=add;<br>}<br>else<br>rear-&gt;next=add;<br>rear=add;//令rear指向最后一个元素<br>return true;<br>}<br>bool deQueue(Item &amp;it)<br>{<br>if(front==nullptr)<br>//cout&lt;&lt;”The queue is empty!”&lt;&lt;endl;<br>return false;<br>it=front-&gt;items;<br>items–;//这里居然忘记写了，我去啊，难怪只会进不会出<br>Node *temp=front;<br>front=front-&gt;next;<br>delete temp;<br>if(items==0)<br>rear=nullptr;<br>return true;<br>}<br>friend ostream&amp;operator&lt;&lt;(ostream &amp;os,const Queue &amp;q)<br>{<br>auto *p=q.front;//真神奇，用auto可以，用Node 居然会报错？？<br>while(p++!=q.rear)<br>cout&lt;<p->items;<br>return os;<br>}<br>};</p>
-<p>main125.cpp</p>
-<p>#include <iostream><br>#include “myQueue.cpp”<br>#include <cstdlib><br>#include <ctime><br>using namespace std;<br>const int MIN_PER_HR=60;<br>bool newCustomer(double x)//每隔x次，rand()/RAND_max会有一次值&lt;1<br>{<br>return rand()*x/RAND_MAX&lt;1;<br>}<br>void main125()<br>{<br>srand(time(0));//初始化rand();<br>cout&lt;&lt;”Case Study:Bank of Heather Automatic Teller”&lt;&lt;endl;<br>cout&lt;&lt;”Enter maximum size of queue:”;<br>int qs;<br>cin&gt;&gt;qs;<br>Queue line(qs);</p>
-<p>cout&lt;&lt;”Enter the number of simulation hours:”;<br>int hours;<br>cin&gt;&gt;hours;<br>long cyclelimit=MIN_PER_HR*hours;//循环的分钟数</p>
-<p>cout&lt;&lt;”Enter the average number of customers per hour:”;//一个小时来的人数<br>double perhour;<br>cin&gt;&gt;perhour;<br>double min_per_cust;<br>min_per_cust=MIN_PER_HR/perhour;//平均多少分钟来一个人</p>
-<p>Item temp;<br>long turnaways=0;<br>long customers=0;<br>//long served=0;<br>long served=0;<br>long sum_line=0;<br>int wait_time=0;<br>long line_wait=0;</p>
-<p>for(int cycle=0;cycle&lt;cyclelimit;cycle++)//cycle每循环一次，代表过了一分钟<br>{<br>//line.s();<br>if(newCustomer(min_per_cust))<br>{<br>if(line.isFull())<br>turnaways++;//拒绝服务？？？//恩,应该就是拒绝服务的人数<br>else<br>{<br>customers++;//队列人数//应该是顾客人数+1而不是队列人数+1<br>temp.set(cycle);//cycle是到达时间<br>line.enQueue(temp);//这里的items++才是队列人数+1<br>//cout&lt;&lt;”after insert “&lt;&lt;line;//test</p>
-<p>}</p>
-<p>}<br>if(wait_time&lt;=0&amp;&amp;!line.isEmpty())//用户处理完了业务<br>{<br>line.deQueue(temp);<br>//cout&lt;&lt;”after the delete”&lt;&lt;line;//test<br>wait_time=temp.ptime();//wait_time是该客户处理业务所用时间<br>line_wait+=cycle-temp.when();//cycle-temp.when();是该客户一共在队列中等了多久<br>//一开始wait_time初始化是0，然后进入这里之后，又重新设置了使其=processtime<br>//line_wait是该队列一共等了多久？？哦，应该是所有客户的等待时间<br>//line_wait是客户等待总时间<br>served++;//服务人数+1<br>}</p>
-<p>if(wait_time&gt;0)//正在处理业务的处理时间-1，因为过了一分钟<br>wait_time–;//话说这wait_time是谁设置了？一直=0？<br>//wait_time=temp.ptime()这里随机设置了wait-time<br>sum_line+=line.queuecount();//sum_line又是神马东东？？<br>//sum_line是队伍总长度，每分钟计算一次队伍长度<br>}</p>
-<p>if(customers&gt;0)<br>{<br>cout&lt;&lt;”customers accepted:”&lt;&lt;customers&lt;&lt;endl;<br>cout&lt;&lt;”customers served:”&lt;&lt;served&lt;&lt;endl;<br>cout&lt;&lt;”turnaways:”&lt;&lt;turnaways&lt;&lt;endl;<br>cout&lt;&lt;”average queue size:”;<br>cout.precision(2);<br>cout.setf(ios_base::fixed,ios_base::floatfield);<br>cout&lt;&lt;(double)sum_line/cyclelimit&lt;&lt;endl;<br>cout&lt;&lt;”average wait time:”&lt;&lt;(double)line_wait/served&lt;&lt;”  minutes”&lt;&lt;endl;<br>}<br>else<br>cout&lt;&lt;”No coustomer!”&lt;&lt;endl;<br>cout&lt;&lt;”Done!”&lt;&lt;endl;<br>system(“pause”);<br>}</p>
-<p> </p>
-<p>—————————————————————————————————————————————————— //写的错误或者不好的地方请多多指导，可以在下面留言或者给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。 转载请注明出处：<a href="https://www.royalchen.com/">https://www.royalchen.com/</a> author:royalchen Email:<a href="mailto:&#114;&#x6f;&#121;&#97;&#108;&#x63;&#104;&#x65;&#110;&#x40;&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#46;&#x63;&#111;&#x6d;">&#114;&#x6f;&#121;&#97;&#108;&#x63;&#104;&#x65;&#110;&#x40;&#x72;&#x6f;&#121;&#97;&#108;&#x63;&#x68;&#x65;&#x6e;&#46;&#x63;&#111;&#x6d;</a> ———————————————————————————————————————————————————</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C++ primer plus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C-primer-plus-课后编程题答案//" class="article-tag-list-link color3">C++primer plus 课后编程题答案</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/cprimerplus%E7%AC%AC%E5%85%AD%E7%89%88%E8%AF%BE%E5%90%8E%E7%BC%96%E7%A8%8B%E9%A2%98%E7%AD%94%E6%A1%88125/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/41/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/41/">41</a><span class="page-number current">42</span><a class="page-number" href="/page/43/">43</a><a class="page-number" href="/page/44/">44</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/43/">Next &amp;raquo;</a>
@@ -1335,7 +1350,7 @@
 			<div class="footer-left">
 				&copy; 
 					2015-
-							2021 <a href="http://www.royalchen.com/" target="_blank">
+							2022 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
 								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
@@ -1450,6 +1465,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">一点小心情</a>
               </li>
             
             <div class="clearfix"></div>

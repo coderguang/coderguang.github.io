@@ -241,6 +241,155 @@
 
 
   
+    <article id="post-stlrelationaloperatorsvector" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2016/02/24/stlrelationaloperatorsvector/" target="_blank">STLrelationaloperators(vector)</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2016/02/24/stlrelationaloperatorsvector/" class="archive-article-date">
+        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>STLrelationaloperators(vector)</p>
+<p>原文地址：<a href="http://www.cplusplus.com/reference/vector/vector/operators/">http://www.cplusplus.com/reference/vector/vector/operators/</a></p>
+<p>function template</p>
+<vector>
+
+<h1 id="std-relational-operators-vector"><a href="#std-relational-operators-vector" class="headerlink" title="std::relational operators (vector)"></a>std::relational operators (vector)</h1><p>(1)</p>
+<p>template &lt;class T, class Alloc&gt;<br>  bool operator== (const vector&lt;T,Alloc&gt;&amp; lhs, const vector&lt;T,Alloc&gt;&amp; rhs); </p>
+<p>(2)</p>
+<p>template &lt;class T, class Alloc&gt;<br>  bool operator!= (const vector&lt;T,Alloc&gt;&amp; lhs, const vector&lt;T,Alloc&gt;&amp; rhs); </p>
+<p>(3)</p>
+<p>template &lt;class T, class Alloc&gt;<br>  bool operator&lt;  (const vector&lt;T,Alloc&gt;&amp; lhs, const vector&lt;T,Alloc&gt;&amp; rhs); </p>
+<p>(4)</p>
+<p>template &lt;class T, class Alloc&gt;<br>  bool operator&lt;= (const vector&lt;T,Alloc&gt;&amp; lhs, const vector&lt;T,Alloc&gt;&amp; rhs); </p>
+<p>(5)</p>
+<p>template &lt;class T, class Alloc&gt;<br>  bool operator&gt;  (const vector&lt;T,Alloc&gt;&amp; lhs, const vector&lt;T,Alloc&gt;&amp; rhs);<br>(6)template &lt;class T, class Alloc&gt;<br>  bool operator&gt;= (const vector&lt;T,Alloc&gt;&amp; lhs, const vector&lt;T,Alloc&gt;&amp; rhs);</p>
+<p>Relational operators for vector</p>
+<p>Performs the appropriate comparison operation between the <a href="http://www.cplusplus.com/vector">vector</a> containers <em>lhs</em> and <em>rhs</em>.  </p>
+<p>对两个vector数组执行合适的比较操作。</p>
+<p>The <em>equality comparison</em> (<code>operator==</code>) is performed by first comparing <em><a href="http://www.cplusplus.com/vector::size">sizes</a></em>, and if they match, the elements are compared sequentially using <code>operator==</code>, stopping at the first mismatch (as if using algorithm <a href="http://www.cplusplus.com/equal">equal</a>).</p>
+<p>比较相等的操作是首先比较两者的大小，然后使用==依次比较他们的元素，直到第一次失配。</p>
+<p>The <em>less-than comparison</em> (<code>operator&lt;</code>) behaves as if using algorithm <code>[lexicographical_compare](http://www.cplusplus.com/lexicographical_compare)</code>, which compares the elements sequentially using <code>operator&lt;</code> in a reciprocal manner (i.e., checking both <code>a&lt;b</code> and <code>b&lt;a</code>) and stopping at the first occurrence.</p>
+<p>比较器&lt;的行为就像<a href="http://www.cplusplus.com/lexicographical_compare">lexicographical_compare</a>的一样，依次使用&lt;比较两者相互之间的元素（不管大小是否相同），以及在第一次失败时停止比较。</p>
+<p>The other operations also use the operators <code>==</code> and <code>&lt;</code> internally to compare the elements, behaving as if the following equivalent operations were performed:</p>
+<p>其他的操作也是令用==已经&lt;进行比较，行为就和下面的等价列表一样。</p>
+<p>operation</p>
+<p>equivalent operation</p>
+<p><code>a!=b</code></p>
+<p><code>!(a==b)</code></p>
+<p><code>a&gt;b</code></p>
+<p><code>b&lt;a</code></p>
+<p><code>a&lt;=b</code></p>
+<p><code>!(b&lt;a)</code></p>
+<p><code>a&gt;=b</code></p>
+<p><code>!(a&lt;b)</code></p>
+<p>These operators are overloaded in header <a href="http://www.cplusplus.com/%3Cvector%3E"><vector></a>.  </p>
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>lhs, rhs</p>
+<p><a href="http://www.cplusplus.com/vector">vector</a> containers (to the left- and right-hand side of the operator, respectively), having both the same template parameters (Tand Alloc).</p>
+<p>具有相同类型的两个vector.</p>
+<h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>true if the condition holds, and false otherwise.  </p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// vector comparisons</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; foo (3,100);   // three ints with a value of 100</span><br><span class="line">  std::vector&lt;int&gt; bar (2,200);   // two ints with a value of 200</span><br><span class="line"></span><br><span class="line">  if (foo==bar) std::cout &lt;&lt; &quot;foo and bar are equal\n&quot;;</span><br><span class="line">  if (foo!=bar) std::cout &lt;&lt; &quot;foo and bar are not equal\n&quot;;</span><br><span class="line">  if (foo&lt; bar) std::cout &lt;&lt; &quot;foo is less than bar\n&quot;;</span><br><span class="line">  if (foo&gt; bar) std::cout &lt;&lt; &quot;foo is greater than bar\n&quot;;</span><br><span class="line">  if (foo&lt;=bar) std::cout &lt;&lt; &quot;foo is less than or equal to bar\n&quot;;</span><br><span class="line">  if (foo&gt;=bar) std::cout &lt;&lt; &quot;foo is greater than or equal to bar\n&quot;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://www.cplusplus.com/reference/vector/vector/operators/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
+<p>Output:  </p>
+<p>foo and bar are not equal<br>foo is less than bar<br>foo is less than or equal to bar </p>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>For <em>(1)</em> and <em>(2)</em>, constant if the <em><a href="http://www.cplusplus.com/vector::size">sizes</a></em> of lhs and rhs differ, and up to linear in that <em><a href="http://www.cplusplus.com/vector::size">size</a></em> (equality comparisons) otherwise.</p>
+<p>对于(1),（2）来说，如果两者大小不同，则是常量时间复杂的，否则时和大小相关的线性时间复杂的。</p>
+<p>For the others, up to linear in the smaller <em><a href="http://www.cplusplus.com/vector::size">size</a></em> (each representing two comparisons with <code>operator&lt;</code>).</p>
+<p>对于其他情况，和最小的那个size线性相关。</p>
+<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>No changes.  </p>
+<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>Both containers, <em>lhs</em> and <em>rhs</em>, are accessed.</p>
+<p>所有的容器都将被访问。</p>
+<p>Up to all of their contained elements may be accessed.</p>
+<p>容器的所有元素都可能被访问。</p>
+<p>In any case, the function cannot modify its arguments (const-qualified).  </p>
+<p>不管任何情况下，该方法都不会修改其元素。</p>
+<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p>If the type of the elements supports the appropriate operation with no-throw guarantee, the function never throws exceptions (no-throw guarantee).</p>
+<p>如果元素的比较操作不会抛出异常，那么该函数也不会抛出异常。</p>
+<p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。  </p>
+<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
+<p>2014-8-20</p>
+<p>于GDUT</p>
+<p><a href="http://blog.csdn.net/qq844352155/article/details/38711531">原文链接</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/STL容器//" class="article-tag-list-link color1">STL容器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2016/02/24/stlrelationaloperatorsvector/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-stlvector-bool的介绍（1）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1518,134 +1667,6 @@
 
 
   
-    <article id="post-stlvector中的cbegin方法（6）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84cbegin%E6%96%B9%E6%B3%95%EF%BC%886%EF%BC%89/" target="_blank">STLvector中的cbegin()方法（6）</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84cbegin%E6%96%B9%E6%B3%95%EF%BC%886%EF%BC%89/" class="archive-article-date">
-        <time datetime="2016-02-24T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-02-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>STLvector中的cbegin()方法（6）</p>
-<p>原文地址：<a href="http://www.cplusplus.com/reference/vector/vector/cbegin/">http://www.cplusplus.com/reference/vector/vector/cbegin/</a></p>
-<p>//其实这个和begin差不多，只是具有了const属性，不能用于修改元素而已。</p>
-<p>public member function</p>
-<vector>
-
-<h1 id="std-vector-cbegin"><a href="#std-vector-cbegin" class="headerlink" title="std::vector::cbegin"></a>std::<a href="http://www.cplusplus.com/reference/vector/vector/">vector</a>::cbegin</h1><p>const_iterator cbegin() const noexcept;</p>
-<p>Return const_iterator to beginning</p>
-<p>Returns a const_iterator pointing to the first element in the container.  </p>
-<p>返回一个const_iterator指向容器的第一个元素。</p>
-<p>A const_iterator is an iterator that points to const content. This iterator can be increased </p>
-<p>and decreased (unless it is itself also const), just like the iterator returned by <a href="http://www.cplusplus.com/vector::begin">vector::begin</a>, but it cannot be used to modify the contents it points to, even if the <a href="http://www.cplusplus.com/vector">vector</a> object is not itself const.</p>
-<p>一个const_iterator是一种类似于指向常量的迭代器，他们可以被递增或是递减（除非这个iterator本身是常量才不能这样），这就像和begin()返回的iterator一样，只是cbegin()返回的迭代器不能用于修改该元素而已，甚至vector本身并不是const属性，该方法返回的iterator也是不能用于修改元素的.</p>
-<p>If the container is <a href="http://www.cplusplus.com/vector::empty">empty</a>, the returned iterator value shall not be dereferenced.</p>
-<p>如果容器为空，不应该对该iterator解除引用(即对该iterator取*)</p>
-<p>Parameters</p>
-<p>none  </p>
-<h3 id="Return-Value"><a href="#Return-Value" class="headerlink" title="Return Value"></a>Return Value</h3><p>A const_iterator to the beginning of the sequence.  </p>
-<p>一个指向序列第一个元素的具有const属性的iterator.</p>
-<p>Member type const_iterator is a <a href="http://www.cplusplus.com/RandomAccessIterator">random access iterator</a> type that points to a const element.</p>
-<p>该const_iterator属于随机访问迭代器，指向一个具有const属性的元素（该元素本身可能并不是const的）</p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// vector::cbegin/cend</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">int main ()</span><br><span class="line">&#123;</span><br><span class="line">  std::vector&lt;int&gt; myvector = &#123;10,20,30,40,50&#125;;</span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;myvector contains:&quot;;</span><br><span class="line"></span><br><span class="line">  for (auto it = myvector.cbegin(); it != myvector.cend(); ++it)</span><br><span class="line">    std::cout &lt;&lt; &#x27; &#x27; &lt;&lt; *it;</span><br><span class="line">  std::cout &lt;&lt; &#x27;\n&#x27;;</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="http://www.cplusplus.com/reference/vector/vector/cbegin/#" title="Open C++ Shell (in a new window)">Edit &amp; Run</a></p>
-<p>Output:  </p>
-<p>myvector contains: 10 20 30 40 50 </p>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><p>Constant.  </p>
-<h3 id="Iterator-validity"><a href="#Iterator-validity" class="headerlink" title="Iterator validity"></a>Iterator validity</h3><p>No changes.  </p>
-<p>该方法不会对其他迭代器的有效性造成影响。</p>
-<h3 id="Data-races"><a href="#Data-races" class="headerlink" title="Data races"></a>Data races</h3><p>The container is accessed.</p>
-<p>该容器应该是可访问的。</p>
-<p>No contained elements are accessed by the call, but the iterator returned can be used to access them. Concurrently accessing or modifying different elements is safe.<br>该方法不会访问容器里的元素，但是返回的这个iterator可以用来访问元素，并且用他们来访问或者是修改不同的元素都是安全的。（这里似乎有点问题？运用const_cast转换？这里似乎转化不了，什么情况？）  </p>
-<h3 id="Exception-safety"><a href="#Exception-safety" class="headerlink" title="Exception safety"></a>Exception safety</h3><p><strong>No-throw guarantee:</strong> this member function never throws exceptions.  </p>
-<p>The copy construction or assignment of the returned iterator is also guaranteed to never throw</p>
-<p>该方法不会抛出异常。</p>
-<p>利用复制构造函数或者赋值运算得到该iterator的拷贝也不会抛出异常。</p>
-<p>//翻译的不好的地方请多多指导，可以在下面留言或者点击左上方邮件地址给我发邮件，指出我的错误以及不足，以便我修改，更好的分享给大家，谢谢。</p>
-<p>转载请注明出处：<a href="http://blog.csdn.net/qq844352155">http://blog.csdn.net/qq844352155</a></p>
-<p>2014-8-10</p>
-<p>于GDUT</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p><a href="http://blog.csdn.net/qq844352155/article/details/38467291">原文链接</a></p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/STL容器//" class="article-tag-list-link color1">STL容器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2016/02/24/stlvector%E4%B8%AD%E7%9A%84cbegin%E6%96%B9%E6%B3%95%EF%BC%886%EF%BC%89/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/27/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="page-number" href="/page/27/">27</a><span class="page-number current">28</span><a class="page-number" href="/page/29/">29</a><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/29/">Next &amp;raquo;</a>
@@ -1662,7 +1683,7 @@
 			<div class="footer-left">
 				&copy; 
 					2015-
-							2021 <a href="http://www.royalchen.com/" target="_blank">
+							2022 <a href="http://www.royalchen.com/" target="_blank">
 									royalchen
 								</a>
 								<a href="https://beian.miit.gov.cn/" style="color:#0733f7"
@@ -1777,6 +1798,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">一点小心情</a>
               </li>
             
             <div class="clearfix"></div>
